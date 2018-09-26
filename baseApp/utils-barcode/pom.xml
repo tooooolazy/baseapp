@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.tooooolazy.vaadin</groupId>
+		<artifactId>baseApp</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<groupId>com.tooooolazy.utils</groupId>
+	<artifactId>tlz-utils-barcode</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>com.tooooolazy.utils</groupId>
+			<artifactId>tlz-utils</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.barcode4j</groupId>
+			<artifactId>barcode4j</artifactId>
+			<version>2.0</version>
+		</dependency>
+	</dependencies>
+</project>
