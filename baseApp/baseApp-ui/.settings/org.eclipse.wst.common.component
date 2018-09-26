@@ -11,7 +11,7 @@
         <dependent-module archiveName="baseApp-baseUI-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/baseApp-baseUI/baseApp-baseUI">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="tlz-utils-2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/tlz-utils/tlz-utils">
+        <dependent-module archiveName="tlz-utils-2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/utils/utils">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="baseApp-ui"/>
