@@ -29,7 +29,7 @@ public abstract class BaseUI extends UI {
 
 	static {
 		try {
-			Messages.setMainBundle(Messages.class.getPackage().getName() + ".messages");
+//			Messages.setMainBundle(Messages.class.getPackage().getName() + ".messages");
 			Messages.addBundle(BaseUI.class.getPackage().getName() + ".messages");
 		} catch(Exception e) {
 			// no default resource bundles... but never mind
