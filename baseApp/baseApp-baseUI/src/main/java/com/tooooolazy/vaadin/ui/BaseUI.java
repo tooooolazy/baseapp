@@ -22,9 +22,6 @@ import com.vaadin.ui.themes.ValoTheme;
  *
  */
 public abstract class BaseUI extends UI {
-//	public static final String ctxPath = VaadinServlet.getCurrent()
-//		    .getServletContext().getContextPath() + VaadinServletService 
-//		    .getCurrentServletRequest().getServletPath();
 
 	protected ResponsiveMenuLayout root;
 	protected ComponentContainer viewDisplay;
@@ -130,7 +127,7 @@ public abstract class BaseUI extends UI {
 			return null;
 
 		Image logo = new Image( null, getSecLogoResource() );
-		logo.setHeight("37px");
+		logo.setHeight("37px"); // should match the height of the TOP title section of VALO responsive layout on small screens 
 		return logo;
 	}
 
