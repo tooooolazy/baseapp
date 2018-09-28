@@ -81,8 +81,8 @@ public class Messages {
 	}
 
 	public static String getString(String key) {
-		for (int i=0; i<EXTRA_BUNDLES.size(); i++) {
-			Map<String, ResourceBundle> map = EXTRA_BUNDLES.get(i);
+		for (int i=EXTRA_BUNDLES.size(); i>0; i--) {
+			Map<String, ResourceBundle> map = EXTRA_BUNDLES.get(i-1);
 			try {
 				return map.get(getLang()).getString(key);
 			} catch (Exception ee) {
@@ -103,23 +103,24 @@ public class Messages {
 			else
 				_cl = _cl.getSuperclass();		
 		}
-		for (int i=0; i<EXTRA_BUNDLES.size(); i++) {
-			Map<String, ResourceBundle> map = EXTRA_BUNDLES.get(i);
-			try {
-				return map.get(getLang()).getString(key);
-			} catch (Exception ee) {
-			}
-		}
-		try {
-			return RESOURCE_BUNDLES.get(getLang()).getString(key);
-		} catch (Exception e2) {
-		}
-
-		return '!' + cl.getSimpleName() + " . " + key + '!';
+//		for (int i=EXTRA_BUNDLES.size(); i>0; i--) {
+//			Map<String, ResourceBundle> map = EXTRA_BUNDLES.get(i-1);
+//			try {
+//				return map.get(getLang()).getString(key);
+//			} catch (Exception ee) {
+//			}
+//		}
+//		try {
+//			return RESOURCE_BUNDLES.get(getLang()).getString(key);
+//		} catch (Exception e2) {
+//		}
+//
+//		return '!' + cl.getSimpleName() + " . " + key + '!';
+		return getString( key );
 	}
 	private static String getString(String cl, String key) {
-		for (int i=0; i<EXTRA_BUNDLES.size(); i++) {
-			Map<String, ResourceBundle> map = EXTRA_BUNDLES.get(i);
+		for (int i=EXTRA_BUNDLES.size(); i>0; i--) {
+			Map<String, ResourceBundle> map = EXTRA_BUNDLES.get(i-1);
 			try {
 				return map.get(getLang()).getString(cl + "." + key);
 			} catch (Exception ee) {
