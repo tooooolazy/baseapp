@@ -14,10 +14,18 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * The properties required can be loaded using {@link TLZUtils#loadProperties(String)}
  * <ul>Requires:
  * <li>activation.jar</li>
  * <li>mail.jar</li>
+ * </ul>
+ * <ul>properties file required that can be loaded using {@link TLZUtils#loadProperties(String)} and must include:
+ * 	<li>mail.smtp.host</li>
+ * 	<li>mail.smtp.port</li>
+ * 	<li>mail.smtp.auth</li>
+ * 	<li>mail.smtp.auth.user</li>
+ * 	<li>mail.smtp.auth.password</li>
+ * 	<li>mail.sender</li>
+ * </ul>
  * @author tooooolazy
  *
  */
