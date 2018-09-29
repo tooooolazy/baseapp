@@ -1,12 +1,14 @@
 package com.tooooolazy.vaadin.layout;
 
-import java.util.Locale;
-
 import com.tooooolazy.util.Messages;
+import com.tooooolazy.vaadin.commands.LoginCommand;
+import com.tooooolazy.vaadin.commands.LogoutCommand;
+import com.tooooolazy.vaadin.commands.ToggleLocaleCommand;
+import com.tooooolazy.vaadin.exceptions.NoLoginResourceException;
+import com.tooooolazy.vaadin.exceptions.NoLogoutResourceException;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.Resource;
-import com.vaadin.server.ThemeResource;
 import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -18,7 +20,6 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
-import com.vaadin.ui.MenuBar.Command;
 import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.themes.ValoTheme;
 
@@ -31,7 +32,8 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 
 	protected CssLayout contentArea = new CssLayout();
 
-	protected Resource logoResource, secLogoResource;
+	protected Resource	logoResource, secLogoResource,
+						loginResource, logoutResource;
 
 	public ResponsiveMenuLayout() {
 		setSizeFull();
@@ -79,7 +81,6 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 	}
 
 	protected void createMenuStructure(BaseUI ui) {
-//		menu.setPrimaryStyleName(ValoTheme.MENU_ROOT);
 		menu.addStyleName(ValoTheme.MENU_PART);
 		menuArea.addComponent(menu);
 
@@ -108,31 +109,41 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 		}
 
 		createShowMenuButton();
-
 	}
 
 	protected void createSettingsMenuBar() {
-		Command toggleLangCommand = new Command() {
-	        private static final long serialVersionUID = 1L;
-
-	        @Override
-	        public void menuSelected(MenuItem selectedItem) {
-	        	String newLang = getUI().getLocale().getLanguage();
-	        	Messages.setLang(newLang);
-	        	newLang = Messages.toggleLocale();
-				getUI().setLocale(new Locale(newLang));
-				getUI().getNavigator().navigateTo( getUI().getNavigator().getState() );
-				refresh();
-	        }
-	    };
 		final MenuBar settings = new MenuBar();
 		settings.addStyleName("user-menu");
-		final MenuItem toggleLang = settings.addItem("", new ThemeResource("img/actions/toggleLang3.png"), toggleLangCommand);
-		toggleLang.setDescription( Messages.getString("toggleLang") );
 
-		final MenuItem settingsItem = settings.addItem("", VaadinIcons.USER, null);
-		settingsItem.addSeparator();
-		settingsItem.addItem("Sign Out", null);
+		if (BaseUI.get().supportsLocaleSwitching()) {
+			final MenuItem toggleLang = settings.addItem("", BaseUI.get().getLocalSwitchResource(), new ToggleLocaleCommand() );
+			toggleLang.setDescription( Messages.getString("toggleLang") );
+		}
+
+		if (BaseUI.get().hasSecureContent()) {
+			LoginCommand lic = new LoginCommand();
+			if (BaseUI.get().getLoginResource() == null) {
+	            throw new NoLoginResourceException();
+	        }
+			if (BaseUI.get().getLogoutResource() == null) {
+	            throw new NoLogoutResourceException();
+	        }
+
+			final MenuItem login = settings.addItem("", BaseUI.get().getLoginResource(), lic);
+			login.setDescription( Messages.getString("InitiateLoginButton.loginTitle") );
+
+			LogoutCommand loc = new LogoutCommand();
+			final MenuItem logout = settings.addItem("", BaseUI.get().getLogoutResource(), loc);
+			logout.setDescription( Messages.getString("InitiateLoginButton.logoutTitle") );
+			logout.setVisible( false );
+
+			lic.setLogoutItem( logout );
+			loc.setLoginItem( login );
+		}
+
+//		final MenuItem settingsItem = settings.addItem("", VaadinIcons.USER, null);
+//		settingsItem.addSeparator();
+//		settingsItem.addItem("Sign Out", null);
 
 		menu.addComponent(settings);
 	}

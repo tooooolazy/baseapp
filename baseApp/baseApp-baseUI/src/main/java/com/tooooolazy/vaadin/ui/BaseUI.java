@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.TLZMail;
+import com.tooooolazy.vaadin.exceptions.InvalidBaseAppParameterException;
 import com.tooooolazy.vaadin.layout.ResponsiveMenuLayout;
 import com.tooooolazy.vaadin.views.AboutView;
 import com.tooooolazy.vaadin.views.ErrorView;
@@ -16,6 +17,7 @@ import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.CustomizedSystemMessages;
+import com.vaadin.server.DefaultErrorHandler;
 import com.vaadin.server.Page.PopStateEvent;
 import com.vaadin.server.Page.PopStateListener;
 import com.vaadin.server.Resource;
@@ -28,6 +30,8 @@ import com.vaadin.server.VaadinService;
 import com.vaadin.server.VaadinServletService;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.Image;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 
@@ -79,6 +83,18 @@ public abstract class BaseUI extends UI {
 //				ViewChangeEvent vce = new ViewChangeEvent(navigator, navigator.getCurrentView(), navigator.getCurrentView(), navigator.getCurrentView().getClass().getSimpleName(), event.getUri());
 //				navigator.getCurrentView().enter( vce );
 			}
+		});
+
+		setErrorHandler(new DefaultErrorHandler() {
+			@Override
+			public void error(com.vaadin.server.ErrorEvent event) {
+				if (event.getThrowable() instanceof InvalidBaseAppParameterException) {
+					Notification.show(getMessageString(BaseUI.class, "error"), getMessageString(event.getThrowable().getClass(), "msg"), Type.ERROR_MESSAGE);
+//					Notification.show(getMessageString(BaseUI.class, "error"), event.getThrowable().getMessage(), Type.ERROR_MESSAGE);
+				} else
+					super.error(event);
+			}
+
 		});
 
 		if (useBrowserLocale())
@@ -276,6 +292,16 @@ public abstract class BaseUI extends UI {
 	 * @return
 	 */
 	public abstract boolean hasSecureContent();
+	/**
+	 * if {@link #hasSecureContent()} returns true, this must return a valid resource
+	 * @return
+	 */
+	public abstract Resource getLoginResource();
+	/**
+	 * if {@link #hasSecureContent()} returns true, this must return a valid resource
+	 * @return
+	 */
+	public abstract Resource getLogoutResource();
 
 	public static String getClientIp() {
 		HttpServletRequest hsr = VaadinServletService.getCurrentServletRequest();
