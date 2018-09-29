@@ -4,10 +4,13 @@ import com.vaadin.navigator.ViewBeforeLeaveEvent;
 import com.vaadin.ui.CustomLayout;
 
 /**
+ * Assumes that a custom Layout file exists in Theme folder '/layouts' in the form of 'AboutView_[locale_lang].html' eg. AbountView_en.html
  * @author tooooolazy
  *
  */
 public class AboutView extends BaseView {
+
+	private static final long serialVersionUID = -3136395231608992697L;
 
 	@Override
 	protected void addJavascriptFunctions() {

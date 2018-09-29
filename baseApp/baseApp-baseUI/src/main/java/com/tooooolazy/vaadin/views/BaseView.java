@@ -21,6 +21,10 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 		return (BaseUI)super.getUI();
 	}
 
+	/** 
+	 * Overridden in order to perform initialization that may require access to UI
+	 * @see com.vaadin.ui.AbstractComponent#attach()
+	 */
 	@Override
 	public void attach() {
 		super.attach();
@@ -41,6 +45,9 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 		return Messages.getString(getClass(), "application.title");
 	}
 	
+	/**
+	 * called inside {@link #attach()} method and is where main View initialization takes place.
+	 */
 	protected void init() {
 		vl = new VerticalLayout();
 		setCompositionRoot( vl );
