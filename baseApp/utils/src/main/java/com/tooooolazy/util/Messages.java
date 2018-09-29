@@ -2,10 +2,13 @@ package com.tooooolazy.util;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import javax.management.RuntimeErrorException;
 
 /**
  * Provides multilingual support based on Resource bundles.
@@ -21,10 +24,19 @@ import java.util.ResourceBundle;
  *
  */
 public class Messages {
+	protected static String[] supportedLocales = new String[] {"en", "el"};
+	/**
+	 * @param locales
+	 */
+	public static void setSupportedLocales( String[] locales ) {
+		supportedLocales = locales;
+		setMainBundle(BUNDLE_NAME_EN);
+	}
+
 	private static final ThreadLocal<String> _lang = new ThreadLocal<String>() {
 		@Override
 		protected String initialValue() {
-			return "en";
+			return supportedLocales[0];
 		}
 	};
 	public static String getLang() {
@@ -32,11 +44,13 @@ public class Messages {
 	}
 
 	public static void setLang(String newLang) {
-		_lang.set(newLang);
+		if ( Arrays.asList(supportedLocales).contains( newLang ) ) {
+			_lang.set(newLang);
+		} else
+			throw new RuntimeErrorException( new Error("Lang " + newLang + " not supported") );
 	}
 
 	protected static final String BUNDLE_NAME_EN = Messages.class.getPackage().getName() + ".messages";
-//	public static String lang = "en";
 
 	protected static final Map<String, ResourceBundle> RESOURCE_BUNDLES = new HashMap<String, ResourceBundle>();
 	protected static final ArrayList<Map<String, ResourceBundle>> EXTRA_BUNDLES = new ArrayList<Map<String,ResourceBundle>>();
@@ -56,8 +70,11 @@ public class Messages {
 	 * 
 	 */
 	public static void setMainBundle(String bundleName) {
-		RESOURCE_BUNDLES.put("en", ResourceBundle.getBundle(bundleName, new Locale("en")));
-		RESOURCE_BUNDLES.put("el", ResourceBundle.getBundle(bundleName, new Locale("el")));
+		RESOURCE_BUNDLES.clear();
+
+		for (int i=0; i<supportedLocales.length; i++) {
+			RESOURCE_BUNDLES.put(supportedLocales[i], ResourceBundle.getBundle(bundleName, new Locale( supportedLocales[i] )));
+		}
 	}
 
 	protected Messages() {
@@ -66,12 +83,14 @@ public class Messages {
 	public static void addBundle(String bundle) {
 		Map newMap = new HashMap<String, ResourceBundle>();
 		try {
-			newMap.put("en", ResourceBundle.getBundle(bundle, new Locale("en")));
-			newMap.put("el", ResourceBundle.getBundle(bundle, new Locale("el")));
+			for (int i=0; i<supportedLocales.length; i++) {
+				newMap.put(supportedLocales[i], ResourceBundle.getBundle(bundle, new Locale( supportedLocales[i] )));
+			}
 			EXTRA_BUNDLES.add(newMap);
 		} catch (Exception e) {
-			newMap.put("en", ResourceBundle.getBundle(bundle));
-			newMap.put("el", ResourceBundle.getBundle(bundle));
+			for (int i=0; i<supportedLocales.length; i++) {
+				newMap.put(supportedLocales[i], ResourceBundle.getBundle(bundle));
+			}
 			e.printStackTrace();
 		}
 	}
@@ -103,19 +122,6 @@ public class Messages {
 			else
 				_cl = _cl.getSuperclass();		
 		}
-//		for (int i=EXTRA_BUNDLES.size(); i>0; i--) {
-//			Map<String, ResourceBundle> map = EXTRA_BUNDLES.get(i-1);
-//			try {
-//				return map.get(getLang()).getString(key);
-//			} catch (Exception ee) {
-//			}
-//		}
-//		try {
-//			return RESOURCE_BUNDLES.get(getLang()).getString(key);
-//		} catch (Exception e2) {
-//		}
-//
-//		return '!' + cl.getSimpleName() + " . " + key + '!';
 		return getString( key );
 	}
 	private static String getString(String cl, String key) {
@@ -134,10 +140,16 @@ public class Messages {
 	}
 
 	public static String toggleLocale() {
-		if (getLang().equals("el"))
-			setLang("en");
-		else
-			setLang("el");
+		int ni = 0;
+		for (int i=0; i<supportedLocales.length; i++) {
+			if ( getLang().equals( supportedLocales[i] ) ) {
+				ni = i+1;
+				break;
+			}
+		}
+		if (ni == supportedLocales.length)
+			ni = 0;
+		setLang( supportedLocales[ni] );
 
 		return getLang();
 	}
