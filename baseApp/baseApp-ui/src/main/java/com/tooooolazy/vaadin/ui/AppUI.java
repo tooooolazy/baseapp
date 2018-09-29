@@ -1,7 +1,12 @@
 package com.tooooolazy.vaadin.ui;
 
+import java.util.Properties;
+
 import javax.servlet.annotation.WebServlet;
 
+import com.tooooolazy.util.Messages;
+import com.tooooolazy.util.TLZUtils;
+import com.tooooolazy.vaadin.resources.Resources;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.Resource;
@@ -19,6 +24,15 @@ public class AppUI extends BaseUI {
 //	private DataProvider<Person, String> dataProvider = new CallbackDataProvider<>(query -> service.findAll().stream(),
 //			query -> service.findAll().size());
 
+	static {
+//		Messages.setSupportedLocales( new String[] {"en", "el", "bg"});
+		try {
+			Messages.addBundle(AppUI.class.getPackage().getName() + ".app");
+		} catch(Exception e) {
+			// no default resource bundles... but never mind
+		}
+	}
+
 	@Override
 	protected void init(VaadinRequest vaadinRequest) {
 		super.init( vaadinRequest );
@@ -33,10 +47,36 @@ public class AppUI extends BaseUI {
 
 	@Override
 	protected Resource getLogoResource() {
-		return new ThemeResource( "img/logo/mainLogo_59x57.png" );
+		return Resources.getPng( "img/logo/", "mainLogo_59x57" );
 	}
 	@Override
 	protected Resource getSecLogoResource() {
-		return new ThemeResource( "img/logo/aitol_logo_name_250x50.png" );
+		return Resources.getPng( "img/logo/", "aitol_logo_name_250x50" );
+	}
+
+	@Override
+	public boolean supportsLocaleSwitching() {
+		return true;
+	}
+	@Override
+	public Resource getLocalSwitchResource() {
+		return Resources.getPng("img/actions/", "toggleLang3");
+	}
+	@Override
+	public boolean hasSecureContent() {
+		return true;
+	}
+	@Override
+	public Resource getLoginResource() {
+		return Resources.getPng("img/actions/", "System-Login-icon");
+	}
+	@Override
+	public Resource getLogoutResource() {
+		return Resources.getPng("img/actions/", "System-Logout-icon");
+	}
+
+	@Override
+	protected Properties getEmailConfigProperties() {
+		return TLZUtils.loadProperties( "config.properties" );
 	}
 }

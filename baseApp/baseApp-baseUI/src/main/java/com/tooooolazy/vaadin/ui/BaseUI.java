@@ -90,7 +90,6 @@ public abstract class BaseUI extends UI {
 			public void error(com.vaadin.server.ErrorEvent event) {
 				if (event.getThrowable() instanceof InvalidBaseAppParameterException) {
 					Notification.show(getMessageString(BaseUI.class, "error"), getMessageString(event.getThrowable().getClass(), "msg"), Type.ERROR_MESSAGE);
-//					Notification.show(getMessageString(BaseUI.class, "error"), event.getThrowable().getMessage(), Type.ERROR_MESSAGE);
 				} else
 					super.error(event);
 			}

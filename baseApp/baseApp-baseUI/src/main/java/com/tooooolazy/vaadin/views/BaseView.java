@@ -4,6 +4,8 @@ import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.SearchCriteria;
 import com.tooooolazy.util.TLZUtils;
 import com.tooooolazy.vaadin.ui.BaseUI;
+import com.vaadin.external.org.slf4j.Logger;
+import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewBeforeLeaveEvent;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -11,10 +13,13 @@ import com.vaadin.server.Page;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
 public abstract class BaseView<C extends SearchCriteria, E> extends CustomComponent implements View {
+	protected final Logger logger = LoggerFactory.getLogger(UI.class.getName());
+
 	protected VerticalLayout vl;
 
 	public BaseUI getUI() {
@@ -67,6 +72,9 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 	protected abstract void addJavascriptFunctions();
 
     public void enter(ViewChangeEvent event) {
+    	logger.info( "Entering " + getClass().getSimpleName() + " from ip: " + BaseUI.get().getClientIp() );
+    	logger.info( "URI params: " + event.getParameters() );
+    	logger.info( "URI params: " + event.getParameterMap("/") );
     }
     public void beforeLeave(ViewBeforeLeaveEvent event) {
     	if ( verifyExit( event ) )
