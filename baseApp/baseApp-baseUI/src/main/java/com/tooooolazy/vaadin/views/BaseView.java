@@ -72,16 +72,21 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 	protected abstract void addJavascriptFunctions();
 
     public void enter(ViewChangeEvent event) {
-    	logger.info( "Entering " + getClass().getSimpleName() + " from ip: " + BaseUI.get().getClientIp() );
+    	getUI().getMenu().setActiveView( event.getNewView().getClass().getSimpleName() );
+    	logger.info( "Entering " + getClass().getSimpleName() + " from ip: " + BaseUI.get().getClientIp()  + " =? " +  BaseUI.get().getUserRemoteAddress());
     	logger.info( "URI params: " + event.getParameters() );
     	logger.info( "URI params: " + event.getParameterMap("/") );
     }
     public void beforeLeave(ViewBeforeLeaveEvent event) {
     	if ( verifyExit( event ) )
     		event.navigate();
+    	else
+        	logger.info( "Cannot leave from " + getClass().getSimpleName() );
     }
 
-	protected abstract boolean verifyExit(ViewBeforeLeaveEvent event);
+	protected boolean verifyExit(ViewBeforeLeaveEvent event) {
+		return true;
+	}
 
 
 	protected abstract Class<C> getCriteriaClass();

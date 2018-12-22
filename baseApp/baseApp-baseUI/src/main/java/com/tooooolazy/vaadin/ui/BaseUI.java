@@ -7,6 +7,8 @@ import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.TLZMail;
 import com.tooooolazy.vaadin.exceptions.InvalidBaseAppParameterException;
@@ -16,6 +18,7 @@ import com.tooooolazy.vaadin.views.ErrorView;
 import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.CustomizedSystemMessages;
 import com.vaadin.server.DefaultErrorHandler;
 import com.vaadin.server.Page.PopStateEvent;
@@ -34,6 +37,12 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
+
+import elemental.json.Json;
+import elemental.json.JsonArray;
+import elemental.json.JsonObject;
+import elemental.json.JsonType;
+import elemental.json.JsonValue;
 
 /**
  *
@@ -74,26 +83,18 @@ public abstract class BaseUI extends UI {
 //    	VaadinSession.getCurrent().getSession().setMaxInactiveInterval(20);
 		setupSystemMessages();
 
+		setupErrorHandling();
+
 		getPage().addPopStateListener(new PopStateListener() {
 
 			@Override
 			public void uriChanged(PopStateEvent event) {
 				// TODO Auto-generated method stub
-				logger.info( event.getUri() );
-//				ViewChangeEvent vce = new ViewChangeEvent(navigator, navigator.getCurrentView(), navigator.getCurrentView(), navigator.getCurrentView().getClass().getSimpleName(), event.getUri());
+				logger.info( event.getPage().getUriFragment());
+				
+				ViewChangeEvent vce = new ViewChangeEvent(navigator, navigator.getCurrentView(), navigator.getCurrentView(), navigator.getCurrentView().getClass().getSimpleName(), event.getUri());
 //				navigator.getCurrentView().enter( vce );
 			}
-		});
-
-		setErrorHandler(new DefaultErrorHandler() {
-			@Override
-			public void error(com.vaadin.server.ErrorEvent event) {
-				if (event.getThrowable() instanceof InvalidBaseAppParameterException) {
-					Notification.show(getMessageString(BaseUI.class, "error"), getMessageString(event.getThrowable().getClass(), "msg"), Type.ERROR_MESSAGE);
-				} else
-					super.error(event);
-			}
-
 		});
 
 		if (useBrowserLocale())
@@ -105,15 +106,83 @@ public abstract class BaseUI extends UI {
 			}
 
 		Responsive.makeResponsive(this);
-		root = getRootLayout();
+		root = createRootLayout();
 		viewDisplay = getContentContainer();
 		setContent(root);
 		addStyleName(ValoTheme.UI_WITH_MENU);
 
-		navigator = new Navigator(this, viewDisplay);
-		navigator.setErrorView(ErrorView.class);
+		setupNavigator();
+	}
 
-		navigator.addView(AboutView.class.getSimpleName(), AboutView.class);
+	protected JsonArray getViewDefinitions() {
+		JsonArray ja = Json.createArray();
+
+		JsonObject jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy4View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 1);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
+		ja.set(0, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.AboutView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 2);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(1, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy1View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 3);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
+		jo.put(MenuItemKeys.VIEW_BADGE, "22");
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		ja.set(2, jo);
+/////////////////////////////////
+		
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy2View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 4);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
+		ja.set(3, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy3View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 5);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 4);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(4, jo);
+
+
+		return ja;
+	}
+	/**
+	 * Sets up the Navigator AND adds the app's Views in the Menu
+	 */
+	protected void setupNavigator() {
+		navigator = new Navigator(this, viewDisplay);
+
+		root.createMenuItems( getViewDefinitions(), navigator );
+		
+		navigator.setErrorView(ErrorView.class);
+	}
+
+	protected void setupErrorHandling() {
+		setErrorHandler(new DefaultErrorHandler() {
+			@Override
+			public void error(com.vaadin.server.ErrorEvent event) {
+				if (event.getThrowable() instanceof InvalidBaseAppParameterException) {
+					Notification.show(getMessageString(BaseUI.class, "error"), getMessageString(event.getThrowable().getClass(), "msg"), Type.ERROR_MESSAGE);
+				} else
+					super.error(event);
+			}
+
+		});
 	}
 
 	/**
@@ -137,13 +206,13 @@ public abstract class BaseUI extends UI {
 	 * 
 	 * @return
 	 */
-	protected ResponsiveMenuLayout getRootLayout() {
+	protected ResponsiveMenuLayout createRootLayout() {
 		return new ResponsiveMenuLayout();
 	}
 
 	/**
 	 * By default returns the content layout defined in ResponsiveMenuLayout created
-	 * by {@link #getRootLayout()}
+	 * by {@link #createRootLayout()}
 	 * 
 	 * @return
 	 */
@@ -159,6 +228,9 @@ public abstract class BaseUI extends UI {
 	 */
 	public ComponentContainer getViewDisplay() {
 		return viewDisplay;
+	}
+	public ResponsiveMenuLayout getMenu() {
+		return root;
 	}
 
 	public static BaseUI get() {
@@ -287,11 +359,6 @@ public abstract class BaseUI extends UI {
 	public abstract Resource getLocalSwitchResource();
 
 	/**
-	 * If true is returned, then 'login' and 'logout' functionality should be added (ie through actions in menu)
-	 * @return
-	 */
-	public abstract boolean hasSecureContent();
-	/**
 	 * if {@link #hasSecureContent()} returns true, this must return a valid resource
 	 * @return
 	 */
@@ -302,12 +369,36 @@ public abstract class BaseUI extends UI {
 	 */
 	public abstract Resource getLogoutResource();
 
-	public static String getClientIp() {
+	public String getClientIp() {
 		HttpServletRequest hsr = VaadinServletService.getCurrentServletRequest();
 		String ip = hsr.getHeader("x-forwarded-for");
 		if (ip == null)
 			ip = hsr.getRemoteAddr();
 		return ip;
+	}
+
+	public String getUserRemoteAddress() {
+		VaadinRequest currentRequest = VaadinService.getCurrentRequest();
+
+		String userRemoteAddress = null;
+
+		if (currentRequest != null) {
+			String xForwardedFor = currentRequest.getHeader("X_FORWARDED_FOR");
+			if (StringUtils.isNotBlank(xForwardedFor)) {
+				String[] strings = xForwardedFor.split(",");
+				String userAddressFromHeader = StringUtils.trimToEmpty(strings[strings.length - 1]);
+
+				if (StringUtils.isNotEmpty(userAddressFromHeader)) {
+					userRemoteAddress = userAddressFromHeader;
+				} else {
+					userRemoteAddress = currentRequest.getRemoteAddr();
+				}
+			} else {
+				userRemoteAddress = currentRequest.getRemoteAddr();
+			}
+		}
+
+		return userRemoteAddress;
 	}
 
 	public Object getCurrentUser() {

@@ -63,10 +63,6 @@ public class AppUI extends BaseUI {
 		return Resources.getPng("img/actions/", "toggleLang3");
 	}
 	@Override
-	public boolean hasSecureContent() {
-		return true;
-	}
-	@Override
 	public Resource getLoginResource() {
 		return Resources.getPng("img/actions/", "System-Login-icon");
 	}

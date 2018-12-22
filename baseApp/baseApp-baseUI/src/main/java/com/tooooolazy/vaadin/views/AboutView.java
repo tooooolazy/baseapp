@@ -32,12 +32,6 @@ public class AboutView extends BaseView {
 	}
 
 	@Override
-	protected boolean verifyExit(ViewBeforeLeaveEvent event) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	protected Class getCriteriaClass() {
 		// TODO Auto-generated method stub
 		return null;

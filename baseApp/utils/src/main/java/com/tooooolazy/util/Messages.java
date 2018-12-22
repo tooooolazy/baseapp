@@ -110,7 +110,7 @@ public class Messages {
 		try {
 			return RESOURCE_BUNDLES.get(getLang()).getString(key);
 		} catch (Exception ee) {
-			return '!' + key + '!';
+			return null; //'!' + key + '!';
 		}
 	}
 	public static String getString(Class cl, String key) {
@@ -122,7 +122,10 @@ public class Messages {
 			else
 				_cl = _cl.getSuperclass();		
 		}
-		return getString( key );
+		String str = getString( key );
+		if (str == null)
+			str = '!' + cl.getSimpleName() + " . " + key + '!';
+		return str;
 	}
 	private static String getString(String cl, String key) {
 		for (int i=EXTRA_BUNDLES.size(); i>0; i--) {
