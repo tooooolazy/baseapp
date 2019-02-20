@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.TLZUtils;
 import com.tooooolazy.vaadin.resources.Resources;
+import com.tooooolazy.vaadin.views.MainView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.Resource;
@@ -38,6 +39,9 @@ public class AppUI extends BaseUI {
 		super.init( vaadinRequest );
 	}
 
+	protected Class getMainViewClass() {
+		return MainView.class;
+	}
 
 	@WebServlet(urlPatterns = "/*", name = "BaseUIServlet", asyncSupported = true)
 	@VaadinServletConfiguration(ui = AppUI.class, productionMode = false)
