@@ -113,6 +113,7 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 		if (logoi != null) {
 			menuTitle.addComponent(logoi);
 			logoi.addStyleName("logo");
+			logoi.addStyleName("clickable");
 			logoi.addClickListener( getLogoClickListener() );
 		}
 		Image logoseci = ui.getLogoSecImage();
@@ -120,6 +121,7 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 			menuTitle.addComponent(logoseci);
 			menuTitle.setExpandRatio(logoseci, 1);
 			logoseci.addStyleName("seclogo");
+			logoseci.addStyleName("clickable");
 			logoseci.addClickListener( getLogoClickListener() );
 		} else {
 			String titleStr = ui.getTitleHtml();
