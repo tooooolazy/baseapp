@@ -1,6 +1,5 @@
 package com.tooooolazy.vaadin.views;
 
-import com.vaadin.navigator.ViewBeforeLeaveEvent;
 import com.vaadin.ui.CustomLayout;
 
 /**

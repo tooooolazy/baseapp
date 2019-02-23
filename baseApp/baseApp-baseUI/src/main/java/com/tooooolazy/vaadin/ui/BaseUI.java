@@ -51,7 +51,6 @@ public abstract class BaseUI extends UI {
 
 	protected ResponsiveMenuLayout root;
 	protected ComponentContainer viewDisplay;
-//	protected Navigator navigator;
 
 	static {
 		try {
@@ -112,6 +111,7 @@ public abstract class BaseUI extends UI {
 	}
 
 	protected JsonArray getViewDefinitions() {
+		// TODO get this structure from WS or DB
 		JsonArray ja = Json.createArray();
 
 		JsonObject jo = Json.createObject();
