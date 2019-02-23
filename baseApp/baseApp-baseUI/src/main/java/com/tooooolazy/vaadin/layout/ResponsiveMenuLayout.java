@@ -9,14 +9,11 @@ import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.commands.LoginCommand;
 import com.tooooolazy.vaadin.commands.LogoutCommand;
 import com.tooooolazy.vaadin.commands.ToggleLocaleCommand;
+import com.tooooolazy.vaadin.components.MenuBudgeButton;
 import com.tooooolazy.vaadin.exceptions.NoLoginResourceException;
 import com.tooooolazy.vaadin.exceptions.NoLogoutResourceException;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.tooooolazy.vaadin.ui.MenuItemKeys;
-import com.tooooolazy.vaadin.views.Dummy1View;
-import com.tooooolazy.vaadin.views.Dummy2View;
-import com.tooooolazy.vaadin.views.Dummy3View;
-import com.tooooolazy.vaadin.views.Dummy4View;
 import com.vaadin.event.MouseEvents;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.Navigator;
@@ -34,7 +31,6 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.JavaScript;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
-import com.vaadin.ui.UI;
 import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.themes.ValoTheme;
 
@@ -327,7 +323,8 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				cl.setVisible( !cl.isVisible() );
-				((Button)(viewIdToComponent.get(parentId))).setIcon( cl.isVisible() ? VaadinIcons.MINUS : VaadinIcons.PLUS );
+				MenuBudgeButton mbb = ((MenuBudgeButton)(viewIdToComponent.get(parentId)));
+				mbb.setIcon( cl.isVisible() ? VaadinIcons.MINUS : VaadinIcons.PLUS );
 				setSubItemsPadding();
 			}
 		};
@@ -369,19 +366,14 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 	}
 
 	private Button createMenuButton(Navigator navigator, int badge, Class c) {
-		Button vb = new Button(Messages.getString(c, "page.title"), new ClickListener() {
+		MenuBudgeButton vb = new MenuBudgeButton(c, new ClickListener() {
 			@Override
 			public void buttonClick(final ClickEvent event) {
 				navigator.navigateTo(c.getSimpleName());
 			}
-		});
+		}, badge > 0 ? badge+"":null);
 		vb.setPrimaryStyleName(ValoTheme.MENU_ITEM);
 
-		if (badge > 0) {
-			vb.setCaption(vb.getCaption() + " <span class=\"valo-menu-badge\">" + badge + "</span>");
-			vb.setCaptionAsHtml(true);
-		}
-		vb.setDescription( Messages.getString(c, "page.tooltip") );
 		return vb;
 	}
 

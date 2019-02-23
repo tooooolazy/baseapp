@@ -125,7 +125,7 @@ public abstract class BaseUI extends UI {
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.AboutView");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 2);
-		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
+//		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 		jo.put(MenuItemKeys.VIEW_BADGE, "2");
 		ja.set(1, jo);
