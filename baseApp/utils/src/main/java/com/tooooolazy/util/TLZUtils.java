@@ -749,6 +749,14 @@ public class TLZUtils {
 		}
 		return true;
 	}
+	public static boolean contains(Object[] array, Object obj) {
+		for (int i=0; i<array.length; i++) {
+			if (array[i].equals( obj )) {
+				return true;
+			}
+		}
+		return false;
+	}
 	public static String toUpperCaseGreek(String str) {
 		str = str.replaceAll("ά", "α");
 		str = str.replaceAll("έ", "ε");
