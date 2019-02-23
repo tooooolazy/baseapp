@@ -13,7 +13,6 @@ import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.TLZMail;
 import com.tooooolazy.vaadin.exceptions.InvalidBaseAppParameterException;
 import com.tooooolazy.vaadin.layout.ResponsiveMenuLayout;
-import com.tooooolazy.vaadin.views.AboutView;
 import com.tooooolazy.vaadin.views.ErrorView;
 import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
@@ -41,8 +40,6 @@ import com.vaadin.ui.themes.ValoTheme;
 import elemental.json.Json;
 import elemental.json.JsonArray;
 import elemental.json.JsonObject;
-import elemental.json.JsonType;
-import elemental.json.JsonValue;
 
 /**
  *
@@ -54,7 +51,7 @@ public abstract class BaseUI extends UI {
 
 	protected ResponsiveMenuLayout root;
 	protected ComponentContainer viewDisplay;
-	protected Navigator navigator;
+//	protected Navigator navigator;
 
 	static {
 		try {
@@ -92,7 +89,7 @@ public abstract class BaseUI extends UI {
 				// TODO Auto-generated method stub
 				logger.info( event.getPage().getUriFragment());
 				
-				ViewChangeEvent vce = new ViewChangeEvent(navigator, navigator.getCurrentView(), navigator.getCurrentView(), navigator.getCurrentView().getClass().getSimpleName(), event.getUri());
+				ViewChangeEvent vce = new ViewChangeEvent(getNavigator(), getNavigator().getCurrentView(), getNavigator().getCurrentView(), getNavigator().getCurrentView().getClass().getSimpleName(), event.getUri());
 //				navigator.getCurrentView().enter( vce );
 			}
 		});
@@ -165,12 +162,15 @@ public abstract class BaseUI extends UI {
 	 * Sets up the Navigator AND adds the app's Views in the Menu
 	 */
 	protected void setupNavigator() {
-		navigator = new Navigator(this, viewDisplay);
+		Navigator navigator = new Navigator(this, viewDisplay);
+		setNavigator( navigator );
 
-		root.createMenuItems( getViewDefinitions(), navigator );
-		
-		navigator.setErrorView(ErrorView.class);
+		root.createMenuItems( getViewDefinitions(), getNavigator() );
+
+		getNavigator().addView( "", getMainViewClass() );
+		getNavigator().setErrorView(ErrorView.class);
 	}
+	protected abstract Class getMainViewClass();
 
 	protected void setupErrorHandling() {
 		setErrorHandler(new DefaultErrorHandler() {

@@ -90,4 +90,10 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
 //      @include linear-gradient(to bottom, #d0d0d0 2%, #b0b0b0 98%);
 //    }
 //  }
+
+
+	.clickable {
+		cursor: pointer;
+	}
+
 }

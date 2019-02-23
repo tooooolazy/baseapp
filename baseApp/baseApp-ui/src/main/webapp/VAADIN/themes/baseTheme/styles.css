@@ -15074,3 +15074,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-ui[width-range~="-801px"] .valo-menu-part .v-slot-logo, .baseTheme .v-ui[width-range~="-801px"] .valo-menu-part .v-slot-logo + .v-spacing {
 	display: none;
 }
+
+.baseTheme .clickable {
+	cursor: pointer;
+}

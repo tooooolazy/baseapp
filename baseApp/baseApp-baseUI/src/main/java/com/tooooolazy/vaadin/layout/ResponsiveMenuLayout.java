@@ -11,6 +11,7 @@ import com.tooooolazy.vaadin.exceptions.NoLoginResourceException;
 import com.tooooolazy.vaadin.exceptions.NoLogoutResourceException;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.tooooolazy.vaadin.ui.MenuItemKeys;
+import com.vaadin.event.MouseEvents;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.Resource;
@@ -26,6 +27,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.themes.ValoTheme;
 
@@ -111,12 +113,16 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 		if (logoi != null) {
 			menuTitle.addComponent(logoi);
 			logoi.addStyleName("logo");
+			logoi.addStyleName("clickable");
+			logoi.addClickListener( getLogoClickListener() );
 		}
 		Image logoseci = ui.getLogoSecImage();
 		if (logoseci != null) {
-			logoseci.addStyleName("seclogo");
 			menuTitle.addComponent(logoseci);
 			menuTitle.setExpandRatio(logoseci, 1);
+			logoseci.addStyleName("seclogo");
+			logoseci.addStyleName("clickable");
+			logoseci.addClickListener( getLogoClickListener() );
 		} else {
 			String titleStr = ui.getTitleHtml();
 			if (titleStr == null)
@@ -127,6 +133,15 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 		}
 
 		createShowMenuButton();
+	}
+
+	protected com.vaadin.event.MouseEvents.ClickListener getLogoClickListener() {
+		return new MouseEvents.ClickListener() {
+			@Override
+			public void click(com.vaadin.event.MouseEvents.ClickEvent event) {
+				getUI().getNavigator().navigateTo( "" );
+			}
+		};
 	}
 
 	protected void createSettingsMenuBar() {
