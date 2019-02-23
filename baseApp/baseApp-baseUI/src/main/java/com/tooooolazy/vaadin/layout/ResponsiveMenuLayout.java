@@ -246,6 +246,7 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 			vb.setCaption(vb.getCaption() + " <span class=\"valo-menu-badge\">" + badge + "</span>");
 			vb.setCaptionAsHtml(true);
 		}
+		vb.setDescription( Messages.getString(c, "page.description") );
 		return vb;
 	}
 
