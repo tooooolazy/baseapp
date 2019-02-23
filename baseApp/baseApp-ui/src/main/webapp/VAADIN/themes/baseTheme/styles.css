@@ -15082,3 +15082,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .clickable {
 	cursor: pointer;
 }
+
+.baseTheme .valo-menu-item span.v-icon {
+	margin-right: 2px;
+}

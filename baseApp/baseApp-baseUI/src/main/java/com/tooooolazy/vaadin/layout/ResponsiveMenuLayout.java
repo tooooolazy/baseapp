@@ -276,6 +276,7 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 				done.add( parentId );
 				CssLayout cl = (CssLayout)parentIdContainer.get( parentId );
 				((Button)menuItem).addClickListener( createToggleListener(parentId, cl) );
+				((Button)menuItem).setIcon( VaadinIcons.MINUS );
 			}
 		}
 
@@ -326,6 +327,7 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				cl.setVisible( !cl.isVisible() );
+				((Button)(viewIdToComponent.get(parentId))).setIcon( cl.isVisible() ? VaadinIcons.MINUS : VaadinIcons.PLUS );
 				setSubItemsPadding();
 			}
 		};
@@ -356,7 +358,7 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 	protected void setSubItemsPadding() {
 
 		for ( Integer classId : classIdToParentId.keySet() ) {
-			int padding = 10;
+			int padding = 17;
 			int cId = classId;
 			
 			while ( classIdToParentId.get( cId ) != null ) {
