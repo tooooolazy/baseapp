@@ -133,7 +133,7 @@ public abstract class BaseUI extends UI {
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy1View");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 3);
-		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
 		jo.put(MenuItemKeys.VIEW_BADGE, "22");
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 		ja.set(2, jo);
@@ -142,6 +142,7 @@ public abstract class BaseUI extends UI {
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy2View");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 4);
+//		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 		jo.put(MenuItemKeys.VIEW_BADGE, "2");
 		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
