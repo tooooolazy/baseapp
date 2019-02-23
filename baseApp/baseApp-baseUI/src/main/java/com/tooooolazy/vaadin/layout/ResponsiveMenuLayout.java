@@ -1,6 +1,8 @@
 package com.tooooolazy.vaadin.layout;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.tooooolazy.util.Messages;
@@ -11,6 +13,10 @@ import com.tooooolazy.vaadin.exceptions.NoLoginResourceException;
 import com.tooooolazy.vaadin.exceptions.NoLogoutResourceException;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.tooooolazy.vaadin.ui.MenuItemKeys;
+import com.tooooolazy.vaadin.views.Dummy1View;
+import com.tooooolazy.vaadin.views.Dummy2View;
+import com.tooooolazy.vaadin.views.Dummy3View;
+import com.tooooolazy.vaadin.views.Dummy4View;
 import com.vaadin.event.MouseEvents;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.Navigator;
@@ -25,6 +31,7 @@ import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
+import com.vaadin.ui.JavaScript;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.UI;
@@ -54,6 +61,11 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 	private Map<Integer, String> viewIdToClass = new HashMap<Integer, String>();
 	private Map<Integer, Component> viewIdToComponent = new HashMap<Integer, Component>();
 	private Map<Component, Integer> componentToParentId = new HashMap<Component, Integer>();
+	/**
+	 * Holds the container of parent's sub elements
+	 */
+	private Map<Integer, Component> parentIdContainer = new HashMap<Integer, Component>();
+	private Map<Integer, Integer> classIdToParentId = new HashMap<Integer, Integer>();
 
 	protected JsonArray viewDefinitions;
 	protected JsonObject menuDefinitions;
@@ -206,46 +218,152 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 		menuItemsLayout.setPrimaryStyleName("valo-menuitems");
 		menu.addComponent(menuItemsLayout);
 
+		int toAdd = viewDefinitions.length();
+		int added = 0;
+		// first add parent items (those with parentId == 0)
 		for (int i = 0; i < viewDefinitions.length(); i++) {
 			JsonObject vd = viewDefinitions.getObject(i);
 
 			String vc = vd.get(MenuItemKeys.VIEW_CLASS).asString();
-			boolean secure = vd.get(MenuItemKeys.VIEW_SECURE) == null ? false
-					: vd.get(MenuItemKeys.VIEW_SECURE).asBoolean();
-			boolean subTitle = vd.get(MenuItemKeys.VIEW_SUB_TITLE) == null ? false
-					: vd.get(MenuItemKeys.VIEW_SUB_TITLE).asBoolean();
+			Class c = getViewClass(vc);
+			if (c == null) {
+				toAdd--;
+				continue;
+			}
 
-			int badge = (int) (vd.get(MenuItemKeys.VIEW_BADGE) == null ? 0
-					: vd.get(MenuItemKeys.VIEW_BADGE).asNumber());
-			int classId = (int) (vd.get(MenuItemKeys.VIEW_CLASS_ID) == null ? 0
-					: vd.get(MenuItemKeys.VIEW_CLASS_ID).asNumber());
 			int parentId = (int) (vd.get(MenuItemKeys.VIEW_CLASS_PARENT_ID) == null ? 0
 					: vd.get(MenuItemKeys.VIEW_CLASS_PARENT_ID).asNumber());
+			int classId = (int) (vd.get(MenuItemKeys.VIEW_CLASS_ID) == null ? 0
+					: vd.get(MenuItemKeys.VIEW_CLASS_ID).asNumber());
 
-			Class c = getViewClass(vc);
-			if (c == null)
+			if ( parentId > 0 ) {
+				classIdToParentId.put(classId, parentId);
 				continue;
-
-			hasSecureContent = hasSecureContent || secure;
-
-			Component menuItem = null;
-			if (subTitle) {
-				menuItem = createMenuSubtitle(badge, c);
-
-				menuItemsLayout.addComponent(menuItem);
-			} else {
-				menuItem = createMenuButton(navigator, badge, c);
-				navigator.addView(c.getSimpleName(), c);
-
-				menuItemsLayout.addComponent(menuItem, getInsertIndex( parentId ) );
 			}
-			viewClassIds.put(c.getSimpleName(), classId);
-			viewSelectors.put(c.getSimpleName(), menuItem);
-			viewIdToComponent.put(classId, menuItem);
-			viewIdToClass.put(classId, c.getSimpleName());
-			componentToParentId.put(menuItem, parentId);
+
+			// add it
+			addMenuItem( c, classId, parentId, vd, navigator );
+			added++;
 		}
+		// then start adding elements to each parent
+		while ( added < toAdd ) {
+			for (int i = 0; i < viewDefinitions.length(); i++) {
+				JsonObject vd = viewDefinitions.getObject(i);
+
+				String vc = vd.get(MenuItemKeys.VIEW_CLASS).asString();
+				Class c = getViewClass(vc);
+				if (c == null) {
+					toAdd--;
+					continue;
+				}
+
+				int parentId = (int) (vd.get(MenuItemKeys.VIEW_CLASS_PARENT_ID) == null ? 0
+						: vd.get(MenuItemKeys.VIEW_CLASS_PARENT_ID).asNumber());
+				int classId = (int) (vd.get(MenuItemKeys.VIEW_CLASS_ID) == null ? 0
+						: vd.get(MenuItemKeys.VIEW_CLASS_ID).asNumber());
+				if ( parentId == 0 )
+					continue;
+
+				// add it
+				addMenuItem( c, classId, parentId, vd, navigator );
+				added++;
+			}
+		}
+		List<Integer> done = new ArrayList<Integer>();
+		for (Integer parentId : parentIdContainer.keySet() ) {
+			Component menuItem = viewIdToComponent.get( parentId );
+			if ( parentId > 0 && !done.contains( parentId ) && menuItem instanceof Button) {
+				done.add( parentId );
+				CssLayout cl = (CssLayout)parentIdContainer.get( parentId );
+				((Button)menuItem).addClickListener( createToggleListener(parentId, cl) );
+			}
+		}
+
 		createSettingsMenuBar();
+	}
+	private void addMenuItem(Class c, int classId, int parentId, JsonObject vd, Navigator navigator) {
+		boolean secure = vd.get(MenuItemKeys.VIEW_SECURE) == null ? false
+				: vd.get(MenuItemKeys.VIEW_SECURE).asBoolean();
+		boolean subTitle = vd.get(MenuItemKeys.VIEW_SUB_TITLE) == null ? false
+				: vd.get(MenuItemKeys.VIEW_SUB_TITLE).asBoolean();
+		
+		int badge = (int) (vd.get(MenuItemKeys.VIEW_BADGE) == null ? 0
+				: vd.get(MenuItemKeys.VIEW_BADGE).asNumber());
+		
+		hasSecureContent = hasSecureContent || secure;
+
+		Component menuItem = null;
+		if (subTitle) {
+			menuItem = createMenuSubtitle(badge, c);
+
+			if ( parentId == 0 )
+				menuItemsLayout.addComponent(menuItem);
+			else {
+				CssLayout cl = getParentContainer(parentId);
+				cl.addComponent(menuItem);
+			}
+		} else {
+			menuItem = createMenuButton(navigator, badge, c);
+			navigator.addView(c.getSimpleName(), c);
+
+			if ( parentId == 0 )
+				menuItemsLayout.addComponent(menuItem, getInsertIndex( parentId ) );
+			else {
+				CssLayout cl = getParentContainer(parentId);
+				cl.addComponent(menuItem);
+			}
+		}
+		viewClassIds.put(c.getSimpleName(), classId);
+		viewSelectors.put(c.getSimpleName(), menuItem);
+		viewIdToComponent.put(classId, menuItem);
+		viewIdToClass.put(classId, c.getSimpleName());
+		componentToParentId.put(menuItem, parentId);
+	}
+
+	protected ClickListener createToggleListener(int parentId, CssLayout cl) {
+		return new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				cl.setVisible( !cl.isVisible() );
+				setSubItemsPadding();
+			}
+		};
+	}
+
+	protected CssLayout getParentContainer(int parentId) {
+		CssLayout cl = (CssLayout)parentIdContainer.get( parentId );
+		if ( cl == null ) {
+			cl = new CssLayout();
+			cl.setWidth("100%");
+			cl.setId("mi_" + parentId );
+
+			setSubItemsPadding();
+
+			parentIdContainer.put( parentId,  cl );
+			
+			Integer pId = classIdToParentId.get( parentId );
+			if ( pId == null )
+				menuItemsLayout.addComponent(cl, getInsertIndex( parentId ) );
+			else {
+				CssLayout pcl = (CssLayout)parentIdContainer.get( pId );
+				pcl.addComponent( cl );
+			}
+		}
+		return cl;
+	}
+
+	protected void setSubItemsPadding() {
+
+		for ( Integer classId : classIdToParentId.keySet() ) {
+			int padding = 10;
+			int cId = classId;
+			
+			while ( classIdToParentId.get( cId ) != null ) {
+				cId = classIdToParentId.get( cId );
+				JavaScript.getCurrent().execute("document.getElementById('mi_" + cId + "').style.paddingLeft='" + padding + "px'");
+			}
+		}
 	}
 
 	private Button createMenuButton(Navigator navigator, int badge, Class c) {
@@ -261,7 +379,7 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 			vb.setCaption(vb.getCaption() + " <span class=\"valo-menu-badge\">" + badge + "</span>");
 			vb.setCaptionAsHtml(true);
 		}
-		vb.setDescription( Messages.getString(c, "page.description") );
+		vb.setDescription( Messages.getString(c, "page.tooltip") );
 		return vb;
 	}
 

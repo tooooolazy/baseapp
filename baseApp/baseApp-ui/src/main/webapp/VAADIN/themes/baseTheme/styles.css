@@ -15071,6 +15071,10 @@ div.v-layout.v-horizontal.v-widget {
 	padding-left: 6px;
 }
 
+.baseTheme .v-ui[width-range~="801px-1100px"] .valo-menu-part .valo-menu-item [class*="caption"] {
+	margin: 0;
+}
+
 .baseTheme .v-ui[width-range~="-801px"] .valo-menu-part .v-slot-logo, .baseTheme .v-ui[width-range~="-801px"] .valo-menu-part .v-slot-logo + .v-spacing {
 	display: none;
 }

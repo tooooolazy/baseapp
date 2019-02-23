@@ -74,6 +74,10 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
     .v-slot-logo + .v-spacing {
       padding-left: 6px;
     }
+    // override padding to bring elements closer
+    .valo-menu-item [class*="caption"] {
+    	margin:0;
+    }
   }
   // hide the logo for a more compact header when the menu is very narrow
   .v-ui[width-range~="-801px"] .valo-menu-part {
