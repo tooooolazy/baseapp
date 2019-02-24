@@ -37,13 +37,33 @@ import com.vaadin.ui.themes.ValoTheme;
 import elemental.json.JsonArray;
 import elemental.json.JsonObject;
 
+/**
+ * Defines the Layout of the Application. With a responsive Menu and of course the content area
+ * @author tooooolazy
+ *
+ */
 public class ResponsiveMenuLayout extends HorizontalLayout {
 
+	/**
+	 * Component that holds a {@link #menuTitle}, a {@link #menuItemsLayout} with all menu items that are basically links to the different App Views and a menuBar with language Toggle and login/logout icons defined in {@link #createSettingsMenuBar}
+	 */
 	protected CssLayout menu;
+	/**
+	 * Parent component for all menu items
+	 */
 	protected CssLayout menuItemsLayout;
+	/**
+	 * The 1st component to be added in 'this' layout. Will hold all menu related components (ie {@link #menu} component)
+	 */
 	protected CssLayout menuArea;
+	/**
+	 * Supports up to 2 Logo images and a Title
+	 */
 	protected HorizontalLayout menuTitle;
 
+	/**
+	 * The Component (container) where all App Views will be displayed
+	 */
 	protected CssLayout contentArea = new CssLayout();
 
 	protected Resource logoResource, secLogoResource, loginResource, logoutResource;
@@ -53,7 +73,13 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 	 */
 	private Map<String, Component> viewSelectors = new HashMap<String, Component>();
 
+	/**
+	 * Each App View has a class (eg com.tooooolazy.vaadin.views.AboutView) and each class an ID (defined in {@link BaseUI#getViewDefinitions} )
+	 */
 	private Map<String, Integer> viewClassIds = new HashMap<String, Integer>();
+	/**
+	 * the oposite of {@link #viewClassIds}
+	 */
 	private Map<Integer, String> viewIdToClass = new HashMap<Integer, String>();
 	private Map<Integer, Component> viewIdToComponent = new HashMap<Integer, Component>();
 	private Map<Component, Integer> componentToParentId = new HashMap<Component, Integer>();
@@ -152,6 +178,9 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 		};
 	}
 
+	/**
+	 * Based on an App Parameter and Menu structure defined in {@link BaseUI#getViewDefinitions}, a simple menu bar is added with icons to toggle language and login/logout
+	 */
 	protected void createSettingsMenuBar() {
 		final MenuBar settings = new MenuBar();
 		settings.addStyleName("user-menu");
