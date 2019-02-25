@@ -60,6 +60,12 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 		if ( showTitleInContent() ) {
 			vl.addComponent( createTitleComponent() );
 		}
+		addContent();
+	}
+
+	protected void addContent() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	protected Component createTitleComponent() {
