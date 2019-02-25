@@ -15086,3 +15086,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .valo-menu-item span.v-icon {
 	margin-right: 2px;
 }
+
+.baseTheme .i-error-msg {
+	color: red;
+}
