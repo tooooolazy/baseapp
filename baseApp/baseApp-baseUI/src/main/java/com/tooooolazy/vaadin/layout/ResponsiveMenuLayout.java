@@ -398,6 +398,12 @@ public class ResponsiveMenuLayout extends HorizontalLayout {
 		MenuBudgeButton vb = new MenuBudgeButton(c, new ClickListener() {
 			@Override
 			public void buttonClick(final ClickEvent event) {
+				// do that ONLY if it has no children
+				Integer pId = viewClassIds.get( c.getSimpleName() );
+				if ( pId != null ) { 
+					if ( parentIdContainer.get( pId ) != null )
+						return;
+				}
 				navigator.navigateTo(c.getSimpleName());
 			}
 		}, badge > 0 ? badge+"":null);
