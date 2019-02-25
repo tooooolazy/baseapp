@@ -29,7 +29,9 @@ public class ForgotPasswordComponent extends InputComponent<Credentials> {
 	protected void createBinder() {
 		super.createBinder();
 
-		binder.bind( user, Credentials::getUsername, Credentials::setUsername );
+		binder.forField( user )
+			.asRequired( Messages.getString( _class, "Form.requiredMessage") )
+			.bind( Credentials::getUsername, Credentials::setUsername );
 	}
 	protected Credentials setBinderBean() {
 		bean = new Credentials();

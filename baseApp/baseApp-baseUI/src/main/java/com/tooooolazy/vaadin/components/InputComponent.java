@@ -57,6 +57,9 @@ public abstract class InputComponent<BEAN> extends CustomComponent {
 		binder = new Binder<BEAN>();
 	}
 	protected abstract BEAN setBinderBean();
+	public Binder getBinder() {
+		return binder;
+	}
 
 	public void attach() {
 		super.attach();
