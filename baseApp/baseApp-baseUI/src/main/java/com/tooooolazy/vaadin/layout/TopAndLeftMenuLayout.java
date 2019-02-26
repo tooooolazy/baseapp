@@ -101,14 +101,27 @@ public class TopAndLeftMenuLayout extends GridLayout implements AppLayout {
 	}
 
 	protected void addHeader() {
-		addComponent( new Label("logo"), 0,0);
-		addComponent( new Label("top menu"), 1,0, 3,0);
-		addComponent( new Label("sub menu"), 1,1, 3,1);
+		GridLayout top_gl = new GridLayout(3,2);
+		top_gl.setId("header_top");
+		top_gl.setWidth("100%");
+		top_gl.setColumnExpandRatio(0, 0f);
+		top_gl.setColumnExpandRatio(1, 1f);
+		top_gl.setColumnExpandRatio(2, 0f);
+		top_gl.addComponent( new Label("logo"), 0,0);
+		top_gl.addComponent( new Label("top menu"), 1,0);
+		top_gl.addComponent( new Label("sub menu"), 1,1, 2,1);
+
+		addComponent( top_gl, 0,0, 3,1);
+		
+//		addComponent( new Label("logo"), 0,0);
+//		addComponent( new Label("top menu"), 1,0, 3,0);
+//		addComponent( new Label("sub menu"), 1,1, 3,1);
 	}
 	protected void removeHeader() {
+		// removals should match additions in 'addHeader'
 		removeComponent( 0,0 );
-		removeComponent( 1,0 );
-		removeComponent( 1,1 );
+//		removeComponent( 1,0 );
+//		removeComponent( 1,1 );
 	}
 
 }

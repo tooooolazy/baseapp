@@ -15090,3 +15090,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .i-error-msg {
 	color: red;
 }
+
+.baseTheme #header_top {
+	background: lightgreen;
+}
