@@ -19,7 +19,7 @@ import com.vaadin.server.VaadinServlet;
 public class DpAppUI extends BaseUI<TopAndLeftMenuLayout> {
 
 	static {
-		Messages.setSupportedLocales( new String[] {"en", "el", "bg"});
+//		Messages.setSupportedLocales( new String[] {"en", "el", "bg"});
 		try {
 			Messages.addBundle(DpAppUI.class.getPackage().getName() + ".app");
 		} catch(Exception e) {

@@ -42,15 +42,15 @@ import elemental.json.JsonArray;
 import elemental.json.JsonObject;
 
 /**
- *
+ * <L> - Layout Class
  */
-public abstract class BaseUI extends UI {
+public abstract class BaseUI<L extends AppLayout> extends UI {
 	protected final Logger logger = LoggerFactory.getLogger(UI.class.getName());
 
 	protected final String SESSION_USER_KEY = "_user";
 
-	protected ResponsiveMenuLayout root;
-	protected ComponentContainer viewDisplay;
+	protected L root;
+	protected boolean hasSecureContent;
 
 	static {
 		try {
@@ -103,7 +103,7 @@ public abstract class BaseUI extends UI {
 
 		Responsive.makeResponsive(this);
 		root = createRootLayout();
-		viewDisplay = getContentContainer();
+//		viewDisplay = getContentContainer();
 		setContent(root);
 		addStyleName(ValoTheme.UI_WITH_MENU);
 
@@ -163,14 +163,16 @@ public abstract class BaseUI extends UI {
 	 * Sets up the Navigator AND adds the app's Views in the Menu
 	 */
 	protected void setupNavigator() {
-		Navigator navigator = new Navigator(this, viewDisplay);
+		Navigator navigator = new Navigator(this, getContentContainer());
 		setNavigator( navigator );
 
+		root.clearStructureMaps();
 		root.createMenuItems( getViewDefinitions(), getNavigator() );
 
 		getNavigator().addView( "", getMainViewClass() );
 		getNavigator().setErrorView(ErrorView.class);
 	}
+
 	protected abstract Class getMainViewClass();
 
 	protected void setupErrorHandling() {
@@ -203,13 +205,11 @@ public abstract class BaseUI extends UI {
 	}
 
 	/**
-	 * By default a VALO responsive layout with menu is created.
+	 * Could use a VALO responsive layout with menu {@link ResponsiveMenuLayout}.
 	 * 
 	 * @return
 	 */
-	protected ResponsiveMenuLayout createRootLayout() {
-		return new ResponsiveMenuLayout();
-	}
+	protected abstract L createRootLayout();
 
 	/**
 	 * By default returns the content layout defined in ResponsiveMenuLayout created
@@ -228,9 +228,9 @@ public abstract class BaseUI extends UI {
 	 * @return
 	 */
 	public ComponentContainer getViewDisplay() {
-		return viewDisplay;
+		return getContentContainer();
 	}
-	public ResponsiveMenuLayout getMenu() {
+	public L getMenu() {
 		return root;
 	}
 
@@ -408,5 +408,18 @@ public abstract class BaseUI extends UI {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	/**
+	 * If true is returned, then 'login' and 'logout' functionality should be added
+	 * (ie through actions in menu).
+	 * 
+	 * @return
+	 */
+	public boolean hasSecureContent() {
+		return hasSecureContent;
+	}
+	public void setHasSecureContent() {
+		hasSecureContent = true;
 	}
 }

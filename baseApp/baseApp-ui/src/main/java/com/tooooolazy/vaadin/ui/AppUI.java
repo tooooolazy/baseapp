@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.TLZUtils;
+import com.tooooolazy.vaadin.layout.ResponsiveMenuLayout;
 import com.tooooolazy.vaadin.resources.Resources;
 import com.tooooolazy.vaadin.views.MainView;
 import com.vaadin.annotations.Theme;
@@ -15,15 +16,8 @@ import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 
-/**
- *
- */
 @Theme("baseTheme")
-public class AppUI extends BaseUI {
-
-//	private CrudService<Person> service = new CrudService<>();
-//	private DataProvider<Person, String> dataProvider = new CallbackDataProvider<>(query -> service.findAll().stream(),
-//			query -> service.findAll().size());
+public class AppUI extends BaseUI<ResponsiveMenuLayout> {
 
 	static {
 //		Messages.setSupportedLocales( new String[] {"en", "el", "bg"});
@@ -37,6 +31,11 @@ public class AppUI extends BaseUI {
 	@Override
 	protected void init(VaadinRequest vaadinRequest) {
 		super.init( vaadinRequest );
+	}
+
+	@Override
+	protected ResponsiveMenuLayout createRootLayout() {
+		return new ResponsiveMenuLayout();
 	}
 
 	protected Class getMainViewClass() {
