@@ -3,6 +3,7 @@ package com.tooooolazy.vaadin.components.listeners;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.components.InputComponent;
 import com.tooooolazy.vaadin.exceptions.DataRequiredException;
+import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.data.BinderValidationStatus;
 import com.vaadin.server.ErrorMessage;
 import com.vaadin.shared.ui.ErrorLevel;
@@ -87,6 +88,7 @@ public class InputComponentButtonListener implements Button.ClickListener {
 		ErrorMessage er = new ErrorMessage() {
 			@Override
 			public String getFormattedHtmlMessage() {
+				Messages.setLang( BaseUI.get().getLocale().getLanguage() );
 				if (e == null)
 					return Messages.getString(c, "error");
 				else {
