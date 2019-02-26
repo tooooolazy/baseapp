@@ -2,6 +2,7 @@ package com.tooooolazy.vaadin.components;
 
 import com.tooooolazy.util.Credentials;
 import com.tooooolazy.util.Messages;
+import com.tooooolazy.vaadin.ui.BaseUI;
 import com.tooooolazy.vaadin.views.BaseView;
 import com.vaadin.data.Binder;
 import com.vaadin.ui.Button;
@@ -26,6 +27,7 @@ public class ForgotPasswordComponent extends InputComponent<Credentials> {
 	public ForgotPasswordComponent(Button.ClickListener listener, Class _class) {
 		super(listener, _class);
 	}
+	@Override
 	protected void createBinder() {
 		super.createBinder();
 
@@ -35,14 +37,12 @@ public class ForgotPasswordComponent extends InputComponent<Credentials> {
 	}
 	protected Credentials setBinderBean() {
 		bean = new Credentials();
+		bean.setFromIp( BaseUI.getClientIp() );
 		binder.setBean( bean );
 
 		return bean;
 	}
 
-	protected int getMaxColumns() {
-		return 1;
-	}
 	@Override
 	public  Component[] getFieldsArray() {
 		return new Component[] {user};

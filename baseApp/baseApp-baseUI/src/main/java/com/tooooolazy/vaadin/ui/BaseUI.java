@@ -370,7 +370,7 @@ public abstract class BaseUI extends UI {
 	 */
 	public abstract Resource getLogoutResource();
 
-	public String getClientIp() {
+	public static String getClientIp() {
 		HttpServletRequest hsr = VaadinServletService.getCurrentServletRequest();
 		String ip = hsr.getHeader("x-forwarded-for");
 		if (ip == null)
