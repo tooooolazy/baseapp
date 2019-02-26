@@ -1,29 +1,13 @@
 package com.tooooolazy.vaadin.layout;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.tooooolazy.vaadin.ui.AppLayout;
 import com.tooooolazy.vaadin.ui.BaseUI;
-import com.tooooolazy.vaadin.ui.MenuItemKeys;
-import com.vaadin.event.MouseEvents;
-import com.vaadin.icons.VaadinIcons;
-import com.vaadin.navigator.Navigator;
-import com.vaadin.shared.ui.ContentMode;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.themes.ValoTheme;
-
-import elemental.json.JsonArray;
-import elemental.json.JsonObject;
 
 public class TopAndLeftMenuLayout extends GridLayout implements AppLayout {
 	protected CssLayout contentArea = new CssLayout();

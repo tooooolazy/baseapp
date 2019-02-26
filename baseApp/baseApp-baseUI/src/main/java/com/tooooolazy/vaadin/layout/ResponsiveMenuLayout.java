@@ -1,41 +1,12 @@
 package com.tooooolazy.vaadin.layout;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.tooooolazy.util.Messages;
-import com.tooooolazy.vaadin.commands.LoginCommand;
-import com.tooooolazy.vaadin.commands.LogoutCommand;
-import com.tooooolazy.vaadin.commands.ToggleLocaleCommand;
-import com.tooooolazy.vaadin.components.MenuBudgeButton;
-import com.tooooolazy.vaadin.exceptions.NoLoginResourceException;
-import com.tooooolazy.vaadin.exceptions.NoLogoutResourceException;
 import com.tooooolazy.vaadin.ui.AppLayout;
 import com.tooooolazy.vaadin.ui.BaseUI;
-import com.tooooolazy.vaadin.ui.MenuItemKeys;
-import com.vaadin.event.MouseEvents;
-import com.vaadin.icons.VaadinIcons;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.server.Resource;
-import com.vaadin.shared.ui.ContentMode;
-import com.vaadin.ui.Alignment;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Image;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.MenuBar;
-import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.themes.ValoTheme;
-
-import elemental.json.JsonArray;
-import elemental.json.JsonObject;
 
 /**
  * Defines the Layout of the Application. With a responsive Menu and of course the content area
