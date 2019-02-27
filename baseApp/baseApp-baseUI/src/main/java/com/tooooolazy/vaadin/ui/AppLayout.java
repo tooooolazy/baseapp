@@ -396,6 +396,8 @@ public interface AppLayout extends Component {
 		navigator.addView(c.getSimpleName(), c);
 		vb.setPrimaryStyleName(ValoTheme.MENU_ITEM);
 
+		viewSelectors.put(c.getSimpleName(), vb);
+
 		return vb;
 	}
 	public default Button createSubMenuButton(Navigator navigator, int badge, Class c) {
@@ -407,6 +409,8 @@ public interface AppLayout extends Component {
 		}, null);
 		navigator.addView(c.getSimpleName(), c);
 		vb.setPrimaryStyleName(ValoTheme.MENU_ITEM);
+
+		viewSelectors.put(c.getSimpleName(), vb);
 
 		return vb;
 	}
@@ -421,6 +425,7 @@ public interface AppLayout extends Component {
 			label.setCaptionAsHtml(true);
 		}
 		menuItem = label;
+		viewSelectors.put(c.getSimpleName(), menuItem);
 		return menuItem;
 	}
 	/**
@@ -436,6 +441,19 @@ public interface AppLayout extends Component {
 		Component selected = viewSelectors.get(viewName);
 		if (selected != null) {
 			selected.addStyleName("selected");
+		}
+	}
+	public default void toggleMenuItem(Class c, boolean visible) {
+		Component _c = viewSelectors.get( c.getSimpleName() );
+		if ( _c != null ) {
+			_c.setVisible( visible );
+			Integer pId = viewClassIds.get( c.getSimpleName() );
+			if ( pId != null ) {
+				Component _pc = parentIdContainer.get( pId );
+				if ( _pc != null ) {
+					_pc.setVisible( visible );
+				}
+			}
 		}
 	}
 }
