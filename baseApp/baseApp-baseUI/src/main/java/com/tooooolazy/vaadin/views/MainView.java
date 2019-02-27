@@ -1,12 +1,7 @@
 package com.tooooolazy.vaadin.views;
 
-import com.tooooolazy.vaadin.components.ForgotPasswordComponent;
 import com.tooooolazy.vaadin.components.LoginComponent;
-import com.tooooolazy.vaadin.components.listeners.InputComponentButtonListener;
 import com.tooooolazy.vaadin.components.listeners.LoginButtonListener;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Notification;
 
 public class MainView extends BaseView {
 
