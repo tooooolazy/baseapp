@@ -2,10 +2,14 @@ package com.tooooolazy.vaadin.layout;
 
 import com.tooooolazy.vaadin.ui.AppLayout;
 import com.tooooolazy.vaadin.ui.BaseUI;
+import com.vaadin.icons.VaadinIcons;
+import com.vaadin.server.Resource;
+import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.themes.ValoTheme;
 
@@ -101,26 +105,56 @@ public class TopAndLeftMenuLayout extends GridLayout implements AppLayout {
 	}
 
 	protected void addHeader() {
-		GridLayout top_gl = new GridLayout(3,2);
+		GridLayout top_gl = createHeaderTop();
+		GridLayout sub_gl = createHeaderSubTop();
+
+		addComponent( top_gl, 0,0, 3,0);
+		addComponent( sub_gl, 0,1, 3,1);
+	}
+
+	protected GridLayout createHeaderTop() {
+		GridLayout top_gl = new GridLayout(4,1);
+		top_gl.setSpacing( true );
 		top_gl.setId("header_top");
 		top_gl.setWidth("100%");
 		top_gl.setColumnExpandRatio(0, 0f);
 		top_gl.setColumnExpandRatio(1, 1f);
 		top_gl.setColumnExpandRatio(2, 0f);
-		top_gl.addComponent( new Label("logo"), 0,0);
+		top_gl.setColumnExpandRatio(3, 0f);
+		Label ll = new Label("logo");
+		ll.setWidth("100px");
+		ll.setHeight("40px");
+		Label bell = new Label( VaadinIcons.BELL.getHtml(), ContentMode.HTML );
+		bell.addStyleName(ValoTheme.LABEL_LARGE);
+//		bell.setWidth("20px");
+		Label user = new Label( VaadinIcons.USER.getHtml(), ContentMode.HTML );
+		user.addStyleName(ValoTheme.LABEL_LARGE);
+//		user.setWidth("20px");
+		top_gl.addComponent( ll, 0,0);
 		top_gl.addComponent( new Label("top menu"), 1,0);
-		top_gl.addComponent( new Label("sub menu"), 1,1, 2,1);
-
-		addComponent( top_gl, 0,0, 3,1);
-		
-//		addComponent( new Label("logo"), 0,0);
-//		addComponent( new Label("top menu"), 1,0, 3,0);
-//		addComponent( new Label("sub menu"), 1,1, 3,1);
+		top_gl.addComponent( bell, 2,0);
+		top_gl.addComponent( user, 3,0);
+		return top_gl;
 	}
+	protected GridLayout createHeaderSubTop() {
+		GridLayout sub_gl = new GridLayout(3,1);
+		sub_gl.setId("header_subtop");
+		sub_gl.setSpacing( true );
+		sub_gl.setWidth("100%");
+		sub_gl.setColumnExpandRatio(0, 0f);
+		sub_gl.setColumnExpandRatio(1, 1f);
+		sub_gl.setColumnExpandRatio(2, 0f);
+		Label el = new Label("");
+		el.setWidth("100px");
+		sub_gl.addComponent( el, 0,0);
+		sub_gl.addComponent( new Label("sub menu"), 1,0, 2,0);
+		return sub_gl;
+	}
+
 	protected void removeHeader() {
 		// removals should match additions in 'addHeader'
 		removeComponent( 0,0 );
-//		removeComponent( 1,0 );
+		removeComponent( 1,0 );
 //		removeComponent( 1,1 );
 	}
 

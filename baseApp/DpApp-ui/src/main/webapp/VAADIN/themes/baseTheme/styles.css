@@ -15092,5 +15092,10 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme #header_top {
-	background: lightgreen;
+	background: darkgrey;
+	color: white;
+}
+
+.baseTheme #header_subtop {
+	background: lightgrey;
 }
