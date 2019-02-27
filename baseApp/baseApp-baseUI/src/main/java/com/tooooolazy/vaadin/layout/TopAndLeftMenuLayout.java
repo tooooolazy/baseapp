@@ -3,18 +3,21 @@ package com.tooooolazy.vaadin.layout;
 import com.tooooolazy.vaadin.ui.AppLayout;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.server.Resource;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.shared.ui.ContentMode;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.themes.ValoTheme;
 
-public class TopAndLeftMenuLayout extends GridLayout implements AppLayout {
+import elemental.json.JsonArray;
+
+public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayout {
 	protected CssLayout contentArea = new CssLayout();
+	protected GridLayout top_gl, sub_gl;
 
 	/**
 	 * Component that holds a {@link #menuTitle}, a {@link #menuItemsLayout} with all menu items that are basically links to the different App Views and a menuBar with language Toggle and login/logout icons defined in {@link #createSettingsMenuBar}
@@ -104,9 +107,20 @@ public class TopAndLeftMenuLayout extends GridLayout implements AppLayout {
 		return null;
 	}
 
+	public void createMenuItems(JsonArray viewDefinitions, Navigator navigator) {
+		Component tmi = createTopMenuItems( navigator );
+		if ( tmi != null )
+			top_gl.addComponent( tmi, 1,0 );
+		Component smi = createSubMenuItems( navigator );
+		if ( smi != null )
+			sub_gl.addComponent( smi, 1,0, 2,0 );
+
+		AppLayout.super.createMenuItems(viewDefinitions, navigator);
+		
+	}
 	protected void addHeader() {
-		GridLayout top_gl = createHeaderTop();
-		GridLayout sub_gl = createHeaderSubTop();
+		top_gl = createHeaderTop();
+		sub_gl = createHeaderSubTop();
 
 		addComponent( top_gl, 0,0, 3,0);
 		addComponent( sub_gl, 0,1, 3,1);
@@ -114,6 +128,7 @@ public class TopAndLeftMenuLayout extends GridLayout implements AppLayout {
 
 	protected GridLayout createHeaderTop() {
 		GridLayout top_gl = new GridLayout(4,1);
+		top_gl.setResponsive( true );
 		top_gl.setSpacing( true );
 		top_gl.setId("header_top");
 		top_gl.setWidth("100%");
@@ -131,13 +146,14 @@ public class TopAndLeftMenuLayout extends GridLayout implements AppLayout {
 		user.addStyleName(ValoTheme.LABEL_LARGE);
 //		user.setWidth("20px");
 		top_gl.addComponent( ll, 0,0);
-		top_gl.addComponent( new Label("top menu"), 1,0);
 		top_gl.addComponent( bell, 2,0);
 		top_gl.addComponent( user, 3,0);
 		return top_gl;
 	}
+
 	protected GridLayout createHeaderSubTop() {
 		GridLayout sub_gl = new GridLayout(3,1);
+		sub_gl.setResponsive( true );
 		sub_gl.setId("header_subtop");
 		sub_gl.setSpacing( true );
 		sub_gl.setWidth("100%");
@@ -147,9 +163,10 @@ public class TopAndLeftMenuLayout extends GridLayout implements AppLayout {
 		Label el = new Label("");
 		el.setWidth("100px");
 		sub_gl.addComponent( el, 0,0);
-		sub_gl.addComponent( new Label("sub menu"), 1,0, 2,0);
 		return sub_gl;
 	}
+	protected abstract Component createTopMenuItems(Navigator navigator);
+	protected abstract Component createSubMenuItems(Navigator navigator);
 
 	protected void removeHeader() {
 		// removals should match additions in 'addHeader'

@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.servlet.annotation.WebServlet;
 
+import com.dpapp.vaadin.layout.DpAppLayout;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.layout.TopAndLeftMenuLayout;
 import com.tooooolazy.vaadin.resources.Resources;
@@ -33,8 +34,8 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout> {
 	}
 
 	@Override
-	protected TopAndLeftMenuLayout createRootLayout() {
-		return new TopAndLeftMenuLayout();
+	protected DpAppLayout createRootLayout() {
+		return new DpAppLayout();
 	}
 
 	@Override

@@ -386,6 +386,30 @@ public interface AppLayout extends Component {
 
 		return vb;
 	}
+	public default Button createTopMenuButton(Navigator navigator, int badge, Class c) {
+		MenuBudgeButton vb = new MenuBudgeButton(c, new ClickListener() {
+			@Override
+			public void buttonClick(final ClickEvent event) {
+				navigator.navigateTo(c.getSimpleName());
+			}
+		}, null);
+		navigator.addView(c.getSimpleName(), c);
+		vb.setPrimaryStyleName(ValoTheme.MENU_ITEM);
+
+		return vb;
+	}
+	public default Button createSubMenuButton(Navigator navigator, int badge, Class c) {
+		MenuBudgeButton vb = new MenuBudgeButton(c, new ClickListener() {
+			@Override
+			public void buttonClick(final ClickEvent event) {
+				navigator.navigateTo(c.getSimpleName());
+			}
+		}, null);
+		navigator.addView(c.getSimpleName(), c);
+		vb.setPrimaryStyleName(ValoTheme.MENU_ITEM);
+
+		return vb;
+	}
 
 	public default Component createMenuSubtitle(int badge, Class c) {
 		Component menuItem;
