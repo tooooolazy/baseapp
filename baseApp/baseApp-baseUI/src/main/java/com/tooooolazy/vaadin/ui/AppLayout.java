@@ -359,12 +359,13 @@ public interface AppLayout extends Component {
 	public default void setSubItemsPadding() {
 
 		for ( Integer classId : classIdToParentId.keySet() ) {
-			int padding = 17;
+			int padding = 30;
 			int cId = classId;
 			
 			while ( classIdToParentId.get( cId ) != null ) {
 				cId = classIdToParentId.get( cId );
-				JavaScript.getCurrent().execute("document.getElementById('mi_" + cId + "').style.paddingLeft='" + padding + "px'");
+				if ( !(viewIdToComponent.get( cId ) instanceof Label) )
+					JavaScript.getCurrent().execute("document.getElementById('mi_" + cId + "').style.paddingLeft='" + padding + "px'");
 			}
 		}
 	}
