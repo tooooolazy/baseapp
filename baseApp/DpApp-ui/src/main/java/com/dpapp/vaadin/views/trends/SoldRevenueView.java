@@ -1,8 +1,8 @@
 package com.dpapp.vaadin.views.trends;
 
-import com.tooooolazy.vaadin.views.BaseView;
+import com.dpapp.vaadin.views.OverviewBaseView;
 
-public class SoldRevenueView extends BaseView {
+public class SoldRevenueView extends OverviewBaseView {
 
 	@Override
 	protected boolean showTitleInContent() {

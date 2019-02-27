@@ -2,18 +2,29 @@ package com.dpapp.vaadin.views;
 
 import com.dpapp.vaadin.views.trends.PerformanceView;
 import com.tooooolazy.vaadin.ui.AppLayout;
+import com.tooooolazy.vaadin.views.BaseView;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 
-public class SkusView extends OverviewBaseView {
+/**
+ * usws as base class for all Views related to Overview flow so that all Views know what to show and what to hide in the menus
+ * @author tooooolazy
+ *
+ */
+public class OverviewBaseView extends BaseView {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		super.enter(event);
+		// TODO need to check (and most likely) modify menuitems
 
+		// get the abstact App Layout
 		AppLayout al = (AppLayout)getUI().getContent();
 		// show what is needed
+		al.toggleMenuItem( TrendsView.class, true );
+		al.toggleMenuItem( MarketsView.class, true );
+		al.toggleMenuItem( SkusView.class, true );
+		al.toggleMenuItem( ChannelsView.class, true );
 
-		al.toggleMenuItem( PerformanceView.class, false );
+//		al.toggleMenuItem( PerformanceView.class, true );
 
 //		al.setSubItemsPadding();
 
@@ -23,13 +34,13 @@ public class SkusView extends OverviewBaseView {
 	@Override
 	protected boolean showTitleInContent() {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	protected void addJavascriptFunctions() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

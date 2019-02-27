@@ -1,8 +1,8 @@
 package com.dpapp.vaadin.views.trends;
 
-import com.tooooolazy.vaadin.views.BaseView;
+import com.dpapp.vaadin.views.OverviewBaseView;
 
-public class OvertimeView extends BaseView {
+public class OvertimeView extends OverviewBaseView {
 
 	@Override
 	protected boolean showTitleInContent() {

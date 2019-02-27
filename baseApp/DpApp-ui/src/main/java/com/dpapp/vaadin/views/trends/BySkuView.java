@@ -1,8 +1,8 @@
 package com.dpapp.vaadin.views.trends;
 
-import com.tooooolazy.vaadin.views.BaseView;
+import com.dpapp.vaadin.views.OverviewBaseView;
 
-public class BySkuView extends BaseView {
+public class BySkuView extends OverviewBaseView {
 
 	@Override
 	protected boolean showTitleInContent() {
