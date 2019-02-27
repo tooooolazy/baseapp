@@ -20,9 +20,9 @@ public class OverviewView extends BaseView {
 		al.toggleMenuItem( SkusView.class, true );
 		al.toggleMenuItem( ChannelsView.class, true );
 
-		al.toggleMenuItem( Dummy4View.class, false );
-		al.toggleMenuItem( Dummy2View.class, false );
-		al.toggleMenuItem( Dummy1View.class, false );
+		al.toggleMenuItem( Dummy4View.class, true );
+		al.toggleMenuItem( Dummy2View.class, true );
+		al.toggleMenuItem( Dummy1View.class, true );
 
 		al.setSubItemsPadding();
 
