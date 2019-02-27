@@ -1,10 +1,8 @@
 package com.dpapp.vaadin.views;
 
+import com.dpapp.vaadin.views.trends.PerformanceView;
 import com.tooooolazy.vaadin.ui.AppLayout;
 import com.tooooolazy.vaadin.views.BaseView;
-import com.tooooolazy.vaadin.views.Dummy1View;
-import com.tooooolazy.vaadin.views.Dummy2View;
-import com.tooooolazy.vaadin.views.Dummy4View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 
 public class SettingsView extends BaseView {
@@ -20,9 +18,7 @@ public class SettingsView extends BaseView {
 		al.toggleMenuItem( SkusView.class, false );
 		al.toggleMenuItem( ChannelsView.class, false );
 
-		al.toggleMenuItem( Dummy4View.class, false );
-		al.toggleMenuItem( Dummy2View.class, false );
-		al.toggleMenuItem( Dummy1View.class, false );
+		al.toggleMenuItem( PerformanceView.class, false );
 
 		al.setSubItemsPadding();
 

@@ -110,6 +110,12 @@ public abstract class BaseUI<L extends AppLayout> extends UI {
 		setupNavigator();
 	}
 
+	public JsonArray getViewMenuRelations() {
+		// TODO get this structure from WS or DB
+		JsonArray ja = Json.createArray();
+		
+		return ja;
+	}
 	protected JsonArray getViewDefinitions() {
 		// TODO get this structure from WS or DB
 		JsonArray ja = Json.createArray();
