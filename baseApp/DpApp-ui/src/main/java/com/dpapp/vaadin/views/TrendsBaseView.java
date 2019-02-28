@@ -20,4 +20,8 @@ public class TrendsBaseView extends OverviewBaseView {
 		al.setActiveView( getClass().getSimpleName() );
 	};
 
+	@Override
+	protected boolean showTitleInContent() {
+		return true;
+	}
 }

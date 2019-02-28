@@ -120,7 +120,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout> {
 		ja.set(1, jo);
 
 		jo = Json.createObject();
-		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.OvertimeView");
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.OverTimeSR_View");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 3);
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
@@ -134,6 +134,38 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout> {
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
 		ja.set(3, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByChannelView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 4);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(4, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByTouchPointView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 5);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(5, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ForwardRevenueView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 6);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(6, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.OverTimeFR_View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 7);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 6);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(7, jo);
 
 		return ja;
 	}

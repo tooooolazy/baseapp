@@ -1,12 +1,11 @@
 package com.dpapp.vaadin.views;
 
-import com.dpapp.vaadin.views.trends.PerformanceView;
 import com.tooooolazy.vaadin.ui.AppLayout;
 import com.tooooolazy.vaadin.views.BaseView;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 
 /**
- * usws as base class for all Views related to Overview flow so that all Views know what to show and what to hide in the menus
+ * used as base class for all Views related to Overview flow so that all Views know what to show and what to hide in the menus
  * @author tooooolazy
  *
  */
