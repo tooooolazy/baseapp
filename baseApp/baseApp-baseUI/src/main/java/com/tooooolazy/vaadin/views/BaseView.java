@@ -69,6 +69,7 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 	}
 
 	protected Component createTitleComponent() {
+		// TODO also add Parent View name (if any AND if enabled)
 		Label title = new Label( Messages.getString( getClass(), "page.title") );
 		title.setWidth("100%");
 		title.addStyleName( ValoTheme.LABEL_H1 );
