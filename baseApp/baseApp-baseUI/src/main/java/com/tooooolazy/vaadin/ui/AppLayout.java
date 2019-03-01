@@ -192,10 +192,10 @@ public interface AppLayout extends Component {
 				cl.addComponent(menuItem);
 			}
 		}
-		viewClassIds.put(c.getSimpleName(), classId);
+		viewClassIds.put(c, classId);
 		viewSelectors.put(c.getSimpleName(), menuItem);
 		viewIdToComponent.put(classId, menuItem);
-		viewIdToClass.put(classId, c.getSimpleName());
+		viewIdToClass.put(classId, c);
 		componentToParentId.put(menuItem, parentId);
 	}
 	/**
@@ -310,11 +310,11 @@ public interface AppLayout extends Component {
 	/**
 	 * Each App View has a class (eg com.tooooolazy.vaadin.views.AboutView) and each class an ID (defined in {@link BaseUI#getViewDefinitions} )
 	 */
-	public Map<String, Integer> viewClassIds = new HashMap<String, Integer>();
+	public Map<Class, Integer> viewClassIds = new HashMap<Class, Integer>();
 	/**
 	 * the oposite of {@link #viewClassIds}
 	 */
-	public Map<Integer, String> viewIdToClass = new HashMap<Integer, String>();
+	public Map<Integer, Class> viewIdToClass = new HashMap<Integer, Class>();
 	public Map<Integer, Component> viewIdToComponent = new HashMap<Integer, Component>();
 	public Map<Component, Integer> componentToParentId = new HashMap<Component, Integer>();
 	/**
@@ -375,7 +375,7 @@ public interface AppLayout extends Component {
 			@Override
 			public void buttonClick(final ClickEvent event) {
 				// do that ONLY if it has no children
-				Integer pId = viewClassIds.get( c.getSimpleName() );
+				Integer pId = viewClassIds.get( c );
 				if ( pId != null ) { 
 					if ( parentIdContainer.get( pId ) != null )
 						return;
@@ -453,7 +453,7 @@ public interface AppLayout extends Component {
 		Component _c = viewSelectors.get( c.getSimpleName() );
 		if ( _c != null ) {
 			_c.setVisible( visible );
-			Integer pId = viewClassIds.get( c.getSimpleName() );
+			Integer pId = viewClassIds.get( c );
 			if ( pId != null ) {
 				Component _pc = parentIdContainer.get( pId );
 				if ( _pc != null ) {
@@ -461,5 +461,17 @@ public interface AppLayout extends Component {
 				}
 			}
 		}
+	}
+	public default Class getParentViewClass(Class viewClass) {
+		Class pClass = null;
+
+		Integer cId = viewClassIds.get( viewClass );
+		if ( cId != null ) {
+			Integer pId = classIdToParentId.get( cId );
+			if ( pId != null )
+				pClass = viewIdToClass.get( pId );
+		}
+
+		return pClass;
 	}
 }

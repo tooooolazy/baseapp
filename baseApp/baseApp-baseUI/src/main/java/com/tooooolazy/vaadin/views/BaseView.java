@@ -3,6 +3,7 @@ package com.tooooolazy.vaadin.views;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.SearchCriteria;
 import com.tooooolazy.util.TLZUtils;
+import com.tooooolazy.vaadin.ui.AppLayout;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
@@ -68,9 +69,26 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 		
 	}
 
+	/**
+	 * if true, the Title of parent view will be displayed with current view title. Refers ONLY to Views in left menu.
+	 * @return
+	 */
+	protected boolean showParentTitle() {
+		return true;
+	}
 	protected Component createTitleComponent() {
-		// TODO also add Parent View name (if any AND if enabled)
-		Label title = new Label( Messages.getString( getClass(), "page.title") );
+		String _title = Messages.getString( getClass(), "page.title");
+
+		// also add Parent View name (if any AND if enabled)
+		if ( showParentTitle() ) {
+			AppLayout al = (AppLayout)getUI().getContent();
+			Class pClass = al.getParentViewClass( getClass() );
+			
+			if ( pClass != null )
+				_title = Messages.getString( pClass, "page.title" ) + " - " + _title;
+		}
+
+		Label title = new Label( _title );
 		title.setWidth("100%");
 		title.addStyleName( ValoTheme.LABEL_H1 );
 		return title;
