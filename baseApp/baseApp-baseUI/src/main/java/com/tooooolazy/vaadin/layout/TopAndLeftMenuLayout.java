@@ -131,14 +131,16 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		top_gl.setResponsive( true );
 		top_gl.setSpacing( true );
 		top_gl.setId("header_top");
+		top_gl.addStyleName("header_top");
 		top_gl.setWidth("100%");
 		top_gl.setColumnExpandRatio(0, 0f);
 		top_gl.setColumnExpandRatio(1, 1f);
 		top_gl.setColumnExpandRatio(2, 0f);
 		top_gl.setColumnExpandRatio(3, 0f);
 		Label ll = new Label("logo");
-		ll.setWidth("100px");
-		ll.setHeight("40px");
+		ll.addStyleName("top_logo");
+//		ll.setWidth("100px");
+//		ll.setHeight("40px");
 		Label bell = new Label( VaadinIcons.BELL.getHtml(), ContentMode.HTML );
 		bell.addStyleName(ValoTheme.LABEL_LARGE);
 //		bell.setWidth("20px");

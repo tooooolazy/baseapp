@@ -356,6 +356,10 @@ public interface AppLayout extends Component {
 			}
 		};
 	}
+	/**
+	 * Call it once all left menu items are created (and their children) in order to set children's correct padding. 
+	 * Should also be called if a menu item becomes visible.
+	 */
 	public default void setSubItemsPadding() {
 
 		for ( Integer classId : classIdToParentId.keySet() ) {
@@ -410,7 +414,7 @@ public interface AppLayout extends Component {
 		}, null);
 		navigator.addView(c.getSimpleName(), c);
 		vb.setPrimaryStyleName(ValoTheme.MENU_ITEM);
-		vb.addStyleName("top-menu");
+		vb.addStyleName("top-menu-item");
 
 		viewSelectors.put(c.getSimpleName(), vb);
 

@@ -108,14 +108,18 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
 		color: red;
 	}
 
-	#header_top {
+	.top_logo {
+		height: ($v-font-size*2 + 10);
+		width : 100px;
+	}
+	.header_top {
 		background: darkgrey;
 		color: white;
 	}
 	#header_subtop {
 		background: lightgrey;
 	}
-	.top-menu {
+	.top-menu-item {
 		height: $v-font-size*2;
 		margin-top: 5px;
 		font-weight: bold;
