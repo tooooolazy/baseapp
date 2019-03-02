@@ -361,30 +361,6 @@
 	text-align: center;
 }
 
-@font-face {
-	font-family: "Open Sans";
-	src: url(../valo/fonts/open-sans/OpenSans-Light-webfont.eot);
-	src: url(../valo/fonts/open-sans/OpenSans-Light-webfont.eot?#iefix) format("embedded-opentype"), url(../valo/fonts/open-sans/OpenSans-Light-webfont.woff) format("woff"), url(../valo/fonts/open-sans/OpenSans-Light-webfont.ttf) format("truetype");
-	font-weight: 300;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: "Open Sans";
-	src: url(../valo/fonts/open-sans/OpenSans-Regular-webfont.eot);
-	src: url(../valo/fonts/open-sans/OpenSans-Regular-webfont.eot?#iefix) format("embedded-opentype"), url(../valo/fonts/open-sans/OpenSans-Regular-webfont.woff) format("woff"), url(../valo/fonts/open-sans/OpenSans-Regular-webfont.ttf) format("truetype");
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: "Open Sans";
-	src: url(../valo/fonts/open-sans/OpenSans-Semibold-webfont.eot);
-	src: url(../valo/fonts/open-sans/OpenSans-Semibold-webfont.eot?#iefix) format("embedded-opentype"), url(../valo/fonts/open-sans/OpenSans-Semibold-webfont.woff) format("woff"), url(../valo/fonts/open-sans/OpenSans-Semibold-webfont.ttf) format("truetype");
-	font-weight: 600;
-	font-style: normal;
-}
-
 @-webkit-keyframes v-rotate-360 {
 		to {
 		-webkit-transform: rotate(360deg);
@@ -470,11 +446,11 @@
 	}
 		3% {
 		width: 91%;
-		height: 7px;
+		height: 6px;
 	}
 		100% {
 		width: 96%;
-		height: 7px;
+		height: 6px;
 	}
 	}
 
@@ -485,11 +461,11 @@
 	}
 		3% {
 		width: 91%;
-		height: 7px;
+		height: 6px;
 	}
 		100% {
 		width: 96%;
-		height: 7px;
+		height: 6px;
 	}
 	}
 
@@ -500,11 +476,11 @@
 	}
 		3% {
 		width: 91%;
-		height: 7px;
+		height: 6px;
 	}
 		100% {
 		width: 96%;
-		height: 7px;
+		height: 6px;
 	}
 	}
 
@@ -695,25 +671,25 @@
 
 @-webkit-keyframes valo-grid-editor-footer-animate-in {
 		0% {
-		margin-top: -37px;
+		margin-top: -32px;
 	}
 	}
 
 @-moz-keyframes valo-grid-editor-footer-animate-in {
 		0% {
-		margin-top: -37px;
+		margin-top: -32px;
 	}
 	}
 
 @keyframes valo-grid-editor-footer-animate-in {
 		0% {
-		margin-top: -37px;
+		margin-top: -32px;
 	}
 	}
 
 @-webkit-keyframes valo-grid-editor-footer-animate-in-alt {
 		0% {
-		margin-bottom: -38px;
+		margin-bottom: -33px;
 	}
 		100% {
 		margin-bottom: -1px;
@@ -722,7 +698,7 @@
 
 @-moz-keyframes valo-grid-editor-footer-animate-in-alt {
 		0% {
-		margin-bottom: -38px;
+		margin-bottom: -33px;
 	}
 		100% {
 		margin-bottom: -1px;
@@ -731,7 +707,7 @@
 
 @keyframes valo-grid-editor-footer-animate-in-alt {
 		0% {
-		margin-bottom: -38px;
+		margin-bottom: -33px;
 	}
 		100% {
 		margin-bottom: -1px;
@@ -899,25 +875,25 @@
 
 @-webkit-keyframes valo-grid-editor-footer-animate-in {
 		0% {
-		margin-top: -37px;
+		margin-top: -32px;
 	}
 	}
 
 @-moz-keyframes valo-grid-editor-footer-animate-in {
 		0% {
-		margin-top: -37px;
+		margin-top: -32px;
 	}
 	}
 
 @keyframes valo-grid-editor-footer-animate-in {
 		0% {
-		margin-top: -37px;
+		margin-top: -32px;
 	}
 	}
 
 @-webkit-keyframes valo-grid-editor-footer-animate-in-alt {
 		0% {
-		margin-bottom: -38px;
+		margin-bottom: -33px;
 	}
 		100% {
 		margin-bottom: -1px;
@@ -926,7 +902,7 @@
 
 @-moz-keyframes valo-grid-editor-footer-animate-in-alt {
 		0% {
-		margin-bottom: -38px;
+		margin-bottom: -33px;
 	}
 		100% {
 		margin-bottom: -1px;
@@ -935,7 +911,7 @@
 
 @keyframes valo-grid-editor-footer-animate-in-alt {
 		0% {
-		margin-bottom: -38px;
+		margin-bottom: -33px;
 	}
 		100% {
 		margin-bottom: -1px;
@@ -949,25 +925,25 @@
 
 @-webkit-keyframes valo-grid-editor-footer-animate-in {
 		0% {
-		margin-top: -37px;
+		margin-top: -32px;
 	}
 	}
 
 @-moz-keyframes valo-grid-editor-footer-animate-in {
 		0% {
-		margin-top: -37px;
+		margin-top: -32px;
 	}
 	}
 
 @keyframes valo-grid-editor-footer-animate-in {
 		0% {
-		margin-top: -37px;
+		margin-top: -32px;
 	}
 	}
 
 @-webkit-keyframes valo-grid-editor-footer-animate-in-alt {
 		0% {
-		margin-bottom: -38px;
+		margin-bottom: -33px;
 	}
 		100% {
 		margin-bottom: -1px;
@@ -976,7 +952,7 @@
 
 @-moz-keyframes valo-grid-editor-footer-animate-in-alt {
 		0% {
-		margin-bottom: -38px;
+		margin-bottom: -33px;
 	}
 		100% {
 		margin-bottom: -1px;
@@ -985,7 +961,7 @@
 
 @keyframes valo-grid-editor-footer-animate-in-alt {
 		0% {
-		margin-bottom: -38px;
+		margin-bottom: -33px;
 	}
 		100% {
 		margin-bottom: -1px;
@@ -1550,19 +1526,19 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .v-tabsheet-content  > div > .v-scrollable  > .v-margin-top {
-	padding-top: 12px;
+	padding-top: 11px;
 }
 
 .v-tabsheet-content  > div > .v-scrollable  > .v-margin-right {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .v-tabsheet-content  > div > .v-scrollable  > .v-margin-bottom {
-	padding-bottom: 12px;
+	padding-bottom: 11px;
 }
 
 .v-tabsheet-content  > div > .v-scrollable  > .v-margin-left {
-	padding-left: 12px;
+	padding-left: 11px;
 }
 
 .v-splitpanel-vertical, .v-splitpanel-horizontal {
@@ -1628,7 +1604,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme.v-app, .baseTheme.v-app-loading {
-	font: 300 16px/1.55 "Open Sans", sans-serif;
+	font: 300 14px/1.55 "Verdana", sans-serif;
 	color: #434343;
 	background-color: #f1f1f1;
 	cursor: default;
@@ -1648,9 +1624,9 @@ div.v-layout.v-horizontal.v-widget {
 	left: 50%;
 	width: 28px;
 	height: 28px;
-	padding: 9px;
-	margin-top: -24px;
-	margin-left: -24px;
+	padding: 8px;
+	margin-top: -22px;
+	margin-left: -22px;
 	background: #fff url(../valo/shared/img/spinner.gif) no-repeat 50%;
 	border-radius: 3px;
 }
@@ -1717,7 +1693,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-caption {
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 400;
 	padding-bottom: 0.3em;
 	padding-left: 1px;
@@ -1729,7 +1705,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-icon + .v-captiontext, .baseTheme .v-icon + span {
-	margin-left: 7px;
+	margin-left: 6px;
 }
 
 .baseTheme .v-icon + .v-captiontext:empty, .baseTheme .v-icon + span:empty {
@@ -1739,7 +1715,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-errorindicator {
 	color: #d94560;
 	font-weight: 600;
-	width: 19px;
+	width: 16px;
 	text-align: center;
 }
 
@@ -1750,7 +1726,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-errorindicator-info {
 	color: #00a7f5;
 	font-weight: 600;
-	width: 19px;
+	width: 16px;
 	text-align: center;
 }
 
@@ -1761,7 +1737,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-errorindicator-warning {
 	color: #fc9c00;
 	font-weight: 600;
-	width: 19px;
+	width: 16px;
 	text-align: center;
 }
 
@@ -1772,7 +1748,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-errorindicator-error {
 	color: #ed473b;
 	font-weight: 600;
-	width: 19px;
+	width: 16px;
 	text-align: center;
 }
 
@@ -1783,7 +1759,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-errorindicator-critical {
 	color: #fa007d;
 	font-weight: 600;
-	width: 19px;
+	width: 16px;
 	text-align: center;
 }
 
@@ -1794,7 +1770,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-errorindicator-system {
 	color: #bb00ff;
 	font-weight: 600;
-	width: 19px;
+	width: 16px;
 	text-align: center;
 }
 
@@ -1811,7 +1787,7 @@ div.v-layout.v-horizontal.v-widget {
 	font: inherit;
 	font-weight: 400;
 	line-height: inherit;
-	padding: 5px;
+	padding: 4px;
 	margin: 0;
 	border-radius: 3px;
 	border: 1px solid #d0d0d0;
@@ -1854,11 +1830,11 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 	color: white;
-	padding: 5px 9px;
+	padding: 4px 8px;
 	border-radius: 2px;
 	max-width: 35em;
 	overflow: hidden !important;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-tooltip div[style*="width"] {
@@ -1869,8 +1845,8 @@ div.v-layout.v-horizontal.v-widget {
 	background-color: white;
 	background-color: #fff;
 	color: #d94560;
-	margin: -5px -9px;
-	padding: 5px 9px;
+	margin: -4px -8px;
+	padding: 4px 8px;
 	max-height: 10em;
 	overflow: auto;
 	font-weight: 400;
@@ -1904,7 +1880,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-tooltip .v-tooltip-text {
 	max-height: 10em;
 	overflow: auto;
-	margin-top: 10px;
+	margin-top: 8px;
 }
 
 .baseTheme .v-tooltip .v-tooltip-text pre {
@@ -1956,8 +1932,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-contextmenu .gwt-MenuItem {
 	cursor: pointer;
-	line-height: 27px;
-	padding: 0 20px 0 10px;
+	line-height: 23px;
+	padding: 0 16px 0 8px;
 	border-radius: 2px;
 	font-weight: 400;
 	white-space: nowrap;
@@ -1980,8 +1956,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-contextmenu .gwt-MenuItem .v-icon {
-	max-height: 27px;
-	margin-right: 5px;
+	max-height: 23px;
+	margin-right: 4px;
 	min-width: 1em;
 }
 
@@ -1995,16 +1971,16 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-reconnect-dialog {
 	color: white;
-	top: 12px;
-	right: 12px;
+	top: 11px;
+	right: 11px;
 	max-width: 100%;
 	border-radius: 0;
 	-webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
-	padding: 12px 15px;
+	padding: 11px 13px;
 	background-color: #444;
 	background-color: rgba(68, 68, 68, 0.9);
-	line-height: 22px;
+	line-height: 20px;
 	text-align: center;
 }
 
@@ -2050,24 +2026,24 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-margin-top {
-	padding-top: 37px;
+	padding-top: 32px;
 }
 
 .baseTheme .v-margin-right {
-	padding-right: 37px;
+	padding-right: 32px;
 }
 
 .baseTheme .v-margin-bottom {
-	padding-bottom: 37px;
+	padding-bottom: 32px;
 }
 
 .baseTheme .v-margin-left {
-	padding-left: 37px;
+	padding-left: 32px;
 }
 
 .baseTheme .v-spacing {
-	width: 12px;
-	height: 12px;
+	width: 11px;
+	height: 11px;
 }
 
 .baseTheme .v-verticallayout-well, .baseTheme .v-horizontallayout-well {
@@ -2086,19 +2062,19 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-verticallayout-well  > .v-margin-top, .baseTheme .v-horizontallayout-well  > .v-margin-top {
-	padding-top: 12px;
+	padding-top: 11px;
 }
 
 .baseTheme .v-verticallayout-well  > .v-margin-right, .baseTheme .v-horizontallayout-well  > .v-margin-right {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-verticallayout-well  > .v-margin-bottom, .baseTheme .v-horizontallayout-well  > .v-margin-bottom {
-	padding-bottom: 12px;
+	padding-bottom: 11px;
 }
 
 .baseTheme .v-verticallayout-well  > .v-margin-left, .baseTheme .v-horizontallayout-well  > .v-margin-left {
-	padding-left: 12px;
+	padding-left: 11px;
 }
 
 .baseTheme .v-verticallayout-card, .baseTheme .v-horizontallayout-card {
@@ -2111,19 +2087,19 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-verticallayout-card  > .v-margin-top, .baseTheme .v-horizontallayout-card  > .v-margin-top {
-	padding-top: 12px;
+	padding-top: 11px;
 }
 
 .baseTheme .v-verticallayout-card  > .v-margin-right, .baseTheme .v-horizontallayout-card  > .v-margin-right {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-verticallayout-card  > .v-margin-bottom, .baseTheme .v-horizontallayout-card  > .v-margin-bottom {
-	padding-bottom: 12px;
+	padding-bottom: 11px;
 }
 
 .baseTheme .v-verticallayout-card  > .v-margin-left, .baseTheme .v-horizontallayout-card  > .v-margin-left {
-	padding-left: 12px;
+	padding-left: 11px;
 }
 
 .baseTheme .v-horizontallayout-wrapping {
@@ -2131,7 +2107,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-horizontallayout-wrapping > .v-spacing + .v-slot, .baseTheme .v-horizontallayout-wrapping > .v-slot:first-child {
-	margin-bottom: 12px;
+	margin-bottom: 11px;
 }
 
 .baseTheme .v-horizontallayout-wrapping > .v-slot:first-child:last-child {
@@ -2146,8 +2122,8 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-tap-highlight-color: transparent;
 	-webkit-touch-callout: none;
 	cursor: pointer;
-	height: 37px;
-	padding: 0 16px;
+	height: 32px;
+	padding: 0 14px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -2239,8 +2215,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-button-primary {
-	height: 37px;
-	padding: 0 16px;
+	height: 32px;
+	padding: 0 14px;
 	color: #f0f4f9;
 	font-weight: 400;
 	
@@ -2255,9 +2231,9 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-box-shadow: inset 0 1px 0 #78a0ed;
 	box-shadow: inset 0 1px 0 #78a0ed;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05);
-	padding: 0 19px;
+	padding: 0 16px;
 	font-weight: bold;
-	min-width: 81px;
+	min-width: 70px;
 }
 
 .baseTheme .v-button-primary:after {
@@ -2283,8 +2259,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-button-friendly {
-	height: 37px;
-	padding: 0 16px;
+	height: 32px;
+	padding: 0 14px;
 	color: #ebf5f2;
 	font-weight: 400;
 	
@@ -2324,8 +2300,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-button-danger {
-	height: 37px;
-	padding: 0 16px;
+	height: 32px;
+	padding: 0 14px;
 	color: #f8f0f1;
 	font-weight: 400;
 	
@@ -2464,11 +2440,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-button-tiny {
-	height: 28px;
-	padding: 0 13px;
+	height: 24px;
+	padding: 0 11px;
 	
 	
-	font-size: 12px;
+	font-size: 11px;
 	
 	border-radius: 3px;
 }
@@ -2482,11 +2458,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-button-small {
-	height: 31px;
-	padding: 0 14px;
+	height: 27px;
+	padding: 0 12px;
 	
 	
-	font-size: 14px;
+	font-size: 12px;
 	
 	border-radius: 3px;
 }
@@ -2500,11 +2476,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-button-large {
-	height: 44px;
-	padding: 0 19px;
+	height: 38px;
+	padding: 0 17px;
 	
 	
-	font-size: 20px;
+	font-size: 17px;
 	
 	border-radius: 3px;
 }
@@ -2518,11 +2494,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-button-huge {
-	height: 59px;
-	padding: 0 26px;
+	height: 51px;
+	padding: 0 22px;
 	
 	
-	font-size: 26px;
+	font-size: 23px;
 	
 	border-radius: 3px;
 }
@@ -2541,7 +2517,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-button-icon-align-right .v-icon {
 	float: right;
-	margin-left: 13px;
+	margin-left: 12px;
 }
 
 .baseTheme .v-button-icon-align-right .v-icon  + span:not(:empty) {
@@ -2550,8 +2526,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-button-icon-align-top {
 	height: auto;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
 
 .baseTheme .v-button-icon-align-top [class*="wrap"] {
@@ -2565,29 +2541,29 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-button-icon-align-top .v-icon  + span:not(:empty) {
-	margin-top: 7px;
+	margin-top: 6px;
 	margin-left: 0;
 }
 
 .baseTheme .v-button-icon-only {
-	width: 37px;
+	width: 32px;
 	padding: 0;
 }
 
 .baseTheme .v-button-icon-only.v-button-tiny {
-	width: 28px;
+	width: 24px;
 }
 
 .baseTheme .v-button-icon-only.v-button-small {
-	width: 31px;
+	width: 27px;
 }
 
 .baseTheme .v-button-icon-only.v-button-large {
-	width: 44px;
+	width: 38px;
 }
 
 .baseTheme .v-button-icon-only.v-button-huge {
-	width: 59px;
+	width: 51px;
 }
 
 .baseTheme .v-button-icon-only .v-button-caption {
@@ -2596,7 +2572,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-checkbox {
 	position: relative;
-	line-height: 19px;
+	line-height: 16px;
 	white-space: nowrap;
 }
 
@@ -2605,7 +2581,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 :root .baseTheme .v-checkbox {
-	padding-left: 25px;
+	padding-left: 21px;
 }
 
 :root .baseTheme .v-checkbox label {
@@ -2636,19 +2612,19 @@ div.v-layout.v-horizontal.v-widget {
 	content: "";
 	display: inline-block;
 	box-sizing: border-box;
-	width: 19px;
-	height: 19px;
+	width: 16px;
+	height: 16px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	border-radius: 3px;
-	font-size: 13px;
+	font-size: 11px;
 	text-align: center;
 }
 
 :root .baseTheme .v-checkbox > input ~ label:before {
-	height: 18.5px;
-	padding: 0 9px;
+	height: 16px;
+	padding: 0 8px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -2664,7 +2640,7 @@ div.v-layout.v-horizontal.v-widget {
 	box-shadow: inset 0 1px 0 white;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
 	padding: 0;
-	height: 19px;
+	height: 16px;
 }
 
 :root .baseTheme .v-checkbox > input ~ label:after {
@@ -2685,7 +2661,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-checkbox > .v-icon, .baseTheme .v-checkbox > label .v-icon {
-	margin: 0 6px 0 3px;
+	margin: 0 5px 0 3px;
 	min-width: 1em;
 	cursor: pointer;
 }
@@ -2723,9 +2699,9 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-checkbox-small {
 	position: relative;
-	line-height: 16px;
+	line-height: 14px;
 	white-space: nowrap;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-checkbox-small.v-has-width label {
@@ -2733,7 +2709,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 :root .baseTheme .v-checkbox-small {
-	padding-left: 21px;
+	padding-left: 18px;
 }
 
 :root .baseTheme .v-checkbox-small label {
@@ -2764,18 +2740,18 @@ div.v-layout.v-horizontal.v-widget {
 	content: "";
 	display: inline-block;
 	box-sizing: border-box;
-	width: 16px;
-	height: 16px;
+	width: 14px;
+	height: 14px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	border-radius: 3px;
-	font-size: 11px;
+	font-size: 9px;
 	text-align: center;
 }
 
 :root .baseTheme .v-checkbox-small > input ~ label:before {
-	height: 15.5px;
+	height: 13.5px;
 	padding: 0 7px;
 	color: #191919;
 	font-weight: 400;
@@ -2792,7 +2768,7 @@ div.v-layout.v-horizontal.v-widget {
 	box-shadow: inset 0 1px 0 white;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
 	padding: 0;
-	height: 16px;
+	height: 14px;
 }
 
 :root .baseTheme .v-checkbox-small > input ~ label:after {
@@ -2813,7 +2789,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-checkbox-small > .v-icon, .baseTheme .v-checkbox-small > label .v-icon {
-	margin: 0 5px 0 3px;
+	margin: 0 5px 0 2px;
 	min-width: 1em;
 	cursor: pointer;
 }
@@ -2851,9 +2827,9 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-checkbox-large {
 	position: relative;
-	line-height: 22px;
+	line-height: 19px;
 	white-space: nowrap;
-	font-size: 20px;
+	font-size: 17px;
 }
 
 .baseTheme .v-checkbox-large.v-has-width label {
@@ -2861,7 +2837,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 :root .baseTheme .v-checkbox-large {
-	padding-left: 29px;
+	padding-left: 25px;
 }
 
 :root .baseTheme .v-checkbox-large label {
@@ -2892,19 +2868,19 @@ div.v-layout.v-horizontal.v-widget {
 	content: "";
 	display: inline-block;
 	box-sizing: border-box;
-	width: 22px;
-	height: 22px;
+	width: 19px;
+	height: 19px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	border-radius: 3px;
-	font-size: 15px;
+	font-size: 13px;
 	text-align: center;
 }
 
 :root .baseTheme .v-checkbox-large > input ~ label:before {
-	height: 22px;
-	padding: 0 10px;
+	height: 19px;
+	padding: 0 9px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -2920,7 +2896,7 @@ div.v-layout.v-horizontal.v-widget {
 	box-shadow: inset 0 1px 0 white;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
 	padding: 0;
-	height: 22px;
+	height: 19px;
 }
 
 :root .baseTheme .v-checkbox-large > input ~ label:after {
@@ -2941,7 +2917,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-checkbox-large > .v-icon, .baseTheme .v-checkbox-large > label .v-icon {
-	margin: 0 7px 0 4px;
+	margin: 0 6px 0 3px;
 	min-width: 1em;
 	cursor: pointer;
 }
@@ -2979,8 +2955,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-filterselect {
 	position: relative;
-	width: 185px;
-	height: 37px;
+	width: 160px;
+	height: 32px;
 	border-radius: 3px;
 	white-space: nowrap;
 }
@@ -3001,9 +2977,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 37px;
+	height: 32px;
 	border-radius: 3px;
-	padding: 4px 8px;
+	padding: 4px 7px;
 	border: 1px solid #c5c5c5;
 	background: white;
 	color: #474747;
@@ -3014,7 +2990,7 @@ div.v-layout.v-horizontal.v-widget {
 	transition: box-shadow 180ms, border 180ms;
 	width: 100% !important;
 	height: 100%;
-	padding-right: 38px;
+	padding-right: 33px;
 	border-radius: inherit;
 }
 
@@ -3040,20 +3016,20 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-filterselect .v-icon + [class*="input"] {
-	padding-left: 37px;
+	padding-left: 32px;
 }
 
 .baseTheme .v-filterselect img.v-icon {
-	max-height: 37px;
-	margin-left: 8px;
+	max-height: 32px;
+	margin-left: 7px;
 }
 
 .baseTheme .v-filterselect span.v-icon {
 	color: #474747;
-	width: 37px;
+	width: 32px;
 	line-height: 1;
 	padding-top: 0.12em;
-	margin-left: 8px;
+	margin-left: 7px;
 }
 
 .baseTheme .v-filterselect[class*="prompt"] > [class*="input"] {
@@ -3065,7 +3041,7 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-touch-callout: none;
 	cursor: pointer;
 	position: absolute;
-	width: 37px;
+	width: 32px;
 	top: 1px;
 	right: 1px;
 	bottom: 1px;
@@ -3081,7 +3057,7 @@ div.v-layout.v-horizontal.v-widget {
 	-moz-transition: color 140ms;
 	transition: color 140ms;
 	position: absolute;
-	width: 37px;
+	width: 32px;
 	text-align: center;
 	top: 50%;
 	line-height: 1;
@@ -3214,7 +3190,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-filterselect-suggestpopup {
-	margin-top: 5px !important;
+	margin-top: 4px !important;
 }
 
 .baseTheme .v-filterselect-suggestpopup[class*="animate-in"] {
@@ -3251,13 +3227,13 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-filterselect-suggestpopup .gwt-MenuItem {
 	cursor: pointer;
-	line-height: 27px;
-	padding: 0 20px 0 10px;
+	line-height: 23px;
+	padding: 0 16px 0 8px;
 	border-radius: 2px;
 	font-weight: 400;
 	white-space: nowrap;
 	position: relative;
-	height: 27px;
+	height: 23px;
 	box-sizing: border-box;
 	text-overflow: ellipsis;
 	overflow-x: hidden;
@@ -3278,8 +3254,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-filterselect-suggestpopup .gwt-MenuItem .v-icon {
-	max-height: 27px;
-	margin-right: 5px;
+	max-height: 23px;
+	margin-right: 4px;
 	min-width: 1em;
 }
 
@@ -3297,11 +3273,11 @@ div.v-layout.v-horizontal.v-widget {
 	background: rgba(216, 216, 216, 0.9);
 	color: #3c3c3c;
 	border-radius: 0 0 3px 3px;
-	height: 23px;
-	bottom: -23px;
-	font-size: 12px;
-	line-height: 23px;
-	padding: 0 6px;
+	height: 20px;
+	bottom: -20px;
+	font-size: 11px;
+	line-height: 20px;
+	padding: 0 5px;
 	cursor: default;
 	pointer-events: none;
 	-webkit-animation: valo-animate-in-slide-down 200ms 80ms backwards;
@@ -3324,9 +3300,9 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-transition: all 200ms;
 	-moz-transition: all 200ms;
 	transition: all 200ms;
-	width: 25px;
-	height: 25px;
-	line-height: 25px;
+	width: 22px;
+	height: 22px;
+	line-height: 22px;
 	text-align: center;
 	font-family: ThemeIcons;
 	-webkit-transform: scale(0.8);
@@ -3487,9 +3463,9 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-filterselect-tiny {
-	height: 28px;
+	height: 24px;
 	
-	font-size: 12px;
+	font-size: 11px;
 }
 
 .baseTheme .v-filterselect-tiny [class*="input"] {
@@ -3508,9 +3484,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 28px;
+	height: 24px;
 	
-	padding: 3px 5px;
+	padding: 3px 4px;
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
@@ -3518,25 +3494,25 @@ div.v-layout.v-horizontal.v-widget {
 	transition: box-shadow 180ms, border 180ms;
 	width: 100% !important;
 	height: 100%;
-	padding-right: 29px;
+	padding-right: 25px;
 	border-radius: inherit;
 }
 
 .baseTheme .v-filterselect-tiny .v-icon + [class*="input"] {
-	padding-left: 28px;
+	padding-left: 24px;
 }
 
 .baseTheme .v-filterselect-tiny img.v-icon {
-	max-height: 28px;
-	margin-left: 5px;
+	max-height: 24px;
+	margin-left: 4px;
 }
 
 .baseTheme .v-filterselect-tiny span.v-icon {
 	
-	width: 28px;
+	width: 24px;
 	line-height: 1;
 	padding-top: 0.12em;
-	margin-left: 5px;
+	margin-left: 4px;
 }
 
 .baseTheme .v-filterselect-tiny [class$="button"] {
@@ -3544,7 +3520,7 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-touch-callout: none;
 	cursor: pointer;
 	position: absolute;
-	width: 28px;
+	width: 24px;
 	border-radius: 0 3px 3px 0;
 }
 
@@ -3555,7 +3531,7 @@ div.v-layout.v-horizontal.v-widget {
 	-moz-transition: color 140ms;
 	transition: color 140ms;
 	position: absolute;
-	width: 28px;
+	width: 24px;
 	text-align: center;
 	top: 50%;
 	line-height: 1;
@@ -3608,7 +3584,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-filterselect-compact, .baseTheme .v-filterselect-small {
-	height: 31px;
+	height: 27px;
 	
 }
 
@@ -3628,9 +3604,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 31px;
+	height: 27px;
 	
-	padding: 3px 6px;
+	padding: 3px 5px;
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
@@ -3638,25 +3614,25 @@ div.v-layout.v-horizontal.v-widget {
 	transition: box-shadow 180ms, border 180ms;
 	width: 100% !important;
 	height: 100%;
-	padding-right: 32px;
+	padding-right: 28px;
 	border-radius: inherit;
 }
 
 .baseTheme .v-filterselect-compact .v-icon + [class*="input"], .baseTheme .v-filterselect-small .v-icon + [class*="input"] {
-	padding-left: 31px;
+	padding-left: 27px;
 }
 
 .baseTheme .v-filterselect-compact img.v-icon, .baseTheme .v-filterselect-small img.v-icon {
-	max-height: 31px;
-	margin-left: 6px;
+	max-height: 27px;
+	margin-left: 5px;
 }
 
 .baseTheme .v-filterselect-compact span.v-icon, .baseTheme .v-filterselect-small span.v-icon {
 	
-	width: 31px;
+	width: 27px;
 	line-height: 1;
 	padding-top: 0.12em;
-	margin-left: 6px;
+	margin-left: 5px;
 }
 
 .baseTheme .v-filterselect-compact [class$="button"], .baseTheme .v-filterselect-small [class$="button"] {
@@ -3664,7 +3640,7 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-touch-callout: none;
 	cursor: pointer;
 	position: absolute;
-	width: 31px;
+	width: 27px;
 	border-radius: 0 3px 3px 0;
 }
 
@@ -3675,7 +3651,7 @@ div.v-layout.v-horizontal.v-widget {
 	-moz-transition: color 140ms;
 	transition: color 140ms;
 	position: absolute;
-	width: 31px;
+	width: 27px;
 	text-align: center;
 	top: 50%;
 	line-height: 1;
@@ -3728,13 +3704,13 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-filterselect-small {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-filterselect-large {
-	height: 44px;
+	height: 38px;
 	
-	font-size: 20px;
+	font-size: 17px;
 }
 
 .baseTheme .v-filterselect-large [class*="input"] {
@@ -3753,9 +3729,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 44px;
+	height: 38px;
 	
-	padding: 5px 8px;
+	padding: 4px 7px;
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
@@ -3763,25 +3739,25 @@ div.v-layout.v-horizontal.v-widget {
 	transition: box-shadow 180ms, border 180ms;
 	width: 100% !important;
 	height: 100%;
-	padding-right: 45px;
+	padding-right: 39px;
 	border-radius: inherit;
 }
 
 .baseTheme .v-filterselect-large .v-icon + [class*="input"] {
-	padding-left: 44px;
+	padding-left: 38px;
 }
 
 .baseTheme .v-filterselect-large img.v-icon {
-	max-height: 44px;
-	margin-left: 8px;
+	max-height: 38px;
+	margin-left: 7px;
 }
 
 .baseTheme .v-filterselect-large span.v-icon {
 	
-	width: 44px;
+	width: 38px;
 	line-height: 1;
 	padding-top: 0.12em;
-	margin-left: 8px;
+	margin-left: 7px;
 }
 
 .baseTheme .v-filterselect-large [class$="button"] {
@@ -3789,7 +3765,7 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-touch-callout: none;
 	cursor: pointer;
 	position: absolute;
-	width: 44px;
+	width: 38px;
 	border-radius: 0 3px 3px 0;
 }
 
@@ -3800,7 +3776,7 @@ div.v-layout.v-horizontal.v-widget {
 	-moz-transition: color 140ms;
 	transition: color 140ms;
 	position: absolute;
-	width: 44px;
+	width: 38px;
 	text-align: center;
 	top: 50%;
 	line-height: 1;
@@ -3853,9 +3829,9 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-filterselect-huge {
-	height: 59px;
+	height: 51px;
 	
-	font-size: 26px;
+	font-size: 23px;
 }
 
 .baseTheme .v-filterselect-huge [class*="input"] {
@@ -3874,9 +3850,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 59px;
+	height: 51px;
 	
-	padding: 7px 10px;
+	padding: 6px 9px;
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
@@ -3884,25 +3860,25 @@ div.v-layout.v-horizontal.v-widget {
 	transition: box-shadow 180ms, border 180ms;
 	width: 100% !important;
 	height: 100%;
-	padding-right: 60px;
+	padding-right: 52px;
 	border-radius: inherit;
 }
 
 .baseTheme .v-filterselect-huge .v-icon + [class*="input"] {
-	padding-left: 59px;
+	padding-left: 51px;
 }
 
 .baseTheme .v-filterselect-huge img.v-icon {
-	max-height: 59px;
-	margin-left: 10px;
+	max-height: 51px;
+	margin-left: 9px;
 }
 
 .baseTheme .v-filterselect-huge span.v-icon {
 	
-	width: 59px;
+	width: 51px;
 	line-height: 1;
 	padding-top: 0.12em;
-	margin-left: 10px;
+	margin-left: 9px;
 }
 
 .baseTheme .v-filterselect-huge [class$="button"] {
@@ -3910,7 +3886,7 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-touch-callout: none;
 	cursor: pointer;
 	position: absolute;
-	width: 59px;
+	width: 51px;
 	border-radius: 0 3px 3px 0;
 }
 
@@ -3921,7 +3897,7 @@ div.v-layout.v-horizontal.v-widget {
 	-moz-transition: color 140ms;
 	transition: color 140ms;
 	position: absolute;
-	width: 59px;
+	width: 51px;
 	text-align: center;
 	top: 50%;
 	line-height: 1;
@@ -3989,19 +3965,19 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-csslayout-well  > .v-margin-top {
-	padding-top: 12px;
+	padding-top: 11px;
 }
 
 .baseTheme .v-csslayout-well  > .v-margin-right {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-csslayout-well  > .v-margin-bottom {
-	padding-bottom: 12px;
+	padding-bottom: 11px;
 }
 
 .baseTheme .v-csslayout-well  > .v-margin-left {
-	padding-left: 12px;
+	padding-left: 11px;
 }
 
 .baseTheme .v-csslayout-card {
@@ -4014,19 +3990,19 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-csslayout-card  > .v-margin-top {
-	padding-top: 12px;
+	padding-top: 11px;
 }
 
 .baseTheme .v-csslayout-card  > .v-margin-right {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-csslayout-card  > .v-margin-bottom {
-	padding-bottom: 12px;
+	padding-bottom: 11px;
 }
 
 .baseTheme .v-csslayout-card  > .v-margin-left {
-	padding-left: 12px;
+	padding-left: 11px;
 }
 
 .baseTheme .v-csslayout-v-component-group {
@@ -4105,7 +4081,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme [class*="spacing"] > tbody > [class*="row"] > td {
-	padding-top: 12px;
+	padding-top: 11px;
 }
 
 .baseTheme [class*="spacing"] > tbody > [class*="firstrow"] > td {
@@ -4113,27 +4089,27 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme [class*="margin-top"] > tbody > [class*="firstrow"] > td {
-	padding-top: 37px;
+	padding-top: 32px;
 }
 
 .baseTheme [class*="margin-bottom"] > tbody > [class*="lastrow"] > td {
-	padding-bottom: 37px;
+	padding-bottom: 32px;
 }
 
 .baseTheme [class*="margin-left"] > tbody > [class*="row"] > [class*="captioncell"] {
-	padding-left: 37px;
+	padding-left: 32px;
 }
 
 .baseTheme [class*="margin-left"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h2, .baseTheme [class*="margin-left"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h3, .baseTheme [class*="margin-left"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h4 {
-	left: 37px;
+	left: 32px;
 }
 
 .baseTheme [class*="margin-right"] > tbody > [class*="row"] > [class*="contentcell"] {
-	padding-right: 37px;
+	padding-right: 32px;
 }
 
 .baseTheme [class*="margin-right"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h2, .baseTheme [class*="margin-right"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h3, .baseTheme [class*="margin-right"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h4 {
-	right: 37px;
+	right: 32px;
 }
 
 .baseTheme .v-formlayout > table {
@@ -4146,12 +4122,12 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-formlayout-error-indicator {
-	width: 19px;
+	width: 16px;
 }
 
 .baseTheme .v-formlayout-captioncell {
 	vertical-align: top;
-	line-height: 36px;
+	line-height: 31px;
 }
 
 .baseTheme .v-formlayout-captioncell .v-caption {
@@ -4182,7 +4158,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-formlayout.light  > table > tbody > tr > td {
 	padding-top: 0;
-	height: 37px;
+	height: 32px;
 	border-bottom: 1px solid #e3e3e3;
 }
 
@@ -4193,8 +4169,8 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-formlayout.light  > table > tbody > tr > [class*="captioncell"] {
 	color: #7f7f7f;
 	text-align: right;
-	padding-left: 13px;
-	line-height: 37px;
+	padding-left: 11px;
+	line-height: 32px;
 }
 
 .baseTheme .v-formlayout.light  > table > tbody > [class*="row"] > [class*="contentcell"] {
@@ -4220,9 +4196,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 37px;
+	height: 32px;
 	border-radius: 0;
-	padding: 4px 7px;
+	padding: 4px 6px;
 	
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -4274,7 +4250,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-formlayout.light .v-richtextarea {
-	margin: 5px 0;
+	margin: 4px 0;
 }
 
 .baseTheme .v-formlayout.light .v-filterselect-button, .baseTheme .v-formlayout.light .v-datefield-button {
@@ -4291,7 +4267,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-formlayout.light .v-checkbox {
-	margin-left: 7px;
+	margin-left: 6px;
 }
 
 .baseTheme .v-grid {
@@ -4395,7 +4371,7 @@ div.v-layout.v-horizontal.v-widget {
 	white-space: nowrap;
 	box-sizing: border-box;
 	overflow: hidden;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .baseTheme .v-grid-cell.frozen {
@@ -4500,7 +4476,7 @@ div.v-layout.v-horizontal.v-widget {
 	content: "\f0c9";
 	display: block;
 	font-family: ThemeIcons, sans-serif;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-grid-sidebar.v-contextmenu.closed {
@@ -4513,7 +4489,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-grid-sidebar.v-contextmenu.open .v-grid-sidebar-button:after {
 	content: "\f0c9";
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 1;
 }
 
@@ -4533,8 +4509,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-grid-cell {
 	background-color: white;
-	padding: 0 18px;
-	line-height: 37px;
+	padding: 0 16.5px;
+	line-height: 32px;
 	text-overflow: ellipsis;
 }
 
@@ -4592,7 +4568,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-grid-header th {
 	position: relative;
 	background-color: #fefefe;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: inherit;
 	border-left: 1px solid #dadada;
 	border-bottom: 1px solid #dadada;
@@ -4605,15 +4581,15 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-grid-header .sort-asc, .baseTheme .v-grid-header .sort-desc {
-	padding-right: 35px;
+	padding-right: 30.5px;
 }
 
 .baseTheme .v-grid-header .sort-asc:after, .baseTheme .v-grid-header .sort-desc:after {
 	font-family: ThemeIcons, sans-serif;
 	content: "\f0de" " " attr(sort-order);
 	position: absolute;
-	right: 18px;
-	font-size: 12px;
+	right: 16.5px;
+	font-size: 10px;
 }
 
 .baseTheme .v-grid-header .sort-desc:after {
@@ -4622,8 +4598,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-grid-column-resize-handle {
 	position: absolute;
-	width: 36px;
-	right: -18px;
+	width: 33px;
+	right: -16.5px;
 	top: 0px;
 	bottom: 0px;
 	cursor: col-resize;
@@ -4639,7 +4615,7 @@ div.v-layout.v-horizontal.v-widget {
 	position: absolute;
 	width: 3px;
 	top: 0px;
-	left: 18px;
+	left: 16.5px;
 	z-index: 9001;
 	background: #fff;
 	box-shadow: 0px 0px 5px #000;
@@ -4652,7 +4628,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-grid-footer td {
 	background-color: #fefefe;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: inherit;
 	border-left: 1px solid #dadada;
 	border-top: 1px solid #dadada;
@@ -4672,7 +4648,7 @@ div.v-layout.v-horizontal.v-widget {
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	line-height: 37px;
+	line-height: 32px;
 	vertical-align: baseline;
 }
 
@@ -4766,15 +4742,15 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-grid-editor-cells  > div input[type="text"], .baseTheme .v-grid-editor-cells  > div input[type="text"].v-filterselect-input, .baseTheme .v-grid-editor-cells  > div input[type="password"] {
-	padding-left: 18px;
+	padding-left: 16.5px;
 }
 
 .baseTheme .v-grid-editor-cells  > div input[type="text"]:not(.v-filterselect-input), .baseTheme .v-grid-editor-cells  > div input[type="password"] {
-	padding-right: 9px;
+	padding-right: 8.25px;
 }
 
 .baseTheme .v-grid-editor-cells  > div input[type="checkbox"] {
-	margin-left: 18px;
+	margin-left: 16.5px;
 }
 
 .baseTheme .v-grid-editor-cells  > div .v-textfield, .baseTheme .v-grid-editor-cells  > div .v-datefield, .baseTheme .v-grid-editor-cells  > div .v-filterselect {
@@ -4809,7 +4785,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-grid-editor-footer {
 	display: table;
-	height: 37px;
+	height: 32px;
 	border-top: 1px solid #dadada;
 	margin-top: -1px;
 	background: white;
@@ -4844,7 +4820,7 @@ div.v-layout.v-horizontal.v-widget {
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	line-height: 37px;
+	line-height: 32px;
 	top: 0;
 }
 
@@ -4920,7 +4896,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-grid-header .v-grid-cell.dragged-column-header {
-	margin-top: -19px;
+	margin-top: -16px;
 }
 
 .baseTheme .v-grid-footer .v-grid-cell {
@@ -4962,7 +4938,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-grid-editor-footer {
-	font-size: 14px;
+	font-size: 12px;
 	padding: 0 6px;
 	background: #f1f1f1;
 	-webkit-animation: valo-grid-editor-footer-animate-in 200ms 120ms backwards;
@@ -4992,8 +4968,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-grid-editor-cells > div .error::before {
-	border-top: 9px solid #d94560;
-	border-right: 9px solid transparent;
+	border-top: 8px solid #d94560;
+	border-right: 8px solid transparent;
 }
 
 .baseTheme .v-grid-editor-cells > div .error, .baseTheme .v-grid-editor-cells > div .error > input {
@@ -5009,7 +4985,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-grid-editor-cells > div input[type="text"].v-datefield-textfield {
-	padding-left: 44.4px;
+	padding-left: 38.4px;
 }
 
 .baseTheme .v-grid-editor-cells > div .v-textfield-focus, .baseTheme .v-grid-editor-cells > div .v-datefield .v-textfield-focus, .baseTheme .v-grid-editor-cells > div .v-filterselect-input:focus {
@@ -5017,12 +4993,12 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-grid-editor-cells > div .v-select {
-	padding-left: 9px;
-	padding-right: 9px;
+	padding-left: 8px;
+	padding-right: 8px;
 }
 
 .baseTheme .v-grid-editor-cells > div .v-checkbox {
-	margin: 0 9px 0 18px;
+	margin: 0 8px 0 16.5px;
 }
 
 .baseTheme .v-grid-editor-cells > div .v-checkbox  > input[type="checkbox"] {
@@ -5037,7 +5013,7 @@ div.v-layout.v-horizontal.v-widget {
 	display: inline-block;
 	color: #d94560;
 	font-weight: 600;
-	width: 19px;
+	width: 16px;
 	text-align: center;
 	content: "!";
 }
@@ -5190,9 +5166,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 37px;
+	height: 32px;
 	border-radius: 3px;
-	padding: 4px 8px;
+	padding: 4px 7px;
 	border: 1px solid #c5c5c5;
 	background: white;
 	color: #474747;
@@ -5201,7 +5177,7 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-transition: box-shadow 180ms, border 180ms;
 	-moz-transition: box-shadow 180ms, border 180ms;
 	transition: box-shadow 180ms, border 180ms;
-	width: 185px;
+	width: 160px;
 }
 
 .baseTheme .v-textfield.v-disabled {
@@ -5308,15 +5284,15 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 28px;
+	height: 24px;
 	border-radius: 3px;
-	padding: 3px 6px;
+	padding: 3px 5px;
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
 	-moz-transition: box-shadow 180ms, border 180ms;
 	transition: box-shadow 180ms, border 180ms;
-	font-size: 12px;
+	font-size: 11px;
 }
 
 .baseTheme .v-textfield-compact, .baseTheme .v-textfield-small {
@@ -5334,9 +5310,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 31px;
+	height: 27px;
 	border-radius: 3px;
-	padding: 3px 7px;
+	padding: 3px 6px;
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
@@ -5345,7 +5321,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-textfield-small {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-textfield-large {
@@ -5363,15 +5339,15 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 44px;
+	height: 38px;
 	border-radius: 3px;
-	padding: 5px 9px;
+	padding: 4px 8px;
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
 	-moz-transition: box-shadow 180ms, border 180ms;
 	transition: box-shadow 180ms, border 180ms;
-	font-size: 20px;
+	font-size: 17px;
 }
 
 .baseTheme .v-textfield-huge {
@@ -5389,15 +5365,15 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 59px;
+	height: 51px;
 	border-radius: 3px;
-	padding: 7px 11px;
+	padding: 6px 10px;
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
 	-moz-transition: box-shadow 180ms, border 180ms;
 	transition: box-shadow 180ms, border 180ms;
-	font-size: 26px;
+	font-size: 23px;
 }
 
 .baseTheme .v-slot-inline-icon {
@@ -5409,7 +5385,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-caption-inline-icon .v-captiontext {
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 400;
 	padding-bottom: 0.3em;
 	padding-left: 1px;
@@ -5424,19 +5400,19 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-caption-inline-icon span.v-icon {
 	left: 1px;
 	bottom: 1px;
-	width: 37px;
-	line-height: 35px;
+	width: 32px;
+	line-height: 30px;
 	text-align: center;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .baseTheme .v-caption-inline-icon img.v-icon {
-	left: 11px;
-	bottom: 11px;
+	left: 8px;
+	bottom: 8px;
 }
 
 .baseTheme .v-textfield-inline-icon  {
-	padding-left: 37px;
+	padding-left: 32px;
 }
 
 .baseTheme .v-slot-inline-icon.v-slot-tiny {
@@ -5448,7 +5424,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-caption-inline-icon.v-caption-tiny .v-captiontext {
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 400;
 	padding-bottom: 0.3em;
 	padding-left: 1px;
@@ -5463,19 +5439,19 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-caption-inline-icon.v-caption-tiny span.v-icon {
 	left: 1px;
 	bottom: 1px;
-	width: 28px;
-	line-height: 26px;
+	width: 24px;
+	line-height: 22px;
 	text-align: center;
-	font-size: 12px;
+	font-size: 11px;
 }
 
 .baseTheme .v-caption-inline-icon.v-caption-tiny img.v-icon {
-	left: 6px;
-	bottom: 6px;
+	left: 4px;
+	bottom: 4px;
 }
 
 .baseTheme .v-textfield-inline-icon.v-textfield-tiny  {
-	padding-left: 28px;
+	padding-left: 24px;
 }
 
 .baseTheme .v-slot-inline-icon.v-slot-compact {
@@ -5487,7 +5463,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-caption-inline-icon.v-caption-compact .v-captiontext {
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 400;
 	padding-bottom: 0.3em;
 	padding-left: 1px;
@@ -5502,19 +5478,19 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-caption-inline-icon.v-caption-compact span.v-icon {
 	left: 1px;
 	bottom: 1px;
-	width: 31px;
-	line-height: 29px;
+	width: 27px;
+	line-height: 25px;
 	text-align: center;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .baseTheme .v-caption-inline-icon.v-caption-compact img.v-icon {
-	left: 8px;
-	bottom: 8px;
+	left: 6px;
+	bottom: 6px;
 }
 
 .baseTheme .v-textfield-inline-icon.v-textfield-compact  {
-	padding-left: 31px;
+	padding-left: 27px;
 }
 
 .baseTheme .v-slot-inline-icon.v-slot-small {
@@ -5526,7 +5502,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-caption-inline-icon.v-caption-small .v-captiontext {
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 400;
 	padding-bottom: 0.3em;
 	padding-left: 1px;
@@ -5541,19 +5517,19 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-caption-inline-icon.v-caption-small span.v-icon {
 	left: 1px;
 	bottom: 1px;
-	width: 31px;
-	line-height: 29px;
+	width: 27px;
+	line-height: 25px;
 	text-align: center;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-caption-inline-icon.v-caption-small img.v-icon {
-	left: 8px;
-	bottom: 8px;
+	left: 6px;
+	bottom: 6px;
 }
 
 .baseTheme .v-textfield-inline-icon.v-textfield-small  {
-	padding-left: 31px;
+	padding-left: 27px;
 }
 
 .baseTheme .v-slot-inline-icon.v-slot-large {
@@ -5565,7 +5541,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-caption-inline-icon.v-caption-large .v-captiontext {
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 400;
 	padding-bottom: 0.3em;
 	padding-left: 1px;
@@ -5580,19 +5556,19 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-caption-inline-icon.v-caption-large span.v-icon {
 	left: 1px;
 	bottom: 1px;
-	width: 44px;
-	line-height: 42px;
+	width: 38px;
+	line-height: 36px;
 	text-align: center;
-	font-size: 20px;
+	font-size: 17px;
 }
 
 .baseTheme .v-caption-inline-icon.v-caption-large img.v-icon {
-	left: 14px;
-	bottom: 14px;
+	left: 11px;
+	bottom: 11px;
 }
 
 .baseTheme .v-textfield-inline-icon.v-textfield-large  {
-	padding-left: 44px;
+	padding-left: 38px;
 }
 
 .baseTheme .v-slot-inline-icon.v-slot-huge {
@@ -5604,7 +5580,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-caption-inline-icon.v-caption-huge .v-captiontext {
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 400;
 	padding-bottom: 0.3em;
 	padding-left: 1px;
@@ -5619,19 +5595,19 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-caption-inline-icon.v-caption-huge span.v-icon {
 	left: 1px;
 	bottom: 1px;
-	width: 59px;
-	line-height: 57px;
+	width: 51px;
+	line-height: 49px;
 	text-align: center;
-	font-size: 26px;
+	font-size: 23px;
 }
 
 .baseTheme .v-caption-inline-icon.v-caption-huge img.v-icon {
-	left: 22px;
-	bottom: 22px;
+	left: 18px;
+	bottom: 18px;
 }
 
 .baseTheme .v-textfield-inline-icon.v-textfield-huge  {
-	padding-left: 59px;
+	padding-left: 51px;
 }
 
 .baseTheme .v-textfield-align-right {
@@ -5657,9 +5633,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 37px;
+	height: 32px;
 	border-radius: 3px;
-	padding: 6px;
+	padding: 5px;
 	border: 1px solid #c5c5c5;
 	background: white;
 	color: #474747;
@@ -5671,7 +5647,7 @@ div.v-layout.v-horizontal.v-widget {
 	height: auto;
 	resize: none;
 	white-space: pre-wrap;
-	width: 185px;
+	width: 160px;
 }
 
 .baseTheme .v-textarea.v-disabled {
@@ -5748,9 +5724,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 28px;
+	height: 24px;
 	border-radius: 3px;
-	padding: 6px;
+	padding: 5px;
 	
 	
 	
@@ -5760,7 +5736,7 @@ div.v-layout.v-horizontal.v-widget {
 	height: auto;
 	resize: none;
 	white-space: pre-wrap;
-	font-size: 12px;
+	font-size: 11px;
 }
 
 .baseTheme .v-textarea-small {
@@ -5778,9 +5754,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 31px;
+	height: 27px;
 	border-radius: 3px;
-	padding: 6px;
+	padding: 5px;
 	
 	
 	
@@ -5790,7 +5766,7 @@ div.v-layout.v-horizontal.v-widget {
 	height: auto;
 	resize: none;
 	white-space: pre-wrap;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-textarea-large {
@@ -5808,9 +5784,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 44px;
+	height: 38px;
 	border-radius: 3px;
-	padding: 6px;
+	padding: 5px;
 	
 	
 	
@@ -5820,7 +5796,7 @@ div.v-layout.v-horizontal.v-widget {
 	height: auto;
 	resize: none;
 	white-space: pre-wrap;
-	font-size: 20px;
+	font-size: 17px;
 }
 
 .baseTheme .v-textarea-huge {
@@ -5838,9 +5814,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 59px;
+	height: 51px;
 	border-radius: 3px;
-	padding: 6px;
+	padding: 5px;
 	
 	
 	
@@ -5850,7 +5826,7 @@ div.v-layout.v-horizontal.v-widget {
 	height: auto;
 	resize: none;
 	white-space: pre-wrap;
-	font-size: 26px;
+	font-size: 23px;
 }
 
 .baseTheme .v-textarea-align-right {
@@ -5863,8 +5839,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-datefield {
 	position: relative;
-	width: 185px;
-	height: 37px;
+	width: 160px;
+	height: 32px;
 	border-radius: 3px;
 }
 
@@ -5884,9 +5860,9 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 37px;
+	height: 32px;
 	border-radius: 3px;
-	padding: 4px 8px;
+	padding: 4px 7px;
 	border: 1px solid #c5c5c5;
 	background: white;
 	color: #474747;
@@ -5895,7 +5871,7 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-transition: box-shadow 180ms, border 180ms;
 	-moz-transition: box-shadow 180ms, border 180ms;
 	transition: box-shadow 180ms, border 180ms;
-	padding-left: 44.4px;
+	padding-left: 38.4px;
 	width: 100%;
 	height: 100%;
 	border-radius: inherit;
@@ -5935,8 +5911,8 @@ div.v-layout.v-horizontal.v-widget {
 	padding: 0;
 	position: absolute;
 	z-index: 10;
-	width: 37px;
-	line-height: 35px;
+	width: 32px;
+	line-height: 30px;
 	text-align: center;
 	font: inherit;
 	outline: none;
@@ -6075,19 +6051,19 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-datefield-full {
-	width: 240px;
+	width: 210px;
 }
 
 .baseTheme .v-datefield-day {
-	width: 185px;
+	width: 160px;
 }
 
 .baseTheme .v-datefield-month {
-	width: 120px;
+	width: 105px;
 }
 
 .baseTheme .v-datefield-year {
-	width: 104px;
+	width: 91px;
 }
 
 .baseTheme .v-datefield-popup {
@@ -6101,9 +6077,9 @@ div.v-layout.v-horizontal.v-widget {
 	-moz-backface-visibility: hidden;
 	-ms-backface-visibility: hidden;
 	backface-visibility: hidden;
-	margin-top: 5px !important;
-	margin-bottom: 5px !important;
-	margin-right: 5px !important;
+	margin-top: 4px !important;
+	margin-bottom: 4px !important;
+	margin-right: 4px !important;
 	cursor: default;
 	width: auto;
 }
@@ -6131,7 +6107,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-datefield-popup .v-datefield-calendarpanel {
-	font-size: 16px;
+	font-size: 14px;
 	text-align: center;
 }
 
@@ -6141,12 +6117,12 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-datefield-popup .v-datefield-calendarpanel-day {
 	box-sizing: border-box;
-	width: 30px;
-	height: 26px;
+	width: 26px;
+	height: 22px;
 	border: 1px solid transparent;
-	line-height: 26px;
+	line-height: 22px;
 	text-align: center;
-	font-size: 14px;
+	font-size: 13px;
 	background: #fefefe;
 	border-radius: 2px;
 	-webkit-transition: color 200ms;
@@ -6193,13 +6169,13 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-datefield-popup .v-datefield-calendarpanel-weekdays {
-	height: 26px;
+	height: 22px;
 	color: rgba(135, 135, 135, 0.85);
 }
 
 .baseTheme .v-datefield-popup .v-datefield-calendarpanel-weekdays strong {
 	font: inherit;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .baseTheme .v-datefield-popup .v-datefield-calendarpanel-header {
@@ -6219,8 +6195,8 @@ div.v-layout.v-horizontal.v-widget {
 	cursor: pointer;
 	color: transparent;
 	font-size: 0;
-	width: 19px;
-	height: 25px;
+	width: 16px;
+	height: 21px;
 	outline: none;
 	position: relative;
 	vertical-align: middle;
@@ -6228,8 +6204,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-datefield-popup td[class*="year"] button:before, .baseTheme .v-datefield-popup td[class*="month"] button:before {
 	color: #a2a2a2;
-	font-size: 21px;
-	line-height: 24px;
+	font-size: 18px;
+	line-height: 21px;
 	-webkit-transition: color 200ms;
 	-moz-transition: color 200ms;
 	transition: color 200ms;
@@ -6270,18 +6246,18 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-datefield-popup td.v-datefield-calendarpanel-month {
-	width: 148px;
+	width: 128px;
 	color: #4783eb;
 }
 
 .baseTheme .v-datefield-popup .v-datefield-calendarpanel-year td.v-datefield-calendarpanel-month {
-	width: 74px;
+	width: 64px;
 }
 
 .baseTheme .v-datefield-popup .v-datefield-calendarpanel-weeknumber, .baseTheme .v-datefield-popup .v-datefield-calendarpanel-weekdays.v-datefield-calendarpanel-weeknumbers td:first-child {
-	width: 30px;
+	width: 26px;
 	color: rgba(135, 135, 135, 0.85);
-	font-size: 14px;
+	font-size: 13px;
 	display: inline-block;
 	text-align: left;
 }
@@ -6293,10 +6269,10 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-datefield-popup .v-datefield-calendarpanel-weeknumbers .v-first:before {
 	content: "";
 	position: absolute;
-	top: 38px;
+	top: 32px;
 	bottom: 0;
 	left: 0;
-	width: 34px;
+	width: 30px;
 	border-top: 1px solid #e3e3e3;
 	border-right: 1px solid #e3e3e3;
 	border-top-right-radius: 3px;
@@ -6306,7 +6282,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-datefield-popup td.v-datefield-calendarpanel-time {
 	width: 100%;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .baseTheme .v-datefield-popup td.v-datefield-calendarpanel-time .v-label {
@@ -6316,7 +6292,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-datefield-calendarpanel {
-	font-size: 16px;
+	font-size: 14px;
 	text-align: center;
 }
 
@@ -6326,12 +6302,12 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-datefield-calendarpanel-day {
 	box-sizing: border-box;
-	width: 30px;
-	height: 26px;
+	width: 26px;
+	height: 22px;
 	border: 1px solid transparent;
-	line-height: 26px;
+	line-height: 22px;
 	text-align: center;
-	font-size: 14px;
+	font-size: 13px;
 	background: #fefefe;
 	border-radius: 2px;
 	-webkit-transition: color 200ms;
@@ -6378,13 +6354,13 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-datefield-calendarpanel-weekdays {
-	height: 26px;
+	height: 22px;
 	color: rgba(135, 135, 135, 0.85);
 }
 
 .baseTheme .v-datefield-calendarpanel-weekdays strong {
 	font: inherit;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .baseTheme .v-datefield-calendarpanel-header {
@@ -6404,8 +6380,8 @@ div.v-layout.v-horizontal.v-widget {
 	cursor: pointer;
 	color: transparent;
 	font-size: 0;
-	width: 19px;
-	height: 25px;
+	width: 16px;
+	height: 21px;
 	outline: none;
 	position: relative;
 	vertical-align: middle;
@@ -6413,8 +6389,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme td[class*="year"] button:before, .baseTheme td[class*="month"] button:before {
 	color: #a2a2a2;
-	font-size: 21px;
-	line-height: 24px;
+	font-size: 18px;
+	line-height: 21px;
 	-webkit-transition: color 200ms;
 	-moz-transition: color 200ms;
 	transition: color 200ms;
@@ -6455,18 +6431,18 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme td.v-datefield-calendarpanel-month {
-	width: 148px;
+	width: 128px;
 	color: #4783eb;
 }
 
 .baseTheme .v-datefield-calendarpanel-year td.v-datefield-calendarpanel-month {
-	width: 74px;
+	width: 64px;
 }
 
 .baseTheme .v-datefield-calendarpanel-weeknumber, .baseTheme .v-datefield-calendarpanel-weekdays.v-datefield-calendarpanel-weeknumbers td:first-child {
-	width: 30px;
+	width: 26px;
 	color: rgba(135, 135, 135, 0.85);
-	font-size: 14px;
+	font-size: 13px;
 	display: inline-block;
 	text-align: left;
 }
@@ -6478,10 +6454,10 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-datefield-calendarpanel-weeknumbers .v-first:before {
 	content: "";
 	position: absolute;
-	top: 38px;
+	top: 32px;
 	bottom: 0;
 	left: 0;
-	width: 34px;
+	width: 30px;
 	border-top: 1px solid #e3e3e3;
 	border-right: 1px solid #e3e3e3;
 	border-top-right-radius: 3px;
@@ -6491,7 +6467,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme td.v-datefield-calendarpanel-time {
 	width: 100%;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .baseTheme td.v-datefield-calendarpanel-time .v-label {
@@ -6536,9 +6512,9 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-datefield-tiny {
-	height: 28px;
+	height: 24px;
 	border-radius: 3px;
-	font-size: 12px;
+	font-size: 11px;
 }
 
 .baseTheme .v-datefield-tiny [class*="textfield"] {
@@ -6557,16 +6533,16 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 28px;
+	height: 24px;
 	border-radius: 3px;
-	padding: 3px 6px;
+	padding: 3px 5px;
 	
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
 	-moz-transition: box-shadow 180ms, border 180ms;
 	transition: box-shadow 180ms, border 180ms;
-	padding-left: 33.6px;
+	padding-left: 28.8px;
 	width: 100%;
 	height: 100%;
 	border-radius: inherit;
@@ -6581,8 +6557,8 @@ div.v-layout.v-horizontal.v-widget {
 	padding: 0;
 	position: absolute;
 	z-index: 10;
-	width: 28px;
-	line-height: 28px;
+	width: 24px;
+	line-height: 24px;
 	text-align: center;
 	font: inherit;
 	outline: none;
@@ -6644,7 +6620,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-datefield-compact, .baseTheme .v-datefield-small {
-	height: 31px;
+	height: 27px;
 	border-radius: 3px;
 }
 
@@ -6664,16 +6640,16 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 31px;
+	height: 27px;
 	border-radius: 3px;
-	padding: 3px 7px;
+	padding: 3px 6px;
 	
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
 	-moz-transition: box-shadow 180ms, border 180ms;
 	transition: box-shadow 180ms, border 180ms;
-	padding-left: 37.2px;
+	padding-left: 32.4px;
 	width: 100%;
 	height: 100%;
 	border-radius: inherit;
@@ -6688,8 +6664,8 @@ div.v-layout.v-horizontal.v-widget {
 	padding: 0;
 	position: absolute;
 	z-index: 10;
-	width: 31px;
-	line-height: 31px;
+	width: 27px;
+	line-height: 27px;
 	text-align: center;
 	font: inherit;
 	outline: none;
@@ -6751,13 +6727,13 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-datefield-small {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-datefield-large {
-	height: 44px;
+	height: 38px;
 	border-radius: 3px;
-	font-size: 20px;
+	font-size: 17px;
 }
 
 .baseTheme .v-datefield-large [class*="textfield"] {
@@ -6776,16 +6752,16 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 44px;
+	height: 38px;
 	border-radius: 3px;
-	padding: 5px 9px;
+	padding: 4px 8px;
 	
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
 	-moz-transition: box-shadow 180ms, border 180ms;
 	transition: box-shadow 180ms, border 180ms;
-	padding-left: 52.8px;
+	padding-left: 45.6px;
 	width: 100%;
 	height: 100%;
 	border-radius: inherit;
@@ -6800,8 +6776,8 @@ div.v-layout.v-horizontal.v-widget {
 	padding: 0;
 	position: absolute;
 	z-index: 10;
-	width: 44px;
-	line-height: 44px;
+	width: 38px;
+	line-height: 38px;
 	text-align: center;
 	font: inherit;
 	outline: none;
@@ -6863,9 +6839,9 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-datefield-huge {
-	height: 59px;
+	height: 51px;
 	border-radius: 3px;
-	font-size: 26px;
+	font-size: 23px;
 }
 
 .baseTheme .v-datefield-huge [class*="textfield"] {
@@ -6884,16 +6860,16 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 59px;
+	height: 51px;
 	border-radius: 3px;
-	padding: 7px 11px;
+	padding: 6px 10px;
 	
 	
 	
 	-webkit-transition: box-shadow 180ms, border 180ms;
 	-moz-transition: box-shadow 180ms, border 180ms;
 	transition: box-shadow 180ms, border 180ms;
-	padding-left: 70.8px;
+	padding-left: 61.2px;
 	width: 100%;
 	height: 100%;
 	border-radius: inherit;
@@ -6908,8 +6884,8 @@ div.v-layout.v-horizontal.v-widget {
 	padding: 0;
 	position: absolute;
 	z-index: 10;
-	width: 59px;
-	line-height: 59px;
+	width: 51px;
+	line-height: 51px;
 	text-align: center;
 	font: inherit;
 	outline: none;
@@ -6971,7 +6947,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-inline-datefield-calendarpanel {
-	font-size: 16px;
+	font-size: 14px;
 	text-align: center;
 }
 
@@ -6981,12 +6957,12 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-inline-datefield-calendarpanel-day {
 	box-sizing: border-box;
-	width: 30px;
-	height: 26px;
+	width: 26px;
+	height: 22px;
 	border: 1px solid transparent;
-	line-height: 26px;
+	line-height: 22px;
 	text-align: center;
-	font-size: 14px;
+	font-size: 13px;
 	background: #fefefe;
 	border-radius: 2px;
 	-webkit-transition: color 200ms;
@@ -7033,13 +7009,13 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-inline-datefield-calendarpanel-weekdays {
-	height: 26px;
+	height: 22px;
 	color: rgba(135, 135, 135, 0.85);
 }
 
 .baseTheme .v-inline-datefield-calendarpanel-weekdays strong {
 	font: inherit;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .baseTheme .v-inline-datefield-calendarpanel-header {
@@ -7059,8 +7035,8 @@ div.v-layout.v-horizontal.v-widget {
 	cursor: pointer;
 	color: transparent;
 	font-size: 0;
-	width: 19px;
-	height: 25px;
+	width: 16px;
+	height: 21px;
 	outline: none;
 	position: relative;
 	vertical-align: middle;
@@ -7068,8 +7044,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme td[class*="year"] button:before, .baseTheme td[class*="month"] button:before {
 	color: #a2a2a2;
-	font-size: 21px;
-	line-height: 24px;
+	font-size: 18px;
+	line-height: 21px;
 	-webkit-transition: color 200ms;
 	-moz-transition: color 200ms;
 	transition: color 200ms;
@@ -7110,18 +7086,18 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme td.v-inline-datefield-calendarpanel-month {
-	width: 148px;
+	width: 128px;
 	color: #4783eb;
 }
 
 .baseTheme .v-inline-datefield-calendarpanel-year td.v-inline-datefield-calendarpanel-month {
-	width: 74px;
+	width: 64px;
 }
 
 .baseTheme .v-inline-datefield-calendarpanel-weeknumber, .baseTheme .v-inline-datefield-calendarpanel-weekdays.v-inline-datefield-calendarpanel-weeknumbers td:first-child {
-	width: 30px;
+	width: 26px;
 	color: rgba(135, 135, 135, 0.85);
-	font-size: 14px;
+	font-size: 13px;
 	display: inline-block;
 	text-align: left;
 }
@@ -7133,10 +7109,10 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-inline-datefield-calendarpanel-weeknumbers .v-first:before {
 	content: "";
 	position: absolute;
-	top: 38px;
+	top: 32px;
 	bottom: 0;
 	left: 0;
-	width: 34px;
+	width: 30px;
 	border-top: 1px solid #e3e3e3;
 	border-right: 1px solid #e3e3e3;
 	border-top-right-radius: 3px;
@@ -7146,7 +7122,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme td.v-inline-datefield-calendarpanel-time {
 	width: 100%;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .baseTheme td.v-inline-datefield-calendarpanel-time .v-label {
@@ -7158,28 +7134,28 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-inline-datefield-calendarpanel {
 	position: relative;
 	background: white;
-	padding: 6px;
+	padding: 5px;
 }
 
 .baseTheme .v-gridlayout-margin-top {
-	padding-top: 37px;
+	padding-top: 32px;
 }
 
 .baseTheme .v-gridlayout-margin-bottom {
-	padding-bottom: 37px;
+	padding-bottom: 32px;
 }
 
 .baseTheme .v-gridlayout-margin-left {
-	padding-left: 37px;
+	padding-left: 32px;
 }
 
 .baseTheme .v-gridlayout-margin-right {
-	padding-right: 37px;
+	padding-right: 32px;
 }
 
 .baseTheme .v-gridlayout-spacing-on {
-	padding-left: 12px;
-	padding-top: 12px;
+	padding-left: 11px;
+	padding-top: 11px;
 }
 
 .baseTheme .v-menubar {
@@ -7190,8 +7166,8 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-tap-highlight-color: transparent;
 	-webkit-touch-callout: none;
 	cursor: pointer;
-	height: 37px;
-	padding: 0 16px;
+	height: 32px;
+	padding: 0 14px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -7208,7 +7184,7 @@ div.v-layout.v-horizontal.v-widget {
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
 	padding: 0;
 	text-align: left;
-	line-height: 35px;
+	line-height: 30px;
 }
 
 .baseTheme .v-menubar:after {
@@ -7254,11 +7230,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-menubar  > .v-menubar-menuitem {
-	padding: 0 14px;
+	padding: 0 12px;
 }
 
 .baseTheme .v-menubar  > .v-menubar-menuitem[class*="-icon-only"] {
-	width: 37px;
+	width: 32px;
 }
 
 .baseTheme .v-menubar:active:after {
@@ -7270,8 +7246,8 @@ div.v-layout.v-horizontal.v-widget {
 	z-index: 1;
 	display: inline-block;
 	box-sizing: border-box;
-	height: 37px;
-	padding: 0 15px;
+	height: 32px;
+	padding: 0 13px;
 	color: inherit;
 	font-weight: 400;
 	
@@ -7334,12 +7310,12 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-menubar > .v-menubar-menuitem .v-icon {
-	margin: 0 4px 0 -4px;
+	margin: 0 3px 0 -3px;
 	cursor: inherit;
 }
 
 .baseTheme .v-menubar > .v-menubar-menuitem[class*="-icon-only"] {
-	width: 37px;
+	width: 32px;
 	padding: 0;
 }
 
@@ -7423,7 +7399,7 @@ div.v-layout.v-horizontal.v-widget {
 	-ms-backface-visibility: hidden;
 	backface-visibility: hidden;
 	padding: 4px 4px;
-	margin: 5px 0 0 1px !important;
+	margin: 4px 0 0 1px !important;
 }
 
 .baseTheme .v-menubar-popup[class*="animate-in"] {
@@ -7445,14 +7421,14 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-menubar-popup .v-menubar-menuitem {
 	display: block;
 	cursor: pointer;
-	line-height: 27px;
-	padding: 0 20px 0 10px;
+	line-height: 23px;
+	padding: 0 16px 0 8px;
 	border-radius: 2px;
 	font-weight: 400;
 	white-space: nowrap;
 	position: relative;
-	padding-left: 32px;
-	padding-right: 37px;
+	padding-left: 27px;
+	padding-right: 32px;
 	position: relative;
 }
 
@@ -7471,8 +7447,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-menubar-popup .v-menubar-menuitem .v-icon {
-	max-height: 27px;
-	margin-right: 5px;
+	max-height: 23px;
+	margin-right: 4px;
 	min-width: 1em;
 }
 
@@ -7482,10 +7458,10 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-menubar-popup .v-menubar-submenu-indicator  + .v-menubar-menuitem-caption:after {
 	position: absolute;
-	right: 10px;
+	right: 8px;
 	font-family: ThemeIcons;
 	content: "\f054";
-	line-height: 29px;
+	line-height: 25px;
 }
 
 .baseTheme .v-menubar-popup .v-menubar-menuitem-selected {
@@ -7508,7 +7484,7 @@ div.v-layout.v-horizontal.v-widget {
 	content: "\f00c";
 	font-family: ThemeIcons;
 	position: absolute;
-	left: 10px;
+	left: 8px;
 }
 
 .baseTheme .v-menubar-popup [class*="unchecked"] .v-menubar-menuitem-caption:before {
@@ -7520,8 +7496,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-menubar-small {
-	height: 31px;
-	padding: 0 14px;
+	height: 27px;
+	padding: 0 12px;
 	
 	font-weight: 400;
 	
@@ -7529,8 +7505,8 @@ div.v-layout.v-horizontal.v-widget {
 	border-radius: 3px;
 	padding: 0;
 	text-align: left;
-	line-height: 29px;
-	font-size: 14px;
+	line-height: 25px;
+	font-size: 12px;
 }
 
 .baseTheme .v-menubar-small:after {
@@ -7542,11 +7518,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-menubar-small  > .v-menubar-menuitem {
-	padding: 0 12px;
+	padding: 0 10px;
 }
 
 .baseTheme .v-menubar-small  > .v-menubar-menuitem[class*="-icon-only"] {
-	width: 31px;
+	width: 27px;
 }
 
 .baseTheme .v-menubar-borderless {
@@ -7571,7 +7547,7 @@ div.v-layout.v-horizontal.v-widget {
 	margin-right: 1px;
 	border-radius: 3px;
 	color: #4783eb;
-	padding: 0 12px;
+	padding: 0 11px;
 	-webkit-transition: color 140ms;
 	-moz-transition: color 140ms;
 	transition: color 140ms;
@@ -7618,7 +7594,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-radiobutton {
 	position: relative;
-	line-height: 19px;
+	line-height: 16px;
 	white-space: nowrap;
 }
 
@@ -7627,7 +7603,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 :root .baseTheme .v-radiobutton {
-	padding-left: 25px;
+	padding-left: 21px;
 }
 
 :root .baseTheme .v-radiobutton label {
@@ -7658,19 +7634,19 @@ div.v-layout.v-horizontal.v-widget {
 	content: "";
 	display: inline-block;
 	box-sizing: border-box;
-	width: 19px;
-	height: 19px;
+	width: 16px;
+	height: 16px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	border-radius: 3px;
-	font-size: 13px;
+	font-size: 11px;
 	text-align: center;
 }
 
 :root .baseTheme .v-radiobutton > input ~ label:before {
-	height: 18.5px;
-	padding: 0 9px;
+	height: 16px;
+	padding: 0 8px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -7686,7 +7662,7 @@ div.v-layout.v-horizontal.v-widget {
 	box-shadow: inset 0 1px 0 white;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
 	padding: 0;
-	height: 19px;
+	height: 16px;
 }
 
 :root .baseTheme .v-radiobutton > input ~ label:after {
@@ -7707,7 +7683,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-radiobutton > .v-icon, .baseTheme .v-radiobutton > label .v-icon {
-	margin: 0 6px 0 3px;
+	margin: 0 5px 0 3px;
 	min-width: 1em;
 	cursor: pointer;
 }
@@ -7744,10 +7720,10 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 :root .baseTheme .v-radiobutton > input:checked ~ label:after {
-	width: 7px;
-	height: 7px;
-	top: 6px;
-	left: 6px;
+	width: 6px;
+	height: 6px;
+	top: 5px;
+	left: 5px;
 	background: #4783eb;
 }
 
@@ -7758,15 +7734,15 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-select-optiongroup .v-radiobutton, .baseTheme .v-select-optiongroup .v-checkbox {
 	display: block;
-	margin: 9px 16px 0 0;
+	margin: 8px 14px 0 0;
 }
 
 .baseTheme .v-select-optiongroup .v-radiobutton:first-child, .baseTheme .v-select-optiongroup .v-checkbox:first-child {
-	margin-top: 6px;
+	margin-top: 5px;
 }
 
 .baseTheme .v-select-optiongroup .v-radiobutton:last-child, .baseTheme .v-select-optiongroup .v-checkbox:last-child {
-	margin-bottom: 6px;
+	margin-bottom: 5px;
 }
 
 .baseTheme .v-select-optiongroup.v-has-width label {
@@ -7774,12 +7750,12 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-select-optiongroup-small {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-select-optiongroup-small .v-checkbox {
 	position: relative;
-	line-height: 16px;
+	line-height: 14px;
 	white-space: nowrap;
 }
 
@@ -7788,7 +7764,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 :root .baseTheme .v-select-optiongroup-small .v-checkbox {
-	padding-left: 21px;
+	padding-left: 18px;
 }
 
 :root .baseTheme .v-select-optiongroup-small .v-checkbox label {
@@ -7819,18 +7795,18 @@ div.v-layout.v-horizontal.v-widget {
 	content: "";
 	display: inline-block;
 	box-sizing: border-box;
-	width: 16px;
-	height: 16px;
+	width: 14px;
+	height: 14px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	border-radius: 3px;
-	font-size: 11px;
+	font-size: 9px;
 	text-align: center;
 }
 
 :root .baseTheme .v-select-optiongroup-small .v-checkbox > input ~ label:before {
-	height: 15.5px;
+	height: 13.5px;
 	padding: 0 7px;
 	color: #191919;
 	font-weight: 400;
@@ -7847,7 +7823,7 @@ div.v-layout.v-horizontal.v-widget {
 	box-shadow: inset 0 1px 0 white;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
 	padding: 0;
-	height: 16px;
+	height: 14px;
 }
 
 :root .baseTheme .v-select-optiongroup-small .v-checkbox > input ~ label:after {
@@ -7868,7 +7844,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-select-optiongroup-small .v-checkbox > .v-icon, .baseTheme .v-select-optiongroup-small .v-checkbox > label .v-icon {
-	margin: 0 5px 0 3px;
+	margin: 0 5px 0 2px;
 	min-width: 1em;
 	cursor: pointer;
 }
@@ -7906,7 +7882,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-select-optiongroup-small .v-radiobutton {
 	position: relative;
-	line-height: 16px;
+	line-height: 14px;
 	white-space: nowrap;
 }
 
@@ -7915,7 +7891,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 :root .baseTheme .v-select-optiongroup-small .v-radiobutton {
-	padding-left: 21px;
+	padding-left: 18px;
 }
 
 :root .baseTheme .v-select-optiongroup-small .v-radiobutton label {
@@ -7946,18 +7922,18 @@ div.v-layout.v-horizontal.v-widget {
 	content: "";
 	display: inline-block;
 	box-sizing: border-box;
-	width: 16px;
-	height: 16px;
+	width: 14px;
+	height: 14px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	border-radius: 3px;
-	font-size: 11px;
+	font-size: 9px;
 	text-align: center;
 }
 
 :root .baseTheme .v-select-optiongroup-small .v-radiobutton > input ~ label:before {
-	height: 15.5px;
+	height: 13.5px;
 	padding: 0 7px;
 	color: #191919;
 	font-weight: 400;
@@ -7974,7 +7950,7 @@ div.v-layout.v-horizontal.v-widget {
 	box-shadow: inset 0 1px 0 white;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
 	padding: 0;
-	height: 16px;
+	height: 14px;
 }
 
 :root .baseTheme .v-select-optiongroup-small .v-radiobutton > input ~ label:after {
@@ -7995,7 +7971,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-select-optiongroup-small .v-radiobutton > .v-icon, .baseTheme .v-select-optiongroup-small .v-radiobutton > label .v-icon {
-	margin: 0 5px 0 3px;
+	margin: 0 5px 0 2px;
 	min-width: 1em;
 	cursor: pointer;
 }
@@ -8032,8 +8008,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 :root .baseTheme .v-select-optiongroup-small .v-radiobutton > input:checked ~ label:after {
-	width: 6px;
-	height: 6px;
+	width: 5px;
+	height: 5px;
 	top: 5px;
 	left: 5px;
 	background: #4783eb;
@@ -8046,7 +8022,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-select-optiongroup-small .v-radiobutton, .baseTheme .v-select-optiongroup-small .v-checkbox {
 	display: block;
-	margin: 8px 16px 0 0;
+	margin: 7px 14px 0 0;
 }
 
 .baseTheme .v-select-optiongroup-small .v-radiobutton:first-child, .baseTheme .v-select-optiongroup-small .v-checkbox:first-child {
@@ -8062,12 +8038,12 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-select-optiongroup-large {
-	font-size: 20px;
+	font-size: 17px;
 }
 
 .baseTheme .v-select-optiongroup-large .v-checkbox {
 	position: relative;
-	line-height: 22px;
+	line-height: 19px;
 	white-space: nowrap;
 }
 
@@ -8076,7 +8052,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 :root .baseTheme .v-select-optiongroup-large .v-checkbox {
-	padding-left: 29px;
+	padding-left: 25px;
 }
 
 :root .baseTheme .v-select-optiongroup-large .v-checkbox label {
@@ -8107,19 +8083,19 @@ div.v-layout.v-horizontal.v-widget {
 	content: "";
 	display: inline-block;
 	box-sizing: border-box;
-	width: 22px;
-	height: 22px;
+	width: 19px;
+	height: 19px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	border-radius: 3px;
-	font-size: 15px;
+	font-size: 13px;
 	text-align: center;
 }
 
 :root .baseTheme .v-select-optiongroup-large .v-checkbox > input ~ label:before {
-	height: 22px;
-	padding: 0 10px;
+	height: 19px;
+	padding: 0 9px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -8135,7 +8111,7 @@ div.v-layout.v-horizontal.v-widget {
 	box-shadow: inset 0 1px 0 white;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
 	padding: 0;
-	height: 22px;
+	height: 19px;
 }
 
 :root .baseTheme .v-select-optiongroup-large .v-checkbox > input ~ label:after {
@@ -8156,7 +8132,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-select-optiongroup-large .v-checkbox > .v-icon, .baseTheme .v-select-optiongroup-large .v-checkbox > label .v-icon {
-	margin: 0 7px 0 4px;
+	margin: 0 6px 0 3px;
 	min-width: 1em;
 	cursor: pointer;
 }
@@ -8194,7 +8170,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-select-optiongroup-large .v-radiobutton {
 	position: relative;
-	line-height: 22px;
+	line-height: 19px;
 	white-space: nowrap;
 }
 
@@ -8203,7 +8179,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 :root .baseTheme .v-select-optiongroup-large .v-radiobutton {
-	padding-left: 29px;
+	padding-left: 25px;
 }
 
 :root .baseTheme .v-select-optiongroup-large .v-radiobutton label {
@@ -8234,19 +8210,19 @@ div.v-layout.v-horizontal.v-widget {
 	content: "";
 	display: inline-block;
 	box-sizing: border-box;
-	width: 22px;
-	height: 22px;
+	width: 19px;
+	height: 19px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	border-radius: 3px;
-	font-size: 15px;
+	font-size: 13px;
 	text-align: center;
 }
 
 :root .baseTheme .v-select-optiongroup-large .v-radiobutton > input ~ label:before {
-	height: 22px;
-	padding: 0 10px;
+	height: 19px;
+	padding: 0 9px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -8262,7 +8238,7 @@ div.v-layout.v-horizontal.v-widget {
 	box-shadow: inset 0 1px 0 white;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
 	padding: 0;
-	height: 22px;
+	height: 19px;
 }
 
 :root .baseTheme .v-select-optiongroup-large .v-radiobutton > input ~ label:after {
@@ -8283,7 +8259,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-select-optiongroup-large .v-radiobutton > .v-icon, .baseTheme .v-select-optiongroup-large .v-radiobutton > label .v-icon {
-	margin: 0 7px 0 4px;
+	margin: 0 6px 0 3px;
 	min-width: 1em;
 	cursor: pointer;
 }
@@ -8320,10 +8296,10 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 :root .baseTheme .v-select-optiongroup-large .v-radiobutton > input:checked ~ label:after {
-	width: 8px;
-	height: 8px;
-	top: 7px;
-	left: 7px;
+	width: 7px;
+	height: 7px;
+	top: 6px;
+	left: 6px;
 	background: #4783eb;
 }
 
@@ -8334,15 +8310,15 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-select-optiongroup-large .v-radiobutton, .baseTheme .v-select-optiongroup-large .v-checkbox {
 	display: block;
-	margin: 11px 16px 0 0;
+	margin: 10px 14px 0 0;
 }
 
 .baseTheme .v-select-optiongroup-large .v-radiobutton:first-child, .baseTheme .v-select-optiongroup-large .v-checkbox:first-child {
-	margin-top: 7px;
+	margin-top: 6px;
 }
 
 .baseTheme .v-select-optiongroup-large .v-radiobutton:last-child, .baseTheme .v-select-optiongroup-large .v-checkbox:last-child {
-	margin-bottom: 7px;
+	margin-bottom: 6px;
 }
 
 .baseTheme .v-select-optiongroup-large.v-has-width label {
@@ -8414,11 +8390,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-link-small {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-link-large {
-	font-size: 20px;
+	font-size: 17px;
 }
 
 .baseTheme .v-window {
@@ -8435,8 +8411,8 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), 0 16px 80px -6px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.0902);
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), 0 16px 80px -6px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.0902);
 	padding: 0;
-	min-width: 148px !important;
-	min-height: 37px !important;
+	min-width: 128px !important;
+	min-height: 32px !important;
 	white-space: nowrap;
 	overflow: hidden !important;
 	-webkit-transition: width 200ms, height 200ms, top 200ms, left 200ms;
@@ -8520,9 +8496,9 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-window-header {
-	line-height: 36px;
-	padding-left: 12px;
-	margin-right: 74px;
+	line-height: 31px;
+	padding-left: 11px;
+	margin-right: 64px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -8530,11 +8506,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-window-restorebox-disabled  ~ .v-window-closebox ~ .v-window-header, .baseTheme .v-window-maximizebox-disabled  ~ .v-window-closebox ~ .v-window-header {
-	margin-right: 37px;
+	margin-right: 32px;
 }
 
 .baseTheme .v-window-restorebox-disabled  ~ .v-window-closebox-disabled ~ .v-window-header, .baseTheme .v-window-maximizebox-disabled  ~ .v-window-closebox-disabled ~ .v-window-header {
-	margin-right: 12px;
+	margin-right: 11px;
 }
 
 .baseTheme .v-window-closebox, .baseTheme .v-window-maximizebox, .baseTheme .v-window-restorebox {
@@ -8543,13 +8519,13 @@ div.v-layout.v-horizontal.v-widget {
 	top: 0;
 	right: 0;
 	box-sizing: border-box;
-	width: 33px;
-	height: 36px;
+	width: 28px;
+	height: 31px;
 	background-color: #fefefe;
-	line-height: 34px;
+	line-height: 29px;
 	text-align: center;
 	cursor: pointer;
-	font-size: 21px;
+	font-size: 18px;
 	color: #989898;
 	-webkit-transition: color 140ms;
 	-moz-transition: color 140ms;
@@ -8573,9 +8549,9 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-window-closebox:focus::after {
 	content: "";
 	position: absolute;
-	top: 6px;
-	right: 6px;
-	bottom: 6px;
+	top: 5px;
+	right: 5px;
+	bottom: 5px;
 	left: 2px;
 	border-radius: 3px;
 	-webkit-box-shadow: 0 0 0 2px rgba(71, 131, 235, 0.5);
@@ -8585,10 +8561,10 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-window-maximizebox:focus::after, .baseTheme .v-window-restorebox:focus::after {
 	content: "";
 	position: absolute;
-	top: 6px;
+	top: 5px;
 	right: 2px;
-	bottom: 6px;
-	left: 6px;
+	bottom: 5px;
+	left: 5px;
 	border-radius: 3px;
 	-webkit-box-shadow: 0 0 0 2px rgba(71, 131, 235, 0.5);
 	box-shadow: 0 0 0 2px rgba(71, 131, 235, 0.5);
@@ -8604,7 +8580,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-window-maximizebox, .baseTheme .v-window-restorebox {
-	right: 33px;
+	right: 28px;
 	padding-left: 4px;
 	border-radius: 0 0 0 3px;
 }
@@ -8618,13 +8594,13 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-window-closebox-disabled  + .v-window-closebox, .baseTheme .v-window-resizebox-disabled  + .v-window-closebox, .baseTheme .v-window-restorebox-disabled  + .v-window-closebox, .baseTheme .v-window-maximizebox-disabled  + .v-window-closebox {
-	width: 37px;
+	width: 32px;
 	padding-right: 0;
 	border-bottom-left-radius: 3px;
 }
 
 .baseTheme .v-window-closebox-disabled  + .v-window-closebox:focus::after, .baseTheme .v-window-resizebox-disabled  + .v-window-closebox:focus::after, .baseTheme .v-window-restorebox-disabled  + .v-window-closebox:focus::after, .baseTheme .v-window-maximizebox-disabled  + .v-window-closebox:focus::after {
-	left: 6px;
+	left: 5px;
 }
 
 .baseTheme .v-window-maximizebox:before {
@@ -8650,43 +8626,43 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-window-contents  > .v-scrollable  > .v-margin-top {
-	padding-top: 12px;
+	padding-top: 11px;
 }
 
 .baseTheme .v-window-contents  > .v-scrollable  > .v-margin-right {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-window-contents  > .v-scrollable  > .v-margin-bottom {
-	padding-bottom: 12px;
+	padding-bottom: 11px;
 }
 
 .baseTheme .v-window-contents  > .v-scrollable  > .v-margin-left {
-	padding-left: 12px;
+	padding-left: 11px;
 }
 
 .baseTheme .v-window-contents  > .v-scrollable  > .v-formlayout [class*="margin-top"] > tbody > [class*="firstrow"] > td {
-	padding-top: 12px;
+	padding-top: 11px;
 }
 
 .baseTheme .v-window-contents  > .v-scrollable  > .v-formlayout [class*="margin-bottom"] > tbody > [class*="lastrow"] > td {
-	padding-bottom: 12px;
+	padding-bottom: 11px;
 }
 
 .baseTheme .v-window-contents  > .v-scrollable  > .v-formlayout [class*="margin-left"] > tbody > [class*="row"] > [class*="captioncell"] {
-	padding-left: 12px;
+	padding-left: 11px;
 }
 
 .baseTheme .v-window-contents  > .v-scrollable  > .v-formlayout [class*="margin-left"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h2, .baseTheme .v-window-contents  > .v-scrollable  > .v-formlayout [class*="margin-left"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h3, .baseTheme .v-window-contents  > .v-scrollable  > .v-formlayout [class*="margin-left"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h4 {
-	left: 12px;
+	left: 11px;
 }
 
 .baseTheme .v-window-contents  > .v-scrollable  > .v-formlayout [class*="margin-right"] > tbody > [class*="row"] > [class*="contentcell"] {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-window-contents  > .v-scrollable  > .v-formlayout [class*="margin-right"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h2, .baseTheme .v-window-contents  > .v-scrollable  > .v-formlayout [class*="margin-right"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h3, .baseTheme .v-window-contents  > .v-scrollable  > .v-formlayout [class*="margin-right"] > tbody > [class*="row"] > [class*="contentcell"]  > .v-label-h4 {
-	right: 12px;
+	right: 11px;
 }
 
 .baseTheme .v-window-contents  > .v-scrollable:focus {
@@ -8721,8 +8697,8 @@ div.v-layout.v-horizontal.v-widget {
 	z-index: 1000;
 	right: 0;
 	bottom: 0;
-	width: 19px;
-	height: 19px;
+	width: 16px;
+	height: 16px;
 	cursor: nwse-resize;
 }
 
@@ -8737,7 +8713,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-window-top-toolbar .v-label, .baseTheme .v-window-bottom-toolbar .v-label {
-	line-height: 36px;
+	line-height: 31px;
 }
 
 .baseTheme .v-window-top-toolbar .v-spacing, .baseTheme .v-window-bottom-toolbar .v-spacing {
@@ -8745,7 +8721,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-window-top-toolbar.v-layout {
-	padding: 7px 12px;
+	padding: 6px 11px;
 	position: relative;
 	z-index: 2;
 	border-top: 1px solid #e7e7e7;
@@ -8754,27 +8730,27 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-window-top-toolbar.v-menubar {
-	margin: 12px 12px 6px;
+	margin: 11px 11px 5px;
 }
 
 .baseTheme .v-window-top-toolbar.v-menubar-borderless {
-	padding-left: 6px;
-	padding-right: 6px;
-	margin: 5px 0;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin: 4px 0;
 }
 
 .baseTheme .v-window-bottom-toolbar.v-layout {
-	padding: 7px 12px;
+	padding: 6px 11px;
 	background-color: #fefefe;
-	background-image: -webkit-linear-gradient(top, #fafafa 0, #fefefe 4px);
-	background-image: linear-gradient(to bottom,#fafafa 0, #fefefe 4px);
+	background-image: -webkit-linear-gradient(top, #fafafa 0, #fefefe 3px);
+	background-image: linear-gradient(to bottom,#fafafa 0, #fefefe 3px);
 	border-top: 1px solid #e7e7e7;
 	border-radius: 0 0 3px 3px;
 }
 
 .baseTheme .v-margin-left.v-margin-right.v-margin-top .v-window-top-toolbar.v-layout {
 	box-sizing: content-box;
-	margin: -12px -12px 0;
+	margin: -11px -11px 0;
 }
 
 .baseTheme .v-margin-left.v-margin-right.v-margin-top .v-window-top-toolbar.v-menubar {
@@ -8788,7 +8764,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-margin-left.v-margin-right.v-margin-bottom .v-window-bottom-toolbar.v-layout {
 	box-sizing: content-box;
-	margin: 0 -12px -12px;
+	margin: 0 -11px -11px;
 }
 
 .baseTheme .v-tree {
@@ -8806,15 +8782,15 @@ div.v-layout.v-horizontal.v-widget {
 	display: inline-block;
 	z-index: 3;
 	width: 1.9em;
-	height: 28px;
+	height: 25px;
 	cursor: pointer;
 	background: red;
 	opacity: 0;
 }
 
 .baseTheme .v-tree-node-caption {
-	height: 28px;
-	line-height: 27px;
+	height: 25px;
+	line-height: 24px;
 	overflow: hidden;
 	white-space: nowrap;
 	vertical-align: top;
@@ -8840,7 +8816,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tree-node-caption span {
-	padding-right: 28px;
+	padding-right: 25px;
 	cursor: pointer;
 	display: inline-block;
 	width: 100%;
@@ -8863,9 +8839,9 @@ div.v-layout.v-horizontal.v-widget {
 	position: absolute;
 	z-index: 1;
 	left: 0;
-	margin-top: -28px;
+	margin-top: -25px;
 	width: 100%;
-	height: 28px;
+	height: 25px;
 	border-radius: 3px;
 	opacity: 0;
 	-webkit-transition: opacity 120ms;
@@ -8906,7 +8882,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tree-node-children {
-	padding-left: 19px;
+	padding-left: 16px;
 }
 
 .baseTheme .v-tree-node-drag-top:before, .baseTheme .v-tree-node-drag-bottom:after, .baseTheme .v-tree-node-drag-bottom.v-tree-node-dragfolder.v-tree-node-expanded > .v-tree-node-children:before {
@@ -8916,7 +8892,7 @@ div.v-layout.v-horizontal.v-widget {
 	height: 2px;
 	width: 100%;
 	background: #4783eb;
-	font-size: 32px;
+	font-size: 28px;
 	line-height: 2px;
 	color: #4783eb;
 	text-indent: -4px;
@@ -9041,7 +9017,7 @@ div.v-layout.v-horizontal.v-widget {
 	white-space: nowrap;
 	box-sizing: border-box;
 	overflow: hidden;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .baseTheme .v-tree8-cell.frozen {
@@ -9146,7 +9122,7 @@ div.v-layout.v-horizontal.v-widget {
 	content: "\f0c9";
 	display: block;
 	font-family: ThemeIcons, sans-serif;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-tree8-sidebar.v-contextmenu.closed {
@@ -9159,7 +9135,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-tree8-sidebar.v-contextmenu.open .v-tree8-sidebar-button:after {
 	content: "\f0c9";
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 1;
 }
 
@@ -9179,8 +9155,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-tree8-cell {
 	background-color: white;
-	padding: 0 18px;
-	line-height: 37px;
+	padding: 0 16.5px;
+	line-height: 32px;
 	text-overflow: ellipsis;
 }
 
@@ -9238,7 +9214,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-tree8-header th {
 	position: relative;
 	background-color: #fefefe;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: inherit;
 	border-left: 1px solid #dadada;
 	border-bottom: 1px solid #dadada;
@@ -9251,15 +9227,15 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tree8-header .sort-asc, .baseTheme .v-tree8-header .sort-desc {
-	padding-right: 35px;
+	padding-right: 30.5px;
 }
 
 .baseTheme .v-tree8-header .sort-asc:after, .baseTheme .v-tree8-header .sort-desc:after {
 	font-family: ThemeIcons, sans-serif;
 	content: "\f0de" " " attr(sort-order);
 	position: absolute;
-	right: 18px;
-	font-size: 12px;
+	right: 16.5px;
+	font-size: 10px;
 }
 
 .baseTheme .v-tree8-header .sort-desc:after {
@@ -9268,8 +9244,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-tree8-column-resize-handle {
 	position: absolute;
-	width: 36px;
-	right: -18px;
+	width: 33px;
+	right: -16.5px;
 	top: 0px;
 	bottom: 0px;
 	cursor: col-resize;
@@ -9285,7 +9261,7 @@ div.v-layout.v-horizontal.v-widget {
 	position: absolute;
 	width: 3px;
 	top: 0px;
-	left: 18px;
+	left: 16.5px;
 	z-index: 9001;
 	background: #fff;
 	box-shadow: 0px 0px 5px #000;
@@ -9298,7 +9274,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-tree8-footer td {
 	background-color: #fefefe;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: inherit;
 	border-left: 1px solid #dadada;
 	border-top: 1px solid #dadada;
@@ -9318,7 +9294,7 @@ div.v-layout.v-horizontal.v-widget {
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	line-height: 37px;
+	line-height: 32px;
 	vertical-align: baseline;
 }
 
@@ -9412,15 +9388,15 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tree8-editor-cells  > div input[type="text"], .baseTheme .v-tree8-editor-cells  > div input[type="text"].v-filterselect-input, .baseTheme .v-tree8-editor-cells  > div input[type="password"] {
-	padding-left: 18px;
+	padding-left: 16.5px;
 }
 
 .baseTheme .v-tree8-editor-cells  > div input[type="text"]:not(.v-filterselect-input), .baseTheme .v-tree8-editor-cells  > div input[type="password"] {
-	padding-right: 9px;
+	padding-right: 8.25px;
 }
 
 .baseTheme .v-tree8-editor-cells  > div input[type="checkbox"] {
-	margin-left: 18px;
+	margin-left: 16.5px;
 }
 
 .baseTheme .v-tree8-editor-cells  > div .v-textfield, .baseTheme .v-tree8-editor-cells  > div .v-datefield, .baseTheme .v-tree8-editor-cells  > div .v-filterselect {
@@ -9455,7 +9431,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-tree8-editor-footer {
 	display: table;
-	height: 37px;
+	height: 32px;
 	border-top: 1px solid #dadada;
 	margin-top: -1px;
 	background: white;
@@ -9490,7 +9466,7 @@ div.v-layout.v-horizontal.v-widget {
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	line-height: 37px;
+	line-height: 32px;
 	top: 0;
 }
 
@@ -9566,7 +9542,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tree8-header .v-tree8-cell.dragged-column-header {
-	margin-top: -19px;
+	margin-top: -16px;
 }
 
 .baseTheme .v-tree8-footer .v-tree8-cell {
@@ -9608,7 +9584,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tree8-editor-footer {
-	font-size: 14px;
+	font-size: 12px;
 	padding: 0 6px;
 	background: #f1f1f1;
 	-webkit-animation: valo-grid-editor-footer-animate-in 200ms 120ms backwards;
@@ -9638,8 +9614,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tree8-editor-cells > div .error::before {
-	border-top: 9px solid #d94560;
-	border-right: 9px solid transparent;
+	border-top: 8px solid #d94560;
+	border-right: 8px solid transparent;
 }
 
 .baseTheme .v-tree8-editor-cells > div .error, .baseTheme .v-tree8-editor-cells > div .error > input {
@@ -9655,7 +9631,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tree8-editor-cells > div input[type="text"].v-datefield-textfield {
-	padding-left: 44.4px;
+	padding-left: 38.4px;
 }
 
 .baseTheme .v-tree8-editor-cells > div .v-textfield-focus, .baseTheme .v-tree8-editor-cells > div .v-datefield .v-textfield-focus, .baseTheme .v-tree8-editor-cells > div .v-filterselect-input:focus {
@@ -9663,12 +9639,12 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tree8-editor-cells > div .v-select {
-	padding-left: 9px;
-	padding-right: 9px;
+	padding-left: 8px;
+	padding-right: 8px;
 }
 
 .baseTheme .v-tree8-editor-cells > div .v-checkbox {
-	margin: 0 9px 0 18px;
+	margin: 0 8px 0 16.5px;
 }
 
 .baseTheme .v-tree8-editor-cells > div .v-checkbox  > input[type="checkbox"] {
@@ -9683,7 +9659,7 @@ div.v-layout.v-horizontal.v-widget {
 	display: inline-block;
 	color: #d94560;
 	font-weight: 600;
-	width: 19px;
+	width: 16px;
 	text-align: center;
 	content: "!";
 }
@@ -10117,7 +10093,7 @@ div.v-layout.v-horizontal.v-widget {
 	white-space: nowrap;
 	box-sizing: border-box;
 	overflow: hidden;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .baseTheme .v-treegrid-cell.frozen {
@@ -10222,7 +10198,7 @@ div.v-layout.v-horizontal.v-widget {
 	content: "\f0c9";
 	display: block;
 	font-family: ThemeIcons, sans-serif;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-treegrid-sidebar.v-contextmenu.closed {
@@ -10235,7 +10211,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-treegrid-sidebar.v-contextmenu.open .v-treegrid-sidebar-button:after {
 	content: "\f0c9";
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 1;
 }
 
@@ -10255,8 +10231,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-treegrid-cell {
 	background-color: white;
-	padding: 0 18px;
-	line-height: 37px;
+	padding: 0 16.5px;
+	line-height: 32px;
 	text-overflow: ellipsis;
 }
 
@@ -10314,7 +10290,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-treegrid-header th {
 	position: relative;
 	background-color: #fefefe;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: inherit;
 	border-left: 1px solid #dadada;
 	border-bottom: 1px solid #dadada;
@@ -10327,15 +10303,15 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-treegrid-header .sort-asc, .baseTheme .v-treegrid-header .sort-desc {
-	padding-right: 35px;
+	padding-right: 30.5px;
 }
 
 .baseTheme .v-treegrid-header .sort-asc:after, .baseTheme .v-treegrid-header .sort-desc:after {
 	font-family: ThemeIcons, sans-serif;
 	content: "\f0de" " " attr(sort-order);
 	position: absolute;
-	right: 18px;
-	font-size: 12px;
+	right: 16.5px;
+	font-size: 10px;
 }
 
 .baseTheme .v-treegrid-header .sort-desc:after {
@@ -10344,8 +10320,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-treegrid-column-resize-handle {
 	position: absolute;
-	width: 36px;
-	right: -18px;
+	width: 33px;
+	right: -16.5px;
 	top: 0px;
 	bottom: 0px;
 	cursor: col-resize;
@@ -10361,7 +10337,7 @@ div.v-layout.v-horizontal.v-widget {
 	position: absolute;
 	width: 3px;
 	top: 0px;
-	left: 18px;
+	left: 16.5px;
 	z-index: 9001;
 	background: #fff;
 	box-shadow: 0px 0px 5px #000;
@@ -10374,7 +10350,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-treegrid-footer td {
 	background-color: #fefefe;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: inherit;
 	border-left: 1px solid #dadada;
 	border-top: 1px solid #dadada;
@@ -10394,7 +10370,7 @@ div.v-layout.v-horizontal.v-widget {
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	line-height: 37px;
+	line-height: 32px;
 	vertical-align: baseline;
 }
 
@@ -10488,15 +10464,15 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-treegrid-editor-cells  > div input[type="text"], .baseTheme .v-treegrid-editor-cells  > div input[type="text"].v-filterselect-input, .baseTheme .v-treegrid-editor-cells  > div input[type="password"] {
-	padding-left: 18px;
+	padding-left: 16.5px;
 }
 
 .baseTheme .v-treegrid-editor-cells  > div input[type="text"]:not(.v-filterselect-input), .baseTheme .v-treegrid-editor-cells  > div input[type="password"] {
-	padding-right: 9px;
+	padding-right: 8.25px;
 }
 
 .baseTheme .v-treegrid-editor-cells  > div input[type="checkbox"] {
-	margin-left: 18px;
+	margin-left: 16.5px;
 }
 
 .baseTheme .v-treegrid-editor-cells  > div .v-textfield, .baseTheme .v-treegrid-editor-cells  > div .v-datefield, .baseTheme .v-treegrid-editor-cells  > div .v-filterselect {
@@ -10531,7 +10507,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-treegrid-editor-footer {
 	display: table;
-	height: 37px;
+	height: 32px;
 	border-top: 1px solid #dadada;
 	margin-top: -1px;
 	background: white;
@@ -10566,7 +10542,7 @@ div.v-layout.v-horizontal.v-widget {
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	line-height: 37px;
+	line-height: 32px;
 	top: 0;
 }
 
@@ -10642,7 +10618,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-treegrid-header .v-treegrid-cell.dragged-column-header {
-	margin-top: -19px;
+	margin-top: -16px;
 }
 
 .baseTheme .v-treegrid-footer .v-treegrid-cell {
@@ -10684,7 +10660,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-treegrid-editor-footer {
-	font-size: 14px;
+	font-size: 12px;
 	padding: 0 6px;
 	background: #f1f1f1;
 	-webkit-animation: valo-grid-editor-footer-animate-in 200ms 120ms backwards;
@@ -10714,8 +10690,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-treegrid-editor-cells > div .error::before {
-	border-top: 9px solid #d94560;
-	border-right: 9px solid transparent;
+	border-top: 8px solid #d94560;
+	border-right: 8px solid transparent;
 }
 
 .baseTheme .v-treegrid-editor-cells > div .error, .baseTheme .v-treegrid-editor-cells > div .error > input {
@@ -10731,7 +10707,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-treegrid-editor-cells > div input[type="text"].v-datefield-textfield {
-	padding-left: 44.4px;
+	padding-left: 38.4px;
 }
 
 .baseTheme .v-treegrid-editor-cells > div .v-textfield-focus, .baseTheme .v-treegrid-editor-cells > div .v-datefield .v-textfield-focus, .baseTheme .v-treegrid-editor-cells > div .v-filterselect-input:focus {
@@ -10739,12 +10715,12 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-treegrid-editor-cells > div .v-select {
-	padding-left: 9px;
-	padding-right: 9px;
+	padding-left: 8px;
+	padding-right: 8px;
 }
 
 .baseTheme .v-treegrid-editor-cells > div .v-checkbox {
-	margin: 0 9px 0 18px;
+	margin: 0 8px 0 16.5px;
 }
 
 .baseTheme .v-treegrid-editor-cells > div .v-checkbox  > input[type="checkbox"] {
@@ -10759,7 +10735,7 @@ div.v-layout.v-horizontal.v-widget {
 	display: inline-block;
 	color: #d94560;
 	font-weight: 600;
-	width: 19px;
+	width: 16px;
 	text-align: center;
 	content: "!";
 }
@@ -11044,7 +11020,7 @@ div.v-layout.v-horizontal.v-widget {
 	background-image: -webkit-linear-gradient(top, #fefefe 2%, #f9f9f9 98%);
 	background-image: linear-gradient(to bottom,#fefefe 2%, #f9f9f9 98%);
 	white-space: nowrap;
-	font-size: 14px;
+	font-size: 12px;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
@@ -11064,12 +11040,12 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-table-footer-container, .baseTheme .v-table-caption-container {
 	overflow: hidden;
 	line-height: 1;
-	min-height: 37px;
+	min-height: 32px;
 	box-sizing: border-box;
 }
 
 .baseTheme .v-table-footer-container {
-	padding: 11px 12px 12px;
+	padding: 9px 11px 10px;
 	float: right;
 }
 
@@ -11078,7 +11054,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-table-caption-container, .baseTheme .v-table-header-drag {
-	padding: 12px 12px 11px;
+	padding: 10px 11px 9px;
 	border-left: 1px solid #dadada;
 }
 
@@ -11087,20 +11063,20 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-table-resizer {
-	height: 37px;
-	width: 8px;
+	height: 32px;
+	width: 7px;
 	cursor: e-resize;
 	cursor: col-resize;
 	position: relative;
 	right: -4px;
 	z-index: 1;
-	margin-left: -8px;
+	margin-left: -7px;
 }
 
 .baseTheme .v-table-cell-content {
 	border-left: 1px solid #dadada;
 	overflow: hidden;
-	height: 37px;
+	height: 32px;
 	vertical-align: middle;
 }
 
@@ -11115,7 +11091,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-table-cell-wrapper {
 	line-height: 1;
-	padding: 0 12px;
+	padding: 0 11px;
 	box-sizing: border-box;
 	margin-right: 0 !important;
 }
@@ -11196,10 +11172,10 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-table-header-cell-asc .v-table-sort-indicator, .baseTheme .v-table-header-cell-desc .v-table-sort-indicator {
 	background: transparent;
-	width: 19px;
-	height: 37px;
-	line-height: 37px;
-	margin-left: -19px;
+	width: 16px;
+	height: 32px;
+	line-height: 32px;
+	margin-left: -16px;
 }
 
 .baseTheme .v-table-header-cell-asc .v-table-sort-indicator:before, .baseTheme .v-table-header-cell-desc .v-table-sort-indicator:before {
@@ -11235,7 +11211,7 @@ div.v-layout.v-horizontal.v-widget {
 	position: absolute;
 	opacity: 0.9;
 	filter: alpha(opacity=90) ;
-	margin-top: -19px;
+	margin-top: -16px;
 	z-index: 30000;
 	line-height: 1;
 }
@@ -11243,7 +11219,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-table-focus-slot-right {
 	border-right: 3px solid #4783eb;
 	right: -2px;
-	margin-left: -11px !important;
+	margin-left: -10px !important;
 }
 
 .baseTheme .v-table-focus-slot-left {
@@ -11252,12 +11228,12 @@ div.v-layout.v-horizontal.v-widget {
 	left: -1px;
 	right: auto;
 	margin-left: 0 !important;
-	margin-right: -11px;
+	margin-right: -10px;
 }
 
 .baseTheme .v-table-column-selector {
-	height: 37px;
-	padding: 0 16px;
+	height: 32px;
+	padding: 0 14px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -11276,9 +11252,9 @@ div.v-layout.v-horizontal.v-widget {
 	z-index: 2;
 	top: 0;
 	right: 0;
-	width: 19px;
-	height: 19px;
-	line-height: 19px;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
 	padding: 0;
 	border-top-width: 0;
 	border-right-width: 0;
@@ -11345,7 +11321,7 @@ div.v-layout.v-horizontal.v-widget {
 	content: "\f00c";
 	font-family: ThemeIcons;
 	font-size: 0.9em;
-	margin-right: 6px;
+	margin-right: 5px;
 }
 
 .baseTheme .v-on div, .baseTheme .v-off div {
@@ -11393,9 +11369,9 @@ div.v-layout.v-horizontal.v-widget {
 	position: absolute;
 	top: 50%;
 	width: 100%;
-	height: 37px;
-	line-height: 37px;
-	margin: -19px 0 0 !important;
+	height: 32px;
+	line-height: 32px;
+	margin: -16px 0 0 !important;
 	text-align: center;
 }
 
@@ -11420,7 +11396,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-table-row-drag-bottom td.v-table-cell-content {
 	border-bottom: 2px solid #4783eb;
-	height: 35px;
+	height: 30px;
 }
 
 .baseTheme .v-table-row-drag-bottom .v-table-cell-wrapper {
@@ -11429,7 +11405,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-table-row-drag-top td.v-table-cell-content {
 	border-top: 2px solid #4783eb;
-	height: 36px;
+	height: 31px;
 }
 
 .baseTheme .v-table-row-drag-top .v-table-cell-wrapper {
@@ -11446,7 +11422,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-table-no-vertical-lines.v-treetable .v-table-cell-content {
-	padding-left: 13px;
+	padding-left: 12px;
 }
 
 .baseTheme .v-table-no-horizontal-lines .v-table-cell-content {
@@ -11455,7 +11431,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-table-no-horizontal-lines .v-table-row-drag-top .v-table-cell-content, .baseTheme .v-table-no-horizontal-lines .v-table-row-drag-bottom .v-table-cell-content {
-	height: 36px;
+	height: 31px;
 }
 
 .baseTheme .v-table-no-header .v-table-header-wrap {
@@ -11475,16 +11451,16 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-table-compact .v-table-header-wrap, .baseTheme .v-table-compact .v-table-footer-wrap, .baseTheme .v-table-compact .v-table-header-drag, .baseTheme .v-table-small .v-table-header-wrap, .baseTheme .v-table-small .v-table-footer-wrap, .baseTheme .v-table-small .v-table-header-drag {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-table-compact .v-table-footer-container, .baseTheme .v-table-small .v-table-footer-container {
-	padding: 8px 7px 9px;
+	padding: 7px 7px 8px;
 }
 
 .baseTheme .v-table-compact .v-table-caption-container, .baseTheme .v-table-compact .v-table-header-drag, .baseTheme .v-table-small .v-table-caption-container, .baseTheme .v-table-small .v-table-header-drag {
-	padding-top: 9px;
-	padding-bottom: 8px;
+	padding-top: 8px;
+	padding-bottom: 7px;
 	padding-left: 6px;
 	padding-right: 6px;
 }
@@ -11494,11 +11470,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-table-compact .v-table-resizer, .baseTheme .v-table-small .v-table-resizer {
-	height: 31px;
+	height: 27px;
 }
 
 .baseTheme .v-table-compact .v-table-cell-content, .baseTheme .v-table-small .v-table-cell-content {
-	height: 31px;
+	height: 27px;
 }
 
 .baseTheme .v-table-compact .v-table-cell-wrapper, .baseTheme .v-table-small .v-table-cell-wrapper {
@@ -11520,18 +11496,18 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-table-compact .v-table-header-cell-asc .v-table-sort-indicator, .baseTheme .v-table-compact .v-table-header-cell-desc .v-table-sort-indicator, .baseTheme .v-table-small .v-table-header-cell-asc .v-table-sort-indicator, .baseTheme .v-table-small .v-table-header-cell-desc .v-table-sort-indicator {
-	height: 31px;
-	line-height: 31px;
+	height: 27px;
+	line-height: 27px;
 }
 
 .baseTheme .v-table-compact .v-table-header-drag, .baseTheme .v-table-small .v-table-header-drag {
-	margin-top: -16px;
+	margin-top: -14px;
 }
 
 .baseTheme .v-table-compact.v-treetable .v-table-cell-wrapper, .baseTheme .v-table-small.v-treetable .v-table-cell-wrapper {
 	padding-left: 0;
 	padding-right: 0;
-	min-height: 16px;
+	min-height: 14px;
 }
 
 .baseTheme .v-table-compact.v-treetable .v-table-cell-content, .baseTheme .v-table-small.v-treetable .v-table-cell-content {
@@ -11549,15 +11525,15 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-table-compact .v-table-row-drag-top .v-table-cell-content, .baseTheme .v-table-compact .v-table-row-drag-bottom .v-table-cell-content, .baseTheme .v-table-small .v-table-row-drag-top .v-table-cell-content, .baseTheme .v-table-small .v-table-row-drag-bottom .v-table-cell-content {
-	height: 30px;
+	height: 26px;
 }
 
 .baseTheme .v-table-small {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-table-small.v-treetable .v-table-cell-wrapper {
-	min-height: 14px;
+	min-height: 12px;
 }
 
 .baseTheme .v-treetable [class*="caption-container"], .baseTheme .v-treetable [class*="footer-container"], .baseTheme .v-treetable [class*="cell-wrapper"] {
@@ -11567,39 +11543,39 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-treetable [class*="caption-container"], .baseTheme .v-treetable [class*="footer-container"] {
-	min-height: 14px;
+	min-height: 13px;
 }
 
 .baseTheme .v-treetable [class*="cell-wrapper"] {
-	min-height: 16px;
+	min-height: 14px;
 }
 
 .baseTheme .v-treetable [class*="caption-container"] {
-	padding-left: 12px;
+	padding-left: 11px;
 }
 
 .baseTheme .v-treetable [class*="caption-container-align-right"] {
-	padding-left: 20px;
+	padding-left: 18px;
 }
 
 .baseTheme .v-treetable [class*="footer-container"] {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-treetable [class*="cell-content"] {
-	padding-left: 12px;
-	padding-right: 12px;
+	padding-left: 11px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-treetable [class*="cell-content"]:first-child {
-	padding-left: 13px;
+	padding-left: 12px;
 }
 
 .baseTheme .v-treetable-treespacer {
 	display: inline-block;
 	position: absolute;
-	width: 19px !important;
-	margin-left: -25px;
+	width: 16px !important;
+	margin-left: -22px;
 	text-align: center;
 	cursor: pointer;
 }
@@ -11619,13 +11595,13 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-splitpanel-horizontal  > div > .v-splitpanel-hsplitter:after {
-	left: -6px;
-	right: -6px;
+	left: -5px;
+	right: -5px;
 }
 
 .baseTheme .v-splitpanel-horizontal  > div > .v-splitpanel-hsplitter div:before {
-	height: 37px;
-	padding: 0 16px;
+	height: 32px;
+	padding: 0 14px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -11679,13 +11655,13 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-splitpanel-vertical  > div > .v-splitpanel-vsplitter:after {
-	top: -6px;
-	bottom: -6px;
+	top: -5px;
+	bottom: -5px;
 }
 
 .baseTheme .v-splitpanel-vertical  > div > .v-splitpanel-vsplitter div:before {
-	height: 37px;
-	padding: 0 16px;
+	height: 32px;
+	padding: 0 14px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -11728,7 +11704,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-splitpanel-horizontal.large  > div > .v-splitpanel-hsplitter {
-	width: 12px;
+	width: 11px;
 }
 
 .baseTheme .v-splitpanel-horizontal.large  > div > .v-splitpanel-hsplitter:after {
@@ -11737,8 +11713,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-splitpanel-horizontal.large  > div > .v-splitpanel-hsplitter div:before {
-	height: 37px;
-	padding: 0 16px;
+	height: 32px;
+	padding: 0 14px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -11792,17 +11768,17 @@ div.v-layout.v-horizontal.v-widget {
 	top: 50%;
 	left: 50%;
 	width: 0;
-	height: 37px;
+	height: 32px;
 	margin-left: -1px;
-	margin-top: -19px;
+	margin-top: -16px;
 }
 
 .baseTheme .v-splitpanel-horizontal.large  > div > .v-splitpanel-second-container {
-	margin-left: 12px;
+	margin-left: 11px;
 }
 
 .baseTheme .v-splitpanel-vertical.large  > div > .v-splitpanel-vsplitter {
-	height: 12px;
+	height: 11px;
 }
 
 .baseTheme .v-splitpanel-vertical.large  > div > .v-splitpanel-vsplitter:after {
@@ -11811,8 +11787,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-splitpanel-vertical.large  > div > .v-splitpanel-vsplitter div:before {
-	height: 37px;
-	padding: 0 16px;
+	height: 32px;
+	padding: 0 14px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -11862,20 +11838,20 @@ div.v-layout.v-horizontal.v-widget {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 37px;
+	width: 32px;
 	height: 0;
-	margin-left: -19px;
+	margin-left: -16px;
 	margin-top: -1px;
 }
 
 .baseTheme .v-progressbar-wrapper {
 	border-radius: 3px;
-	height: 9px;
+	height: 8px;
 	background-color: #d8d8d8;
 	background-image: -webkit-linear-gradient(bottom, #d9d9d9 2%, #d2d2d2 98%);
 	background-image: linear-gradient(to top,#d9d9d9 2%, #d2d2d2 98%);
 	box-sizing: border-box;
-	min-width: 74px;
+	min-width: 64px;
 }
 
 .baseTheme .v-progressbar-indicator {
@@ -11917,7 +11893,7 @@ div.v-layout.v-horizontal.v-widget {
 	border: 1px solid #3a6bc0;
 	box-sizing: border-box;
 	max-width: 100%;
-	width: 9px;
+	width: 8px;
 	vertical-align: top;
 }
 
@@ -11958,14 +11934,14 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-slider-base {
 	border-radius: 3px;
-	height: 9px;
+	height: 8px;
 	background-color: #d8d8d8;
 	background-image: -webkit-linear-gradient(bottom, #d9d9d9 2%, #d2d2d2 98%);
 	background-image: linear-gradient(to top,#d9d9d9 2%, #d2d2d2 98%);
 	box-sizing: border-box;
-	min-width: 74px;
-	height: 6px;
-	margin: 16px 11px;
+	min-width: 64px;
+	height: 4px;
+	margin: 14px 9px;
 	white-space: nowrap;
 	overflow: hidden;
 	
@@ -11974,9 +11950,9 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-slider-base:before {
 	content: "";
 	position: absolute;
-	top: 16px;
-	bottom: 16px;
-	left: 11px;
+	top: 14px;
+	bottom: 14px;
+	left: 9px;
 	width: 6px;
 	border-radius: 3px;
 	border-left: 1px solid #3a6bc0;
@@ -12005,15 +11981,15 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-slider-handle {
-	margin-top: -16px;
+	margin-top: -14px;
 	width: 0.1px;
 	display: inline-block;
 	vertical-align: top;
 }
 
 .baseTheme .v-slider-handle:before {
-	height: 37px;
-	padding: 0 16px;
+	height: 32px;
+	padding: 0 14px;
 	color: #191919;
 	font-weight: 400;
 	
@@ -12067,13 +12043,13 @@ div.v-layout.v-horizontal.v-widget {
 	content: "";
 	box-sizing: border-box;
 	padding: 0;
-	width: 22px;
-	height: 22px;
-	border-radius: 11px;
+	width: 18px;
+	height: 18px;
+	border-radius: 9px;
 	position: absolute;
 	z-index: 1;
-	margin-top: 8px;
-	margin-left: -11px;
+	margin-top: 7px;
+	margin-left: -9px;
 }
 
 .baseTheme .v-slider-feedback {
@@ -12081,33 +12057,33 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 	color: white;
-	padding: 5px 9px;
+	padding: 4px 8px;
 	border-radius: 2px;
 	max-width: 35em;
 	overflow: hidden !important;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-slider-vertical {
-	padding: 11px 0;
-	height: 96px;
+	padding: 9px 0;
+	height: 82px;
 }
 
 .baseTheme .v-slider-vertical .v-slider-base {
 	background-color: #d8d8d8;
 	background-image: -webkit-linear-gradient(right, #d9d9d9 2%, #d2d2d2 98%);
 	background-image: linear-gradient(to left,#d9d9d9 2%, #d2d2d2 98%);
-	width: 6px;
+	width: 4px;
 	height: 100% !important;
 	min-width: 0;
-	margin: 0 16px;
+	margin: 0 14px;
 }
 
 .baseTheme .v-slider-vertical .v-slider-base:before {
 	top: auto;
-	bottom: 11px;
-	left: 16px;
-	right: 16px;
+	bottom: 9px;
+	left: 14px;
+	right: 14px;
 	width: auto;
 	height: 6px;
 	border-left: none;
@@ -12125,15 +12101,15 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-slider-vertical .v-slider-handle {
 	width: 0;
 	height: 0.1px;
-	width: 37px;
+	width: 32px;
 	display: block;
 }
 
 .baseTheme .v-slider-vertical .v-slider-handle:before, .baseTheme .v-slider-vertical .v-slider-handle:after {
-	width: 22px;
-	height: 22px;
-	margin-top: -11px;
-	margin-left: -8px;
+	width: 18px;
+	height: 18px;
+	margin-top: -9px;
+	margin-left: -7px;
 }
 
 .baseTheme .v-slider-no-indicator .v-slider-base:before, .baseTheme .v-slider-no-indicator .v-slider-base:after {
@@ -12177,13 +12153,13 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tabsheet-tabitemcell .v-caption {
-	margin-left: 19px;
-	padding: 0 4px;
+	margin-left: 16px;
+	padding: 0 3px;
 	box-sizing: border-box;
 	cursor: pointer;
 	text-align: center;
-	line-height: 37px;
-	font-size: 15px;
+	line-height: 32px;
+	font-size: 13px;
 	font-weight: 300;
 	color: #656565;
 	width: auto !important;
@@ -12201,7 +12177,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tabsheet-tabitemcell .v-caption .v-icon + .v-captiontext {
-	margin-left: 9px;
+	margin-left: 8px;
 }
 
 .baseTheme .v-tabsheet-tabitemcell .v-caption:hover {
@@ -12233,21 +12209,21 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tabsheet-tabitemcell .v-caption-closable {
-	padding-right: 22px;
+	padding-right: 18px;
 }
 
 .baseTheme .v-tabsheet-tabitemcell.icons-on-top .v-caption-closable {
-	padding-right: 4px;
+	padding-right: 3px;
 }
 
 .baseTheme .v-tabsheet-tabitemcell .v-tabsheet-caption-close {
 	position: absolute;
 	right: 0;
 	top: 50%;
-	margin: -8px 0 0;
-	font-size: 18px;
-	line-height: 18px;
-	width: 18px;
+	margin: -7px 0 0;
+	font-size: 15px;
+	line-height: 15px;
+	width: 15px;
 	text-align: center;
 	border-radius: 2px;
 	color: #919191;
@@ -12268,7 +12244,7 @@ div.v-layout.v-horizontal.v-widget {
 	top: 0;
 	right: 0;
 	bottom: 0;
-	padding-left: 19px;
+	padding-left: 16px;
 	background-color: transparent;
 	background-image: -webkit-linear-gradient(right, #fefefe 70%, rgba(254, 254, 254, 0) 100%);
 	background-image: linear-gradient(to left,#fefefe 70%, rgba(254, 254, 254, 0) 100%);
@@ -12300,7 +12276,7 @@ div.v-layout.v-horizontal.v-widget {
 	color: inherit;
 	height: 100%;
 	margin: 0;
-	padding: 0 9px;
+	padding: 0 8px;
 	outline: none;
 	cursor: pointer;
 	pointer-events: auto;
@@ -12326,7 +12302,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tabsheet-scroller [class*="Next"] {
-	padding-left: 5px;
+	padding-left: 4px;
 }
 
 .baseTheme .v-tabsheet-scroller [class*="Next"]:before {
@@ -12335,7 +12311,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tabsheet-scroller [class*="Prev"] {
-	padding-right: 5px;
+	padding-right: 4px;
 }
 
 .baseTheme .v-tabsheet-scroller [class*="Prev"]:before {
@@ -12357,8 +12333,8 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tabsheet-deco {
-	height: 20px !important;
-	width: 20px !important;
+	height: 16px !important;
+	width: 16px !important;
 	box-sizing: border-box;
 	border: 2px solid rgba(71, 131, 235, 0.2);
 	border-top-color: #4783eb;
@@ -12372,9 +12348,9 @@ div.v-layout.v-horizontal.v-widget {
 	position: absolute;
 	z-index: 1;
 	bottom: 50%;
-	margin-bottom: -29px;
+	margin-bottom: -24px;
 	left: 50%;
-	margin-left: -10px;
+	margin-left: -8px;
 }
 
 .baseTheme .v-tabsheet-loading .v-tabsheet-deco {
@@ -12400,11 +12376,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tabsheet-framed  > .v-tabsheet-tabcontainer .v-caption {
-	margin-left: 4px;
-	padding: 0 12px;
+	margin-left: 3px;
+	padding: 0 11px;
 	background-color: #f1f1f1;
 	border: 1px solid transparent;
-	line-height: 36px;
+	line-height: 31px;
 	border-radius: 3px 3px 0 0;
 	font-weight: 400;
 	-webkit-transition: background-color 160ms;
@@ -12422,7 +12398,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tabsheet-framed  > .v-tabsheet-tabcontainer .v-caption-closable {
-	padding-right: 30px;
+	padding-right: 26px;
 }
 
 .baseTheme .v-tabsheet-framed  > .v-tabsheet-tabcontainer .v-tabsheet-caption-close {
@@ -12459,11 +12435,11 @@ div.v-layout.v-horizontal.v-widget {
 	border: 1px solid #dbdbdb;
 	border-bottom: none;
 	background: #fefefe;
-	padding-top: 6px;
+	padding-top: 5px;
 }
 
 .baseTheme .v-tabsheet-framed.icons-on-top  > .v-tabsheet-tabcontainer .v-tabsheet-tabitem-selected .v-caption {
-	padding-bottom: 7px;
+	padding-bottom: 6px;
 }
 
 .baseTheme .v-tabsheet-centered-tabs  > .v-tabsheet-tabcontainer {
@@ -12475,12 +12451,12 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tabsheet-padded-tabbar  > .v-tabsheet-tabcontainer .v-tabsheet-tabs {
-	padding: 0 9px;
+	padding: 0 8px;
 }
 
 .baseTheme .v-tabsheet-icons-on-top  > .v-tabsheet-tabcontainer .v-caption {
-	padding-top: 6px;
-	padding-bottom: 6px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	line-height: 1.2;
 }
 
@@ -12493,7 +12469,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-tabsheet-icons-on-top  > .v-tabsheet-tabcontainer .v-caption-closable {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-tabsheet-icons-on-top  > .v-tabsheet-tabcontainer .v-tabsheet-caption-close {
@@ -12518,11 +12494,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-colorpicker-popup .v-tabsheet-tabs {
-	padding: 0 9px;
+	padding: 0 8px;
 }
 
 .baseTheme .v-colorpicker-popup [class$="sliders"] {
-	padding: 12px;
+	padding: 11px;
 }
 
 .baseTheme .v-colorpicker-popup [class$="sliders"] .v-widget {
@@ -12532,22 +12508,22 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-colorpicker-popup [class$="sliders"] .v-has-caption {
 	white-space: nowrap;
-	padding-left: 48px;
+	padding-left: 42px;
 }
 
 .baseTheme .v-colorpicker-popup [class$="sliders"] .v-caption {
 	display: inline-block;
-	margin-left: -48px;
-	width: 48px;
+	margin-left: -42px;
+	width: 42px;
 }
 
 .baseTheme .v-colorpicker-popup [class$="sliders"] .v-slot-hue-slider + .v-slot .v-has-caption {
-	padding-left: 80px;
+	padding-left: 70px;
 }
 
 .baseTheme .v-colorpicker-popup [class$="sliders"] .v-slot-hue-slider + .v-slot .v-caption {
-	margin-left: -80px;
-	width: 80px;
+	margin-left: -70px;
+	width: 70px;
 }
 
 .baseTheme .v-colorpicker-popup .v-slider-red .v-slider-base:after {
@@ -12593,7 +12569,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-colorpicker-popup .v-horizontallayout {
 	height: auto !important;
-	padding: 9px 0;
+	padding: 8px 0;
 	background-color: #fefefe;
 	border-top: 1px solid #f1f1f1;
 }
@@ -12609,7 +12585,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-colorpicker-preview {
 	width: 100% !important;
 	height: auto !important;
-	padding: 9px;
+	padding: 8px;
 	display: inline-flex;
 }
 
@@ -12625,17 +12601,17 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-colorpicker-button-color {
 	position: absolute;
-	top: 6px;
-	right: 6px;
-	bottom: 6px;
-	left: 6px;
+	top: 5px;
+	right: 5px;
+	bottom: 5px;
+	left: 5px;
 	border-radius: 2px;
 	border: 1px solid rgba(0, 0, 0, 0.5);
-	max-width: 23px;
+	max-width: 19px;
 }
 
 .baseTheme .v-colorpicker-button-color  + .v-button-caption:not(:empty) {
-	margin-left: 19px;
+	margin-left: 16px;
 }
 
 .baseTheme .v-panel {
@@ -12650,15 +12626,15 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-panel-caption {
 	box-sizing: border-box;
-	padding: 0 12px;
-	line-height: 36px;
+	padding: 0 11px;
+	line-height: 31px;
 	border-bottom: 1px solid #dddddd;
 	background-color: #fefefe;
 	background-image: -webkit-linear-gradient(top, #fefefe 2%, #fcfcfc 98%);
 	background-image: linear-gradient(to bottom,#fefefe 2%, #fcfcfc 98%);
 	color: #474747;
 	font-weight: 400;
-	font-size: 14px;
+	font-size: 13px;
 	-webkit-box-shadow: inset 0 1px 0 white;
 	box-shadow: inset 0 1px 0 white;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -12672,19 +12648,19 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-panel-content  > .v-margin-top {
-	padding-top: 12px;
+	padding-top: 11px;
 }
 
 .baseTheme .v-panel-content  > .v-margin-right {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-panel-content  > .v-margin-bottom {
-	padding-bottom: 12px;
+	padding-bottom: 11px;
 }
 
 .baseTheme .v-panel-content  > .v-margin-left {
-	padding-left: 12px;
+	padding-left: 11px;
 }
 
 .baseTheme .v-panel-borderless {
@@ -12702,7 +12678,7 @@ div.v-layout.v-horizontal.v-widget {
 	box-shadow: none;
 	color: inherit;
 	padding: 0;
-	margin: 0 12px;
+	margin: 0 11px;
 	border-bottom: none;
 }
 
@@ -12758,7 +12734,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-panel-caption.v-horizontallayout .v-label {
-	line-height: 37px;
+	line-height: 32px;
 }
 
 .baseTheme .v-accordion {
@@ -12811,15 +12787,15 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-accordion-item-caption  > .v-caption {
 	box-sizing: border-box;
-	padding: 0 12px;
-	line-height: 36px;
+	padding: 0 11px;
+	line-height: 31px;
 	border-bottom: 1px solid #dddddd;
 	background-color: #fefefe;
 	background-image: -webkit-linear-gradient(top, #fefefe 2%, #fcfcfc 98%);
 	background-image: linear-gradient(to bottom,#fefefe 2%, #fcfcfc 98%);
 	color: #474747;
 	font-weight: 400;
-	font-size: 14px;
+	font-size: 13px;
 	-webkit-box-shadow: inset 0 1px 0 white;
 	box-shadow: inset 0 1px 0 white;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -12858,19 +12834,19 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-accordion-item-content  > .v-margin-top {
-	padding-top: 12px;
+	padding-top: 11px;
 }
 
 .baseTheme .v-accordion-item-content  > .v-margin-right {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-accordion-item-content  > .v-margin-bottom {
-	padding-bottom: 12px;
+	padding-bottom: 11px;
 }
 
 .baseTheme .v-accordion-item-content  > .v-margin-left {
-	padding-left: 12px;
+	padding-left: 11px;
 }
 
 .baseTheme .v-accordion-borderless {
@@ -12904,15 +12880,15 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-select-twincol .v-textfield, .baseTheme .v-select-twincol .v-nativebutton {
 	width: auto !important;
-	margin-top: 9px;
+	margin-top: 8px;
 }
 
 .baseTheme .v-select-twincol .v-nativebutton {
-	margin-left: 9px;
+	margin-left: 8px;
 }
 
 .baseTheme .v-select-twincol-caption-left, .baseTheme .v-select-twincol-caption-right {
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 400;
 	padding-bottom: 0.3em;
 	padding-left: 1px;
@@ -12933,9 +12909,9 @@ div.v-layout.v-horizontal.v-widget {
 	text-align: left;
 	white-space: normal;
 	position: absolute;
-	left: 9px;
-	right: 9px;
-	top: 36px;
+	left: 8px;
+	right: 8px;
+	top: 31px;
 	padding: 0;
 	text-align: center;
 }
@@ -13026,12 +13002,12 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-select-select  + .v-textfield {
 	width: auto !important;
-	margin-top: 9px;
+	margin-top: 8px;
 }
 
 .baseTheme .v-select-select  + .v-textfield  + .v-nativebutton {
-	margin-top: 9px;
-	margin-left: 9px;
+	margin-top: 8px;
+	margin-left: 8px;
 }
 
 .baseTheme .v-select-error .v-select-select {
@@ -13043,7 +13019,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-calendar-header-day {
 	font-weight: 400;
 	text-align: center;
-	padding: 7px 0;
+	padding: 6px 0;
 }
 
 .baseTheme .v-calendar-header-week .v-calendar-back, .baseTheme .v-calendar-header-week .v-calendar-next {
@@ -13117,13 +13093,13 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-calendar-bottom-spacer, .baseTheme .v-calendar-spacer, .baseTheme .v-calendar-bottom-spacer-empty {
-	height: 19px;
+	height: 17px;
 	margin-bottom: 3px;
 }
 
 .baseTheme .v-calendar-bottom-spacer {
 	font-size: 0.8em;
-	padding: 0 5px;
+	padding: 0 4px;
 	cursor: pointer;
 }
 
@@ -13132,10 +13108,10 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-calendar-day-number {
-	line-height: 25px;
-	font-size: 16px;
+	line-height: 21px;
+	font-size: 14px;
 	text-align: right;
-	margin: 0 5px;
+	margin: 0 4px;
 	white-space: nowrap;
 	border-top: 1px solid #f6f6f6;
 	cursor: pointer;
@@ -13153,9 +13129,9 @@ div.v-layout.v-horizontal.v-widget {
 	font-weight: 400;
 	color: #4783eb;
 	border-top: 2px solid #4783eb;
-	line-height: 24px;
+	line-height: 20px;
 	margin: 0;
-	padding: 0 5px;
+	padding: 0 4px;
 }
 
 .baseTheme .v-calendar-month-day-selected {
@@ -13176,7 +13152,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-calendar-weekly-longevents .v-calendar-event-all-day {
-	height: 22px;
+	height: 19px;
 	line-height: 1.6;
 	margin-bottom: 3px;
 }
@@ -13198,7 +13174,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-calendar-time {
 	text-align: right;
-	padding-right: 9px;
+	padding-right: 8px;
 	margin-top: -6px;
 	padding-bottom: 6px;
 }
@@ -13225,7 +13201,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-calendar .v-datecellslot, .baseTheme .v-calendar .v-datecellslot-even {
-	margin-right: 5px;
+	margin-right: 4px;
 }
 
 .baseTheme .v-calendar-current-time {
@@ -13281,19 +13257,19 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-calendar-event-month {
-	padding: 0 5px;
+	padding: 0 4px;
 	box-sizing: border-box;
 	margin-bottom: 3px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	height: 19px;
-	line-height: 19px;
+	height: 17px;
+	line-height: 17px;
 }
 
 .baseTheme .v-calendar-event-month .v-calendar-event-time {
 	float: right;
 	font-size: 0.9em;
-	line-height: 19px;
+	line-height: 17px;
 	opacity: 0.5;
 	filter: alpha(opacity=50) ;
 }
@@ -13304,10 +13280,10 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-calendar-event-all-day {
-	padding: 0 5px;
+	padding: 0 4px;
 	box-sizing: border-box;
-	height: 19px;
-	line-height: 19px;
+	height: 17px;
+	line-height: 17px;
 	border-radius: 0;
 	margin-left: -1px;
 	white-space: nowrap;
@@ -13330,23 +13306,23 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .v-calendar-event-start {
 	border-top-left-radius: 3px;
 	border-bottom-left-radius: 3px;
-	margin-left: 5px;
+	margin-left: 4px;
 }
 
 .baseTheme .v-calendar-event-end {
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
-	margin-right: 5px;
+	margin-right: 4px;
 }
 
 .baseTheme .v-calendar-event-caption {
 	font-weight: 500;
 	line-height: 1.2;
-	padding: 5px 0;
+	padding: 4px 0;
 	position: absolute;
 	overflow: hidden;
-	right: 9px;
-	left: 5px;
+	right: 8px;
+	left: 4px;
 	bottom: 0;
 	top: 0;
 }
@@ -13365,7 +13341,7 @@ div.v-layout.v-horizontal.v-widget {
 	border-radius: 4px;
 	border: 1px solid #f1f1f1;
 	padding-top: 3px;
-	margin-right: 5px;
+	margin-right: 4px;
 }
 
 .baseTheme .v-calendar-event-month:before {
@@ -13516,7 +13492,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme h4, .baseTheme .v-label-h4 {
 	line-height: 1.1;
 	font-weight: 500;
-	font-size: 14px;
+	font-size: 12px;
 	color: #3f3f3f;
 	text-transform: uppercase;
 	letter-spacing: 0;
@@ -13525,11 +13501,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-csslayout  > h1:first-child, .baseTheme .v-csslayout  > h2:first-child, .baseTheme .v-csslayout  > h3:first-child, .baseTheme .v-csslayout  > h4 > .v-label-h1:first-child, .baseTheme .v-csslayout  > .v-label-h2:first-child, .baseTheme .v-csslayout  > .v-label-h3:first-child, .baseTheme .v-csslayout  > .v-label-h4:first-child {
-	margin-top: 16px;
+	margin-top: 14px;
 }
 
 .baseTheme .v-verticallayout > .v-slot:first-child h1, .baseTheme .v-verticallayout > .v-slot:first-child .v-label-h1, .baseTheme .v-verticallayout > .v-slot:first-child h2, .baseTheme .v-verticallayout > .v-slot:first-child .v-label-h2, .baseTheme .v-verticallayout > .v-slot:first-child h3, .baseTheme .v-verticallayout > .v-slot:first-child .v-label-h3, .baseTheme .v-verticallayout > .v-slot:first-child h4, .baseTheme .v-verticallayout > .v-slot:first-child .v-label-h4, .baseTheme .v-verticallayout > div > .v-slot:first-child h1, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-label-h1, .baseTheme .v-verticallayout > div > .v-slot:first-child h2, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-label-h2, .baseTheme .v-verticallayout > div > .v-slot:first-child h3, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-label-h3, .baseTheme .v-verticallayout > div > .v-slot:first-child h4, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-label-h4 {
-	margin-top: 16px;
+	margin-top: 14px;
 }
 
 .baseTheme .v-verticallayout > .v-slot:first-child .v-formlayout-contentcell h1, .baseTheme .v-verticallayout > .v-slot:first-child .v-formlayout-contentcell .v-label-h1, .baseTheme .v-verticallayout > .v-slot:first-child .v-formlayout-contentcell h2, .baseTheme .v-verticallayout > .v-slot:first-child .v-formlayout-contentcell .v-label-h2, .baseTheme .v-verticallayout > .v-slot:first-child .v-formlayout-contentcell h3, .baseTheme .v-verticallayout > .v-slot:first-child .v-formlayout-contentcell .v-label-h3, .baseTheme .v-verticallayout > .v-slot:first-child .v-formlayout-contentcell h4, .baseTheme .v-verticallayout > .v-slot:first-child .v-formlayout-contentcell .v-label-h4, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-formlayout-contentcell h1, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-formlayout-contentcell .v-label-h1, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-formlayout-contentcell h2, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-formlayout-contentcell .v-label-h2, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-formlayout-contentcell h3, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-formlayout-contentcell .v-label-h3, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-formlayout-contentcell h4, .baseTheme .v-verticallayout > div > .v-slot:first-child .v-formlayout-contentcell .v-label-h4 {
@@ -13545,19 +13521,19 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-label-large {
-	font-size: 20px;
+	font-size: 17px;
 }
 
 .baseTheme .v-label-small {
-	font-size: 14px;
-}
-
-.baseTheme .v-label-tiny {
 	font-size: 12px;
 }
 
+.baseTheme .v-label-tiny {
+	font-size: 11px;
+}
+
 .baseTheme .v-label-huge {
-	font-size: 26px;
+	font-size: 23px;
 }
 
 .baseTheme .v-label-bold {
@@ -13596,16 +13572,16 @@ div.v-layout.v-horizontal.v-widget {
 	color: #474747;
 	border: 2px solid #29a884;
 	border-radius: 3px;
-	padding: 7px 19px 7px 37px;
+	padding: 6px 16px 6px 32px;
 	font-weight: 400;
-	font-size: 15px;
+	font-size: 13px;
 }
 
 .baseTheme .v-label-success:before, .baseTheme .v-label-failure:before {
 	font-family: ThemeIcons;
 	content: "\f00c";
 	margin-right: 0.5em;
-	margin-left: -19px;
+	margin-left: -16px;
 	color: #29a884;
 }
 
@@ -13745,12 +13721,12 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-select-select  + .v-textfield {
 	width: auto !important;
-	margin-top: 9px;
+	margin-top: 8px;
 }
 
 .baseTheme .v-select-select  + .v-textfield  + .v-nativebutton {
-	margin-top: 9px;
-	margin-left: 9px;
+	margin-top: 8px;
+	margin-left: 8px;
 }
 
 .baseTheme .v-select-error .v-select-select {
@@ -13804,23 +13780,23 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-popupview-popup .popupContent  > .v-margin-top {
-	padding-top: 12px;
+	padding-top: 11px;
 }
 
 .baseTheme .v-popupview-popup .popupContent  > .v-margin-right {
-	padding-right: 12px;
+	padding-right: 11px;
 }
 
 .baseTheme .v-popupview-popup .popupContent  > .v-margin-bottom {
-	padding-bottom: 12px;
+	padding-bottom: 11px;
 }
 
 .baseTheme .v-popupview-popup .popupContent  > .v-margin-left {
-	padding-left: 12px;
+	padding-left: 11px;
 }
 
 .baseTheme .v-popupview-loading {
-	margin: 12px 12px;
+	margin: 11px 11px;
 	height: 24px !important;
 	width: 24px !important;
 	box-sizing: border-box;
@@ -13849,7 +13825,7 @@ div.v-layout.v-horizontal.v-widget {
 	
 	font-weight: 400;
 	line-height: normal;
-	height: 37px;
+	height: 32px;
 	border-radius: 3px;
 	padding: 0;
 	border: 1px solid #c5c5c5;
@@ -13880,8 +13856,8 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .v-richtextarea .gwt-ToggleButton, .baseTheme .v-richtextarea .gwt-PushButton {
 	display: inline-block;
-	line-height: 37px;
-	width: 37px;
+	line-height: 32px;
+	width: 32px;
 	text-align: center;
 	outline: none;
 }
@@ -13977,12 +13953,12 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-richtextarea .gwt-RichTextToolbar-bottom {
-	font-size: 13px;
-	padding: 0 9px 9px 0;
+	font-size: 11px;
+	padding: 0 8px 8px 0;
 }
 
 .baseTheme .v-richtextarea .gwt-RichTextToolbar-bottom select {
-	margin: 9px 0 0 9px;
+	margin: 8px 0 0 8px;
 }
 
 .baseTheme .v-richtextarea .gwt-RichTextArea {
@@ -13992,7 +13968,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-richtextarea-readonly {
-	padding: 5px 7px;
+	padding: 4px 6px;
 	background: transparent;
 }
 
@@ -14014,26 +13990,26 @@ div.v-layout.v-horizontal.v-widget {
 	z-index: -1;
 	position: absolute;
 	right: 0;
-	height: 37px;
+	height: 32px;
 	text-align: right;
 	border: none;
 	background: transparent;
 }
 
 .baseTheme .v-Notification.v-position-top {
-	top: 12px;
+	top: 11px;
 }
 
 .baseTheme .v-Notification.v-position-right {
-	right: 12px;
+	right: 11px;
 }
 
 .baseTheme .v-Notification.v-position-bottom {
-	bottom: 12px;
+	bottom: 11px;
 }
 
 .baseTheme .v-Notification.v-position-left {
-	left: 12px;
+	left: 11px;
 }
 
 .baseTheme .v-Notification.v-position-assistive {
@@ -14082,12 +14058,12 @@ div.v-layout.v-horizontal.v-widget {
 	background: white;
 	-webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
 	box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
-	padding: 19px 22px;
+	padding: 16px 19px;
 }
 
 .baseTheme .v-Notification .v-Notification-caption {
 	color: #4783eb;
-	font-size: 19px;
+	font-size: 17px;
 	line-height: 1;
 }
 
@@ -14116,11 +14092,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-Notification-caption ~ .v-Notification-description, .baseTheme .v-Notification-caption ~ .v-Notification-details {
-	margin-left: 24px;
+	margin-left: 21px;
 }
 
 .baseTheme .v-icon + .v-Notification-caption {
-	margin-left: 16px;
+	margin-left: 14px;
 }
 
 .baseTheme .v-Notification-system {
@@ -14131,11 +14107,11 @@ div.v-layout.v-horizontal.v-widget {
 	border-radius: 0;
 	-webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
-	padding: 12px 15px;
+	padding: 11px 13px;
 	background-color: #444;
 	background-color: rgba(68, 68, 68, 0.9);
 	font-weight: 400;
-	line-height: 22px;
+	line-height: 20px;
 }
 
 .baseTheme .v-Notification-system .v-Notification-description, .baseTheme .v-Notification-system .v-Notification-details {
@@ -14213,7 +14189,7 @@ div.v-layout.v-horizontal.v-widget {
 	font-weight: 400;
 	-webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
 	box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
-	padding-right: 59px;
+	padding-right: 51px;
 	overflow: hidden !important;
 	cursor: pointer;
 }
@@ -14231,11 +14207,11 @@ div.v-layout.v-horizontal.v-widget {
 	font-size: 1.5em;
 	position: absolute;
 	top: 50%;
-	margin-top: -12px;
-	right: 12px;
-	width: 25px;
-	height: 25px;
-	line-height: 24px;
+	margin-top: -11px;
+	right: 11px;
+	width: 21px;
+	height: 21px;
+	line-height: 20px;
 	cursor: pointer;
 	color: #000;
 	opacity: 0.5;
@@ -14279,7 +14255,7 @@ div.v-layout.v-horizontal.v-widget {
 	background-color: #444;
 	background-color: rgba(68, 68, 68, 0.9);
 	font-weight: 400;
-	line-height: 22px;
+	line-height: 20px;
 }
 
 .baseTheme .v-Notification.dark .v-Notification-caption {
@@ -14299,7 +14275,7 @@ div.v-layout.v-horizontal.v-widget {
 	border-radius: 0;
 	-webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
-	padding: 12px 15px;
+	padding: 11px 13px;
 }
 
 .baseTheme .v-Notification.bar .v-Notification-description, .baseTheme .v-Notification.bar .v-Notification-details {
@@ -14339,15 +14315,15 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-Notification.small {
-	padding: 11px 13px;
+	padding: 10px 11px;
 }
 
 .baseTheme .v-Notification.small .v-Notification-caption {
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .baseTheme .v-Notification.small .v-Notification-description {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .baseTheme .v-Notification.critical-error {
@@ -14366,7 +14342,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-Notification.closable {
-	padding-right: 59px;
+	padding-right: 51px;
 	overflow: hidden !important;
 	cursor: pointer;
 }
@@ -14376,11 +14352,11 @@ div.v-layout.v-horizontal.v-widget {
 	font-size: 1.5em;
 	position: absolute;
 	top: 50%;
-	margin-top: -12px;
-	right: 12px;
-	width: 25px;
-	height: 25px;
-	line-height: 24px;
+	margin-top: -11px;
+	right: 11px;
+	width: 21px;
+	height: 21px;
+	line-height: 20px;
 	cursor: pointer;
 	color: #000;
 	opacity: 0.5;
@@ -14421,7 +14397,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-Notification.closable.tray:after {
-	top: 16px;
+	top: 14px;
 	margin-top: 0;
 }
 
@@ -14461,11 +14437,11 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .valo-menu {
 	height: 100%;
 	background-color: #f9fafb;
-	background-image: -webkit-linear-gradient(right, #f4f6f8 0%, #f9fafb 9px);
-	background-image: linear-gradient(to left,#f4f6f8 0%, #f9fafb 9px);
+	background-image: -webkit-linear-gradient(right, #f4f6f8 0%, #f9fafb 8px);
+	background-image: linear-gradient(to left,#f4f6f8 0%, #f9fafb 8px);
 	color: #6a7890;
-	font-size: 14px;
-	line-height: 30px;
+	font-size: 13px;
+	line-height: 26px;
 	border-right: 1px solid #cccdcd;
 	white-space: nowrap;
 }
@@ -14482,7 +14458,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .valo-menu-part {
 	border-left: 1px solid #dededf;
 	height: 100%;
-	padding-bottom: 37px;
+	padding-bottom: 32px;
 	overflow: auto;
 }
 
@@ -14499,7 +14475,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .valo-menu-title .valo-menu-badge, .baseTheme .valo-menu-subtitle .valo-menu-badge, .baseTheme .valo-menu-item .valo-menu-badge {
 	position: absolute;
-	right: 19px;
+	right: 16px;
 }
 
 .baseTheme .valo-menu-title {
@@ -14509,8 +14485,8 @@ div.v-layout.v-horizontal.v-widget {
 	background-image: linear-gradient(to bottom,#4986eb 2%, #427de6 98%);
 	color: white;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05);
-	padding: 12px 19px;
-	font-size: 14px;
+	padding: 11px 16px;
+	font-size: 13px;
 	border-bottom: 1px solid #3a6bc0;
 	
 	
@@ -14531,7 +14507,7 @@ div.v-layout.v-horizontal.v-widget {
 	-webkit-box-shadow: inset 0 1px 0 #78a0ed;
 	box-shadow: inset 0 1px 0 #78a0ed;
 	text-shadow: inherit;
-	font-size: 16px;
+	font-size: 14px;
 	border-color: inherit;
 }
 
@@ -14550,7 +14526,7 @@ div.v-layout.v-horizontal.v-widget {
 	text-shadow: none;
 	background: transparent;
 	color: inherit;
-	margin: 19px 7px;
+	margin: 16px 6px;
 	display: block;
 	overflow: hidden;
 	text-align: center;
@@ -14569,7 +14545,7 @@ div.v-layout.v-horizontal.v-widget {
 	margin-right: 1px;
 	border-radius: 3px;
 	color: #4783eb;
-	padding: 0 12px;
+	padding: 0 11px;
 	-webkit-transition: color 140ms;
 	-moz-transition: color 140ms;
 	transition: color 140ms;
@@ -14622,9 +14598,9 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .baseTheme .v-menubar-user-menu  > .v-menubar-menuitem img.v-icon {
-	width: 56px;
-	height: 56px;
-	border-radius: 29px;
+	width: 48px;
+	height: 48px;
+	border-radius: 25px;
 	
 	display: block;
 	margin: 0 auto 0.3em;
@@ -14644,7 +14620,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .valo-menu-subtitle {
 	color: #99a4b6;
-	margin: 7px 0 7px 19px;
+	margin: 6px 0 6px 16px;
 	border-bottom: 1px solid #d3d4d5;
 }
 
@@ -14659,7 +14635,7 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .valo-menu-item {
 	outline: none;
 	font-weight: 400;
-	padding: 0 37px 0 19px;
+	padding: 0 32px 0 16px;
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
@@ -14674,7 +14650,7 @@ div.v-layout.v-horizontal.v-widget {
 	display: inline-block;
 	width: 90%;
 	max-width: 15em;
-	padding-right: 19px;
+	padding-right: 16px;
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
@@ -14704,7 +14680,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .valo-menu-item span.v-icon {
 	min-width: 1em;
-	margin-right: 19px;
+	margin-right: 16px;
 	text-align: center;
 	vertical-align: middle;
 	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(0, 0, 0, 0.75)));
@@ -14720,21 +14696,21 @@ div.v-layout.v-horizontal.v-widget {
 	-moz-transition: background-color 300ms;
 	transition: background-color 300ms;
 	line-height: 1;
-	padding: 4px 6px;
-	min-width: 11px;
+	padding: 4px 5px;
+	min-width: 9px;
 	text-align: center;
-	top: 4px;
+	top: 2.5px;
 	border-radius: 3px;
 }
 
 .baseTheme .valo-menu-part.large-icons {
 	background-color: #f9fafb;
-	min-width: 74px;
-	max-width: 111px;
+	min-width: 64px;
+	max-width: 96px;
 }
 
 .baseTheme .valo-menu-part.large-icons .valo-menu-title {
-	font-size: 12px;
+	font-size: 11px;
 }
 
 .baseTheme .valo-menu-part.large-icons .valo-menu-title .v-label-undef-w {
@@ -14744,28 +14720,28 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .valo-menu-part.large-icons .v-menubar-user-menu {
 	margin-left: 0;
 	margin-right: 0;
-	font-size: 11px;
+	font-size: 10px;
 }
 
 .baseTheme .valo-menu-part.large-icons .v-menubar-user-menu img.v-icon {
-	width: 28px;
-	height: 28px;
+	width: 25px;
+	height: 25px;
 }
 
 .baseTheme .valo-menu-part.large-icons [class*="subtitle"] {
-	margin: 9px 0 0;
-	padding: 7px 25px 7px 9px;
+	margin: 8px 0 0;
+	padding: 6px 21px 6px 8px;
 	line-height: 1;
 	border: none;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	background: #e7eaef;
-	font-size: 13px;
+	font-size: 11px;
 	
 }
 
 .baseTheme .valo-menu-part.large-icons [class*="subtitle"] [class*="badge"] {
-	right: 9px;
+	right: 8px;
 }
 
 .baseTheme .valo-menu-part.large-icons [class*="subtitle"]  + .valo-menu-item {
@@ -14774,9 +14750,9 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .valo-menu-part.large-icons .valo-menu-item {
 	display: block;
-	font-size: 26px;
+	font-size: 22px;
 	line-height: 1;
-	padding: 12px;
+	padding: 11px;
 	text-align: center;
 	border-top: 1px solid #eaebeb;
 }
@@ -14790,7 +14766,7 @@ div.v-layout.v-horizontal.v-widget {
 	width: auto;
 	margin: 0.3em 0 0;
 	padding: 0;
-	font-size: 11px;
+	font-size: 10px;
 	line-height: 1.3;
 }
 
@@ -14817,25 +14793,25 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .valo-menu-part.large-icons .valo-menu-item [class*="badge"] {
 	padding-left: 4px;
 	padding-right: 4px;
-	top: 7px;
-	right: 7px;
+	top: 6px;
+	right: 6px;
 	border: 2px solid #f9fafb;
 }
 
 .baseTheme .valo-menu-logo {
 	display: block;
 	overflow: hidden;
-	width: 44px !important;
-	height: 44px;
+	width: 38px !important;
+	height: 38px;
 	border-radius: 3px;
 	text-align: center;
 	background-color: #4783eb;
 	background-image: -webkit-linear-gradient(top, #4986eb 2%, #427de6 98%);
 	background-image: linear-gradient(to bottom,#4986eb 2%, #427de6 98%);
 	color: white;
-	font-size: 25px;
-	line-height: 44px;
-	margin: 19px auto;
+	font-size: 21px;
+	line-height: 38px;
+	margin: 16px auto;
 	
 	
 }
@@ -14846,12 +14822,12 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .valo-menu-responsive[width-range~="801px-1100px"] .valo-menu-part {
 	background-color: #f9fafb;
-	min-width: 74px;
-	max-width: 111px;
+	min-width: 64px;
+	max-width: 96px;
 }
 
 .baseTheme .valo-menu-responsive[width-range~="801px-1100px"] .valo-menu-part .valo-menu-title {
-	font-size: 12px;
+	font-size: 11px;
 }
 
 .baseTheme .valo-menu-responsive[width-range~="801px-1100px"] .valo-menu-part .valo-menu-title .v-label-undef-w {
@@ -14861,28 +14837,28 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .valo-menu-responsive[width-range~="801px-1100px"] .valo-menu-part .v-menubar-user-menu {
 	margin-left: 0;
 	margin-right: 0;
-	font-size: 11px;
+	font-size: 10px;
 }
 
 .baseTheme .valo-menu-responsive[width-range~="801px-1100px"] .valo-menu-part .v-menubar-user-menu img.v-icon {
-	width: 28px;
-	height: 28px;
+	width: 25px;
+	height: 25px;
 }
 
 .baseTheme .valo-menu-responsive[width-range~="801px-1100px"] .valo-menu-part [class*="subtitle"] {
-	margin: 9px 0 0;
-	padding: 7px 25px 7px 9px;
+	margin: 8px 0 0;
+	padding: 6px 21px 6px 8px;
 	line-height: 1;
 	border: none;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	background: #e7eaef;
-	font-size: 13px;
+	font-size: 11px;
 	
 }
 
 .baseTheme .valo-menu-responsive[width-range~="801px-1100px"] .valo-menu-part [class*="subtitle"] [class*="badge"] {
-	right: 9px;
+	right: 8px;
 }
 
 .baseTheme .valo-menu-responsive[width-range~="801px-1100px"] .valo-menu-part [class*="subtitle"]  + .valo-menu-item {
@@ -14891,9 +14867,9 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .valo-menu-responsive[width-range~="801px-1100px"] .valo-menu-part .valo-menu-item {
 	display: block;
-	font-size: 26px;
+	font-size: 22px;
 	line-height: 1;
-	padding: 12px;
+	padding: 11px;
 	text-align: center;
 	border-top: 1px solid #eaebeb;
 }
@@ -14907,7 +14883,7 @@ div.v-layout.v-horizontal.v-widget {
 	width: auto;
 	margin: 0.3em 0 0;
 	padding: 0;
-	font-size: 11px;
+	font-size: 10px;
 	line-height: 1.3;
 }
 
@@ -14934,19 +14910,19 @@ div.v-layout.v-horizontal.v-widget {
 .baseTheme .valo-menu-responsive[width-range~="801px-1100px"] .valo-menu-part .valo-menu-item [class*="badge"] {
 	padding-left: 4px;
 	padding-right: 4px;
-	top: 7px;
-	right: 7px;
+	top: 6px;
+	right: 6px;
 	border: 2px solid #f9fafb;
 }
 
 .baseTheme .valo-menu-responsive[width-range~="0-800px"] {
-	padding-top: 37px;
+	padding-top: 32px;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
 .baseTheme .valo-menu-responsive[width-range~="0-800px"] .v-loading-indicator {
-	top: 37px;
+	top: 32px;
 }
 
 .baseTheme .valo-menu-responsive[width-range~="0-800px"]  > .v-widget {
@@ -14971,7 +14947,7 @@ div.v-layout.v-horizontal.v-widget {
 	top: 0;
 	left: 0;
 	right: 0;
-	height: 37px !important;
+	height: 32px !important;
 	padding-top: 0;
 	padding-bottom: 0;
 	-webkit-backface-visibility: hidden;
@@ -14984,44 +14960,44 @@ div.v-layout.v-horizontal.v-widget {
 	right: 0;
 	margin: 0;
 	padding: 0;
-	height: 37px;
+	height: 32px;
 	color: #adc4eb;
 	max-width: 30%;
 	-webkit-backface-visibility: hidden;
 }
 
 .baseTheme .valo-menu-responsive[width-range~="0-800px"] .valo-menu .v-menubar-user-menu .v-menubar-menuitem {
-	line-height: 36px;
+	line-height: 31px;
 	white-space: nowrap;
 }
 
 .baseTheme .valo-menu-responsive[width-range~="0-800px"] .valo-menu .v-menubar-user-menu img.v-icon {
 	display: inline-block;
-	margin: 0 6px 0 0;
-	width: 19px;
-	height: 19px;
-	border-radius: 10px;
+	margin: 0 5px 0 0;
+	width: 16px;
+	height: 16px;
+	border-radius: 8px;
 	border: none;
 }
 
 .baseTheme .valo-menu-responsive[width-range~="0-800px"] .valo-menuitems {
 	height: 100%;
 	background-color: #f9fafb;
-	background-image: -webkit-linear-gradient(right, #f4f6f8 0%, #f9fafb 9px);
-	background-image: linear-gradient(to left,#f4f6f8 0%, #f9fafb 9px);
+	background-image: -webkit-linear-gradient(right, #f4f6f8 0%, #f9fafb 8px);
+	background-image: linear-gradient(to left,#f4f6f8 0%, #f9fafb 8px);
 	color: #6a7890;
-	font-size: 14px;
-	line-height: 30px;
+	font-size: 13px;
+	line-height: 26px;
 	border-right: 1px solid #cccdcd;
 	white-space: nowrap;
 	position: fixed;
 	z-index: 9000;
-	top: 37px;
+	top: 32px;
 	bottom: 0;
 	height: auto;
 	max-width: 100%;
 	overflow: auto;
-	padding: 19px 0;
+	padding: 16px 0;
 	-webkit-transform: translatex(-100%);
 	-moz-transform: translatex(-100%);
 	-ms-transform: translatex(-100%);
@@ -15046,7 +15022,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .valo-menu-responsive[width-range~="0-500px"] .valo-menu .v-menubar-user-menu .v-menubar-menuitem-caption {
 	display: inline-block;
-	width: 19px;
+	width: 16px;
 	overflow: hidden;
 }
 
@@ -15098,4 +15074,10 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme #header_subtop {
 	background: lightgrey;
+}
+
+.baseTheme .top-menu {
+	height: 28px;
+	margin-top: 5px;
+	font-weight: bold;
 }

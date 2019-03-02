@@ -370,6 +370,13 @@ public interface AppLayout extends Component {
 		}
 	}
 
+	/**
+	 * Creates a menu item to place inside Left side menu
+	 * @param navigator
+	 * @param badge
+	 * @param c
+	 * @return
+	 */
 	public default Button createMenuButton(Navigator navigator, int badge, Class c) {
 		MenuBudgeButton vb = new MenuBudgeButton(c, new ClickListener() {
 			@Override
@@ -387,6 +394,13 @@ public interface AppLayout extends Component {
 
 		return vb;
 	}
+	/**
+	 * Creates a menu item to place inside Header's top menu
+	 * @param navigator
+	 * @param badge
+	 * @param c
+	 * @return
+	 */
 	public default Button createTopMenuButton(Navigator navigator, int badge, Class c) {
 		MenuBudgeButton vb = new MenuBudgeButton(c, new ClickListener() {
 			@Override
@@ -396,11 +410,19 @@ public interface AppLayout extends Component {
 		}, null);
 		navigator.addView(c.getSimpleName(), c);
 		vb.setPrimaryStyleName(ValoTheme.MENU_ITEM);
+		vb.addStyleName("top-menu");
 
 		viewSelectors.put(c.getSimpleName(), vb);
 
 		return vb;
 	}
+	/**
+	 * Creates a menu item to place inside Header's sub menu
+	 * @param navigator
+	 * @param badge
+	 * @param c
+	 * @return
+	 */
 	public default Button createSubMenuButton(Navigator navigator, int badge, Class c) {
 		MenuBudgeButton vb = new MenuBudgeButton(c, new ClickListener() {
 			@Override
@@ -410,6 +432,7 @@ public interface AppLayout extends Component {
 		}, null);
 		navigator.addView(c.getSimpleName(), c);
 		vb.setPrimaryStyleName(ValoTheme.MENU_ITEM);
+		vb.addStyleName("sub-menu");
 
 		viewSelectors.put(c.getSimpleName(), vb);
 
@@ -444,6 +467,10 @@ public interface AppLayout extends Component {
 			selected.addStyleName("selected");
 		}
 	}
+	/**
+	 * Call this to highlight more menu items. (eg the parent of the current View)
+	 * @param viewNames the names of the views to show as active
+	 */
 	public default void setAsActiveAlso(String ... viewNames) {
 		for (String viewName : viewNames) {
 			Component selected = viewSelectors.get(viewName);
@@ -470,6 +497,10 @@ public interface AppLayout extends Component {
 			}
 		}
 	}
+	/**
+	 * @param viewClass
+	 * @return null if given view has no parent
+	 */
 	public default Class getParentViewClass(Class viewClass) {
 		Class pClass = null;
 

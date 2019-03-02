@@ -50,8 +50,8 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		setColumnExpandRatio(1, .001f);
 		setColumnExpandRatio(2, 1f);
 		setColumnExpandRatio(3, .1f);
-		setRowExpandRatio(0, .01f);
-		setRowExpandRatio(1, .01f);
+		setRowExpandRatio(0, 0f);
+		setRowExpandRatio(1, 0f);
 		setRowExpandRatio(2, 1f);
 
 		contentArea.setSizeFull();

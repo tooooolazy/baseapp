@@ -3,9 +3,9 @@
 // Global variable overrides. Must be declared before importing Valo.
 
 // Defines the plaintext font size, weight and family. Font size affects general component sizing.
-//$v-font-size: 16px;
+$v-font-size: 14px;
 //$v-font-weight: 300;
-//$v-font-family: "Open Sans", sans-serif;
+$v-font-family: "Verdana", sans-serif;
 
 // Defines the border used by all components.
 //$v-border: 1px solid (v-shade 0.7);
@@ -114,5 +114,10 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
 	}
 	#header_subtop {
 		background: lightgrey;
+	}
+	.top-menu {
+		height: $v-font-size*2;
+		margin-top: 5px;
+		font-weight: bold;
 	}
 }
