@@ -17,7 +17,7 @@ public class TrendsBaseView extends OverviewBaseView {
 
 		al.setSubItemsPadding();
 
-		al.setActiveView( getClass().getSimpleName() );
+		al.setAsActiveAlso( TrendsView.class.getSimpleName() );
 	};
 
 	@Override

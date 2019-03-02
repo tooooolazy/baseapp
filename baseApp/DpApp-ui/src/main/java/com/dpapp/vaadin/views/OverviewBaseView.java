@@ -28,6 +28,7 @@ public class OverviewBaseView extends BaseView {
 //		al.setSubItemsPadding();
 
 		al.setActiveView( getClass().getSimpleName() );
+		al.setAsActiveAlso( OverviewView.class.getSimpleName() );
 	};
 
 	@Override

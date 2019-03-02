@@ -444,6 +444,14 @@ public interface AppLayout extends Component {
 			selected.addStyleName("selected");
 		}
 	}
+	public default void setAsActiveAlso(String ... viewNames) {
+		for (String viewName : viewNames) {
+			Component selected = viewSelectors.get(viewName);
+			if (selected != null) {
+				selected.addStyleName("selected");
+			}
+		}
+	}
 	/**
 	 * Hides (or shows) a menu Items. It also affects their subitems (if any). ie hiding a menu item that has children will also hide the children
 	 * @param c th class of the View to toggle visibility

@@ -14,10 +14,6 @@ public class SkusView extends OverviewBaseView {
 		// show what is needed
 
 		al.toggleMenuItem( PerformanceView.class, false );
-
-//		al.setSubItemsPadding();
-
-		al.setActiveView( getClass().getSimpleName() );
 	};
 
 	@Override
