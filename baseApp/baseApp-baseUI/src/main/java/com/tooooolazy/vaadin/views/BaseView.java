@@ -7,6 +7,7 @@ import com.tooooolazy.vaadin.ui.AppLayout;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewBeforeLeaveEvent;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -16,6 +17,7 @@ import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
 public abstract class BaseView<C extends SearchCriteria, E> extends CustomComponent implements View {
@@ -103,14 +105,29 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
     	logger.info( "URI params: " + event.getParameterMap("/") );
     }
     public void beforeLeave(ViewBeforeLeaveEvent event) {
-    	if ( verifyExit( event ) )
+    	if ( verifyExit( event ) ) {
     		event.navigate();
-    	else
+
+    		Navigator navigator = (Navigator)event.getSource();
+			// remove any open popup windows when changing views for two reasons:
+			// - language will not change (assuming toggle language button is presses, which triggers a view change event)
+			// - the new view would most likely shouldn't have these popups! (if we don't mind keeping the popups we should use a custom Window class where we define all the extra functionality we need and can use to decide whether to close it or not )
+
+    		// UI seems to be null over here
+			Window[] ws = navigator.getUI().getWindows().toArray(new Window[]{});
+			for (Window w : ws)
+				navigator.getUI().removeWindow(w);
+    	} else
         	logger.info( "Cannot leave from " + getClass().getSimpleName() );
     }
-
+	/**
+	 * Automatically called when User navigates out of current View
+	 * @param event
+	 * @return - false if Navigation should NOT take place!! (ie user needs to save data first)
+	 */
 	protected boolean verifyExit(ViewBeforeLeaveEvent event) {
-		return true;
+		boolean canExit = true;
+		return canExit;
 	}
 
 
