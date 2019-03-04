@@ -17,7 +17,6 @@ public class UserBean<RE> {
 	protected List<RE> roles;
 	private boolean isGod;
 	protected boolean isDemo;
-	protected int branchCode; // takes the value of position from User object
 
 	public boolean isDemo() {
 		return isDemo;
@@ -65,10 +64,4 @@ public class UserBean<RE> {
 //		}
 //		return false;
 //	}
-	public int getBranchCode() {
-		return branchCode;
-	}
-	public void setBranchCode(int branchCode) {
-		this.branchCode = branchCode;
-	}
 }
