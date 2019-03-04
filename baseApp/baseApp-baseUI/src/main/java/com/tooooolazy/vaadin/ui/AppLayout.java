@@ -34,6 +34,11 @@ import com.vaadin.ui.themes.ValoTheme;
 import elemental.json.JsonArray;
 import elemental.json.JsonObject;
 
+/**
+ * Abstract (Interface) for a generic App Layout
+ * @author gpatoulas
+ *
+ */
 public interface AppLayout extends Component {
 
 	public ComponentContainer getContentContainer();
