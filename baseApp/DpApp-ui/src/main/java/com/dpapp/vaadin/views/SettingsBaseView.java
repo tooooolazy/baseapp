@@ -7,43 +7,36 @@ import com.tooooolazy.vaadin.ui.AppLayout;
 import com.tooooolazy.vaadin.views.BaseView;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 
-/**
- * used as base class for all Views related to Overview flow so that all Views know what to show and what to hide in the menus
- * @author tooooolazy
- *
- */
-public class OverviewBaseView extends BaseView {
+public class SettingsBaseView extends BaseView {
 
-	@Override
 	public void enter(ViewChangeEvent event) {
 		// TODO need to check (and most likely) modify menuitems
 
 		// get the abstact App Layout
 		AppLayout al = (AppLayout)getUI().getContent();
-		// show what is needed
-		al.toggleMenuItem( TrendsView.class, true );
-		al.toggleMenuItem( MarketsView.class, true );
-		al.toggleMenuItem( SkusView.class, true );
-		al.toggleMenuItem( ChannelsView.class, true );
+		// hide what is not needed
+		al.toggleMenuItem( TrendsView.class, false );
+		al.toggleMenuItem( MarketsView.class, false );
+		al.toggleMenuItem( SkusView.class, false );
+		al.toggleMenuItem( ChannelsView.class, false );
 
-		al.toggleMenuItem( SystemView.class, false );
-		al.toggleMenuItem( UserView.class, false );
+		al.toggleMenuItem( SystemView.class, true );
+		al.toggleMenuItem( UserView.class, true );
 
 		al.toggleMenuItem( PerformanceView.class, false );
 
 		al.toggleMenuItem( AiConfigView.class, false );
 		al.toggleMenuItem( PricingConfigView.class, false );
 
-//		al.setSubItemsPadding();
+		al.setSubItemsPadding();
 
 		al.setActiveView( getClass().getSimpleName() );
-		al.setAsActiveAlso( OverviewView.class.getSimpleName() );
 	};
 
 	@Override
 	protected boolean showTitleInContent() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

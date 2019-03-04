@@ -5,7 +5,9 @@ import com.dpapp.vaadin.views.MarketsView;
 import com.dpapp.vaadin.views.OverviewView;
 import com.dpapp.vaadin.views.SettingsView;
 import com.dpapp.vaadin.views.SkusView;
+import com.dpapp.vaadin.views.SystemView;
 import com.dpapp.vaadin.views.TrendsView;
+import com.dpapp.vaadin.views.UserView;
 import com.tooooolazy.vaadin.layout.TopAndLeftMenuLayout;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.Button;
@@ -41,6 +43,12 @@ public class DpAppLayout extends TopAndLeftMenuLayout {
 
 		Button b4 = createSubMenuButton( navigator, 0, ChannelsView.class);
 		hl.addComponent( b4 );
+
+		Button b5 = createSubMenuButton( navigator, 0, SystemView.class);
+		hl.addComponent( b5 );
+
+		Button b6 = createSubMenuButton( navigator, 0, UserView.class);
+		hl.addComponent( b6 );
 
 		return hl;
 	}

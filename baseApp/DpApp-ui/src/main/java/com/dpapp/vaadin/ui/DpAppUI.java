@@ -240,6 +240,38 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout> {
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
 		ja.set(16, jo);
 
+
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.AiConfigView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 100);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+//		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
+		ja.set(17, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.LearningRoteView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 101);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 100);
+		ja.set(18, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.PricingConfigView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 102);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+//		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
+		ja.set(19, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.DefaultPricingView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 103);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 102);
+		ja.set(20, jo);
+		
 		return ja;
 	}
 }
