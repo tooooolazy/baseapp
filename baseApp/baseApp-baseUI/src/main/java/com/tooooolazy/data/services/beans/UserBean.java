@@ -11,7 +11,7 @@ import com.tooooolazy.util.Credentials;
  *
  * @param <RE> - RoleEnum specific to each application
  */
-public class UserBean<RE> {
+public abstract class UserBean<RE> {
 	protected Credentials credentials;
 	protected int userCode;
 	protected List<RE> roles;

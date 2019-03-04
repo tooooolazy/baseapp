@@ -4,6 +4,8 @@ import java.util.Properties;
 
 import javax.servlet.annotation.WebServlet;
 
+import com.tooooolazy.data.services.beans.RoleEnum;
+import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.TLZUtils;
 import com.tooooolazy.vaadin.layout.ResponsiveMenuLayout;
@@ -17,7 +19,7 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 
 @Theme("baseTheme")
-public class AppUI extends BaseUI<ResponsiveMenuLayout> {
+public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>> {
 
 	static {
 //		Messages.setSupportedLocales( new String[] {"en", "el", "bg"});

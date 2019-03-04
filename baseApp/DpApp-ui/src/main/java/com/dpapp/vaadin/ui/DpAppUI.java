@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.servlet.annotation.WebServlet;
 
+import com.dpapp.data.services.beans.UserBean;
 import com.dpapp.vaadin.layout.DpAppLayout;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.layout.TopAndLeftMenuLayout;
@@ -22,7 +23,7 @@ import elemental.json.JsonArray;
 import elemental.json.JsonObject;
 
 @Theme("baseTheme")
-public class DpAppUI extends BaseUI<TopAndLeftMenuLayout> {
+public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 
 	static {
 //		Messages.setSupportedLocales( new String[] {"en", "el", "bg"});
