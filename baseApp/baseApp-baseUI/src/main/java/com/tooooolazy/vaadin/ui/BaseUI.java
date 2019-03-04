@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.Credentials;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.TLZMail;
@@ -47,7 +48,7 @@ import elemental.json.JsonObject;
 /**
  * <L> - Layout Class
  */
-public abstract class BaseUI<L extends AppLayout> extends UI {
+public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends UI {
 	protected final Logger logger = LoggerFactory.getLogger(UI.class.getName());
 
 	protected final String SESSION_USER_KEY = "_user";
@@ -534,8 +535,8 @@ public abstract class BaseUI<L extends AppLayout> extends UI {
 	 * Retrieves the user object from session
 	 * @return
 	 */
-	public Object getUserObject() {
-		return getSession().getAttribute( SESSION_USER_KEY );
+	public UB getUserObject() {
+		return (UB)getSession().getAttribute( SESSION_USER_KEY );
 	}
 	public boolean hasUserPermission(String methodName, Class _class, Object[] params) {
 		Method method = null;
