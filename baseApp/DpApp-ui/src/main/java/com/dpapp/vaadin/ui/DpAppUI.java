@@ -231,6 +231,15 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout> {
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
 		ja.set(15, jo);
 
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ConversionsView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 16);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(16, jo);
+
 		return ja;
 	}
 }
