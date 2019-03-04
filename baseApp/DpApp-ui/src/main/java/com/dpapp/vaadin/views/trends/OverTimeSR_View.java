@@ -1,5 +1,5 @@
 package com.dpapp.vaadin.views.trends;
 
-public class OverTimeSR_View extends OverTimeView {
+public class OverTimeSR_View extends OverTimeBaseView {
 
 }

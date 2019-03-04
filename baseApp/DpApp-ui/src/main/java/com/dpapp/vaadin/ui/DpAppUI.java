@@ -128,7 +128,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout> {
 		ja.set(2, jo);
 
 		jo = Json.createObject();
-		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.BySkuView");
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.BySkuSR_View");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 3);
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
@@ -136,7 +136,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout> {
 		ja.set(3, jo);
 
 		jo = Json.createObject();
-		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByChannelView");
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByChannelSR_View");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 4);
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
@@ -144,7 +144,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout> {
 		ja.set(4, jo);
 
 		jo = Json.createObject();
-		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByTouchPointView");
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByTouchPointSR_View");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 5);
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
@@ -166,6 +166,70 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout> {
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
 		ja.set(7, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.BySkuFR_View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 8);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 6);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(8, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByChannelFR_View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 9);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 6);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(9, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByTouchPointFR_View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 10);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 6);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(10, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.SoldVolumeView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 11);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(11, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.OverTimeSV_View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 12);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 11);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(12, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.BySkuSV_View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 13);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 11);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(13, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByChannelSV_View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 14);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 11);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(14, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByTouchPointSV_View");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 15);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 11);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		ja.set(15, jo);
 
 		return ja;
 	}
