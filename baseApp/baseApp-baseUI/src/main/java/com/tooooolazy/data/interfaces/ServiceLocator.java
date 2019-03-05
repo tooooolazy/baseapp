@@ -6,6 +6,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Used to create and cache required 'Service controllers' neede by the App
+ * @author gpatoulas
+ *
+ */
 public class ServiceLocator {
 	private Map cache;
 	private static ServiceLocator ourInstance = new ServiceLocator();
@@ -50,5 +55,11 @@ public class ServiceLocator {
 
 	public SecurityControllerService getSecurityController() {
 		return (SecurityControllerService) get().lookupSrv(SecurityControllerService.class);
+	}
+	public UserControllerService getUserController() {
+		return (UserControllerService) get().lookupSrv(UserControllerService.class);
+	}
+	public DataHandlerService getDataHandler() {
+		return (DataHandlerService) get().lookupSrv(DataHandlerService.class);
 	}
 }

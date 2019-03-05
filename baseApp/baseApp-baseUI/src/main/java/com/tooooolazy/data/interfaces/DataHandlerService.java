@@ -1,9 +1,7 @@
 package com.tooooolazy.data.interfaces;
 
 import java.util.List;
-import java.util.Map;
 
-import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.SearchCriteria;
 
 /**
