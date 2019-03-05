@@ -6,8 +6,14 @@ import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.Credentials;
 import com.vaadin.server.SessionExpiredException;
 
-public interface UserControllerService<RE> {
-	public Object login(Credentials credentials) throws Exception;
+/**
+ * @author gpatoulas
+ *
+ * @param <RE> - RoleEnum class
+ * @param <UB> - UserBean class
+ */
+public interface UserControllerService<RE, UB> {
+	public UB login(Credentials credentials) throws Exception;
 	public void getUserRoles(UserBean<RE> ub) throws Exception;
 	
 	/**

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tooooolazy.util.Credentials;
-//import gr.icap.online.enums.BusinessUnit;
 
 /**
  * @author gpatoulas

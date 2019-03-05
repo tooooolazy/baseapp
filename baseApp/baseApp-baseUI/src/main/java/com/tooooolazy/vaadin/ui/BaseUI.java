@@ -46,9 +46,15 @@ import elemental.json.JsonArray;
 import elemental.json.JsonObject;
 
 /**
- * <L> - Layout Class
+ * @author gpatoulas
+ *
+ * @param <L> - Layout Class eg {@link ResponsiveMenuLayout}
+ * @param <UB> - UserBean class ie something that extends {@link UserBean}
  */
 public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends UI {
+
+	private static final long serialVersionUID = 1L;
+
 	protected final Logger logger = LoggerFactory.getLogger(UI.class.getName());
 
 	protected final String SESSION_USER_KEY = "_user";
