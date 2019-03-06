@@ -162,7 +162,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 	 */
 	protected Object generateService(Class srvClass) {
 		if (srvClass.equals(DataHandlerService.class))
-			return new DataHandler();
+			return new DataHandler( new OnlineResult<JobFailureCode>().getClass() );
 
 		return null;
 	}

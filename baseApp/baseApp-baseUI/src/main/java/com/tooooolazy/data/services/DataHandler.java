@@ -10,19 +10,22 @@ import com.tooooolazy.data.services.beans.OnlineResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.services.client.DataHandlerClientImpl;
 
-public class DataHandler extends AbstractDataHandler {
+public class DataHandler<OR extends OnlineResult> extends AbstractDataHandler<OR> {
 
-	protected DataHandlerClient dataHandlerClient;
-    /**
+	protected DataHandlerClient<OR> dataHandlerClient;
+//	protected Class<OR> orClass; 
+
+	/**
      * Default constructor. 
      */
-	public DataHandler() {
+	public DataHandler(Class<OR> _class) {
 		String endPoint = ServicesContext.singleton().getProperty( "services.rest.endpoint.dataHandler") ;
-		dataHandlerClient = new DataHandlerClientImpl( endPoint );
+//		this.orClass = _class;
+		dataHandlerClient = new DataHandlerClientImpl( endPoint, _class );
 	}
 	@Override
-	public OnlineResult getData(String dataType, UserBean user, boolean blockIfUpdating, Map params, boolean requiresTransaction) throws Exception {
-		OnlineResult res = null;
+	public OR getData(String dataType, UserBean user, boolean blockIfUpdating, Map params, boolean requiresTransaction) throws Exception {
+		OR res = null;
 
 		OnlineParams op = new OnlineParams();
 

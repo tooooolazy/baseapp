@@ -9,7 +9,6 @@ import org.json.JSONObject;
  * @author gpatoulas
  *
  * @param <JFC> - JobFailure Enum class. can use default {@link JobFailureCode} or a custom one.
- * @param <JO> - json Object class.
  */
 //@JsonIgnoreProperties({"asJSON"})
 public class OnlineResult<JFC> implements Serializable {

@@ -12,7 +12,7 @@ import com.tooooolazy.util.SearchCriteria;
  * @author gpatoulas
  *
  */
-public interface DataHandlerService {
+public interface DataHandlerService<OR extends OnlineResult> {
 	public <C extends SearchCriteria> List getListData(C criteria, String orderBy);
 
 	/**
@@ -23,7 +23,7 @@ public interface DataHandlerService {
 	 * @return
 	 * @throws Exception
 	 */
-	public OnlineResult getData(String dataType, UserBean user, Map params) throws Exception;
+	public OR getData(String dataType, UserBean user, Map params) throws Exception;
 	/**
 	 * Helper delegate that assumes a 'DB transaction' is NOT needed (Only select queries)
 	 * @param dataType - the method to call
@@ -33,7 +33,7 @@ public interface DataHandlerService {
 	 * @return
 	 * @throws Exception
 	 */
-	public OnlineResult getData(String dataType, UserBean user, boolean blockIfUpdating, Map params) throws Exception;
+	public OR getData(String dataType, UserBean user, boolean blockIfUpdating, Map params) throws Exception;
 	/**
 	 * Helper delegate that assumes a 'DB transaction' is needed (Only select queries)
 	 * @param dataType - the method to call
@@ -43,7 +43,7 @@ public interface DataHandlerService {
 	 * @return
 	 * @throws Exception
 	 */
-	public OnlineResult getData(String dataType, UserBean user, Map params, boolean requiresTransaction) throws Exception;
+	public OR getData(String dataType, UserBean user, Map params, boolean requiresTransaction) throws Exception;
 	/**
 	 * Main delegate to retrieve TEP Data from WS
 	 * @param dataType - the method to call
@@ -54,6 +54,6 @@ public interface DataHandlerService {
 	 * @return
 	 * @throws Exception
 	 */
-	public OnlineResult getData(String dataType, UserBean user, boolean blockIfUpdating, Map params, boolean requiresTransaction) throws Exception;
+	public OR getData(String dataType, UserBean user, boolean blockIfUpdating, Map params, boolean requiresTransaction) throws Exception;
 
 }
