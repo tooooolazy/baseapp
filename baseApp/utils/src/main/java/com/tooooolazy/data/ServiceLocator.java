@@ -22,6 +22,12 @@ public class ServiceLocator {
 	public void setGenerator(ServiceGenerator sg) {
 		this.sg = sg;
 	}
+	public static ServiceGenerator getServices() {
+		if ( ourInstance.get().sg == null ) {
+			throw new RuntimeException("You must set the ServiceGenerator first by using 'setGenerator'");
+		}
+		return ourInstance.get().sg;
+	}
 
 	private ServiceLocator() {
 		this.cache = Collections.synchronizedMap(new HashMap());

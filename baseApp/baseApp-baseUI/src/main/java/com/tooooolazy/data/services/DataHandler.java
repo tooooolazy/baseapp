@@ -17,9 +17,8 @@ public class DataHandler extends AbstractDataHandler {
      * Default constructor. 
      */
 	public DataHandler() {
-		dataHandlerClient = new DataHandlerClientImpl(ServicesContext
-				.singleton().getProperty(
-						"pcb.services.rest.endpoint.dataHandler"));
+		String endPoint = ServicesContext.singleton().getProperty( "services.rest.endpoint.dataHandler") ;
+		dataHandlerClient = new DataHandlerClientImpl( endPoint );
 	}
 	@Override
 	public OnlineResult getData(String dataType, UserBean user, boolean blockIfUpdating, Map params, boolean requiresTransaction) throws Exception {

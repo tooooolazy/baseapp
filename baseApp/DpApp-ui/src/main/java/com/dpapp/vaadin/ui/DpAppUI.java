@@ -40,6 +40,11 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 	}
 
 	@Override
+	protected Object generateService(Class srvClass) {
+		return super.generateService( srvClass );
+	}
+
+	@Override
 	protected DpAppLayout createRootLayout() {
 		return new DpAppLayout();
 	}

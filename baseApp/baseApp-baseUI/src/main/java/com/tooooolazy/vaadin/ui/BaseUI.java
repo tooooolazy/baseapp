@@ -1,7 +1,9 @@
 package com.tooooolazy.vaadin.ui;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.MessagingException;
@@ -9,7 +11,14 @@ import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
+import org.json.JSONObject;
 
+import com.tooooolazy.data.ServiceGenerator;
+import com.tooooolazy.data.ServiceLocator;
+import com.tooooolazy.data.interfaces.DataHandlerService;
+import com.tooooolazy.data.services.DataHandler;
+import com.tooooolazy.data.services.beans.JobFailureCode;
+import com.tooooolazy.data.services.beans.OnlineResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.Credentials;
 import com.tooooolazy.util.Messages;
@@ -128,7 +137,56 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 		setContent(root);
 		addStyleName(ValoTheme.UI_WITH_MENU);
 
+		initServiceGenerator();
+
+		getCurrentEnvironment();
+
 		setupNavigator();
+	}
+
+	protected void initServiceGenerator() {
+		ServiceLocator.get().setGenerator( new ServiceGenerator() {
+			
+			@Override
+			public Object createService(Class srvClass) {
+				return generateService( srvClass );
+			}
+		});
+	}
+
+	/**
+	 * Override to add extra Services. <br>
+	 * <b>ALWAYS call super</b>
+	 * @param srvClass
+	 * @return
+	 */
+	protected Object generateService(Class srvClass) {
+		if (srvClass.equals(DataHandlerService.class))
+			return new DataHandler();
+
+		return null;
+	}
+
+	protected String getCurrentEnvironment() {
+		Map<String, Object> params = new HashMap<String, Object>();
+		try {
+//			OnlineResult<JobFailureCode> tor = ServiceLocator.getServices().getDataHandler().getData( OnlineDataType.ENVIRONMENT, null, false, params);
+			OnlineResult<JobFailureCode> tor = ServiceLocator.getServices().getDataHandler().getData( "test", null, false, params);
+
+			if (tor != null) {
+				JobFailureCode jfc = tor.getFailCode();
+				if (jfc != null) {
+					// TODO onBoError()
+				} else {
+					JSONObject jo = tor.getAsJSON();
+					return jo.optString( "environment" );
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
 	}
 
 	public JsonArray getViewMenuRelations() {

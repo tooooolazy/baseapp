@@ -14,7 +14,6 @@ import com.tooooolazy.vaadin.views.MainView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.Resource;
-import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 
@@ -33,6 +32,11 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>> {
 	@Override
 	protected void init(VaadinRequest vaadinRequest) {
 		super.init( vaadinRequest );
+	}
+
+	@Override
+	protected Object generateService(Class srvClass) {
+		return super.generateService( srvClass );
 	}
 
 	@Override
