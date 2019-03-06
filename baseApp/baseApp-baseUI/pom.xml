@@ -38,6 +38,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.tooooolazy.vaadin</groupId>
+			<artifactId>service-client</artifactId>
+		</dependency>		
+
+		<dependency>
 			<groupId>com.tooooolazy.utils</groupId>
 			<artifactId>tlz-utils</artifactId>
 		</dependency>

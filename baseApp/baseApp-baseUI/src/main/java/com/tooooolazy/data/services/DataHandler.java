@@ -4,19 +4,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.tooooolazy.data.interfaces.AbstractDataHandler;
+import com.tooooolazy.data.interfaces.DataHandlerClient;
 import com.tooooolazy.data.services.beans.OnlineParams;
 import com.tooooolazy.data.services.beans.OnlineResult;
 import com.tooooolazy.data.services.beans.UserBean;
+import com.tooooolazy.services.client.DataHandlerClientImpl;
 
 public class DataHandler extends AbstractDataHandler {
 
-//	protected DataHandlerClient dataHandlerClient;
+	protected DataHandlerClient dataHandlerClient;
     /**
      * Default constructor. 
      */
-//    public DataHandler() {
-//    	dataHandlerClient = new DataHandlerClientImpl( ServicesContext.singleton().getProperty( "pcb.services.rest.endpoint.dataHandler" ) );
-//    }
+	public DataHandler() {
+		dataHandlerClient = new DataHandlerClientImpl(ServicesContext
+				.singleton().getProperty(
+						"pcb.services.rest.endpoint.dataHandler"));
+	}
 	@Override
 	public OnlineResult getData(String dataType, UserBean user, boolean blockIfUpdating, Map params, boolean requiresTransaction) throws Exception {
 		OnlineResult res = null;
@@ -33,10 +37,10 @@ public class DataHandler extends AbstractDataHandler {
 		if ( user != null )
 			op.setUserCode( user.getUserCode() );
 
-//		if (!requiresTransaction)
-//			res = dataHandlerClient.execute(op);
-//		else
-//			res = dataHandlerClient.executeUpdate(op);
+		if (!requiresTransaction)
+			res = dataHandlerClient.execute(op);
+		else
+			res = dataHandlerClient.executeUpdate(op);
 
 		return res;
 	}
