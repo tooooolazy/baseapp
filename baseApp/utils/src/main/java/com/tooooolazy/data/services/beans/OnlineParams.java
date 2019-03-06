@@ -1,4 +1,4 @@
-package com.tooooolazy.ui.services.beans;
+package com.tooooolazy.data.services.beans;
 
 import java.io.Serializable;
 import java.util.HashMap;

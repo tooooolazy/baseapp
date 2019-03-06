@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.Credentials;
-import com.vaadin.server.SessionExpiredException;
 
 /**
  * @author gpatoulas
@@ -20,9 +19,8 @@ public interface UserControllerService<RE, UB> {
 	 * The idea is to return the User that just logged out
 	 * @param user
 	 * @return
-	 * @throws SessionExpiredException 
 	 */
-	public Object logout(Object userPK) throws SessionExpiredException;
+	public Object logout(Object userPK);
 
 	public List getUsers();
 
