@@ -11,6 +11,7 @@ import com.tooooolazy.util.SearchCriteria;
  * Basically the converter that transforms all data required by UI into JSONObjects.
  * @author gpatoulas
  *
+ * @param <OR> Service result object
  */
 public interface DataHandlerService<OR extends OnlineResult> {
 	public <C extends SearchCriteria> List getListData(C criteria, String orderBy);

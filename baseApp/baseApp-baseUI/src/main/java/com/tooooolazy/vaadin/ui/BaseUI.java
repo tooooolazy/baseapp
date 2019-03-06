@@ -157,6 +157,9 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 	/**
 	 * Override to add extra Services. <br>
 	 * <b>ALWAYS call super</b>
+	 * <p>
+	 * The same {@link OnlineResult} and {@link JobFailureCode} should also be used by the actual services!!! 
+	 * </p>
 	 * @param srvClass
 	 * @return
 	 */
