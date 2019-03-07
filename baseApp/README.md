@@ -11,8 +11,12 @@ The project consists of the following three modules:
 
 - parent project: common metadata and configuration
 - baseApp-addon: addon module, custom server and client side code 
-- baseApp-ui: main application module
-- baseApp-backend: backend module, contains any server side java code and dependencies
+- baseApp-baseUI: base application module that all main application ui modules should be based uppon (eg. baseApp-ui and DpApp-ui).
+- baseApp-ui: a main application module
+- DpApp-ui: another main application module
+- service-client: a simple Rest client to be used by Application UI modules to retrieve data from WS. It implements an abstract WS interface with only 2 methods: 'execute' and 'executeUpdate'. Their difference is that the latter will use a 'transaction'. 
+- baseApp-backend: base backend module, contains the base classes for handling WS calls. It implements the same WS interface as the service-client above. Each App ui should have its own 'backend' project.
+- utils***: a set of helper modules used by all other modules
 
 Workflow
 ========

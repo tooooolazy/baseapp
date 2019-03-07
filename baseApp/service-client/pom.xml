@@ -8,6 +8,10 @@
 	</parent>
 	<artifactId>service-client</artifactId>
 
+	<build>
+		<finalName>${project.artifactId}</finalName>
+	</build>
+
 	<dependencies>
 
 		<dependency>

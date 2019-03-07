@@ -18,6 +18,7 @@ import com.tooooolazy.data.ServiceLocator;
 import com.tooooolazy.data.interfaces.DataHandlerService;
 import com.tooooolazy.data.services.DataHandler;
 import com.tooooolazy.data.services.beans.JobFailureCode;
+import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.OnlineResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.Credentials;
@@ -158,14 +159,14 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 	 * Override to add extra Services. <br>
 	 * <b>ALWAYS call super</b>
 	 * <p>
-	 * The same {@link OnlineResult} and {@link JobFailureCode} should also be used by the actual services!!! 
+	 * The same {@link OnlineBaseResult} and {@link JobFailureCode} should also be used by the actual services!!! 
 	 * </p>
 	 * @param srvClass
 	 * @return
 	 */
 	protected Object generateService(Class srvClass) {
 		if (srvClass.equals(DataHandlerService.class))
-			return new DataHandler( new OnlineResult<JobFailureCode>().getClass() );
+			return new DataHandler( OnlineResult.class );
 
 		return null;
 	}
@@ -174,14 +175,15 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 		Map<String, Object> params = new HashMap<String, Object>();
 		try {
 //			OnlineResult<JobFailureCode> tor = ServiceLocator.getServices().getDataHandler().getData( OnlineDataType.ENVIRONMENT, null, false, params);
-			OnlineResult<JobFailureCode> tor = ServiceLocator.getServices().getDataHandler().getData( "test", null, false, params);
+			OnlineBaseResult<JobFailureCode> tor = ServiceLocator.getServices().getDataHandler().getData( "test", null, false, params);
 
 			if (tor != null) {
+				JSONObject jo = tor.getAsJSON();
 				JobFailureCode jfc = tor.getFailCode();
 				if (jfc != null) {
 					// TODO onBoError()
 				} else {
-					JSONObject jo = tor.getAsJSON();
+//					JSONObject jo = tor.getAsJSON();
 					return jo.optString( "environment" );
 				}
 			}
