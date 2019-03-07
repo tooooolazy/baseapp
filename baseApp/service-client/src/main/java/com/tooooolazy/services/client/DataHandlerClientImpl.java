@@ -4,9 +4,9 @@ import org.apache.wink.client.ClientResponse;
 
 import com.tooooolazy.data.interfaces.DataHandlerClient;
 import com.tooooolazy.data.services.beans.OnlineParams;
-import com.tooooolazy.data.services.beans.OnlineResult;
+import com.tooooolazy.data.services.beans.OnlineBaseResult;
 
-public class DataHandlerClientImpl<OR extends OnlineResult> extends ClientBase implements DataHandlerClient<OR> {
+public class DataHandlerClientImpl<OR extends OnlineBaseResult> extends ClientBase implements DataHandlerClient<OR> {
 
 	protected String dataHandlerEndpoint;
 	protected Class<OR> orClass; 

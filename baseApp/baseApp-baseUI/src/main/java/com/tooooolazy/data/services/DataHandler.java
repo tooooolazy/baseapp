@@ -6,11 +6,17 @@ import java.util.Map;
 import com.tooooolazy.data.interfaces.AbstractDataHandler;
 import com.tooooolazy.data.interfaces.DataHandlerClient;
 import com.tooooolazy.data.services.beans.OnlineParams;
-import com.tooooolazy.data.services.beans.OnlineResult;
+import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.services.client.DataHandlerClientImpl;
 
-public class DataHandler<OR extends OnlineResult> extends AbstractDataHandler<OR> {
+/**
+ * Helper class that creates a {@link DataHandlerClient} used to retrieve data from a WS
+ * @author gpatoulas
+ *.
+ * @param <OR>
+ */
+public class DataHandler<OR extends OnlineBaseResult> extends AbstractDataHandler<OR> {
 
 	protected DataHandlerClient<OR> dataHandlerClient;
 //	protected Class<OR> orClass; 

@@ -4,7 +4,21 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Defines WS needed parameters ie {@link DataHandlerClient}.
+ * <ol>
+ * <li><b>method</b>: the method the WS should call</li>
+ * <li><b>methodParams</b>: the method's parameters</li>
+ * </ol>
+ * @author gpatoulas
+ *
+ */
 public class OnlineParams implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	protected Integer userCode;
 
 	protected String method;

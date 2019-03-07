@@ -5,7 +5,7 @@ import com.tooooolazy.data.interfaces.SecurityControllerService;
 import com.tooooolazy.data.interfaces.UserControllerService;
 
 /**
- * Used by {@link ServiceLocator} in order to generate the required Services
+ * Used by {@link ServiceLocator} in order to generate the required Services.
  * Should be overridden in order to implement the service creation method
  *  
  * @author gpatoulas

@@ -11,13 +11,13 @@ import org.json.JSONObject;
  * @param <JFC> - JobFailure Enum class. can use default {@link JobFailureCode} or a custom one.
  */
 //@JsonIgnoreProperties({"asJSON"})
-public class OnlineResult<JFC> implements Serializable {
+public abstract class OnlineBaseResult<JFC> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	protected JFC failCode;
 	protected Object resultObject;
 
-	public OnlineResult() {}
+	public OnlineBaseResult() {}
 
 	public JFC getFailCode() {
 		return failCode;
