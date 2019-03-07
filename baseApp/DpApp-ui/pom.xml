@@ -56,10 +56,6 @@
 			<version>${project.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.tooooolazy.vaadin</groupId>
-			<artifactId>service-client</artifactId>
-		</dependency>		
 
 		<dependency>
 			<groupId>com.tooooolazy.utils</groupId>

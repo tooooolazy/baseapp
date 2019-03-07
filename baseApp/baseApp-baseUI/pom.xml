@@ -38,8 +38,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.tooooolazy.vaadin</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>service-client</artifactId>
+			<version>${project.version}</version>
 		</dependency>		
 
 		<dependency>
