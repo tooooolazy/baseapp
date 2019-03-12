@@ -1,6 +1,8 @@
 baseApp
 ==============
 
+Based on Vaadin 8 - Multi module example.
+
 Template for a full-blown Vaadin application that only requires a Servlet 3.0 container to run (no other JEE dependencies).
 
 
@@ -18,8 +20,11 @@ The project consists of the following three modules:
 - baseApp-backend: base backend module, contains the base classes for handling WS calls. It implements the same WS interface as the service-client above. Each App ui should have its own 'backend' project.
 - utils***: a set of helper modules used by all other modules
 
-Workflow
+Workflow - need to revise
 ========
+
+- Check out this project
+- Create your own Vaadin 8 Multi module project and update dependencies to include: baseApp-baseUI, utils***, service-client, baseApp-backend
 
 To compile the entire project, run "mvn install" in the parent project.
 
