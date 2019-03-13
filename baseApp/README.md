@@ -25,6 +25,13 @@ Workflow - need to revise
 
 - Check out this project
 - Create your own Vaadin 8 Multi module project and update dependencies to include: baseApp-baseUI, utils***, service-client, baseApp-backend
+- In UI module:
+  - the UI class should extend BaseUI
+  - delete demo services from UI class
+  - delete init(VaadinRequest vaadinRequest) method (from UI class ) or override it.
+  - create an 'AppLayout' class that implements 'AppLayout' interface and use it in UI class as generic along with a UserBean class. An existing Layout class from baseApp-baseUI can be used as base. 
+  - add and implement abstract methods from BaseUI
+  - add property bundle files that match UI's class name and add related static code from BaseUI to load them.
 
 To compile the entire project, run "mvn install" in the parent project.
 
