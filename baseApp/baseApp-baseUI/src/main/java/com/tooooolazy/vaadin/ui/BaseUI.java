@@ -34,6 +34,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.CustomizedSystemMessages;
 import com.vaadin.server.DefaultErrorHandler;
+import com.vaadin.server.Page;
 import com.vaadin.server.Page.PopStateEvent;
 import com.vaadin.server.Page.PopStateListener;
 import com.vaadin.server.Resource;
@@ -44,8 +45,11 @@ import com.vaadin.server.SystemMessagesProvider;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinService;
 import com.vaadin.server.VaadinServletService;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.Image;
+import com.vaadin.ui.JavaScript;
+import com.vaadin.ui.JavaScriptFunction;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.UI;
@@ -71,6 +75,8 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 
 	protected L root;
 	protected boolean hasSecureContent;
+
+	protected ApplicationLevelTracker applicationLevelTracker = null;
 
 	// might not be needed
 	protected ViewChangeListener vcl;
@@ -143,6 +149,39 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 		getCurrentEnvironment();
 
 		setupNavigator();
+
+		addJavascriptFunctions();
+
+		// http://blog.adeel.io/tag/vaadin/
+		applicationLevelTracker = new ApplicationLevelTracker(0,
+				VaadinSession.getCurrent().getSession().getId());
+
+		addDetachListener(new DetachListener() {
+			@Override
+			public void detach(DetachEvent event) {
+				if (applicationLevelTracker != null)
+					applicationLevelTracker.deRegisterThisTab();
+			}
+		});
+	}
+	protected void addJavascriptFunctions() {
+		JavaScript.getCurrent().addFunction("browserIsLeaving",
+				new JavaScriptFunction() {
+					@Override
+					public void call(JsonArray arguments) {
+						if (applicationLevelTracker != null) {
+							applicationLevelTracker.deRegisterThisTab();
+							if ( applicationLevelTracker.getUserTabs() == 0 ) {
+								logger.info( "Need to logout user!! ");
+//								((DefaultBaseView)getNavigator().getCurrentView()).performLogout();
+							}
+						}
+					}
+				});
+		Page.getCurrent()
+				.getJavaScript()
+				.execute(
+						"window.onbeforeunload = function (e) { var e = e || window.event; browserIsLeaving(); return; };");
 	}
 
 	protected void initServiceGenerator() {
