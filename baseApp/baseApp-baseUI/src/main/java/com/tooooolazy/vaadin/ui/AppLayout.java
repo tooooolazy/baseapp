@@ -150,6 +150,8 @@ public interface AppLayout extends Component {
 				if ( parentId == 0 )
 					continue;
 
+				int parentCount = getParentCount( classId );
+
 				// add it
 				addMenuItem( c, classId, parentId, vd, navigator );
 				added++;
@@ -248,6 +250,19 @@ public interface AppLayout extends Component {
 //		settingsItem.addItem("Sign Out", null);
 
 		getMenu().addComponent(settings);
+	}
+
+	/**
+	 * Helper to count how many parents a view has. Needed in constructing a combination of top and side menus
+	 * @param classId
+	 * @return
+	 */
+	public default int getParentCount(int classId ) {
+		Integer pId = classIdToParentId.get( classId );
+		if ( pId != null)
+			return getParentCount( pId ) + 1;
+
+		return 0;
 	}
 
 	public default CssLayout getParentContainer(int parentId) {
