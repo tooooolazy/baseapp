@@ -124,7 +124,11 @@ public interface AppLayout extends Component {
 			}
 
 			// add it
-			addMenuItem( c, classId, parentId, vd, navigator );
+			// if layout has top menu add it there. if not add it in left menu
+//			if ( hasTopMenu() ) {
+//				createTopMenuButton( navigator, 0, c);
+//			} else
+				addMenuItem( c, classId, parentId, vd, navigator );
 			added++;
 		}
 		// then start adding elements to each parent
@@ -164,6 +168,8 @@ public interface AppLayout extends Component {
 
 		createSettingsMenuBar();
 	}
+	public boolean hasTopMenu();
+
 	public default void addMenuItem(Class c, int classId, int parentId, JsonObject vd, Navigator navigator) {
 		boolean secure = vd.get(MenuItemKeys.VIEW_SECURE) == null ? false
 				: vd.get(MenuItemKeys.VIEW_SECURE).asBoolean();

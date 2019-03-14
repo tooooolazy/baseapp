@@ -59,6 +59,10 @@ public class ResponsiveMenuLayout extends HorizontalLayout implements AppLayout 
 		addLayoutComponents();
 	}
 
+	public boolean hasTopMenu() {
+		return false;
+	}
+
 	private void addLayoutComponents() {
 		menu = new CssLayout();
 		menuItemsLayout = new CssLayout();

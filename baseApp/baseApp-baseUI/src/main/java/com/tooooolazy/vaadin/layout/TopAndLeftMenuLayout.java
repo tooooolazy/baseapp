@@ -64,6 +64,11 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 
 		addLayoutComponents();
 	}
+
+	public boolean hasTopMenu() {
+		return true;
+	}
+
 	private void addLayoutComponents() {
 		addHeader();
 
