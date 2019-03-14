@@ -170,9 +170,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 					applicationLevelTracker.deRegisterThisTab();
 			}
 		});
-//		org.vaadin.addons.idle.Idle.track(this, 15000, new Idle.Listener() {
-		// 25*60*1000 ms --> should be less then the session timeout
-//		org.vaadin.addons.idle.Idle.track(this, 1500000, new Idle.Listener() {
+//		Idle idle = org.vaadin.addons.idle.Idle.track(this, 15000);
 		// 9*60*1000 ms --> should be less then the session timeout
 		Idle idle = org.vaadin.addons.idle.Idle.track(this, 540000);
 		idle.addUserActiveListener( new UserActiveListener() {
