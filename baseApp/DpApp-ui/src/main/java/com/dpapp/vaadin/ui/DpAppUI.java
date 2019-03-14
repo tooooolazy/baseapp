@@ -9,6 +9,7 @@ import com.dpapp.vaadin.layout.DpAppLayout;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.layout.TopAndLeftMenuLayout;
 import com.tooooolazy.vaadin.resources.Resources;
+import com.tooooolazy.vaadin.ui.BaseAppServlet;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.tooooolazy.vaadin.ui.MenuItemKeys;
 import com.tooooolazy.vaadin.views.MainView;
@@ -56,7 +57,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 
 	@WebServlet(urlPatterns = "/*", name = "DpAppUIServlet", asyncSupported = true)
 	@VaadinServletConfiguration(ui = DpAppUI.class, productionMode = false)
-	public static class BaseUIServlet extends VaadinServlet {
+	public static class BaseUIServlet extends BaseAppServlet {
 	}
 
 	@Override

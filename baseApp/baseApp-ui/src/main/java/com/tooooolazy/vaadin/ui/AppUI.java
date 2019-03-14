@@ -50,7 +50,7 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>> {
 
 	@WebServlet(urlPatterns = "/*", name = "BaseUIServlet", asyncSupported = true)
 	@VaadinServletConfiguration(ui = AppUI.class, productionMode = false)
-	public static class BaseUIServlet extends VaadinServlet {
+	public static class BaseUIServlet extends BaseAppServlet {
 	}
 
 

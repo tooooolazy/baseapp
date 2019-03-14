@@ -20,7 +20,7 @@ The project consists of the following three modules:
 - baseApp-backend: base backend module, contains the base classes for handling WS calls. It implements the same WS interface as the service-client above. Each App ui should have its own 'backend' project.
 - utils***: a set of helper modules used by all other modules
 
-Workflow - need to revise
+Workflow
 ========
 
 - Check out this project
@@ -29,10 +29,13 @@ Workflow - need to revise
   - the UI class should extend BaseUI
   - delete demo services from UI class
   - delete init(VaadinRequest vaadinRequest) method (from UI class ) or override it.
+  - replace with 'VaadinServlet' with 'BaseAppServlet'
   - create an 'AppLayout' class that implements 'AppLayout' interface and use it in UI class as generic along with a UserBean class. An existing Layout class from baseApp-baseUI can be used as base. 
   - add and implement abstract methods from BaseUI
   - add property bundle files that match UI's class name and add related static code from BaseUI to load them.
 
+
+ - need to revise
 To compile the entire project, run "mvn install" in the parent project.
 
 Other basic workflow steps:
