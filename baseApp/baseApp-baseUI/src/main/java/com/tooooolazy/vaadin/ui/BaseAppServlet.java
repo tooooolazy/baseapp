@@ -17,7 +17,18 @@ import com.vaadin.server.SystemMessagesInfo;
 import com.vaadin.server.SystemMessagesProvider;
 import com.vaadin.server.VaadinServlet;
 
+/**
+ * Extends standard VaadinServlet in order to override default SystemMessages and add a SessionDestroyListener to handle auto logout on session timeout.
+ * <p>Shoud be used as base servlet in each App UI (see AppUI class in baseApp-ui module as an example)
+ * @author gpatoulas
+ *
+ */
 public class BaseAppServlet extends VaadinServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void servletInitialized() throws ServletException {
 		getService().setSystemMessagesProvider(
