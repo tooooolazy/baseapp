@@ -280,4 +280,9 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		
 		return ja;
 	}
+
+	@Override
+	protected boolean getAllowsMultipleTabs() {
+		return true;
+	}
 }

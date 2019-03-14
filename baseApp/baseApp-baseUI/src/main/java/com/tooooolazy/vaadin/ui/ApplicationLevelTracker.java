@@ -7,14 +7,15 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-import org.antlr.v4.runtime.misc.Pair;
+import com.tooooolazy.util.Pair;
+
 /**
  * http://blog.adeel.io/tag/vaadin/
  * <p>
  * Did not use the 'deRegisterAllTabsForThisVaadinSession' on user logout since we still want to know how many tabs are open AND userCode is always ZERO (we don't really care about it)
  * </p>
  * <p>
- * Might want to replace Pair with a custom one:
+ * Might want to replace Pair with a custom one: --> DONE in module utils
  * https://stackoverflow.com/questions/521171/a-java-collection-of-value-pairs-tuples
  * </p>
  * @author gpatoulas

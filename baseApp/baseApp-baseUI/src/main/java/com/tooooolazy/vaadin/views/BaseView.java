@@ -21,7 +21,7 @@ import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
 public abstract class BaseView<C extends SearchCriteria, E> extends CustomComponent implements View {
-	protected final Logger logger = LoggerFactory.getLogger(UI.class.getName());
+	protected final Logger logger = LoggerFactory.getLogger(BaseView.class.getName());
 
 	protected VerticalLayout vl;
 
@@ -51,6 +51,9 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 	protected abstract boolean showTitleInContent();
 	protected String getViewTitle() {
 		return Messages.getString(getClass(), "application.title");
+	}
+	public String getThisView() {
+		return getClass().getSimpleName();
 	}
 	
 	/**
@@ -146,5 +149,9 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 			}
 		}
 		return sc;
+	}
+
+	public void onInactivity() {
+		
 	}
 }

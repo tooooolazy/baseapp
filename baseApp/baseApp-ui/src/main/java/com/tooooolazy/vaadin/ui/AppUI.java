@@ -84,4 +84,9 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>> {
 	protected Properties getEmailConfigProperties() {
 		return TLZUtils.loadProperties( "config.properties" );
 	}
+
+	@Override
+	protected boolean getAllowsMultipleTabs() {
+		return true;
+	}
 }
