@@ -33,6 +33,12 @@ import com.vaadin.ui.themes.ValoTheme;
 import elemental.json.JsonArray;
 import elemental.json.JsonObject;
 
+/**
+ * Helper class that holds code previously inside {@link AppLayout} interface. The problem (most likely) was the member variables. The result was that when the App was opened from another browser (or even another Tab) the original Tab stopped working as expected! Method comments are left in mentioned interface.
+ * @author gpatoulas
+ *
+ * @see AppLayout
+ */
 public class AppLayoutHelper {
 	protected AppLayout appLayout;
 
@@ -103,6 +109,12 @@ public class AppLayoutHelper {
 		appLayout.createShowMenuButton();
 	}
 
+	/**
+	 * @param viewDefinitions
+	 * @param navigator
+	 * 
+	 * @see {@link AppLayout#createMenuItems(JsonArray, Navigator)}
+	 */
 	public void createMenuItems(JsonArray viewDefinitions, Navigator navigator) {
 
 		appLayout.getMenuItemsLayout().setPrimaryStyleName("valo-menuitems");
