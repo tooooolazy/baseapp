@@ -1,8 +1,10 @@
 package com.tooooolazy.vaadin.layout;
 
 import com.tooooolazy.vaadin.ui.AppLayout;
+import com.tooooolazy.vaadin.ui.AppLayoutHelper;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.server.Resource;
+import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -39,11 +41,14 @@ public class ResponsiveMenuLayout extends HorizontalLayout implements AppLayout 
 
 	protected Resource logoResource, secLogoResource, loginResource, logoutResource;
 
+	protected AppLayoutHelper appLayoutHelper;
 //	protected boolean hasSecureContent;
 
 	public ResponsiveMenuLayout() {
 		setSizeFull();
 		setWidth("100%");
+
+		appLayoutHelper = new AppLayoutHelper( this );
 
 		contentArea.setPrimaryStyleName("valo-content");
 		contentArea.addStyleName("v-scrollable");
@@ -102,6 +107,24 @@ public class ResponsiveMenuLayout extends HorizontalLayout implements AppLayout 
 	@Override
 	public HorizontalLayout getMenuTitle() {
 		return menuTitle;
+	}
+
+	@Override
+	public AbstractLayout getTopMenuLayout() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AbstractLayout getSubMenuLayout() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AppLayoutHelper getHelper() {
+		// TODO Auto-generated method stub
+		return appLayoutHelper;
 	}
 
 }

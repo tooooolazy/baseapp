@@ -1,20 +1,10 @@
 package com.dpapp.vaadin.views;
 
-import com.dpapp.vaadin.views.trends.PerformanceView;
 import com.tooooolazy.vaadin.ui.AppLayout;
+import com.tooooolazy.vaadin.views.BaseView;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 
-public class SkusView extends OverviewBaseView {
-
-	@Override
-	public void enter(ViewChangeEvent event) {
-		super.enter(event);
-
-		AppLayout al = (AppLayout)getUI().getContent();
-		// show what is needed
-
-		al.toggleMenuItem( PerformanceView.class, false );
-	};
+public class SkusView extends BaseView {
 
 	@Override
 	protected boolean showTitleInContent() {

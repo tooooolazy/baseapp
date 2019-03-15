@@ -20,11 +20,11 @@ public class DpAppLayout extends TopAndLeftMenuLayout {
 		HorizontalLayout hl = new HorizontalLayout();
 		hl.setResponsive( true );
 
-		Button b = createTopMenuButton( navigator, 0, OverviewView.class);
-		hl.addComponent( b );
-
-		Button b2 = createTopMenuButton( navigator, 0, SettingsView.class);
-		hl.addComponent( b2 );
+//		Button b = createTopMenuButton( navigator, 0, OverviewView.class);
+//		hl.addComponent( b );
+//
+//		Button b2 = createTopMenuButton( navigator, 0, SettingsView.class);
+//		hl.addComponent( b2 );
 
 		return hl;
 	}
@@ -32,23 +32,23 @@ public class DpAppLayout extends TopAndLeftMenuLayout {
 		HorizontalLayout hl = new HorizontalLayout();
 		hl.setResponsive( true );
 
-		Button b = createSubMenuButton( navigator, 0, TrendsView.class);
-		hl.addComponent( b );
-
-		Button b2 = createSubMenuButton( navigator, 0, MarketsView.class);
-		hl.addComponent( b2 );
-
-		Button b3 = createSubMenuButton( navigator, 0, SkusView.class);
-		hl.addComponent( b3 );
-
-		Button b4 = createSubMenuButton( navigator, 0, ChannelsView.class);
-		hl.addComponent( b4 );
-
-		Button b5 = createSubMenuButton( navigator, 0, SystemView.class);
-		hl.addComponent( b5 );
-
-		Button b6 = createSubMenuButton( navigator, 0, UserView.class);
-		hl.addComponent( b6 );
+//		Button b = createSubMenuButton( navigator, 0, TrendsView.class);
+//		hl.addComponent( b );
+//
+//		Button b2 = createSubMenuButton( navigator, 0, MarketsView.class);
+//		hl.addComponent( b2 );
+//
+//		Button b3 = createSubMenuButton( navigator, 0, SkusView.class);
+//		hl.addComponent( b3 );
+//
+//		Button b4 = createSubMenuButton( navigator, 0, ChannelsView.class);
+//		hl.addComponent( b4 );
+//
+//		Button b5 = createSubMenuButton( navigator, 0, SystemView.class);
+//		hl.addComponent( b5 );
+//
+//		Button b6 = createSubMenuButton( navigator, 0, UserView.class);
+//		hl.addComponent( b6 );
 
 		return hl;
 	}

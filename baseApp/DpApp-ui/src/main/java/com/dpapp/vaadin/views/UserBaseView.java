@@ -1,20 +1,25 @@
 package com.dpapp.vaadin.views;
 
-import com.dpapp.vaadin.views.system.AiConfigView;
-import com.dpapp.vaadin.views.trends.PerformanceView;
-import com.tooooolazy.vaadin.ui.AppLayout;
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.tooooolazy.vaadin.views.BaseView;
 
-public class UserBaseView extends SettingsBaseView {
+public class UserBaseView extends BaseView {
+
 	@Override
-	public void enter(ViewChangeEvent event) {
-		super.enter(event);
+	protected boolean showTitleInContent() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 
-		AppLayout al = (AppLayout)getUI().getContent();
-		// show what is needed
+	@Override
+	protected void addJavascriptFunctions() {
+		// TODO Auto-generated method stub
+		
+	}
 
-		al.toggleMenuItem( PerformanceView.class, false );
-		al.toggleMenuItem( AiConfigView.class, false );
-	};
+	@Override
+	protected Class getCriteriaClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
