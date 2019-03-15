@@ -384,9 +384,10 @@ public class AppLayoutHelper {
 		for ( Integer classId : classIdToParentId.keySet() ) {
 			int padding = 30;
 			int cId = classId;
-			
+
 			while ( classIdToParentId.get( cId ) != null ) {
 				cId = classIdToParentId.get( cId );
+				// TODO fix padding when topMenu enabled!
 				if ( !(viewIdToComponent.get( cId ) instanceof Label) )
 					JavaScript.getCurrent().execute("document.getElementById('mi_" + cId + "').style.paddingLeft='" + padding + "px'");
 			}
