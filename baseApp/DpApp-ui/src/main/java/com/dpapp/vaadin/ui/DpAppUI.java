@@ -145,13 +145,6 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		ja.set(index++, jo);
 
 		jo = Json.createObject();
-		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.UserView");
-		jo.put(MenuItemKeys.VIEW_CLASS_ID, 303);
-		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 301);
-		jo.put(MenuItemKeys.VIEW_SECURE, false);
-		ja.set(index++, jo);
-
-		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.PerformanceView");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 1);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
@@ -319,6 +312,13 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		ja.set(index++, jo);
 
 
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.UserView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 303);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 301);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		ja.set(index++, jo);
 
 
 		jo = Json.createObject();
