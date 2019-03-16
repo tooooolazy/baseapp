@@ -15077,6 +15077,12 @@ div.v-layout.v-horizontal.v-widget {
 	color: white;
 }
 
+.baseTheme .header-title {
+	color: black;
+	font-weight: bold;
+	text-shadow: 2px 2px #3f3f3f;
+}
+
 .baseTheme #header_subtop {
 	background: lightgrey;
 }

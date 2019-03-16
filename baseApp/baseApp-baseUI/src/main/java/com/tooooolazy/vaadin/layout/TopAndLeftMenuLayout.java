@@ -1,11 +1,13 @@
 package com.tooooolazy.vaadin.layout;
 
 import com.tooooolazy.vaadin.ui.AppLayout;
+import com.tooooolazy.vaadin.ui.AppLayoutHelper;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
@@ -38,11 +40,15 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 	 */
 	protected HorizontalLayout headerTitle;
 
+	protected AppLayoutHelper appLayoutHelper;
 	protected boolean hasSecureContent;
 
 	public TopAndLeftMenuLayout() {
 		super(4, 3);
 		setId("AppLayout");
+
+		appLayoutHelper = new AppLayoutHelper( this );
+
 		init();
 	}
 
@@ -67,6 +73,21 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 
 		addLayoutComponents();
 	}
+
+	public boolean hasTopMenu() {
+		return true;
+	}
+
+	@Override
+	public AbstractLayout getTopMenuLayout() {
+		return (AbstractLayout)top_gl.getComponent(1,0);
+	}
+
+	@Override
+	public AbstractLayout getSubMenuLayout() {
+		return (AbstractLayout)sub_gl.getComponent(1,0);
+	}
+
 	private void addLayoutComponents() {
 		addHeader();
 
@@ -198,6 +219,12 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		removeComponent( 0,0 );
 		removeComponent( 1,0 );
 //		removeComponent( 1,1 );
+	}
+
+	@Override
+	public AppLayoutHelper getHelper() {
+		// TODO Auto-generated method stub
+		return appLayoutHelper;
 	}
 
 }

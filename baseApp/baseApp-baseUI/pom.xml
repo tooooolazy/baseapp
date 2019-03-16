@@ -48,6 +48,16 @@
 			<artifactId>tlz-utils</artifactId>
 		</dependency>
 
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.antlr</groupId> -->
+<!-- 			<artifactId>antlr4-runtime</artifactId> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>org.vaadin.addon</groupId>
+			<artifactId>idle</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

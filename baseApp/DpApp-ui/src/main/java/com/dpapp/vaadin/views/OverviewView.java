@@ -1,6 +1,8 @@
 package com.dpapp.vaadin.views;
 
-public class OverviewView extends OverviewBaseView {
+import com.tooooolazy.vaadin.views.BaseView;
+
+public class OverviewView extends BaseView {
 
 	@Override
 	protected boolean showTitleInContent() {

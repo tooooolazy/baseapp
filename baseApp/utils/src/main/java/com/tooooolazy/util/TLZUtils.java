@@ -814,4 +814,11 @@ public class TLZUtils {
 //		}
 //		return null;
 //	}
+	public static boolean sameObjects( Object o1, Object o2) {
+		if ( o1 == null && o2 == null 
+				|| o1 != null && o2 != null && o1.equals( o2 ) )
+			return true;
+
+		return false;
+	}
 }

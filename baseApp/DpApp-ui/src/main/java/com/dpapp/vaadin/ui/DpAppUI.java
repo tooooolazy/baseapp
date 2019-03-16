@@ -9,6 +9,7 @@ import com.dpapp.vaadin.layout.DpAppLayout;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.layout.TopAndLeftMenuLayout;
 import com.tooooolazy.vaadin.resources.Resources;
+import com.tooooolazy.vaadin.ui.BaseAppServlet;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.tooooolazy.vaadin.ui.MenuItemKeys;
 import com.tooooolazy.vaadin.views.MainView;
@@ -56,7 +57,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 
 	@WebServlet(urlPatterns = "/*", name = "DpAppUIServlet", asyncSupported = true)
 	@VaadinServletConfiguration(ui = DpAppUI.class, productionMode = false)
-	public static class BaseUIServlet extends VaadinServlet {
+	public static class BaseUIServlet extends BaseAppServlet {
 	}
 
 	@Override
@@ -109,13 +110,47 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		// TODO get this structure from WS or DB
 		JsonArray ja = Json.createArray();
 
+		int index = 0;
+
 		JsonObject jo = Json.createObject();
+
+		// parent elements MUST be declared first!!
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.OverviewView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 201);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 102);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.TrendsView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 202);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 201);
+		ja.set(index++, jo);
+
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.SettingsView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 301);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.SystemView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 302);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 301);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.PerformanceView");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 1);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
-//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 202);
 		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
-		ja.set(0, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.SoldRevenueView");
@@ -123,7 +158,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(1, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.OverTimeSR_View");
@@ -131,7 +166,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(2, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.BySkuSR_View");
@@ -139,7 +174,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(3, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByChannelSR_View");
@@ -147,7 +182,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(4, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByTouchPointSR_View");
@@ -155,7 +190,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(5, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ForwardRevenueView");
@@ -163,7 +198,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(6, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.OverTimeFR_View");
@@ -171,7 +206,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 6);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(7, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.BySkuFR_View");
@@ -179,7 +214,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 6);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(8, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByChannelFR_View");
@@ -187,7 +222,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 6);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(9, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByTouchPointFR_View");
@@ -195,7 +230,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 6);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(10, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.SoldVolumeView");
@@ -203,7 +238,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(11, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.OverTimeSV_View");
@@ -211,7 +246,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 11);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(12, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.BySkuSV_View");
@@ -219,7 +254,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 11);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(13, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByChannelSV_View");
@@ -227,7 +262,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 11);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(14, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.trends.ByTouchPointSV_View");
@@ -235,7 +270,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 11);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(15, jo);
+		ja.set(index++, jo);
 
 
 		jo = Json.createObject();
@@ -244,7 +279,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 1);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 //		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(16, jo);
+		ja.set(index++, jo);
 
 
 
@@ -252,32 +287,67 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.AiConfigView");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 100);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
-//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-//		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
-		ja.set(17, jo);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 302);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.LearningRoteView");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 101);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 100);
-		ja.set(18, jo);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.PricingConfigView");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 102);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
-//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-//		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
-		ja.set(19, jo);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 302);
+		ja.set(index++, jo);
 
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.DefaultPricingView");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 103);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 102);
-		ja.set(20, jo);
-		
+		ja.set(index++, jo);
+
+
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.UserView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 303);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 301);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		ja.set(index++, jo);
+
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.MarketsView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 203);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 201);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.SkusView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 204);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 201);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.ChannelsView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 205);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 201);
+		ja.set(index++, jo);
+
+
 		return ja;
+	}
+
+	@Override
+	protected boolean getAllowsMultipleTabs() {
+		return true;
 	}
 }

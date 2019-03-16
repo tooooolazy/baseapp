@@ -1,27 +1,24 @@
 package com.dpapp.vaadin.views;
 
-import com.dpapp.vaadin.views.trends.PerformanceView;
-import com.tooooolazy.vaadin.ui.AppLayout;
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.tooooolazy.vaadin.views.BaseView;
 
-public class TrendsBaseView extends OverviewBaseView {
+public class TrendsBaseView extends BaseView {
 
-	@Override
-	public void enter(ViewChangeEvent event) {
-		super.enter(event);
-
-		AppLayout al = (AppLayout)getUI().getContent();
-		// show what is needed
-
-		al.toggleMenuItem( PerformanceView.class, true );
-
-		al.setSubItemsPadding();
-
-		al.setAsActiveAlso( TrendsView.class.getSimpleName() );
-	};
 
 	@Override
 	protected boolean showTitleInContent() {
 		return true;
+	}
+
+	@Override
+	protected void addJavascriptFunctions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected Class getCriteriaClass() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -1,6 +1,7 @@
 package com.tooooolazy.vaadin.ui;
 
 import java.lang.reflect.Method;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -12,6 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
+import org.vaadin.addons.idle.Idle;
+import org.vaadin.addons.idle.Idle.UserActiveEvent;
+import org.vaadin.addons.idle.Idle.UserActiveListener;
+import org.vaadin.addons.idle.Idle.UserInactiveEvent;
+import org.vaadin.addons.idle.Idle.UserInactiveListener;
 
 import com.tooooolazy.data.ServiceGenerator;
 import com.tooooolazy.data.ServiceLocator;
@@ -26,6 +32,7 @@ import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.TLZMail;
 import com.tooooolazy.vaadin.exceptions.InvalidBaseAppParameterException;
 import com.tooooolazy.vaadin.layout.ResponsiveMenuLayout;
+import com.tooooolazy.vaadin.views.BaseView;
 import com.tooooolazy.vaadin.views.ErrorView;
 import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
@@ -34,6 +41,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.CustomizedSystemMessages;
 import com.vaadin.server.DefaultErrorHandler;
+import com.vaadin.server.Page;
 import com.vaadin.server.Page.PopStateEvent;
 import com.vaadin.server.Page.PopStateListener;
 import com.vaadin.server.Resource;
@@ -44,8 +52,11 @@ import com.vaadin.server.SystemMessagesProvider;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinService;
 import com.vaadin.server.VaadinServletService;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.Image;
+import com.vaadin.ui.JavaScript;
+import com.vaadin.ui.JavaScriptFunction;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.UI;
@@ -71,6 +82,8 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 
 	protected L root;
 	protected boolean hasSecureContent;
+
+	protected ApplicationLevelTracker applicationLevelTracker = null;
 
 	// might not be needed
 	protected ViewChangeListener vcl;
@@ -143,6 +156,88 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 		getCurrentEnvironment();
 
 		setupNavigator();
+
+		addJavascriptFunctions();
+
+		// http://blog.adeel.io/tag/vaadin/
+		applicationLevelTracker = new ApplicationLevelTracker(0,
+				VaadinSession.getCurrent().getSession().getId());
+
+		addDetachListener(new DetachListener() {
+			@Override
+			public void detach(DetachEvent event) {
+				if (applicationLevelTracker != null)
+					applicationLevelTracker.deRegisterThisTab();
+			}
+		});
+//		Idle idle = org.vaadin.addons.idle.Idle.track(this, 15000);
+		// 9*60*1000 ms --> should be less then the session timeout
+		Idle idle = org.vaadin.addons.idle.Idle.track(this, 540000);
+		idle.addUserActiveListener( new UserActiveListener() {
+
+			@Override
+			public void userActive(UserActiveEvent event) {
+				applicationLevelTracker.registerIdle(true);
+
+				BaseView dbv = (BaseView)getNavigator().getCurrentView();
+				logger.info("userInactive - Open user tabs: " + applicationLevelTracker.getUserTabs() );
+		        logger.info("You are now idle in " + (dbv != null? dbv.getThisView() : "most likely login page") );
+		    	logger.info("Created on: " + new Date( VaadinSession.getCurrent().getSession().getCreationTime() ) );
+		    	logger.info("last Accessed: " + new Date( VaadinSession.getCurrent().getSession().getLastAccessedTime() ) );
+		    	logger.info("getMaxInactiveInterval: " + VaadinSession.getCurrent().getSession().getMaxInactiveInterval() );
+		        if ( dbv != null )
+		        	dbv.onInactivity();
+			}
+			
+		});
+		idle.addUserInactiveListener( new UserInactiveListener() {
+
+			@Override
+			public void userInactive(UserInactiveEvent event) {
+				applicationLevelTracker.registerIdle(false);
+		    	logger.info("You are now active " + new Date( VaadinSession.getCurrent().getSession().getLastAccessedTime() ) );
+//		        //  do something to extend session
+//		    	VaadinSession.getCurrent().getSession().setMaxInactiveInterval(1800);// 30m
+		    	logger.info("Created on: " + new Date( VaadinSession.getCurrent().getSession().getCreationTime() ) );
+		    	logger.info("last Accessed: " + new Date( VaadinSession.getCurrent().getSession().getLastAccessedTime() ) );
+		    	logger.info("getMaxInactiveInterval: " + VaadinSession.getCurrent().getSession().getMaxInactiveInterval() );
+			}
+		});
+	}
+	public void checkOpenUserTabs() {
+		if ( applicationLevelTracker != null ) {
+			if ( !getAllowsMultipleTabs() && applicationLevelTracker.getUserTabs() > 1 ) {
+				Notification.show("Too Many tabs", "\nNeed To have only one tab open", Type.ERROR_MESSAGE);
+			}
+		}
+
+	}
+	protected abstract boolean getAllowsMultipleTabs();
+
+	public int getOpenUserTabs() {
+		if ( applicationLevelTracker != null )
+			return applicationLevelTracker.getUserTabs();
+
+		return 0; // will cause logout
+	}
+	protected void addJavascriptFunctions() {
+		JavaScript.getCurrent().addFunction("browserIsLeaving",
+				new JavaScriptFunction() {
+					@Override
+					public void call(JsonArray arguments) {
+						if (applicationLevelTracker != null) {
+							applicationLevelTracker.deRegisterThisTab();
+							if ( applicationLevelTracker.getUserTabs() == 0 ) {
+								logger.info( "Need to logout user!! ");
+//								((DefaultBaseView)getNavigator().getCurrentView()).performLogout();
+							}
+						}
+					}
+				});
+		Page.getCurrent()
+				.getJavaScript()
+				.execute(
+						"window.onbeforeunload = function (e) { var e = e || window.event; browserIsLeaving(); return; };");
 	}
 
 	protected void initServiceGenerator() {

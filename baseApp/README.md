@@ -1,6 +1,8 @@
 baseApp
 ==============
 
+Based on Vaadin 8 - Multi module example.
+
 Template for a full-blown Vaadin application that only requires a Servlet 3.0 container to run (no other JEE dependencies).
 
 
@@ -21,6 +23,19 @@ The project consists of the following three modules:
 Workflow
 ========
 
+- Check out this project
+- Create your own Vaadin 8 Multi module project and update dependencies to include: baseApp-baseUI, utils***, service-client, baseApp-backend
+- In UI module:
+  - the UI class should extend BaseUI
+  - delete demo services from UI class
+  - delete init(VaadinRequest vaadinRequest) method (from UI class ) or override it.
+  - replace with 'VaadinServlet' with 'BaseAppServlet'
+  - create an 'AppLayout' class that implements 'AppLayout' interface and use it in UI class as generic along with a UserBean class. An existing Layout class from baseApp-baseUI can be used as base. 
+  - add and implement abstract methods from BaseUI
+  - add property bundle files that match UI's class name and add related static code from BaseUI to load them.
+
+
+ - need to revise
 To compile the entire project, run "mvn install" in the parent project.
 
 Other basic workflow steps:
