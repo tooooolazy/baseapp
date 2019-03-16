@@ -13,6 +13,7 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.themes.ValoTheme;
 
 import elemental.json.JsonArray;
@@ -40,6 +41,9 @@ public interface AppLayout extends Component {
 	public default void createMenuStructure(BaseUI ui) {
 		getHelper().createMenuStructure( ui );
 	}
+
+	public void addSettingsBar(MenuBar settings);
+
 
 	/**
 	 * Creates a Menu based on the given viewDefinitions. {@link #clearStructureMaps()} should be called before this one. 

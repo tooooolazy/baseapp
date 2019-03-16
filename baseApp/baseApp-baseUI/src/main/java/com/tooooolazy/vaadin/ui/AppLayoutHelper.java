@@ -286,7 +286,7 @@ public class AppLayoutHelper {
 //		settingsItem.addSeparator();
 //		settingsItem.addItem("Sign Out", null);
 
-		appLayout.getMenu().addComponent(settings);
+		appLayout.addSettingsBar( settings );
 	}
 
 	public int getParentCount(int classId ) {
@@ -387,7 +387,12 @@ public class AppLayoutHelper {
 
 			while ( classIdToParentId.get( cId ) != null ) {
 				cId = classIdToParentId.get( cId );
-				// TODO fix padding when topMenu enabled!
+
+				// fix padding when topMenu enabled!
+				int parentCount = appLayout.getParentCount( cId );
+				if ( appLayout.hasTopMenu() && parentCount <= 1 )
+					continue;
+
 				if ( !(viewIdToComponent.get( cId ) instanceof Label) )
 					JavaScript.getCurrent().execute("document.getElementById('mi_" + cId + "').style.paddingLeft='" + padding + "px'");
 			}
@@ -433,7 +438,9 @@ public class AppLayoutHelper {
 			}
 		}
 		Component selected = viewSelectors.get(viewClass);
-		int cId = viewClassIds.get( viewClass );
+		Integer cId = viewClassIds.get( viewClass );
+		if (cId == null)
+			return;
 		int parentCount = appLayout.getParentCount( cId );
 		if (selected != null) {
 			if ( appLayout.hasTopMenu() && parentCount <= 2 || clearFirst ) 
@@ -462,6 +469,10 @@ public class AppLayoutHelper {
 	public void toggleChildMenuItems(Class c, boolean visible) {
 		if ( appLayout.hasTopMenu() ) {
 			Integer cId = viewClassIds.get( c );
+			if ( cId == null ) {
+				appLayout.toggleSubmenu(false, 0);
+				return;
+			}
 			int parentCount = appLayout.getParentCount( cId );
 			
 			if ( parentCount == 0 ) {

@@ -8,6 +8,7 @@ import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.themes.ValoTheme;
 
 /**
@@ -79,6 +80,10 @@ public class ResponsiveMenuLayout extends HorizontalLayout implements AppLayout 
 		addComponent(menuArea, 0);
 
 		createMenuStructure(BaseUI.get());
+	}
+
+	public void addSettingsBar(MenuBar settings) {
+		getMenu().addComponent(settings);
 	}
 
 	public void refresh() {

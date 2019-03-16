@@ -15,6 +15,7 @@ import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.themes.ValoTheme;
 
 import elemental.json.JsonArray;
@@ -133,6 +134,13 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		return headerTitle;
 	}
 
+	public void addSettingsBar(MenuBar settings) {
+		settings.removeStyleName("user-menu");
+		settings.setStyleName(ValoTheme.MENUBAR_BORDERLESS);
+		settings.addStyleName(ValoTheme.MENUBAR_SMALL);
+		top_gl.addComponent( settings, 4,0 );
+	}
+
 	public void createMenuItems(JsonArray viewDefinitions, Navigator navigator) {
 		Component tmi = createTopMenuItems( navigator );
 		if ( tmi != null )
@@ -153,16 +161,17 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 	}
 
 	protected GridLayout createHeaderTop() {
-		GridLayout top_gl = new GridLayout(4,1);
+		GridLayout top_gl = new GridLayout(5,1);
 		top_gl.setResponsive( true );
 		top_gl.setSpacing( true );
 		top_gl.setId("header_top");
 		top_gl.addStyleName("header_top");
 		top_gl.setWidth("100%");
 		top_gl.setColumnExpandRatio(0, 0f);
-		top_gl.setColumnExpandRatio(1, 1f);
+		top_gl.setColumnExpandRatio(1, .95f);
 		top_gl.setColumnExpandRatio(2, 0f);
 		top_gl.setColumnExpandRatio(3, 0f);
+		top_gl.setColumnExpandRatio(4, 0.05f);
 
 		Image logoi = ((BaseUI)getUI()).getLogoImage();
 		if (logoi != null) {
