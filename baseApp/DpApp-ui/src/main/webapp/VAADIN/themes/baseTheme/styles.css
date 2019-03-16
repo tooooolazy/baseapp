@@ -15033,6 +15033,11 @@ div.v-layout.v-horizontal.v-widget {
 	border-color: #dbdbdb;
 }
 
+.baseTheme .valo-menu-item.selected {
+	background: white;
+	border-bottom: 3px solid red;
+}
+
 .baseTheme .v-ui .valo-menu-part .user-menu {
 	position: fixed;
 	bottom: 0;

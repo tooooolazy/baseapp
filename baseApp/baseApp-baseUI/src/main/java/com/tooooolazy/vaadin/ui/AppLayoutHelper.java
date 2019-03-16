@@ -443,7 +443,7 @@ public class AppLayoutHelper {
 			return;
 		int parentCount = appLayout.getParentCount( cId );
 		if (selected != null) {
-			if ( appLayout.hasTopMenu() && parentCount <= 2 || clearFirst ) 
+			if ( appLayout.hasTopMenu() && parentCount <= 1 || clearFirst ) 
 				selected.addStyleName("selected");
 		}
 		Integer pId = classIdToParentId.get( cId );
