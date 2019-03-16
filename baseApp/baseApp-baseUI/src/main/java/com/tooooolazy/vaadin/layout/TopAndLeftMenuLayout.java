@@ -202,7 +202,9 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		user.addStyleName(ValoTheme.LABEL_LARGE);
 //		user.setWidth("20px");
 		top_gl.addComponent( bell, 2,0);
+		top_gl.setComponentAlignment(bell, Alignment.MIDDLE_CENTER);
 		top_gl.addComponent( user, 3,0);
+		top_gl.setComponentAlignment(user, Alignment.MIDDLE_CENTER);
 		return top_gl;
 	}
 
