@@ -109,7 +109,7 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
 	}
 
 	.top_logo {
-		height: ($v-font-size*2 + 10);
+		height: ($v-font-size*2 + 15);
 		width : 100px;
 	}
 	.header_top {
@@ -126,7 +126,7 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
 	}
 	.top-menu-item {
 		height: $v-font-size*2;
-		margin-top: 5px;
+		margin-top: 7px;
 		font-weight: bold;
 	}
 }
