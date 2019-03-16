@@ -82,6 +82,9 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
     .valo-menu-item [class*="caption"] {
     	margin:0;
     }
+    // so that an empty vertical space is not shown when we got no left menu items
+    min-width: 0px;
+    
   }
   // hide the logo for a more compact header when the menu is very narrow
   .v-ui[width-range~="-801px"] .valo-menu-part {

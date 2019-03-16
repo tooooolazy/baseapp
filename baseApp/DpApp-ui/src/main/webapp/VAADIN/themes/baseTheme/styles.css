@@ -15044,6 +15044,10 @@ div.v-layout.v-horizontal.v-widget {
 	margin-bottom: 0;
 }
 
+.baseTheme .v-ui[width-range~="801px-1100px"] .valo-menu-part {
+	min-width: 0px;
+}
+
 .baseTheme .v-ui[width-range~="801px-1100px"] .valo-menu-part .v-slot-seclogo, .baseTheme .v-ui[width-range~="801px-1100px"] .valo-menu-part .v-slot-seclogo + .v-spacing {
 	display: none;
 }
