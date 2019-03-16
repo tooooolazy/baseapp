@@ -90,14 +90,12 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 
 	@Override
 	public Resource getLoginResource() {
-		// TODO Auto-generated method stub
-		return null;
+		return Resources.getPng("img/actions/", "System-Login-icon");
 	}
 
 	@Override
 	public Resource getLogoutResource() {
-		// TODO Auto-generated method stub
-		return null;
+		return Resources.getPng("img/actions/", "System-Logout-icon");
 	}
 
 	public JsonArray getViewMenuRelations() {
