@@ -480,6 +480,9 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 	public String getTitleHtml() {
 		return "<h3>" + Messages.getString(getClass(), "application.title") + "</h3>";
 	}
+	public String getTitlePlain() {
+		return Messages.getString(getClass(), "application.title");
+	}
 
 	/**
 	 * Helper to get a bundle message by using UI's current locale.

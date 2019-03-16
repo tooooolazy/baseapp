@@ -116,6 +116,11 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
 		background: darkgrey;
 		color: white;
 	}
+	.header-title {
+		color: black;
+		font-weight: bold;
+		text-shadow: 2px 2px #3f3f3f;
+	}
 	#header_subtop {
 		background: lightgrey;
 	}

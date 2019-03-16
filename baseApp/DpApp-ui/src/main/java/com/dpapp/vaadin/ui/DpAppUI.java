@@ -61,8 +61,8 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 
 	@Override
 	protected Resource getLogoResource() {
-		// TODO Auto-generated method stub
-		return null;
+		return Resources.getPng( "img/logo/", "mainLogo_59x57" );
+//		return null;
 	}
 
 	@Override

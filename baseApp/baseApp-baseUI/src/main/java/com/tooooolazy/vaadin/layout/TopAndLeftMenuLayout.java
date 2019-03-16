@@ -5,11 +5,13 @@ import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.shared.ui.ContentMode;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.themes.ValoTheme;
 
@@ -32,9 +34,9 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 	 */
 	protected CssLayout menuArea;
 	/**
-	 * Supports up to 2 Logo images and a Title
+	 * Supports Logo image and a Title
 	 */
-	protected HorizontalLayout menuTitle;
+	protected HorizontalLayout headerTitle;
 
 	protected boolean hasSecureContent;
 
@@ -55,6 +57,7 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		setRowExpandRatio(2, 1f);
 
 		contentArea.setSizeFull();
+		headerTitle = new HorizontalLayout();
 
 		addComponent( contentArea, 2,2, 3,2);
 	}
@@ -70,7 +73,6 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		menu = new CssLayout();
 		menuItemsLayout = new CssLayout();
 		menuArea = new CssLayout();
-//		menuTitle = new HorizontalLayout();
 		menuArea.setPrimaryStyleName(ValoTheme.MENU_ROOT);
 
 		addComponent( menuArea, 0, 2, 1,2);
@@ -106,6 +108,9 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 	public HorizontalLayout getMenuTitle() {
 		return null;
 	}
+	public HorizontalLayout getHeaderTitle() {
+		return headerTitle;
+	}
 
 	public void createMenuItems(JsonArray viewDefinitions, Navigator navigator) {
 		Component tmi = createTopMenuItems( navigator );
@@ -137,17 +142,35 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		top_gl.setColumnExpandRatio(1, 1f);
 		top_gl.setColumnExpandRatio(2, 0f);
 		top_gl.setColumnExpandRatio(3, 0f);
-		Label ll = new Label("logo");
-		ll.addStyleName("top_logo");
-//		ll.setWidth("100px");
-//		ll.setHeight("40px");
+
+		Image logoi = ((BaseUI)getUI()).getLogoImage();
+		if (logoi != null) {
+			if ( getHeaderTitle() != null ) {
+				getHeaderTitle().addComponent(logoi);
+				top_gl.addComponent( getHeaderTitle(), 0,0);
+			}
+			logoi.addStyleName("top_logo");
+			logoi.addStyleName("clickable");
+			logoi.addClickListener( getLogoClickListener() );
+
+			String titleStr = ((BaseUI)getUI()).getTitlePlain();
+			if (titleStr == null)
+				titleStr = "No Title";
+			final Label title = new Label(titleStr);
+			title.addStyleName("header-title");
+			if ( getHeaderTitle() != null ) {
+				getHeaderTitle().addComponent(title);
+				getHeaderTitle().setComponentAlignment(title, Alignment.MIDDLE_LEFT);
+				getHeaderTitle().setExpandRatio(title, 1);
+			}
+		}
+
 		Label bell = new Label( VaadinIcons.BELL.getHtml(), ContentMode.HTML );
 		bell.addStyleName(ValoTheme.LABEL_LARGE);
 //		bell.setWidth("20px");
 		Label user = new Label( VaadinIcons.USER.getHtml(), ContentMode.HTML );
 		user.addStyleName(ValoTheme.LABEL_LARGE);
 //		user.setWidth("20px");
-		top_gl.addComponent( ll, 0,0);
 		top_gl.addComponent( bell, 2,0);
 		top_gl.addComponent( user, 3,0);
 		return top_gl;
