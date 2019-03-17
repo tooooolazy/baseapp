@@ -59,12 +59,14 @@ public class ResponsiveMenuLayout extends HorizontalLayout implements AppLayout 
 		setExpandRatio(contentArea, 1);
 	}
 
+	@Override
 	public void attach() {
 		super.attach();
 
 		addLayoutComponents();
 	}
 
+	@Override
 	public boolean hasTopMenu() {
 		return false;
 	}
@@ -82,10 +84,12 @@ public class ResponsiveMenuLayout extends HorizontalLayout implements AppLayout 
 		createMenuStructure(BaseUI.get());
 	}
 
+	@Override
 	public void addSettingsBar(MenuBar settings) {
 		getMenu().addComponent(settings);
 	}
 
+	@Override
 	public void refresh() {
 		removeComponent(menuArea);
 

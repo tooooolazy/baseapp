@@ -42,6 +42,8 @@ public interface AppLayout extends Component {
 		getHelper().createMenuStructure( ui );
 	}
 
+	public void refresh();
+
 	public void addSettingsBar(MenuBar settings);
 
 

@@ -68,12 +68,14 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		addComponent( contentArea, 2,2, 3,2);
 	}
 
+	@Override
 	public void attach() {
 		super.attach();
 
 		addLayoutComponents();
 	}
 
+	@Override
 	public boolean hasTopMenu() {
 		return true;
 	}
@@ -97,9 +99,10 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		menuArea.setPrimaryStyleName(ValoTheme.MENU_ROOT);
 
 		addComponent( menuArea, 0, 2, 1,2);
-		createMenuStructure(BaseUI.get());
+		createMenuStructure( BaseUI.get() );
 	}
 
+	@Override
 	public void refresh() {
 		removeHeader();
 
@@ -137,11 +140,12 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		settings.removeStyleName("user-menu");
 		settings.setStyleName(ValoTheme.MENUBAR_BORDERLESS);
 		settings.addStyleName(ValoTheme.MENUBAR_SMALL);
-		int width = (settings.getItems().size() - (((BaseUI)getUI()).hasSecureContent() ? 1 : 0)) * 65; // login + logout items are not shown together!
+		int width = (settings.getItems().size() - (BaseUI.get().hasSecureContent() ? 1 : 0)) * 65; // login + logout items are not shown together!
 		settings.setWidth( width + "px" );
 		top_gl.addComponent( settings, 4,0 );
 	}
 
+	@Override
 	public void createMenuItems(JsonArray viewDefinitions, Navigator navigator) {
 		Component tmi = createTopMenuItems( navigator );
 		if ( tmi != null )
@@ -174,7 +178,7 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		top_gl.setColumnExpandRatio(3, 0f);
 		top_gl.setColumnExpandRatio(4, 0f);
 
-		Image logoi = ((BaseUI)getUI()).getLogoImage();
+		Image logoi = BaseUI.get().getLogoImage();
 		if (logoi != null) {
 			if ( getHeaderTitle() != null ) {
 				getHeaderTitle().addComponent(logoi);
@@ -184,7 +188,7 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 			logoi.addStyleName("clickable");
 			logoi.addClickListener( getLogoClickListener() );
 
-			String titleStr = ((BaseUI)getUI()).getTitlePlain();
+			String titleStr = BaseUI.get().getTitlePlain();
 			if (titleStr == null)
 				titleStr = "No Title";
 			final Label title = new Label(titleStr);

@@ -206,7 +206,7 @@ public class AppLayoutHelper {
 		Logger.getAnonymousLogger().info( "Adding: " + c.getSimpleName());
 
 		if ( secure )
-			((BaseUI)appLayout.getUI()).setHasSecureContent();
+			BaseUI.get().setHasSecureContent();
 
 		Component menuItem = null;
 
@@ -261,7 +261,7 @@ public class AppLayoutHelper {
 			toggleLang.setDescription(Messages.getString("toggleLang"));
 		}
 
-		if ( ((BaseUI)appLayout.getUI()).hasSecureContent() ) {
+		if ( BaseUI.get().hasSecureContent() ) {
 			LoginCommand lic = new LoginCommand();
 			if (BaseUI.get().getLoginResource() == null) {
 				throw new NoLoginResourceException();
