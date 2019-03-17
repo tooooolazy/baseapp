@@ -42,7 +42,6 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 	protected HorizontalLayout headerTitle;
 
 	protected AppLayoutHelper appLayoutHelper;
-	protected boolean hasSecureContent;
 
 	public TopAndLeftMenuLayout() {
 		super(4, 3);
@@ -138,7 +137,7 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		settings.removeStyleName("user-menu");
 		settings.setStyleName(ValoTheme.MENUBAR_BORDERLESS);
 		settings.addStyleName(ValoTheme.MENUBAR_SMALL);
-		int width = ( settings.getItems().size() - 1 ) * 62; // login + logout items are not shown together!
+		int width = (settings.getItems().size() - (((BaseUI)getUI()).hasSecureContent() ? 1 : 0)) * 62; // login + logout items are not shown together!
 		settings.setWidth( width + "px" );
 		top_gl.addComponent( settings, 4,0 );
 	}
