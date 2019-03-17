@@ -11,7 +11,7 @@ public class LogoutCommand implements Command {
 	}
 	@Override
     public void menuSelected(MenuItem selectedItem) {
-		selectedItem.setVisible( false );
 		login.setVisible( true );
+		selectedItem.setVisible( false );
 	}
 }

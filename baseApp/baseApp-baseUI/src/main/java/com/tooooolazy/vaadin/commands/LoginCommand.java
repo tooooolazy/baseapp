@@ -2,6 +2,7 @@ package com.tooooolazy.vaadin.commands;
 
 import com.vaadin.ui.MenuBar.Command;
 import com.vaadin.ui.MenuBar.MenuItem;
+import com.vaadin.ui.UI;
 
 public class LoginCommand implements Command {
 	protected MenuItem logout;
@@ -11,7 +12,8 @@ public class LoginCommand implements Command {
 	}
 	@Override
     public void menuSelected(MenuItem selectedItem) {
-		selectedItem.setVisible( false );
+//		UI.getCurrent().getNavigator().navigateTo( );
 		logout.setVisible( true );
+		selectedItem.setVisible( false );
 	}
 }
