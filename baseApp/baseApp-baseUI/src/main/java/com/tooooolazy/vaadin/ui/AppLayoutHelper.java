@@ -390,7 +390,7 @@ public class AppLayoutHelper {
 
 				// fix padding when topMenu enabled!
 				int parentCount = appLayout.getParentCount( cId );
-				if ( appLayout.hasTopMenu() && parentCount <= 1 )
+				if ( appLayout.hasTopMenu() && parentCount <= 1 || viewIdToComponent.get( cId ) == null)
 					continue;
 
 				if ( !(viewIdToComponent.get( cId ) instanceof Label) )
