@@ -138,6 +138,8 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		settings.removeStyleName("user-menu");
 		settings.setStyleName(ValoTheme.MENUBAR_BORDERLESS);
 		settings.addStyleName(ValoTheme.MENUBAR_SMALL);
+		int width = ( settings.getItems().size() - 1 ) * 62; // login + logout items are not shown together!
+		settings.setWidth( width + "px" );
 		top_gl.addComponent( settings, 4,0 );
 	}
 
@@ -168,10 +170,10 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		top_gl.addStyleName("header_top");
 		top_gl.setWidth("100%");
 		top_gl.setColumnExpandRatio(0, 0f);
-		top_gl.setColumnExpandRatio(1, .95f);
+		top_gl.setColumnExpandRatio(1, 1f);
 		top_gl.setColumnExpandRatio(2, 0f);
 		top_gl.setColumnExpandRatio(3, 0f);
-		top_gl.setColumnExpandRatio(4, 0.05f);
+		top_gl.setColumnExpandRatio(4, 0f);
 
 		Image logoi = ((BaseUI)getUI()).getLogoImage();
 		if (logoi != null) {
