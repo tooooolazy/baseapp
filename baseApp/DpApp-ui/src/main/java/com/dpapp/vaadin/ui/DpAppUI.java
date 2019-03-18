@@ -63,7 +63,6 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 	@Override
 	protected Resource getLogoResource() {
 		return Resources.getPng( "img/logo/", "mainLogo_59x57" );
-//		return null;
 	}
 
 	@Override
@@ -117,7 +116,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.OverviewView");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 201);
-		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_SECURE, true);
 //		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 102);
 		ja.set(index++, jo);
 

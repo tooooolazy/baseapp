@@ -42,6 +42,8 @@ import elemental.json.JsonObject;
 public class AppLayoutHelper {
 	protected AppLayout appLayout;
 
+	protected LoginCommand lic;
+	protected LogoutCommand loc;
 	/**
 	 * Used to 'mark' selected View
 	 */
@@ -251,6 +253,12 @@ public class AppLayoutHelper {
 		componentToParentId.put(menuItem, parentId);
 	}
 
+	public LoginCommand getLoginCommand() {
+		return lic;
+	}
+	public LogoutCommand getLogoutCommand() {
+		return loc;
+	}
 	public void createSettingsMenuBar() {
 		final MenuBar settings = new MenuBar();
 		settings.addStyleName("user-menu");
@@ -262,7 +270,7 @@ public class AppLayoutHelper {
 		}
 
 		if ( BaseUI.get().hasSecureContent() ) {
-			LoginCommand lic = new LoginCommand();
+			lic = new LoginCommand();
 			if (BaseUI.get().getLoginResource() == null) {
 				throw new NoLoginResourceException();
 			}
@@ -273,10 +281,13 @@ public class AppLayoutHelper {
 			final MenuItem login = settings.addItem("", BaseUI.get().getLoginResource(), lic);
 			login.setDescription(Messages.getString("InitiateLoginButton.loginTitle"));
 
-			LogoutCommand loc = new LogoutCommand();
+			loc = new LogoutCommand();
 			final MenuItem logout = settings.addItem("", BaseUI.get().getLogoutResource(), loc);
 			logout.setDescription(Messages.getString("InitiateLoginButton.logoutTitle"));
-			logout.setVisible(false);
+
+			// decide which item to show!
+			login.setVisible( BaseUI.get().getUserObject() == null );
+			logout.setVisible( BaseUI.get().getUserObject() != null );
 
 			lic.setLogoutItem(logout);
 			loc.setLoginItem(login);

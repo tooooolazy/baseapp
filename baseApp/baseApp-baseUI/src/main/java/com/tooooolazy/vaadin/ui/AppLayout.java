@@ -2,6 +2,8 @@ package com.tooooolazy.vaadin.ui;
 
 import java.util.List;
 
+import com.tooooolazy.vaadin.commands.LoginCommand;
+import com.tooooolazy.vaadin.commands.LogoutCommand;
 import com.tooooolazy.vaadin.components.MenuBudgeButton;
 import com.vaadin.event.MouseEvents;
 import com.vaadin.navigator.Navigator;
@@ -46,6 +48,12 @@ public interface AppLayout extends Component {
 
 	public void addSettingsBar(MenuBar settings);
 
+	public default LoginCommand getLoginCommand() {
+		return getHelper().getLoginCommand();
+	}
+	public default LogoutCommand getLogoutCommand() {
+		return getHelper().getLogoutCommand();
+	}
 
 	/**
 	 * Creates a Menu based on the given viewDefinitions. {@link #clearStructureMaps()} should be called before this one. 
