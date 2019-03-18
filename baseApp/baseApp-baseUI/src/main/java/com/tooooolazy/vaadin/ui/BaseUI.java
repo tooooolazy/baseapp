@@ -503,7 +503,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 	public ComponentContainer getViewDisplay() {
 		return getContentContainer();
 	}
-	public L getMenu() {
+	public L getAppLayout() {
 		return root;
 	}
 

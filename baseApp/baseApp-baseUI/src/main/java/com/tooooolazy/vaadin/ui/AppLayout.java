@@ -11,6 +11,7 @@ import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
@@ -53,6 +54,12 @@ public interface AppLayout extends Component {
 	}
 	public default LogoutCommand getLogoutCommand() {
 		return getHelper().getLogoutCommand();
+	}
+	public default MenuItem getLoginItem() {
+		return getHelper().getLoginItem();
+	}
+	public default MenuItem getLogoutItem() {
+		return getHelper().getLogoutItem();
 	}
 
 	/**

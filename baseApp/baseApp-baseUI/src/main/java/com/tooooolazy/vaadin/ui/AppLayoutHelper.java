@@ -44,6 +44,8 @@ public class AppLayoutHelper {
 
 	protected LoginCommand lic;
 	protected LogoutCommand loc;
+
+	protected MenuItem login, logout;
 	/**
 	 * Used to 'mark' selected View
 	 */
@@ -259,6 +261,14 @@ public class AppLayoutHelper {
 	public LogoutCommand getLogoutCommand() {
 		return loc;
 	}
+
+	public MenuItem getLoginItem() {
+		return login;
+	}
+	public MenuItem getLogoutItem() {
+		return logout;
+	}
+
 	public void createSettingsMenuBar() {
 		final MenuBar settings = new MenuBar();
 		settings.addStyleName("user-menu");
@@ -278,11 +288,11 @@ public class AppLayoutHelper {
 				throw new NoLogoutResourceException();
 			}
 
-			final MenuItem login = settings.addItem("", BaseUI.get().getLoginResource(), lic);
+			login = settings.addItem("", BaseUI.get().getLoginResource(), lic);
 			login.setDescription(Messages.getString("InitiateLoginButton.loginTitle"));
 
 			loc = new LogoutCommand();
-			final MenuItem logout = settings.addItem("", BaseUI.get().getLogoutResource(), loc);
+			logout = settings.addItem("", BaseUI.get().getLogoutResource(), loc);
 			logout.setDescription(Messages.getString("InitiateLoginButton.logoutTitle"));
 
 			// decide which item to show!

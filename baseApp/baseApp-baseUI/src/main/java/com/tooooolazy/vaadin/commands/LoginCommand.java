@@ -17,6 +17,6 @@ public class LoginCommand implements Command {
 		// this should be called once login is successful!
 //		logout.setVisible( true );
 		// this should be called once login is successful. Also should not be visible when Login Component is Visible (ie we are in MainView where LoginComponent appears)
-		selectedItem.setVisible( false );
+//		selectedItem.setVisible( false );
 	}
 }
