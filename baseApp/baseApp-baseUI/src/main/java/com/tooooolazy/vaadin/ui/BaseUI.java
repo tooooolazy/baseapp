@@ -117,6 +117,15 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 	}
 
 	@Override
+	public void attach() {
+		super.attach();
+		// http://blog.adeel.io/tag/vaadin/
+		if (applicationLevelTracker == null)
+			applicationLevelTracker = new ApplicationLevelTracker(0,
+					VaadinSession.getCurrent().getSession().getId());
+	}
+
+	@Override
 	protected void init(VaadinRequest vaadinRequest) {
 		logger.info("Initializing BaseUI");
 
@@ -158,10 +167,6 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 		setupNavigator();
 
 		addJavascriptFunctions();
-
-		// http://blog.adeel.io/tag/vaadin/
-		applicationLevelTracker = new ApplicationLevelTracker(0,
-				VaadinSession.getCurrent().getSession().getId());
 
 		addDetachListener(new DetachListener() {
 			@Override
@@ -234,10 +239,12 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 						}
 					}
 				});
-		Page.getCurrent()
-				.getJavaScript()
-				.execute(
-						"window.onbeforeunload = function (e) { var e = e || window.event; browserIsLeaving(); return; };");
+		// FIXME : the next conflicts (overrides!) with BeforeUnload addon...
+		// FIXME : Also called when F5 is pressed !!!!!!!!!!!!!!!!!!! DAMN !!!!!!!!
+//		Page.getCurrent()
+//				.getJavaScript()
+//				.execute(
+//						"window.onbeforeunload = function (e) { var e = e || window.event; browserIsLeaving(); return; };");
 	}
 
 	protected void initServiceGenerator() {
