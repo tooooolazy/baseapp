@@ -460,7 +460,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 			@Override
 			public void error(com.vaadin.server.ErrorEvent event) {
 				if (event.getThrowable() instanceof InvalidBaseAppParameterException) {
-					Notification.show(getMessageString(BaseUI.class, "error"), getMessageString(event.getThrowable().getClass(), "msg"), Type.ERROR_MESSAGE);
+					Notification.show(getMessageString(UI.getCurrent().getClass(), "error"), getMessageString(event.getThrowable().getClass(), "msg"), Type.ERROR_MESSAGE);
 				} else
 					super.error(event);
 			}
@@ -510,7 +510,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 	public ComponentContainer getViewDisplay() {
 		return getContentContainer();
 	}
-	public L getMenu() {
+	public L getAppLayout() {
 		return root;
 	}
 
@@ -581,6 +581,9 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 	 */
 	public String getTitleHtml() {
 		return "<h3>" + Messages.getString(getClass(), "application.title") + "</h3>";
+	}
+	public String getTitlePlain() {
+		return Messages.getString(getClass(), "application.title");
 	}
 
 	/**

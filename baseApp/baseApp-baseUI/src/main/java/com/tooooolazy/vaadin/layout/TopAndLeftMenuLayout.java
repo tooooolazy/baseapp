@@ -6,13 +6,16 @@ import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.shared.ui.ContentMode;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.themes.ValoTheme;
 
 import elemental.json.JsonArray;
@@ -34,12 +37,11 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 	 */
 	protected CssLayout menuArea;
 	/**
-	 * Supports up to 2 Logo images and a Title
+	 * Supports Logo image and a Title
 	 */
-	protected HorizontalLayout menuTitle;
+	protected HorizontalLayout headerTitle;
 
 	protected AppLayoutHelper appLayoutHelper;
-	protected boolean hasSecureContent;
 
 	public TopAndLeftMenuLayout() {
 		super(4, 3);
@@ -61,16 +63,19 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		setRowExpandRatio(2, 1f);
 
 		contentArea.setSizeFull();
+		headerTitle = new HorizontalLayout();
 
 		addComponent( contentArea, 2,2, 3,2);
 	}
 
+	@Override
 	public void attach() {
 		super.attach();
 
 		addLayoutComponents();
 	}
 
+	@Override
 	public boolean hasTopMenu() {
 		return true;
 	}
@@ -91,13 +96,13 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		menu = new CssLayout();
 		menuItemsLayout = new CssLayout();
 		menuArea = new CssLayout();
-//		menuTitle = new HorizontalLayout();
 		menuArea.setPrimaryStyleName(ValoTheme.MENU_ROOT);
 
 		addComponent( menuArea, 0, 2, 1,2);
-		createMenuStructure(BaseUI.get());
+		createMenuStructure( BaseUI.get() );
 	}
 
+	@Override
 	public void refresh() {
 		removeHeader();
 
@@ -127,7 +132,20 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 	public HorizontalLayout getMenuTitle() {
 		return null;
 	}
+	public HorizontalLayout getHeaderTitle() {
+		return headerTitle;
+	}
 
+	public void addSettingsBar(MenuBar settings) {
+		settings.removeStyleName("user-menu");
+		settings.setStyleName(ValoTheme.MENUBAR_BORDERLESS);
+		settings.addStyleName(ValoTheme.MENUBAR_SMALL);
+		int width = (settings.getItems().size() - (BaseUI.get().hasSecureContent() ? 1 : 0)) * 65; // login + logout items are not shown together!
+		settings.setWidth( width + "px" );
+		top_gl.addComponent( settings, 4,0 );
+	}
+
+	@Override
 	public void createMenuItems(JsonArray viewDefinitions, Navigator navigator) {
 		Component tmi = createTopMenuItems( navigator );
 		if ( tmi != null )
@@ -148,7 +166,7 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 	}
 
 	protected GridLayout createHeaderTop() {
-		GridLayout top_gl = new GridLayout(4,1);
+		GridLayout top_gl = new GridLayout(5,1);
 		top_gl.setResponsive( true );
 		top_gl.setSpacing( true );
 		top_gl.setId("header_top");
@@ -158,19 +176,40 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		top_gl.setColumnExpandRatio(1, 1f);
 		top_gl.setColumnExpandRatio(2, 0f);
 		top_gl.setColumnExpandRatio(3, 0f);
-		Label ll = new Label("logo");
-		ll.addStyleName("top_logo");
-//		ll.setWidth("100px");
-//		ll.setHeight("40px");
+		top_gl.setColumnExpandRatio(4, 0f);
+
+		Image logoi = BaseUI.get().getLogoImage();
+		if (logoi != null) {
+			if ( getHeaderTitle() != null ) {
+				getHeaderTitle().addComponent(logoi);
+				top_gl.addComponent( getHeaderTitle(), 0,0);
+			}
+			logoi.addStyleName("top_logo");
+			logoi.addStyleName("clickable");
+			logoi.addClickListener( getLogoClickListener() );
+
+			String titleStr = BaseUI.get().getTitlePlain();
+			if (titleStr == null)
+				titleStr = "No Title";
+			final Label title = new Label(titleStr);
+			title.addStyleName("header-title");
+			if ( getHeaderTitle() != null ) {
+				getHeaderTitle().addComponent(title);
+				getHeaderTitle().setComponentAlignment(title, Alignment.MIDDLE_LEFT);
+				getHeaderTitle().setExpandRatio(title, 1);
+			}
+		}
+
 		Label bell = new Label( VaadinIcons.BELL.getHtml(), ContentMode.HTML );
 		bell.addStyleName(ValoTheme.LABEL_LARGE);
 //		bell.setWidth("20px");
 		Label user = new Label( VaadinIcons.USER.getHtml(), ContentMode.HTML );
 		user.addStyleName(ValoTheme.LABEL_LARGE);
 //		user.setWidth("20px");
-		top_gl.addComponent( ll, 0,0);
 		top_gl.addComponent( bell, 2,0);
+		top_gl.setComponentAlignment(bell, Alignment.MIDDLE_CENTER);
 		top_gl.addComponent( user, 3,0);
+		top_gl.setComponentAlignment(user, Alignment.MIDDLE_CENTER);
 		return top_gl;
 	}
 

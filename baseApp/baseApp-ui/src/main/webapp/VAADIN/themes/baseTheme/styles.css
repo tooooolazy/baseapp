@@ -15033,10 +15033,19 @@ div.v-layout.v-horizontal.v-widget {
 	border-color: #dbdbdb;
 }
 
+.baseTheme .valo-menu-item.selected {
+	background: white;
+	border-bottom: 3px solid red;
+}
+
 .baseTheme .v-ui .valo-menu-part .user-menu {
 	position: fixed;
 	bottom: 0;
 	margin-bottom: 0;
+}
+
+.baseTheme .v-ui[width-range~="801px-1100px"] .valo-menu-part {
+	min-width: 0px;
 }
 
 .baseTheme .v-ui[width-range~="801px-1100px"] .valo-menu-part .v-slot-seclogo, .baseTheme .v-ui[width-range~="801px-1100px"] .valo-menu-part .v-slot-seclogo + .v-spacing {
@@ -15065,4 +15074,30 @@ div.v-layout.v-horizontal.v-widget {
 
 .baseTheme .i-error-msg {
 	color: red;
+}
+
+.baseTheme .top_logo {
+	height: 43px;
+	width: 100px;
+}
+
+.baseTheme .header_top {
+	background: darkgrey;
+	color: white;
+}
+
+.baseTheme .header-title {
+	color: black;
+	font-weight: bold;
+	text-shadow: 2px 2px #3f3f3f;
+}
+
+.baseTheme #header_subtop {
+	background: lightgrey;
+}
+
+.baseTheme .top-menu-item {
+	height: 28px;
+	margin-top: 7px;
+	font-weight: bold;
 }

@@ -42,6 +42,10 @@ import elemental.json.JsonObject;
 public class AppLayoutHelper {
 	protected AppLayout appLayout;
 
+	protected LoginCommand lic;
+	protected LogoutCommand loc;
+
+	protected MenuItem login, logout;
 	/**
 	 * Used to 'mark' selected View
 	 */
@@ -206,7 +210,7 @@ public class AppLayoutHelper {
 		Logger.getAnonymousLogger().info( "Adding: " + c.getSimpleName());
 
 		if ( secure )
-			((BaseUI)appLayout.getUI()).setHasSecureContent();
+			BaseUI.get().setHasSecureContent();
 
 		Component menuItem = null;
 
@@ -251,6 +255,20 @@ public class AppLayoutHelper {
 		componentToParentId.put(menuItem, parentId);
 	}
 
+	public LoginCommand getLoginCommand() {
+		return lic;
+	}
+	public LogoutCommand getLogoutCommand() {
+		return loc;
+	}
+
+	public MenuItem getLoginItem() {
+		return login;
+	}
+	public MenuItem getLogoutItem() {
+		return logout;
+	}
+
 	public void createSettingsMenuBar() {
 		final MenuBar settings = new MenuBar();
 		settings.addStyleName("user-menu");
@@ -261,8 +279,8 @@ public class AppLayoutHelper {
 			toggleLang.setDescription(Messages.getString("toggleLang"));
 		}
 
-		if ( ((BaseUI)appLayout.getUI()).hasSecureContent() ) {
-			LoginCommand lic = new LoginCommand();
+		if ( BaseUI.get().hasSecureContent() ) {
+			lic = new LoginCommand();
 			if (BaseUI.get().getLoginResource() == null) {
 				throw new NoLoginResourceException();
 			}
@@ -270,13 +288,16 @@ public class AppLayoutHelper {
 				throw new NoLogoutResourceException();
 			}
 
-			final MenuItem login = settings.addItem("", BaseUI.get().getLoginResource(), lic);
+			login = settings.addItem("", BaseUI.get().getLoginResource(), lic);
 			login.setDescription(Messages.getString("InitiateLoginButton.loginTitle"));
 
-			LogoutCommand loc = new LogoutCommand();
-			final MenuItem logout = settings.addItem("", BaseUI.get().getLogoutResource(), loc);
+			loc = new LogoutCommand();
+			logout = settings.addItem("", BaseUI.get().getLogoutResource(), loc);
 			logout.setDescription(Messages.getString("InitiateLoginButton.logoutTitle"));
-			logout.setVisible(false);
+
+			// decide which item to show!
+			login.setVisible( BaseUI.get().getUserObject() == null );
+			logout.setVisible( BaseUI.get().getUserObject() != null );
 
 			lic.setLogoutItem(logout);
 			loc.setLoginItem(login);
@@ -286,7 +307,7 @@ public class AppLayoutHelper {
 //		settingsItem.addSeparator();
 //		settingsItem.addItem("Sign Out", null);
 
-		appLayout.getMenu().addComponent(settings);
+		appLayout.addSettingsBar( settings );
 	}
 
 	public int getParentCount(int classId ) {
@@ -387,7 +408,12 @@ public class AppLayoutHelper {
 
 			while ( classIdToParentId.get( cId ) != null ) {
 				cId = classIdToParentId.get( cId );
-				// TODO fix padding when topMenu enabled!
+
+				// fix padding when topMenu enabled!
+				int parentCount = appLayout.getParentCount( cId );
+				if ( appLayout.hasTopMenu() && parentCount <= 1 || viewIdToComponent.get( cId ) == null)
+					continue;
+
 				if ( !(viewIdToComponent.get( cId ) instanceof Label) )
 					JavaScript.getCurrent().execute("document.getElementById('mi_" + cId + "').style.paddingLeft='" + padding + "px'");
 			}
@@ -433,10 +459,12 @@ public class AppLayoutHelper {
 			}
 		}
 		Component selected = viewSelectors.get(viewClass);
-		int cId = viewClassIds.get( viewClass );
+		Integer cId = viewClassIds.get( viewClass );
+		if (cId == null)
+			return;
 		int parentCount = appLayout.getParentCount( cId );
 		if (selected != null) {
-			if ( appLayout.hasTopMenu() && parentCount <= 2 || clearFirst ) 
+			if ( appLayout.hasTopMenu() && parentCount <= 1 || clearFirst ) 
 				selected.addStyleName("selected");
 		}
 		Integer pId = classIdToParentId.get( cId );
@@ -462,6 +490,10 @@ public class AppLayoutHelper {
 	public void toggleChildMenuItems(Class c, boolean visible) {
 		if ( appLayout.hasTopMenu() ) {
 			Integer cId = viewClassIds.get( c );
+			if ( cId == null ) {
+				appLayout.toggleSubmenu(false, 0);
+				return;
+			}
 			int parentCount = appLayout.getParentCount( cId );
 			
 			if ( parentCount == 0 ) {

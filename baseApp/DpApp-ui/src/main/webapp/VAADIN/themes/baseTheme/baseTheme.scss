@@ -55,6 +55,10 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
   text-shadow: none;
   border-color: first-color(valo-border($color: $v-app-background-color, $strength: 0.5));
 }
+.valo-menu-item.selected {
+    background: white;
+    border-bottom: 3px solid red;
+}
   // Insert your own theme rules here
   .v-ui .valo-menu-part {
     .user-menu {
@@ -78,6 +82,9 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
     .valo-menu-item [class*="caption"] {
     	margin:0;
     }
+    // so that an empty vertical space is not shown when we got no left menu items
+    min-width: 0px;
+    
   }
   // hide the logo for a more compact header when the menu is very narrow
   .v-ui[width-range~="-801px"] .valo-menu-part {
@@ -109,19 +116,24 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
 	}
 
 	.top_logo {
-		height: ($v-font-size*2 + 10);
+		height: ($v-font-size*2 + 15);
 		width : 100px;
 	}
 	.header_top {
 		background: darkgrey;
 		color: white;
 	}
+	.header-title {
+		color: black;
+		font-weight: bold;
+		text-shadow: 2px 2px #3f3f3f;
+	}
 	#header_subtop {
 		background: lightgrey;
 	}
 	.top-menu-item {
 		height: $v-font-size*2;
-		margin-top: 5px;
+		margin-top: 7px;
 		font-weight: bold;
 	}
 }
