@@ -34,7 +34,7 @@ public class MainView extends BaseView {
 	@Override
 	protected void addContent() {
 		// TODO Auto-generated method stub
-		if ( BaseUI.get().getUserObject() == null ) {
+		if ( BaseUI.get().hasSecureContent() && BaseUI.get().getUserObject() == null ) {
 			
 			LoginComponent lc = new LoginComponent( new LoginButtonListener() {
 				
