@@ -48,7 +48,9 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 		Page.getCurrent().setTitle( getViewTitle() );
 	}
 
-	protected abstract boolean showTitleInContent();
+	protected boolean showTitleInContent() {
+		return true;
+	}
 	protected String getViewTitle() {
 		return Messages.getString(getClass(), "application.title");
 	}
@@ -110,8 +112,10 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 		logger.info("URI params: " + event.getParameters());
 		logger.info("URI params: " + event.getParameterMap("/"));
 
-		BaseUI.get().getAppLayout().getLogoutItem().setVisible(BaseUI.get().getUserObject() != null);
-		BaseUI.get().getAppLayout().getLoginItem().setVisible(BaseUI.get().hasSecureContent() && BaseUI.get().getUserObject() == null);
+		if ( BaseUI.get().hasSecureContent() ) {
+			BaseUI.get().getAppLayout().getLogoutItem().setVisible(BaseUI.get().getUserObject() != null);
+			BaseUI.get().getAppLayout().getLoginItem().setVisible(BaseUI.get().hasSecureContent() && BaseUI.get().getUserObject() == null);
+		}
 
 		AppLayout al = (AppLayout) getUI().getContent();
 		al.toggleChildMenuItems(getClass(), true);

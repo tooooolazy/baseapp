@@ -28,7 +28,8 @@ public class MainView extends BaseView {
     public void enter(ViewChangeEvent event) {
     	super.enter(event);
     	// always hide login menu item!
-    	BaseUI.get().getAppLayout().getLoginItem().setVisible( false );
+    	if ( BaseUI.get().hasSecureContent() )
+    		BaseUI.get().getAppLayout().getLoginItem().setVisible( false );
     }
 	@Override
 	protected void addContent() {

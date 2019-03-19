@@ -188,16 +188,16 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 			logoi.addStyleName("clickable");
 			logoi.addClickListener( getLogoClickListener() );
 
-			String titleStr = BaseUI.get().getTitlePlain();
-			if (titleStr == null)
-				titleStr = "No Title";
-			final Label title = new Label(titleStr);
-			title.addStyleName("header-title");
-			if ( getHeaderTitle() != null ) {
-				getHeaderTitle().addComponent(title);
-				getHeaderTitle().setComponentAlignment(title, Alignment.MIDDLE_LEFT);
-				getHeaderTitle().setExpandRatio(title, 1);
-			}
+		}
+		String titleStr = BaseUI.get().getTitlePlain();
+		if (titleStr == null)
+			titleStr = "No Title";
+		final Label title = new Label(titleStr);
+		title.addStyleName("header-title");
+		if ( getHeaderTitle() != null ) {
+			getHeaderTitle().addComponent(title);
+			getHeaderTitle().setComponentAlignment(title, Alignment.MIDDLE_LEFT);
+			getHeaderTitle().setExpandRatio(title, 1);
 		}
 
 		Label bell = new Label( VaadinIcons.BELL.getHtml(), ContentMode.HTML );
@@ -227,8 +227,18 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		sub_gl.addComponent( el, 0,0);
 		return sub_gl;
 	}
-	protected abstract Component createTopMenuItems(Navigator navigator);
-	protected abstract Component createSubMenuItems(Navigator navigator);
+	protected Component createTopMenuItems(Navigator navigator) {
+		HorizontalLayout hl = new HorizontalLayout();
+		hl.setResponsive( true );
+
+		return hl;
+	}
+	protected Component createSubMenuItems(Navigator navigator) {
+		HorizontalLayout hl = new HorizontalLayout();
+		hl.setResponsive( true );
+
+		return hl;
+	}
 
 	protected void removeHeader() {
 		// removals should match additions in 'addHeader'

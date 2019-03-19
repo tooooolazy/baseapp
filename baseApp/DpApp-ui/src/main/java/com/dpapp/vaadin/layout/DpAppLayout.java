@@ -7,19 +7,19 @@ import com.vaadin.ui.HorizontalLayout;
 
 public class DpAppLayout extends TopAndLeftMenuLayout {
 
-	@Override
-	protected Component createTopMenuItems(Navigator navigator) {
-		HorizontalLayout hl = new HorizontalLayout();
-		hl.setResponsive( true );
-
-		return hl;
-	}
-	@Override
-	protected Component createSubMenuItems(Navigator navigator) {
-		HorizontalLayout hl = new HorizontalLayout();
-		hl.setResponsive( true );
-
-		return hl;
-	}
+//	@Override
+//	protected Component createTopMenuItems(Navigator navigator) {
+//		HorizontalLayout hl = new HorizontalLayout();
+//		hl.setResponsive( true );
+//
+//		return hl;
+//	}
+//	@Override
+//	protected Component createSubMenuItems(Navigator navigator) {
+//		HorizontalLayout hl = new HorizontalLayout();
+//		hl.setResponsive( true );
+//
+//		return hl;
+//	}
 
 }

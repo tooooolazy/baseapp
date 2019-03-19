@@ -306,6 +306,8 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 		// TODO get this structure from WS or DB
 		JsonArray ja = Json.createArray();
 
+		// a parent element MUST be declared first!! Then its children and THEN the next parent element
+
 		JsonObject jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy4View");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 1);

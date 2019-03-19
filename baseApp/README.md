@@ -32,8 +32,9 @@ Workflow
   - replace with 'VaadinServlet' with 'BaseAppServlet'
   - create an 'AppLayout' class that implements 'AppLayout' interface and use it in UI class as generic along with a UserBean class. An existing Layout class from baseApp-baseUI can be used as base. 
   - add and implement abstract methods from BaseUI
-  - add property bundle files that match UI's class name and add related static code from BaseUI to load them.
-
+  - add property bundle files in resources folder that match UI's class name and add related static code from BaseUI to load them.
+  - Copy (if needed) styles from baseTheme.scss from one of the demo UI projects.
+  - override 'getViewDefinitions' in UI class and add menu structure. super() provides an example. In time the override will not be needed as data will be retrieved from a WS.
 
  - need to revise
 To compile the entire project, run "mvn install" in the parent project.
