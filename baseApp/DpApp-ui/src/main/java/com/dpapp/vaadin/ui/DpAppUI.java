@@ -5,7 +5,10 @@ import java.util.Properties;
 import javax.servlet.annotation.WebServlet;
 
 import com.dpapp.vaadin.layout.DpAppLayout;
+import com.dpapp.ws.beans.OnlineParams;
+import com.dpapp.ws.beans.OnlineResult;
 import com.dpapp.ws.beans.UserBean;
+import com.tooooolazy.data.services.DataHandler;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.layout.TopAndLeftMenuLayout;
 import com.tooooolazy.vaadin.resources.Resources;
@@ -42,6 +45,18 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
 	@Override
 	protected Object generateService(Class srvClass) {
 		return super.generateService( srvClass );
+	}
+
+	@Override
+	protected DataHandler<OnlineResult, OnlineParams> createDataHandler() {
+		return new DataHandler(OnlineResult.class) {
+
+			@Override
+			protected OnlineParams createOnlineParams() {
+				return new OnlineParams();
+			}
+
+		};
 	}
 
 	@Override

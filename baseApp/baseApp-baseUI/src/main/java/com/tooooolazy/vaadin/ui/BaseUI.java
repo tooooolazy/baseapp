@@ -24,6 +24,7 @@ import com.tooooolazy.data.ServiceLocator;
 import com.tooooolazy.data.interfaces.DataHandlerService;
 import com.tooooolazy.data.services.DataHandler;
 import com.tooooolazy.data.services.beans.JobFailureCode;
+import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.OnlineResult;
 import com.tooooolazy.data.services.beans.UserBean;
@@ -268,10 +269,23 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 	 */
 	protected Object generateService(Class srvClass) {
 		if (srvClass.equals(DataHandlerService.class))
-			return new DataHandler( OnlineResult.class );
+			return createDataHandler();
 
 		return null;
 	}
+
+	protected abstract DataHandler createDataHandler();
+//	protected DataHandler createDataHandler() {
+//		return new DataHandler(OnlineResult.class) {
+//
+//			@Override
+//			protected OnlineBaseParams createOnlineParams() {
+//				// TODO Auto-generated method stub
+//				return null;
+//			}
+//
+//		};
+//	}
 
 	protected String getCurrentEnvironment() {
 		Map<String, Object> params = new HashMap<String, Object>();

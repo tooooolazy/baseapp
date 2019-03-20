@@ -3,11 +3,12 @@ package com.tooooolazy.data.interfaces;
 import java.util.List;
 import java.util.Map;
 
+import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.SearchCriteria;
 
-public abstract class AbstractDataHandler<OR extends OnlineBaseResult> implements DataHandlerService<OR> {
+public abstract class AbstractDataHandler<OR extends OnlineBaseResult, OP extends OnlineBaseParams> implements DataHandlerService<OR> {
 
 	@Override
 	public <C extends SearchCriteria> List getListData(C criteria, String orderBy) {

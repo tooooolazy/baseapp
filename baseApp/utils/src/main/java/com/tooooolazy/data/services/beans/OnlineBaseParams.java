@@ -13,19 +13,21 @@ import java.util.Map;
  * @author gpatoulas
  *
  */
-public class OnlineParams implements Serializable {
+public class OnlineBaseParams implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	protected Integer userCode;
+	protected boolean userRequired;
+
 
 	protected String method;
 	protected Map<String, Object> methodParams;
 	protected boolean logCurrentAction;
 
-	public OnlineParams() {}
+	public OnlineBaseParams() {}
 
 
 	public Integer getUserCode() {
@@ -62,5 +64,11 @@ public class OnlineParams implements Serializable {
 		this.logCurrentAction = logCurrentAction;
 	}
 
+	public boolean isUserRequired() {
+		return userRequired;
+	}
 
+	public void setUserRequired(boolean userRequired) {
+		this.userRequired = userRequired;
+	}
 }

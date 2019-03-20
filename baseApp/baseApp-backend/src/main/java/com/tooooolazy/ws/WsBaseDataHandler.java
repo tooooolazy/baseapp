@@ -10,9 +10,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tooooolazy.data.interfaces.DataHandlerClient;
-import com.tooooolazy.data.services.beans.JobFailureCode;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
-import com.tooooolazy.data.services.beans.OnlineParams;
+import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.domain.DataBaseRepository;
 import com.tooooolazy.util.exceptions.AccessDeniedException;
 import com.tooooolazy.util.exceptions.ItemLockedException;
@@ -25,7 +24,7 @@ import com.tooooolazy.util.exceptions.ItemLockedException;
  * @author gpatoulas
  */
 //@Component
-public abstract class WsBaseDataHandler<OR extends OnlineBaseResult> implements DataHandlerClient<OR> {
+public abstract class WsBaseDataHandler<OR extends OnlineBaseResult, OP extends OnlineBaseParams> implements DataHandlerClient<OR, OP> {
 	private static org.apache.logging.log4j.Logger logger = LogManager.getLogger();
 
 	protected final DataBaseRepository dataRepository;
@@ -35,21 +34,21 @@ public abstract class WsBaseDataHandler<OR extends OnlineBaseResult> implements 
 	}
     
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
-	public OR execute(OnlineParams params) {
+	public OR execute(OP params) {
 		return _execute(params);
 	}
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public OR executeUpdate(OnlineParams params) {
+	public OR executeUpdate(OP params) {
 		return _execute(params);
 	}
 	/**
 	 * Uses reflection to execute a method of {@link DataBaseRepository}.
-	 * Depending of the method that called it, either {@link #execute(OnlineParams)} or {@link #executeUpdate(OnlineParams)},
+	 * Depending of the method that called it, either {@link #execute(OnlineBaseParams)} or {@link #executeUpdate(OnlineBaseParams)},
 	 * the method called by reflection will NOT <b>or</b> will be wrapped in a Transaction. 
 	 * @param params
 	 * @return
 	 */
-	protected OR _execute(OnlineParams params) {
+	protected OR _execute(OP params) {
 		OR tor = createResultObject(); //new OnlineResult();
 		JSONObject jo = new JSONObject();
 
@@ -65,6 +64,9 @@ public abstract class WsBaseDataHandler<OR extends OnlineBaseResult> implements 
 //			}
 			// Only a logged in user can use this <-- Don't check that yet
 //			UserAccount ua = null;
+			if ( params.isUserRequired() && !userVerified( params.getUserCode() ) ) {
+				throw new AccessDeniedException(); 
+			}
 //			if ( params.getUserCode() != null)
 //				ua = userAccountRepository.find( params.getUserCode() );
 			methodName = params.getMethod();
@@ -78,34 +80,34 @@ public abstract class WsBaseDataHandler<OR extends OnlineBaseResult> implements 
 		} catch (AccessDeniedException e) {
 			LogManager.getLogger().error("WS error: ", e);
 			jo.put("failMsg", e.getClass().getSimpleName() + ": " + e.getMessage());
-			tor.setFailCode(JobFailureCode.GENERIC);
+			tor.setFailCode( getGenericFailCode() );
 			tor.setResultObject( jo.toString() );
 		} catch (SecurityException e) {
 			e.printStackTrace();
 			jo.put("failMsg", e.getClass().getSimpleName() + ": " + e.getMessage());
-			tor.setFailCode(JobFailureCode.GENERIC);
+			tor.setFailCode( getGenericFailCode() );
 			tor.setResultObject( jo.toString() );
 		} catch (NoSuchMethodException e) {
 			LogManager.getLogger().error("WS error: ", e);
 			jo.put("failMsg", e.getClass().getSimpleName() + ": " + e.getMessage());
-			tor.setFailCode(JobFailureCode.GENERIC);
+			tor.setFailCode( getGenericFailCode() );
 			tor.setResultObject( jo.toString() );
 		} catch (IllegalArgumentException e) {
 			LogManager.getLogger().error("WS error: ", e);
 			jo.put("failMsg", e.getClass().getSimpleName() + ": " + e.getMessage());
-			tor.setFailCode(JobFailureCode.GENERIC);
+			tor.setFailCode( getGenericFailCode() );
 			tor.setResultObject( jo.toString() );
 		} catch (IllegalAccessException e) {
 			LogManager.getLogger().error("WS error: ", e);
 			jo.put("failMsg", e.getClass().getSimpleName() + ": " + e.getMessage());
-			tor.setFailCode(JobFailureCode.GENERIC);
+			tor.setFailCode( getGenericFailCode() );
 			tor.setResultObject( jo.toString() );
 		} catch (InvocationTargetException e) {
 			LogManager.getLogger().error("WS error: ", e);
 			if (e.getTargetException() != null) {
 				if ( e.getTargetException() instanceof ItemLockedException) {
 					jo.put("lockedBy", ((ItemLockedException)e.getTargetException()).getLockedBy());
-					tor.setFailCode(JobFailureCode.ITEM_LOCKED);
+					tor.setFailCode( getItemLockedFailCode() );
 					tor.setResultObject( jo.toString() );
 				}
 				else if ( e.getTargetException() instanceof RuntimeException 
@@ -118,11 +120,11 @@ public abstract class WsBaseDataHandler<OR extends OnlineBaseResult> implements 
 			}
 			tor.setResultObject( jo.toString() );
 			if (tor.getFailCode() == null)
-				tor.setFailCode(JobFailureCode.GENERIC);
+				tor.setFailCode( getGenericFailCode() );
 		} catch (Exception e) {
 			LogManager.getLogger().error("WS error: ", e);
 			jo.put("failMsg", e.getClass().getSimpleName() + ": " + e.getMessage());
-			tor.setFailCode(JobFailureCode.GENERIC);
+			tor.setFailCode( getGenericFailCode() );
 			tor.setResultObject( jo.toString() );
 		}
 		finally {
@@ -131,6 +133,16 @@ public abstract class WsBaseDataHandler<OR extends OnlineBaseResult> implements 
 		LogManager.getLogger().info(methodName + " WS duration: " +  (lf - ls));
 		return tor;
 	}
+
+	protected abstract Object getGenericFailCode();
+	protected abstract Object getItemLockedFailCode();
+
+	/**
+	 * @param userCode
+	 * @return true if user is verified in backend, thus the request can be processed!
+	 */
+	protected abstract boolean userVerified(Integer userCode);
+
 	protected abstract OR createResultObject();
 
 //	@Transactional(propagation=Propagation.REQUIRES_NEW)

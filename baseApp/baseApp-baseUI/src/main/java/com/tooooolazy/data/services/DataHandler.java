@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.tooooolazy.data.interfaces.AbstractDataHandler;
 import com.tooooolazy.data.interfaces.DataHandlerClient;
-import com.tooooolazy.data.services.beans.OnlineParams;
+import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.services.client.DataHandlerClientImpl;
@@ -16,24 +16,24 @@ import com.tooooolazy.services.client.DataHandlerClientImpl;
  *.
  * @param <OR>
  */
-public class DataHandler<OR extends OnlineBaseResult> extends AbstractDataHandler<OR> {
+public abstract class DataHandler<OR extends OnlineBaseResult, OP extends OnlineBaseParams> extends AbstractDataHandler<OR, OP> {
 
-	protected DataHandlerClient<OR> dataHandlerClient;
+	protected DataHandlerClient<OR, OP> dataHandlerClient;
 //	protected Class<OR> orClass; 
 
 	/**
      * Default constructor. 
      */
-	public DataHandler(Class<OR> _class) {
+	public DataHandler(Class<OR> _orClass) {
 		String endPoint = ServicesContext.singleton().getProperty( "services.rest.endpoint.dataHandler") ;
 //		this.orClass = _class;
-		dataHandlerClient = new DataHandlerClientImpl( endPoint, _class );
+		dataHandlerClient = new DataHandlerClientImpl( endPoint, _orClass );
 	}
 	@Override
 	public OR getData(String dataType, UserBean user, boolean blockIfUpdating, Map params, boolean requiresTransaction) throws Exception {
 		OR res = null;
 
-		OnlineParams op = new OnlineParams();
+		OP op = createOnlineParams();
 
 		if (params == null)
 			params = new HashMap();
@@ -52,5 +52,6 @@ public class DataHandler<OR extends OnlineBaseResult> extends AbstractDataHandle
 
 		return res;
 	}
+	protected abstract OP createOnlineParams();
 
 }

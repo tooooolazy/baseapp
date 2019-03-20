@@ -4,6 +4,9 @@ import java.util.Properties;
 
 import javax.servlet.annotation.WebServlet;
 
+import com.tooooolazy.data.services.DataHandler;
+import com.tooooolazy.data.services.beans.OnlineBaseParams;
+import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.RoleEnum;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.Messages;
@@ -15,7 +18,6 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.Resource;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
 
 @Theme("baseTheme")
 public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>> {
@@ -37,6 +39,18 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>> {
 	@Override
 	protected Object generateService(Class srvClass) {
 		return super.generateService( srvClass );
+	}
+
+	@Override
+	protected DataHandler<OnlineBaseResult, OnlineBaseParams> createDataHandler() {
+		return new DataHandler(OnlineBaseResult.class) {
+
+			@Override
+			protected OnlineBaseParams createOnlineParams() {
+				return new OnlineBaseParams();
+			}
+
+		};
 	}
 
 	@Override
