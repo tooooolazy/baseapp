@@ -36,7 +36,14 @@ Workflow
   - Copy (if needed) styles from baseTheme.scss from one of the demo UI projects.
   - override 'getViewDefinitions' in UI class and add menu structure. super() provides an example. In time the override will not be needed as data will be retrieved from a WS.
 
- - need to revise
+- In Backend modue:
+  - create the following packages:
+    - xxxx.domain: create class DataRepository that extends DataBaseRepository
+    - xxxx.ws.beans: create a copy of enum JobFailureCode (unless existing one in 'utils' module covers your needs) and a class 'OnlineResult' that extends OnlineBaseResult. Make sure you define generics.
+    - xxxx.ws: create class WsDataHandler that extends WsBaseDataHandler. Also make sure to define generics
+
+need to revise
+
 To compile the entire project, run "mvn install" in the parent project.
 
 Other basic workflow steps:
