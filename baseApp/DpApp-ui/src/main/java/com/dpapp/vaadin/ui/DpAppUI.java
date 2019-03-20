@@ -5,6 +5,7 @@ import java.util.Properties;
 import javax.servlet.annotation.WebServlet;
 
 import com.dpapp.vaadin.layout.DpAppLayout;
+import com.dpapp.ws.beans.JobFailureCode;
 import com.dpapp.ws.beans.OnlineParams;
 import com.dpapp.ws.beans.OnlineResult;
 import com.dpapp.ws.beans.UserBean;
@@ -26,7 +27,7 @@ import elemental.json.JsonArray;
 import elemental.json.JsonObject;
 
 @Theme("baseTheme")
-public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean> {
+public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean, OnlineResult, JobFailureCode> {
 
 	static {
 //		Messages.setSupportedLocales( new String[] {"en", "el", "bg"});

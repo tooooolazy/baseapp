@@ -23,6 +23,7 @@ import com.tooooolazy.data.ServiceGenerator;
 import com.tooooolazy.data.ServiceLocator;
 import com.tooooolazy.data.interfaces.DataHandlerService;
 import com.tooooolazy.data.services.DataHandler;
+import com.tooooolazy.data.services.OnlineDataType;
 import com.tooooolazy.data.services.beans.JobFailureCode;
 import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
@@ -73,7 +74,7 @@ import elemental.json.JsonObject;
  * @param <L> - Layout Class eg {@link ResponsiveMenuLayout}
  * @param <UB> - UserBean class ie something that extends {@link UserBean}
  */
-public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends UI {
+public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extends OnlineBaseResult, JFC> extends UI {
 
 	private static final long serialVersionUID = 1L;
 
@@ -274,28 +275,20 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean> extends U
 		return null;
 	}
 
+	/**
+	 * @return a subclass of {@link DataHandler} where generics (and helper methods) are defined!
+	 */
 	protected abstract DataHandler createDataHandler();
-//	protected DataHandler createDataHandler() {
-//		return new DataHandler(OnlineResult.class) {
-//
-//			@Override
-//			protected OnlineBaseParams createOnlineParams() {
-//				// TODO Auto-generated method stub
-//				return null;
-//			}
-//
-//		};
-//	}
 
 	protected String getCurrentEnvironment() {
 		Map<String, Object> params = new HashMap<String, Object>();
 		try {
 //			OnlineResult<JobFailureCode> tor = ServiceLocator.getServices().getDataHandler().getData( OnlineDataType.ENVIRONMENT, null, false, params);
-			OnlineBaseResult<JobFailureCode> tor = ServiceLocator.getServices().getDataHandler().getData( "test", null, false, params);
+			OR tor = (OR) ServiceLocator.getServices().getDataHandler().getData( OnlineDataType.ENVIRONMENT, null, false, params);
 
 			if (tor != null) {
 				JSONObject jo = tor.getAsJSON();
-				JobFailureCode jfc = tor.getFailCode();
+				JFC jfc = (JFC) tor.getFailCode();
 				if (jfc != null) {
 					// TODO onBoError()
 				} else {
