@@ -298,5 +298,6 @@
 		<module>DpApp-ui</module>
 		<module>service-client</module>
 		<module>DpApp-common</module>
+		<module>DpApp-backend</module>
 	</modules>
 </project>
