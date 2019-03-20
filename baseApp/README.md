@@ -9,7 +9,7 @@ Template for a full-blown Vaadin application that only requires a Servlet 3.0 co
 Project Structure
 =================
 
-The project consists of the following three modules:
+The project consists of the following modules:
 
 - parent project: common metadata and configuration
 - baseApp-addon: addon module, custom server and client side code 
@@ -18,6 +18,7 @@ The project consists of the following three modules:
 - DpApp-ui: another main application module
 - service-client: a simple Rest client to be used by Application UI modules to retrieve data from WS. It implements an abstract WS interface with only 2 methods: 'execute' and 'executeUpdate'. Their difference is that the latter will use a 'transaction'. 
 - baseApp-backend: base backend module, contains the base classes for handling WS calls. It implements the same WS interface as the service-client above. Each App ui should have its own 'backend' project.
+- DpApp-common: a simple helper module (each UI module should have one) that contains classes common both to backend and UI (ie OnlineResult, JobFailureCode, UserBean, etc.)
 - utils***: a set of helper modules used by all other modules
 
 Workflow
@@ -36,13 +37,16 @@ Workflow
   - Copy (if needed) styles from baseTheme.scss from one of the demo UI projects.
   - override 'getViewDefinitions' in UI class and add menu structure. super() provides an example. In time the override will not be needed as data will be retrieved from a WS.
 
-- In Backend modue:
-  - create the following packages:
-    - xxxx.domain: create class DataRepository that extends DataBaseRepository
+- create a new Maven module (jar) - 'xxxx-common' to hold data types common to backend and UI. (pom modifications are required afterwards) in that module:
+  - create the following packages and classes/enum:
     - xxxx.ws.beans: create a copy of enum JobFailureCode (unless existing one in 'utils' module covers your needs) and a class 'OnlineResult' that extends OnlineBaseResult. Make sure you define generics.
+
+- In Backend module:
+  - create the following packages and classes:
+    - xxxx.domain: create class DataRepository that extends DataBaseRepository
     - xxxx.ws: create class WsDataHandler that extends WsBaseDataHandler. Also make sure to define generics
 
-need to revise
+need to revise the next
 
 To compile the entire project, run "mvn install" in the parent project.
 
