@@ -2,7 +2,6 @@ package com.tooooolazy.data.interfaces;
 
 import java.util.List;
 
-import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.Credentials;
 
 /**
@@ -13,7 +12,7 @@ import com.tooooolazy.util.Credentials;
  */
 public interface UserControllerService<RE, UB> {
 	public UB login(Credentials credentials) throws Exception;
-	public void getUserRoles(UserBean<RE> ub) throws Exception;
+	public void getUserRoles(UB ub) throws Exception;
 	
 	/**
 	 * The idea is to return the User that just logged out
@@ -23,6 +22,4 @@ public interface UserControllerService<RE, UB> {
 	public Object logout(Object userPK);
 
 	public List getUsers();
-
-
 }
