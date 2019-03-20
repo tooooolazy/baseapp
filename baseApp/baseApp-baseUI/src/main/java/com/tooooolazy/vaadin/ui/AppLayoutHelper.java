@@ -440,7 +440,7 @@ public class AppLayoutHelper {
 
 	public Component createMenuSubtitle(int badge, Class c) {
 		Component menuItem;
-		Label label = new Label(Messages.getString(c, "page.title"), ContentMode.HTML);
+		Label label = new Label(Messages.getString(c, "page.menu.title"), ContentMode.HTML);
 		label.setPrimaryStyleName(ValoTheme.MENU_SUBTITLE);
 		label.setSizeUndefined();
 		if (badge > 0) {

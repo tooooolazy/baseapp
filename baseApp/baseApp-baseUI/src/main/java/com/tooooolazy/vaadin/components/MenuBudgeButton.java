@@ -12,7 +12,7 @@ public class MenuBudgeButton extends Button {
 	}
 
 	public MenuBudgeButton(Class c, ClickListener listener, String badge) {
-		super(Messages.getString(c, "page.title"), listener);
+		super(Messages.getString(c, "page.menu.title"), listener);
 		this.badge = badge;
 		setCaptionAsHtml(true);
 		if ( !TLZUtils.isEmpty( badge ) )

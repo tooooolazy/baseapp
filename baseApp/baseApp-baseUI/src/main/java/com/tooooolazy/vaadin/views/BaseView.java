@@ -88,14 +88,20 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 	}
 	protected Component createTitleComponent() {
 		String _title = Messages.getString(getClass(), "page.title");
+		if ( _title.indexOf("!") > -1 )
+			_title = Messages.getString(getClass(), "page.menu.title");
 
 		// also add Parent View name (if any AND if enabled)
 		if ( showParentTitle() ) {
 			AppLayout al = (AppLayout) getUI().getContent();
 			Class pClass = al.getParentViewClass(getClass());
 
-			if ( pClass != null )
-				_title = Messages.getString(pClass, "page.title") + " - " + _title;
+			if ( pClass != null ) {
+				String __title = Messages.getString(pClass, "page.title");
+				if ( __title.indexOf("!") > -1 )
+					__title = Messages.getString(pClass, "page.menu.title");
+				_title = __title + " - " + _title;
+			}
 		}
 
 		Label title = new Label( _title );

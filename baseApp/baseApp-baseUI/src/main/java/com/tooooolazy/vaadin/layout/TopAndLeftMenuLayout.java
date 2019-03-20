@@ -137,9 +137,9 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 	}
 
 	public void addSettingsBar(MenuBar settings) {
-		settings.removeStyleName("user-menu");
 		settings.setStyleName(ValoTheme.MENUBAR_BORDERLESS);
 		settings.addStyleName(ValoTheme.MENUBAR_SMALL);
+		settings.addStyleName("settings-menu");
 		int width = (settings.getItems().size() - (BaseUI.get().hasSecureContent() ? 1 : 0)) * 65; // login + logout items are not shown together!
 		settings.setWidth( width + "px" );
 		top_gl.addComponent( settings, 4,0 );
@@ -192,7 +192,7 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 		String titleStr = BaseUI.get().getTitlePlain();
 		if (titleStr == null)
 			titleStr = "No Title";
-		final Label title = new Label(titleStr);
+		final Label title = new Label(titleStr, ContentMode.PREFORMATTED);
 		title.addStyleName("header-title");
 		if ( getHeaderTitle() != null ) {
 			getHeaderTitle().addComponent(title);
