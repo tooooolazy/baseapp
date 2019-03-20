@@ -47,7 +47,7 @@
 		<!-- Backend implementation -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>baseApp-backend</artifactId>
+			<artifactId>DpApp-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

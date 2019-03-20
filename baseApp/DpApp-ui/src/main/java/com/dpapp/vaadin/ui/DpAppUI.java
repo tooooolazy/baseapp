@@ -4,8 +4,8 @@ import java.util.Properties;
 
 import javax.servlet.annotation.WebServlet;
 
-import com.dpapp.data.services.beans.UserBean;
 import com.dpapp.vaadin.layout.DpAppLayout;
+import com.dpapp.ws.beans.UserBean;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.layout.TopAndLeftMenuLayout;
 import com.tooooolazy.vaadin.resources.Resources;
@@ -17,7 +17,6 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.Resource;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
 
 import elemental.json.Json;
 import elemental.json.JsonArray;
