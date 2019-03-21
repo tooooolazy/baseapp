@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+    version="2.0">
+    <persistence-unit name="dpappUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        
+<!--         <class>gr.icap.pcb.domain.objects.User</class> -->
+<!--         <class>gr.icap.pcb.domain.objects.UserRole</class> -->
+<!--         <class>gr.icap.pcb.domain.objects.UserAccount</class> -->
+<!--         <class>gr.icap.pcb.domain.objects.AccountRole</class> -->
+<!--         <class>gr.icap.pcb.domain.objects.ApplicationParameter</class> -->
+
+<!--         <class>gr.icap.pcb.domain.objects.IrpCustomer</class> -->
+<!--         <class>gr.icap.pcb.domain.objects.IrpSession</class> -->
+<!--         <class>gr.icap.pcb.domain.objects.IrpLock</class> -->
+
+
+        <properties>
+             
+
+
+             <!-- using this prevents auto schema update 
+             <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+             -->
+             <!-- 
+             <property name="hibernate.cache.use_second_level_cache" value="true" />
+	         <property name="hibernate.cache.provider_class" value="net.sf.ehcache.hibernate.SingletonEhCacheProvider"/>
+			 <property name="hibernate.cache.use_query_cache" value="true"/>
+			 <property name="hibernate.cache.use_second_level_cache" value="true"/>
+			 <property name="hibernate.cache.region_prefix" value=""/>           
+			  -->      
+        </properties>
+    </persistence-unit>
+</persistence>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- enables annotation based configuration -->
+	<context:annotation-config />
+	
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	
+
+	<context:component-scan base-package="com.dpapp.domain" />
+	<context:component-scan base-package="com.dpapp.domain.objects" />
+	<context:component-scan base-package="com.dpapp.components" />
+	<context:component-scan base-package="com.tooooolazy.domain.components" />
+<!-- 	<context:component-scan base-package="gr.icap.pcb.service.scheduler" />
+not needed here -> declared in pcbApi-servler.xml. If not removed from here scheduler is called twice! 
+-->
+
+<!-- 	add and use ${db.schema} and ${db.type} from environment variables  -->
+<!-- 	add and use ${db.dialect} in ***.properties files  -->
+	<context:property-placeholder location="classpath:dpapp-${deploy.environment}${db.type}.properties"/>
+	
+<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" autowire-candidate="false"> -->
+<!--         <property name="driverClassName" value="${jdbc.driver}"/> -->
+<!--         <property name="url" value="${jdbc.url}"/> -->
+<!--         <property name="username" value="${jdbc.user}"/> -->
+<!--         <property name="password" value="${jdbc.password}"/> -->
+<!--     </bean> -->
+
+<!-- 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> -->
+<!-- 		<property name="persistenceUnitName" value="dpappUnit"/> -->
+<!-- 		<property name="dataSource" ref="dataSource"/> -->
+<!-- 		<property name="jpaVendorAdapter"> -->
+<!-- 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> -->
+<!-- 				 <property name="showSql" value="false" /> -->
+<!-- 			</bean> -->
+<!-- 		</property> -->
+		
+<!-- 		<property name="jpaPropertyMap"> -->
+<!-- 			<map> -->
+<!-- 				<entry key="hibernate.dialect" value="${db.dialect}" /> -->
+<!-- 				<entry key="hibernate.hbm2ddl.auto" value="none" /> -->
+<!-- 				<entry key="hibernate.format_sql" value="true" /> -->
+<!-- 				<entry key="hibernate.default_schema" value="${db.schema}"/> -->
+<!-- 				<entry key="hibernate.id.new_generator_mappings" value="true"/> -->
+				
+<!-- 				<entry key="hibernate.cache.use_query_cache" value="false"/> -->
+<!-- 				<entry key="hibernate.cache.use_second_level_cache" value="false"/>     -->
+<!-- 			</map> -->
+<!-- 		</property> -->
+		
+<!-- 	</bean> -->
+
+<!--     <bean id="transactionManager" -->
+<!--         class="org.springframework.orm.jpa.JpaTransactionManager"> -->
+<!--         <property name="entityManagerFactory" ref="entityManagerFactory" /> -->
+<!--     </bean> -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+    <bean id="dataRepository" class="com.dpapp.domain.DataRepository">
+<!--         <property name="dataSource" ref="dataSource"/> -->
+    </bean>    
+	
+</beans>
