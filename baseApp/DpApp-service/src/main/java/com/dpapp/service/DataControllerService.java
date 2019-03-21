@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dbapp.ws.WsDataHandler;
+import com.dpapp.ws.WsDataHandler;
 import com.dpapp.ws.beans.JobFailureCode;
 import com.dpapp.ws.beans.OnlineParams;
 import com.dpapp.ws.beans.OnlineResult;

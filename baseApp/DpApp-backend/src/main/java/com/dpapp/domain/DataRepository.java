@@ -1,4 +1,4 @@
-package com.dbapp.domain;
+package com.dpapp.domain;
 
 import org.springframework.stereotype.Component;
 
