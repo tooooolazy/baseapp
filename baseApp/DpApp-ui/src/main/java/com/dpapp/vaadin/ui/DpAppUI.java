@@ -77,7 +77,7 @@ public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean, OnlineResult
 
 	@Override
 	protected Resource getLogoResource() {
-		return Resources.getPng( "img/logo/", "mainLogo_59x57" );
+		return Resources.get( "img/logo/", "Deepair_logo_POS.jpg" );
 	}
 
 	@Override
