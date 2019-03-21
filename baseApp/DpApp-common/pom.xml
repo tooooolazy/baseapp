@@ -15,6 +15,11 @@
 			<groupId>com.tooooolazy.utils</groupId>
 			<artifactId>tlz-utils</artifactId>
 		</dependency>
+<!-- 		needed for @JsonIgnoreProperties annotation in OnlineResult class -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+		</dependency>            
 	</dependencies>
 
 </project>

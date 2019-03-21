@@ -14,12 +14,15 @@ The project consists of the following modules:
 - parent project: common metadata and configuration
 - baseApp-addon: addon module, custom server and client side code 
 - baseApp-baseUI: base application module that all main application ui modules should be based uppon (eg. baseApp-ui and DpApp-ui).
-- baseApp-ui: a main application module
-- DpApp-ui: another main application module
 - service-client: a simple Rest client to be used by Application UI modules to retrieve data from WS. It implements an abstract WS interface with only 2 methods: 'execute' and 'executeUpdate'. Their difference is that the latter will use a 'transaction'. 
 - baseApp-backend: base backend module, contains the base classes for handling WS calls. It implements the same WS interface as the service-client above. Each App ui should have its own 'backend' project.
-- DpApp-common: a simple helper module (each UI module should have one) that contains classes common both to backend and UI (ie OnlineResult, JobFailureCode, UserBean, etc.)
 - utils***: a set of helper modules used by all other modules
+
+- baseApp-ui: a main application module
+
+- DpApp-ui: another main application module
+- DpApp-common: a simple helper module (each UI module should have one) that contains classes common both to backend and UI (ie OnlineResult, JobFailureCode, UserBean, etc.)
+- DpApp-backend: main backend module of a UI module. Each UI should have one
 
 Workflow
 ========
