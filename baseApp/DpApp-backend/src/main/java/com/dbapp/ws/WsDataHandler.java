@@ -1,18 +1,21 @@
 package com.dbapp.ws;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import com.dbapp.domain.DataRepository;
 import com.dpapp.ws.beans.JobFailureCode;
 import com.dpapp.ws.beans.OnlineParams;
 import com.dpapp.ws.beans.OnlineResult;
-import com.tooooolazy.domain.DataBaseRepository;
 import com.tooooolazy.ws.WsBaseDataHandler;
 
 @Component
-public class WsDataHandler extends WsBaseDataHandler<OnlineResult, OnlineParams> {
+public class WsDataHandler extends WsBaseDataHandler<DataRepository, OnlineResult, OnlineParams> {
 
-	public WsDataHandler(DataBaseRepository dataRepository) {
+	@Autowired
+	public WsDataHandler(@Qualifier("dataRepository") DataRepository dataRepository) {
 		super(dataRepository);
 	}
 

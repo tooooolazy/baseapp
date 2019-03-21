@@ -24,12 +24,12 @@ import com.tooooolazy.util.exceptions.ItemLockedException;
  * @author gpatoulas
  */
 //@Component
-public abstract class WsBaseDataHandler<OR extends OnlineBaseResult, OP extends OnlineBaseParams> implements DataHandlerClient<OR, OP> {
+public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extends OnlineBaseResult, OP extends OnlineBaseParams> implements DataHandlerClient<OR, OP> {
 	private static org.apache.logging.log4j.Logger logger = LogManager.getLogger();
 
-	protected final DataBaseRepository dataRepository;
+	protected final DR dataRepository;
 
-	public WsBaseDataHandler( final DataBaseRepository dataRepository ) {
+	public WsBaseDataHandler( final DR dataRepository ) {
 		this.dataRepository = dataRepository;
 	}
     
@@ -70,7 +70,14 @@ public abstract class WsBaseDataHandler<OR extends OnlineBaseResult, OP extends 
 //			if ( params.getUserCode() != null)
 //				ua = userAccountRepository.find( params.getUserCode() );
 			methodName = params.getMethod();
-			Method m = DataBaseRepository.class.getDeclaredMethod(methodName, Map.class);
+			Method m = null;
+			
+			try {
+				m = dataRepository.getClass().getDeclaredMethod(methodName, Map.class);
+			} catch (Exception e) {
+				e.printStackTrace();
+				m = dataRepository.getClass().getSuperclass().getDeclaredMethod(methodName, Map.class);
+			}
 			tor.setResultObject(
 					m.invoke(
 							dataRepository, params.getMethodParams()
