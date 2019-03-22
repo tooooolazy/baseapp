@@ -40,6 +40,9 @@ Workflow
   - add property bundle files in resources folder that match UI's class name and add related static code from BaseUI to load them.
   - Copy (if needed) styles from baseTheme.scss from one of the demo UI projects.
   - override 'getViewDefinitions' in UI class and add menu structure. super() provides an example. In time the override will not be needed as data will be retrieved from a WS.
+  - in 'resources' folder create a 'config' folder where configuration files will be placed that define the WS end points that UI will use. The end points should match the ones defined in service module described later on. The name of the files depend on environment variables and start with 'services-config-':
+    - deploy.environment: eg 'LOCAL', 'DEV', 'TEST', 'PROD', etc
+    - db.type: eg 'MSSQL2012', 'DB2', etc
 
 - create a new Maven module (jar) - 'xxxx-common' to hold data types common to backend and UI. (pom modifications are required afterwards) in that module:
   - create the following packages and classes/enum:
