@@ -1,17 +1,14 @@
 package com.tooooolazy.domain;
 
-import java.util.Date;
 import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.tooooolazy.domain.components.DataHandlerHelper;
 import com.tooooolazy.domain.components.PasswordManager;
 import com.tooooolazy.domain.components.UserHelper;
-import com.tooooolazy.domain.objects.AppSession;
 import com.tooooolazy.domain.objects.User;
-import com.tooooolazy.domain.objects.UserAccount;
 import com.tooooolazy.util.Credentials;
 import com.tooooolazy.util.exceptions.InvalidCredentialsException;
 import com.tooooolazy.util.exceptions.MultipleLoginException;
@@ -31,7 +28,10 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	public static String DEFAULT_USER_INSERT = "SYSTEM";
 	public static String DEFAULT_DEPLOY_ENV_KEY = "deploy.environment";
 
-	@Autowired
+    @Autowired
+	protected DataHandlerHelper dhh;
+
+    @Autowired
 	protected PasswordManager passwordManager;
 
 //	@Autowired
@@ -51,16 +51,6 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 		return env.getProperty( DEFAULT_DEPLOY_ENV_KEY ).equals("UAT");
 	}
 
-	/**
-	 * Retrieves DB schema from Environment parameters. If there is none default value 'PCB_USER1' is used
-	 * @return
-	 */
-	protected String getSchema() {
-		String schema = env.getProperty("db.schema");
-
-		return schema;
-	}
-
 
 
 	/**
@@ -76,7 +66,7 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 //		LogManager.getLogger().info( "Current Locks: " + irpLockRepository.count() );
 
     	String md5password = passwordManager.hashMC( creds.getPassword() );
-		String schema = getSchema();
+		String schema = dhh.getSchema();
 
 //		try {
 //			Integer uc = getDataSource().queryForObject("select usercode from " + schema + ".USERACCOUNT where username = ? and password = ?", Integer.class, creds.getUsername(), md5password);
@@ -142,4 +132,5 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	public Object getUsers(Map params) {
 		return userHelper.getUsers();
 	}
+
 }

@@ -22,16 +22,6 @@ public abstract class AbstractJDBCRepository {
     protected Environment env;
 
 
-	/**
-	 * Retrieves DB schema from Environment parameters. If there is none default value 'PCB_USER1' is used
-	 * @return
-	 */
-	protected String getSchema() {
-		String schema = env.getProperty("db.schema");
-		if (schema == null)
-			schema = "PCB_USER1";
-		return schema;
-	}
 	public String getConcatChar() {
 		if ( env.getProperty("db.type").equals("ORACLE") )
 			return "||";
