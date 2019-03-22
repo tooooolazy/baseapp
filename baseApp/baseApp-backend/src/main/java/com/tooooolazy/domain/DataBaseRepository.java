@@ -6,6 +6,8 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tooooolazy.domain.components.PasswordManager;
+import com.tooooolazy.domain.components.UserHelper;
+import com.tooooolazy.domain.objects.UserAccount;
 import com.tooooolazy.ws.WsBaseDataHandler;
 
 
@@ -23,6 +25,8 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	@Autowired
 	protected PasswordManager passwordManager;
 
+//	@Autowired
+//	protected UserHelper userHelper;
 
 	public Object getEnvironment(Map params) {
 		JSONObject jo = new JSONObject();
@@ -48,4 +52,17 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 			schema = "PCB_USER1";
 		return schema;
 	}
+
+
+//	public Object getUsersRoles(UserAccount ua, Map params) {
+//		String username = null;
+//
+//		if (params != null)
+//			username = (String) params.get("username");
+//
+//		return userHelper.getUserRoles( username );
+//	}
+//	public Object getUsers(UserAccount ua, Map params) {
+//		return userHelper.getUsers();
+//	}
 }
