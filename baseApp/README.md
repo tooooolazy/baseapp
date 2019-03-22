@@ -22,7 +22,8 @@ The project consists of the following modules:
 
 - DpApp-ui: another main application module
 - DpApp-common: a simple helper module (each UI module should have one) that contains classes common both to backend and UI (ie OnlineResult, JobFailureCode, UserBean, etc.)
-- DpApp-backend: main backend module of a UI module. Each UI should have one
+- DpApp-backend: main backend module of a UI module. Each UI should have one.
+- DpApp-service: service module that produces the 'war' with the Application rest services. Each App should have at least one (assuming UI requires any).
 
 Workflow
 ========
@@ -47,7 +48,19 @@ Workflow
 - In Backend module:
   - create the following packages and classes:
     - xxxx.domain: create class DataRepository that extends DataBaseRepository
-    - xxxx.ws: create class WsDataHandler that extends WsBaseDataHandler. Also make sure to define generics
+    - xxxx.ws: create class WsDataHandler that extends WsBaseDataHandler. Also make sure to define generics, 'autowire' its constructor (see DpApp-backend module for example).
+
+- In Service module:
+  - create package 'xxxx.service' and in it 'DataControllerService' class. Add Spring annotations '@RestController' and '@RequestMapping("/dcs")'. This is where the endpoints are defined. It must have at least 'execute' and 'executeUpdate' (the ones declared in DataHandlerClient interface - the class though, is not required to implement that interface). See DpApp-service as an example of what the class should contain.
+  - in resources folder the following must exist (see related structure and files in DpApp-service module as an example):
+    - META-INF folder: where persistence.xml should be located
+    - application-context.xml: spring config file
+    - yyyyyyyy.properties: property file with Database connection info. The name of the property file is defined in 'application-context.xml' and includes environment variables.
+    - WEB-INF folder with the following:
+      - web.xml
+      - xxxxApi-servlet.xml
+       
+  
 
 need to revise the next
 
