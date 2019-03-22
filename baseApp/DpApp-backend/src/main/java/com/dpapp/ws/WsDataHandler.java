@@ -11,6 +11,11 @@ import com.dpapp.ws.beans.OnlineParams;
 import com.dpapp.ws.beans.OnlineResult;
 import com.tooooolazy.ws.WsBaseDataHandler;
 
+/**
+ * @author gpatoulas
+ *
+ * @see {@link WsBaseDataHandler}
+ */
 @Component
 public class WsDataHandler extends WsBaseDataHandler<DataRepository, OnlineResult, OnlineParams> {
 
