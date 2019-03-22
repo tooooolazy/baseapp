@@ -1,13 +1,21 @@
 package com.tooooolazy.domain;
 
+import java.util.Date;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tooooolazy.domain.components.PasswordManager;
 import com.tooooolazy.domain.components.UserHelper;
+import com.tooooolazy.domain.objects.AppSession;
+import com.tooooolazy.domain.objects.User;
 import com.tooooolazy.domain.objects.UserAccount;
+import com.tooooolazy.util.Credentials;
+import com.tooooolazy.util.exceptions.InvalidCredentialsException;
+import com.tooooolazy.util.exceptions.MultipleLoginException;
+import com.tooooolazy.util.exceptions.UserInactiveException;
 import com.tooooolazy.ws.WsBaseDataHandler;
 
 
@@ -21,25 +29,26 @@ import com.tooooolazy.ws.WsBaseDataHandler;
 //@Component
 public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	public static String DEFAULT_USER_INSERT = "SYSTEM";
+	public static String DEFAULT_DEPLOY_ENV_KEY = "deploy.environment";
 
 	@Autowired
 	protected PasswordManager passwordManager;
 
 //	@Autowired
-//	protected UserHelper userHelper;
+	protected UserHelper userHelper;
 
 	public Object getEnvironment(Map params) {
 		JSONObject jo = new JSONObject();
-		jo.put("environment", env.getProperty("deploy.environment") );
+		jo.put("environment", env.getProperty( DEFAULT_DEPLOY_ENV_KEY ) );
 
 		return jo.toMap();
 	}
 
 	public boolean inProd() {
-		return env.getProperty("pcb.deploy.environment").equals("PROD");
+		return env.getProperty( DEFAULT_DEPLOY_ENV_KEY ).equals("PROD");
 	}
 	public boolean inUAT() {
-		return env.getProperty("pcb.deploy.environment").equals("UAT");
+		return env.getProperty( DEFAULT_DEPLOY_ENV_KEY ).equals("UAT");
 	}
 
 	/**
@@ -48,21 +57,89 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	 */
 	protected String getSchema() {
 		String schema = env.getProperty("db.schema");
-		if (schema == null)
-			schema = "PCB_USER1";
+
 		return schema;
 	}
 
 
-//	public Object getUsersRoles(UserAccount ua, Map params) {
-//		String username = null;
+
+	/**
+	 * Default login action that assumes all user related data are stored in Application's database (ie no LDAP or anything like that). Also assumes Lock and Session support
+	 * @param creds
+	 * @return
+	 * @throws InvalidCredentialsException
+	 * @throws MultipleLoginException
+	 * @throws UserInactiveException
+	 */
+	public User login(Credentials creds) throws InvalidCredentialsException, MultipleLoginException, UserInactiveException {
+//		LogManager.getLogger().info( "Current sessions: " + irpSessionRepository.count() );
+//		LogManager.getLogger().info( "Current Locks: " + irpLockRepository.count() );
+
+    	String md5password = passwordManager.hashMC( creds.getPassword() );
+		String schema = getSchema();
+
+//		try {
+//			Integer uc = getDataSource().queryForObject("select usercode from " + schema + ".USERACCOUNT where username = ? and password = ?", Integer.class, creds.getUsername(), md5password);
+//			AppSession is = irpSessionRepository.find( uc );
 //
-//		if (params != null)
-//			username = (String) params.get("username");
+//			if ( is == null ) {
+//				ApplicationParameter ap = apr.findParam(ApplicationParameterType.GENERAL, 1, 6); // EVALUATOR param
+//				User u = userRepository.find( uc );
 //
-//		return userHelper.getUserRoles( username );
-//	}
-//	public Object getUsers(UserAccount ua, Map params) {
-//		return userHelper.getUsers();
-//	}
+//				if ( ap.getParameterValueInt() == 0 ) {
+//					if ( u.getUserAccount().hasRole( 7 ) ) {
+//						// Evaluators should not login!
+//						LogManager.getLogger().warn("Evaluator Cannot login. Evaluator flow NOT enabled");
+//						throw new UserInactiveException( creds );
+//					}
+//					if ( u.getPosition() > 0 &&
+//							( u.getUserAccount().hasRole( 3 ) || u.getUserAccount().hasRole( 4 ) || u.getUserAccount().hasRole( 5 ) )) {
+//						LogManager.getLogger().warn("Branch User Cannot login. Evaluator flow NOT enabled");
+//						throw new UserInactiveException( creds );
+//					}
+//				} else {
+//					if ( ap.getFailCode() != 1 ) {
+//						if ( u.getPosition() > 0 &&
+//								( u.getUserAccount().hasRole( 3 ) || u.getUserAccount().hasRole( 4 ) || u.getUserAccount().hasRole( 5 ) )) {
+//							LogManager.getLogger().warn("Branch User Cannot login. Branches in Evaluator flow NOT enabled");
+//							throw new UserInactiveException( creds );
+//						}
+//					}
+//				}
+//				irpSessionRepository.create(creds.getFromIp(), uc);
+//				u.getUserAccount().setLastlogin( new Date() );
+//				userAccountRepository.persist( u.getUserAccount() );
+//				dhh.logLogin(creds.getUsername(), "AUTHENTICATION_SUCCEEDED", null, null, null, null);
+//				return u;
+//			} else {
+//				throw new MultipleLoginException();
+//			}
+//		} catch (Exception e) {
+//			if ( e instanceof UserInactiveException) {
+//				dhh.logLogin(creds.getUsername(), "USER_INACTIVE", null, null, null, null);
+//				throw e;
+//			}
+//			if ( e instanceof MultipleLoginException) {
+//				dhh.logLogin(creds.getUsername(), "ALREADY_LOGGED_IN", null, null, null, null);
+//				throw e;
+//			}
+//			dhh.logLogin(creds.getUsername(), "AUTHENTICATION_FAILED", null, null, null, null);
+//			throw new InvalidCredentialsException(creds);
+//		}
+		return null;
+	}
+
+
+	
+	public Object getUsersRoles(Map params) {
+		String username = null;
+
+		if (params != null)
+			username = (String) params.get("username");
+
+		return userHelper.getUserRoles( username );
+	}
+	public Object getUsers(Map params) {
+		return userHelper.getUsers();
+	}
 }
