@@ -5,13 +5,12 @@ import java.util.Properties;
 import javax.servlet.annotation.WebServlet;
 
 import com.dpapp.vaadin.layout.DpAppLayout;
+import com.dpapp.ws.beans.DpAppUserBean;
 import com.dpapp.ws.beans.JobFailureCode;
 import com.dpapp.ws.beans.OnlineParams;
 import com.dpapp.ws.beans.OnlineResult;
-import com.dpapp.ws.beans.DpAppUserBean;
 import com.tooooolazy.data.services.DataHandler;
 import com.tooooolazy.util.Messages;
-import com.tooooolazy.vaadin.layout.TopAndLeftMenuLayout;
 import com.tooooolazy.vaadin.resources.Resources;
 import com.tooooolazy.vaadin.ui.BaseAppServlet;
 import com.tooooolazy.vaadin.ui.BaseUI;
@@ -26,8 +25,18 @@ import elemental.json.Json;
 import elemental.json.JsonArray;
 import elemental.json.JsonObject;
 
+/**
+ * DpAppUserBean, OnlineResult, JobFailureCode are all defined in DpApp-common module
+ * @author gpatoulas
+ *
+ */
 @Theme("baseTheme")
-public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, DpAppUserBean, OnlineResult, JobFailureCode> {
+public class DpAppUI extends BaseUI<DpAppLayout, DpAppUserBean, OnlineResult, JobFailureCode> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	static {
 //		Messages.setSupportedLocales( new String[] {"en", "el", "bg"});
