@@ -47,20 +47,24 @@ public abstract class UserBean<RE> {
 		this.userCode = userCode;
 	}
 
-//	public boolean isGod() {
-//		for (RoleEnum re : getRoles()) {
+	public boolean isGod() {
+		for (RE re : getRoles()) {
+			if ( isGodRole( re )) {
 //			if (re != null && re.isGod()) {
-//				isGod = true;
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-//	public boolean isAdmin() {
-//		for (RoleEnum re : getRoles()) {
-//			if (re.isAdmin())
-//				return true;
-//		}
-//		return false;
-//	}
+				isGod = true;
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean isAdmin() {
+		for (RE re : getRoles()) {
+			if ( isAdminRole( re ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+	protected abstract boolean isGodRole(RE re);
+	protected abstract boolean isAdminRole(RE re);
 }

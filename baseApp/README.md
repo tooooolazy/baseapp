@@ -29,11 +29,11 @@ Workflow
 ========
 
 - Check out this project
-- Create your own Vaadin 8 Multi module project and update dependencies to include: baseApp-baseUI, utils***, service-client, baseApp-backend
+- Create your own Vaadin 8 Multi module project and update dependencies to include: baseApp-baseUI, utils***, service-client, baseApp-backend. Also add 'Spring' dependencies.
 - In UI module:
-  - the UI class should extend BaseUI
+  - the UI class should extend BaseUI and use classes defined in xxxx-common module as Generics.
   - delete demo services from UI class
-  - delete init(VaadinRequest vaadinRequest) method (from UI class ) or override it.
+  - delete init(VaadinRequest vaadinRequest) method (from UI class) or override it.
   - replace with 'VaadinServlet' with 'BaseAppServlet'
   - create an 'AppLayout' class that implements 'AppLayout' interface and use it in UI class as generic along with a UserBean class. An existing Layout class from baseApp-baseUI can be used as base. 
   - add and implement abstract methods from BaseUI
@@ -46,7 +46,14 @@ Workflow
 
 - create a new Maven module (jar) - 'xxxx-common' to hold data types common to backend and UI. (pom modifications are required afterwards) in that module:
   - create the following packages and classes/enum:
-    - xxxx.ws.beans: create a copy of enum JobFailureCode (unless existing one in 'utils' module covers your needs) and a class 'OnlineResult' that extends OnlineBaseResult. Make sure you define generics.
+    - xxxx.ws.beans: in there create:
+      - a copy of enum JobFailureCode (unless existing one in 'utils' module covers your needs)
+      - a copy of enum RoleEnum (unless existing one in 'utils' module covers your needs)
+      - a class 'OnlineResult' that extends OnlineBaseResult and uses JobFailureCode created above (JFC generic).
+      - a class 'OnlineParams' that extends OnlineBaseParams.
+      - an interface 'xxxxWsMethods' that extends interface 'WsMethods'. These methods are the ones to be called using reflection (see WsBaseDataHandler in baseApp-backend module)
+      - a class xxxxUserBean that extends UserBean in 'utils' module and uses the RoleEnum created earlier (RE generic).
+      Make sure you define generics.
 
 - In Backend module:
   - create the following packages and classes:
@@ -54,7 +61,7 @@ Workflow
     - xxxx.ws: create class WsDataHandler that extends WsBaseDataHandler. Also make sure to define generics, 'autowire' its constructor (see DpApp-backend module for example).
 
 - In Service module:
-  - create package 'xxxx.service' and in it 'DataControllerService' class. Add Spring annotations '@RestController' and '@RequestMapping("/dcs")'. This is where the endpoints are defined. It must have at least 'execute' and 'executeUpdate' (the ones declared in DataHandlerClient interface - the class though, is not required to implement that interface). See DpApp-service as an example of what the class should contain.
+  - create package 'xxxx.service' and in it 'DataControllerService' class. Add Spring annotations '@RestController' and '@RequestMapping("/dcs")'. This is where the end points are defined. It must have at least 'execute' and 'executeUpdate' (the ones declared in DataHandlerClient interface - the class though, is not required to implement that interface). These methods use 'OnlineResult' and 'OnlineParams' defined in 'xxxx-common' module. See DpApp-service as an example of what the class should contain.
   - in resources folder the following must exist (see related structure and files in DpApp-service module as an example):
     - META-INF folder: where persistence.xml should be located
     - application-context.xml: spring config file

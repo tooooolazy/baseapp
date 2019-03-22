@@ -7,8 +7,8 @@ package com.tooooolazy.data.services.beans;
  *
  */
 public enum RoleEnum {
-	DUMMY_ROLE(0),
-	NOT_LOGGED_IN(1), // use this to make something secure (so that it's not even visible if no user is logged in)
+	DUMMY_ROLE(0), // required
+	NOT_LOGGED_IN(1), // required - use this to make something secure (so that it's not even visible if no user is logged in)
 	GOD(2),
 	DEMO(3),
 	LOW_LEVEL(4),

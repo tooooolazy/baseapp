@@ -8,7 +8,7 @@ import com.dpapp.vaadin.layout.DpAppLayout;
 import com.dpapp.ws.beans.JobFailureCode;
 import com.dpapp.ws.beans.OnlineParams;
 import com.dpapp.ws.beans.OnlineResult;
-import com.dpapp.ws.beans.UserBean;
+import com.dpapp.ws.beans.DpAppUserBean;
 import com.tooooolazy.data.services.DataHandler;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.layout.TopAndLeftMenuLayout;
@@ -27,7 +27,7 @@ import elemental.json.JsonArray;
 import elemental.json.JsonObject;
 
 @Theme("baseTheme")
-public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, UserBean, OnlineResult, JobFailureCode> {
+public class DpAppUI extends BaseUI<TopAndLeftMenuLayout, DpAppUserBean, OnlineResult, JobFailureCode> {
 
 	static {
 //		Messages.setSupportedLocales( new String[] {"en", "el", "bg"});

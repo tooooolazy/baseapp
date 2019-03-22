@@ -1,18 +1,17 @@
 package com.dpapp.ws.beans;
 
 /**
- * Basically a copy of enum in Utils module.
+ * Basically a modified copy of enum in Utils module.
  * @author gpatoulas
  *
  */
 public enum RoleEnum {
 	DUMMY_ROLE(0),
 	NOT_LOGGED_IN(1), // use this to make something secure (so that it's not even visible if no user is logged in)
-	GOD(2),
+	ADMIN(2), // show admin Views
 	DEMO(3),
 	LOW_LEVEL(4),
-	HIGH_LEVEL(5),
-	ADMIN(6); // show admin Views
+	HIGH_LEVEL(5);
 
 	private int value;
 
@@ -24,7 +23,7 @@ public enum RoleEnum {
 	}
 
 	public boolean isGod() {
-		return this.equals(GOD);
+		return false;
 	}
 	public boolean isAdmin() {
 		return this.equals(ADMIN);
