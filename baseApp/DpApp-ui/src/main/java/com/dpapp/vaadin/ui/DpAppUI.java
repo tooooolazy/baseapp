@@ -319,6 +319,27 @@ public class DpAppUI extends BaseUI<DpAppLayout, DpAppUserBean, OnlineResult, Jo
 		ja.set(index++, jo);
 
 		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.TrainingActivityView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 104);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 100);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.TrainingRewardView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 105);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 100);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.LoggingLevelsVuew");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 106);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 100);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
 		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.PricingConfigView");
 		jo.put(MenuItemKeys.VIEW_CLASS_ID, 102);
 		jo.put(MenuItemKeys.VIEW_SECURE, false);
@@ -332,6 +353,48 @@ public class DpAppUI extends BaseUI<DpAppLayout, DpAppUserBean, OnlineResult, Jo
 		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 102);
 		ja.set(index++, jo);
 
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.PricingGuardrailsView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 107);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 102);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.CurrencySettingsView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 108);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 102);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.PriceChangeThresholdsView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 109);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 102);
+		ja.set(index++, jo);
+
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.BusinessGoalsView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 400);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 302);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.SetGoalsView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 401);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 400);
+		ja.set(index++, jo);
+
+		jo = Json.createObject();
+		jo.put(MenuItemKeys.VIEW_CLASS, "com.dpapp.vaadin.views.system.SystemAlertsView");
+		jo.put(MenuItemKeys.VIEW_CLASS_ID, 402);
+		jo.put(MenuItemKeys.VIEW_SECURE, false);
+		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 400);
+		ja.set(index++, jo);
 
 
 		jo = Json.createObject();
