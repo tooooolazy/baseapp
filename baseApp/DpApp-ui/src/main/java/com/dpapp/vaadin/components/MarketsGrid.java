@@ -52,6 +52,7 @@ public class MarketsGrid extends BaseGrid<MarketBean> {
 
 	private void addColumns() {
 		addColumn( "market" ).setCaption( Messages.getString( getClass(), "market" ) );
+		setFrozenColumnCount( 1 );
 
 		addColumn( "conversion.thisWeek", new NumberRenderer( NumberFormat.getPercentInstance( BaseUI.get().getLocale() ) ) ).setStyleGenerator(market -> "red");
 		addColumn( "conversion.thisMonth", new NumberRenderer( NumberFormat.getPercentInstance( BaseUI.get().getLocale() ) ) ).setCaption( Messages.getString( getClass(), "thisMonth" ) ).setStyleGenerator(market -> "red");

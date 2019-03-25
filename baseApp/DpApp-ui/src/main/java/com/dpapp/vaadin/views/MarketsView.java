@@ -42,16 +42,16 @@ public class MarketsView extends BaseView {
 		mb.setMarket("MKT-001");
 		mb.setConversion( new MarketSectionBean(0.30, 0.21, 0.11));
 		mb.setScale( new MarketSectionBean(200, 3000, 2000));
-		mb.setRevenue( new MarketSectionBean());
-		mb.setRevenueToPassenger( new MarketSectionBean());
+		mb.setRevenue( new MarketSectionBean(2000, 30000, 25000));
+		mb.setRevenueToPassenger( new MarketSectionBean(10, 10, 14));
 		markets.add( mb );
 
 		mb = new MarketBean();
 		mb.setMarket("MKT-002");
 		mb.setConversion( new MarketSectionBean(0.34, 0.10, 0.21));
 		mb.setScale( new MarketSectionBean(200, 3000, 2000));
-		mb.setRevenue( new MarketSectionBean());
-		mb.setRevenueToPassenger( new MarketSectionBean());
+		mb.setRevenue( new MarketSectionBean(1000, 23000, 45000));
+		mb.setRevenueToPassenger( new MarketSectionBean(21, 12, 13));
 		markets.add( mb );
 		
 		mg.setItems( markets );
