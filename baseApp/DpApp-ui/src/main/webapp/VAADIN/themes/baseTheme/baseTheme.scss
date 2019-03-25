@@ -111,7 +111,8 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
 	    margin-right: 2px;
 	}
 
-	.i-error-msg {
+	.i-error-msg,
+	.red {
 		color: red;
 	}
 
@@ -135,5 +136,26 @@ $v-error-indicator-color: hsl(349, 66%, 56%);
 		height: $v-font-size*2;
 		margin-top: 7px;
 		font-weight: bold;
+	}
+
+	// affects all Grid Components
+	.v-grid-cell.red {
+	    color: red;
+	}
+	// affects all Grids
+	.v-grid-cell.green {
+	    color: green;
+	}
+	// affects all Grids
+	.v-grid-row.centered,
+	.v-grid-cell.centered {
+	    text-align: center;
+	}
+	// affects ONLY MarketsGrid Component
+	#MarketsGrid .v-grid-column-header-content {
+		font-weight: bold;
+	}
+	#MarketsGrid .v-grid-cell.two-lines .v-grid-column-default-header-content {
+		line-height: 16px;
 	}
 }

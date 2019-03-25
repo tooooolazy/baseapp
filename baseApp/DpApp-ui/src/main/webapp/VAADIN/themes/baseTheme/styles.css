@@ -15072,7 +15072,7 @@ div.v-layout.v-horizontal.v-widget {
 	margin-right: 2px;
 }
 
-.baseTheme .i-error-msg {
+.baseTheme .i-error-msg, .baseTheme .red {
 	color: red;
 }
 
@@ -15100,4 +15100,24 @@ div.v-layout.v-horizontal.v-widget {
 	height: 28px;
 	margin-top: 7px;
 	font-weight: bold;
+}
+
+.baseTheme .v-grid-cell.red {
+	color: red;
+}
+
+.baseTheme .v-grid-cell.green {
+	color: green;
+}
+
+.baseTheme .v-grid-row.centered, .baseTheme .v-grid-cell.centered {
+	text-align: center;
+}
+
+.baseTheme #MarketsGrid .v-grid-column-header-content {
+	font-weight: bold;
+}
+
+.baseTheme #MarketsGrid .v-grid-cell.two-lines .v-grid-column-default-header-content {
+	line-height: 16px;
 }
