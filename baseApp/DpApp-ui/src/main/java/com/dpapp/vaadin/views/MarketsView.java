@@ -9,8 +9,10 @@ import com.dpapp.vaadin.components.MarketsGrid;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tooooolazy.vaadin.views.BaseView;
 import com.vaadin.ui.AbstractSplitPanel.SplitterClickEvent;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Panel;
+import com.vaadin.ui.VerticalLayout;
 
 public class MarketsView extends BaseView {
 
@@ -31,9 +33,25 @@ public class MarketsView extends BaseView {
 		// TODO Auto-generated method stub
 		MarketsGrid mg = new MarketsGrid();
 		mg.setSizeFull();
-		HorizontalSplitPanel hsp = new HorizontalSplitPanel(mg, new Panel("test"));
+
+		HorizontalLayout hl = new HorizontalLayout();
+		hl.setSizeFull();
+		hl.setMargin( false );
+
+		VerticalLayout rightVl = new VerticalLayout(new Panel("WatchList and Alerts"), new Panel("Top Channel"));
+		rightVl.setMargin(false);
+		HorizontalSplitPanel hsp = new HorizontalSplitPanel(mg, rightVl );
 		hsp.setSplitPosition(80); // percent
-		vl.addComponent( hsp );
+
+		VerticalLayout leftVl = new VerticalLayout(new Panel("Top Markets"), new Panel("Top Stock Categories"));
+		leftVl.setMargin(false);
+		leftVl.setSizeFull();
+		leftVl.setWidth("200px");
+
+		hl.addComponents(leftVl, hsp);
+		hl.setExpandRatio(hsp, 1f);
+
+		vl.addComponent( hl );
 		ObjectMapper mapper = new ObjectMapper();
 //		mapper.readValue(content, MarketBean.class);
 		List<MarketBean> markets = new ArrayList<>();
