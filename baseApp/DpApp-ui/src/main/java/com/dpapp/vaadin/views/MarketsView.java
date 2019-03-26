@@ -6,9 +6,9 @@ import java.util.List;
 import com.dpapp.data.beans.MarketBean;
 import com.dpapp.data.beans.MarketSectionBean;
 import com.dpapp.vaadin.components.MarketsGrid;
+import com.dpapp.vaadin.ui.DpAppUI;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tooooolazy.vaadin.views.BaseView;
-import com.vaadin.ui.AbstractSplitPanel.SplitterClickEvent;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Panel;
@@ -51,7 +51,9 @@ public class MarketsView extends BaseView {
 		hl.addComponents(leftVl, hsp);
 		hl.setExpandRatio(hsp, 1f);
 
-		vl.addComponent( hl );
+		DpAppUI.get().addIfHasAccess("enter", MarketBean.class, hl, vl);
+//		vl.addComponent( hl );
+
 		ObjectMapper mapper = new ObjectMapper();
 //		mapper.readValue(content, MarketBean.class);
 		List<MarketBean> markets = new ArrayList<>();
