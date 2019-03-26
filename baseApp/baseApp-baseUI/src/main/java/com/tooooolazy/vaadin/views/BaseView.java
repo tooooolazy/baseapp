@@ -1,5 +1,6 @@
 package com.tooooolazy.vaadin.views;
 
+import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.SearchCriteria;
 import com.tooooolazy.util.TLZUtils;
@@ -12,6 +13,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewBeforeLeaveEvent;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.Page;
+import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
@@ -19,7 +21,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
-public abstract class BaseView<C extends SearchCriteria, E> extends CustomComponent implements View {
+public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean> extends CustomComponent implements View {
 	protected final Logger logger = LoggerFactory.getLogger(BaseView.class.getName());
 
 	protected VerticalLayout vl;
@@ -119,12 +121,14 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 		logger.info("URI params: " + event.getParameterMap("/"));
 
 		if ( BaseUI.get().hasSecureContent() ) {
-			BaseUI.get().getAppLayout().getLogoutItem().setVisible(BaseUI.get().getUserObject() != null);
-			BaseUI.get().getAppLayout().getLoginItem().setVisible(BaseUI.get().hasSecureContent() && BaseUI.get().getUserObject() == null);
+			BaseUI.get().getAppLayout().getLogoutItem().setVisible(BaseUI.get().getCurrentUser() != null);
+			BaseUI.get().getAppLayout().getLoginItem().setVisible(BaseUI.get().hasSecureContent() && BaseUI.get().getCurrentUser() == null);
 		}
 
 		AppLayout al = (AppLayout) getUI().getContent();
 		al.toggleChildMenuItems(getClass(), true);
+
+		handleCriteria( event.getOldView() );
 	}
 
 	public void beforeLeave(ViewBeforeLeaveEvent event) {
@@ -171,6 +175,30 @@ public abstract class BaseView<C extends SearchCriteria, E> extends CustomCompon
 			}
 		}
 		return sc;
+	}
+	/**
+	 * Default functionality that clears search criteria when entering a page from a different one
+	 */
+	protected void handleCriteria(View fromView) {
+		if (getCriteriaClass() != null) {
+			// clear criteria when entering the page from another page (if criteria exist)
+			// could do it depending on a parameter!!
+			if (fromView != null && fromView.getClass().equals(getClass())) {
+				// retain criteria
+			} else {
+				getSession().setAttribute(getCriteriaClass(), null);
+			}
+		}
+	}
+	/**
+	 * Override to create a custom Search criteria component
+	 * @return
+	 */
+	protected AbstractComponent createSearchCriteria() {
+		return null;
+	}
+	protected boolean hideCriteria() {
+		return false;
 	}
 
 	public void onInactivity() {

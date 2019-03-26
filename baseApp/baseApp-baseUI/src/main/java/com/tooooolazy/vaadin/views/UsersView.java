@@ -1,6 +1,9 @@
 package com.tooooolazy.vaadin.views;
 
-public class UsersView extends BaseView {
+import com.tooooolazy.data.services.beans.UserBean;
+import com.tooooolazy.util.SearchCriteria;
+
+public class UsersView<C extends SearchCriteria, E, UB extends UserBean> extends BaseView<C, E, UB> {
 
 	@Override
 	protected void addJavascriptFunctions() {
