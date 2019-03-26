@@ -12,6 +12,7 @@ import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.vaadin.addons.idle.Idle;
 import org.vaadin.addons.idle.Idle.UserActiveEvent;
@@ -310,59 +311,161 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 		return "";
 	}
 
-	public JsonArray getViewMenuRelations() {
-		// TODO get this structure from WS or DB
-		JsonArray ja = Json.createArray();
-		
-		return ja;
+	/**
+	 * Retrieves Application Views (using {@link #retrieveViewClasses()}) and
+	 * sets appropriate maps ({@link AppLayoutHelper#viewClassIds} and {@link AppLayoutHelper#viewIdToClass}) in {@link AppLayoutHelper}
+	 */
+	protected void setViewClasses() {
+		JSONArray ja = retrieveViewClasses();
+
+		getAppLayout().getHelper().viewClassIds.clear();
+		getAppLayout().getHelper().viewIdToClass.clear();
+
+		if (ja != null) {
+
+			for (int i=0; i<ja.length(); i++) {
+				JSONObject _jo = ja.optJSONObject(i); // class info
+				if (_jo.optInt("groupId", 0) == 1) { // group = 1 --> this is a View class
+					String cName = _jo.optString("VALUE");
+					try {
+						Class c = Class.forName(cName);
+
+						getAppLayout().getHelper().viewClassIds.put(c, _jo.optInt("ID")); // will be used in dynamic process of creating menu!!
+						getAppLayout().getHelper().viewIdToClass.put(_jo.optInt("ID"), c); // will be used in dynamic process of creating menu!!
+					} catch (ClassNotFoundException e) {
+						System.out.println("View " + cName + " not Found");
+					}
+				}
+			}
+		}
 	}
+	/**
+	 * calls related WS to retrieve Application Views 
+	 * <p>Could override and use hard coded data</p>
+	 * 
+	 * @return
+	 */
+	protected JSONArray retrieveViewClasses() {
+		try {
+			OR or = (OR) ServiceLocator.getServices().getDataHandler().getData( WsMethods.CLASS_TYPES, null, false, new HashMap());
+			if ( or != null ) {
+				if ( or.getFailCode() != null ) {
+					// TODO handle error - seems to be an App blocker!!!
+				} else {
+					JSONObject jo = or.getAsJSON();
+					if ( jo != null ) {
+						JSONArray ja = jo.optJSONArray("CLASS_TYPES");
+						return ja;
+					}
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	/**
+	 * Calls related WS to retrieve menu structure
+	 * <p>Could override and use hard coded data</p>
+	 * 
+	 * @return
+	 */
+	protected JSONArray retrieveMenu() {
+		try {
+			OR or = (OR) ServiceLocator.getServices().getDataHandler().getData( WsMethods.MENU_STRUCTURE, null, false, new HashMap());
+			if ( or != null ) {
+				if ( or.getFailCode() != null ) {
+					// TODO handle error - seems to be an App blocker!!!
+				} else {
+					JSONObject jo = or.getAsJSON();
+					JSONArray ja = jo.optJSONArray("DATA");
+
+					getAppLayout().getHelper().classIdToParentId.clear();
+
+					return ja;
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	protected JsonArray getViewDefinitions() {
 		// TODO get this structure from WS or DB
+		JSONArray msJa = retrieveMenu();
+
 		JsonArray ja = Json.createArray();
+		if (msJa == null || msJa.length() == 0)
+			return ja;
 
+		int index = 0;
 		// a parent element MUST be declared first!! Then its children and THEN the next parent element
+		for (int i=0; i<msJa.length(); i++) {
+			JSONArray mi = msJa.optJSONArray(i);
 
-		JsonObject jo = Json.createObject();
-		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy4View");
-		jo.put(MenuItemKeys.VIEW_CLASS_ID, 1);
-		jo.put(MenuItemKeys.VIEW_SECURE, false);
-		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
-		ja.set(0, jo);
+			int classId = mi.optInt(2);
+			boolean subTitle = mi.optInt(3) == 1;
+			Integer parentId = mi.optInt(0);
+			if (parentId == classId)
+				parentId = null;
+			Class viewClass = getAppLayout().getHelper().viewIdToClass.get( classId );
 
-		jo = Json.createObject();
-		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.AboutView");
-		jo.put(MenuItemKeys.VIEW_CLASS_ID, 2);
-		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 3);
-		jo.put(MenuItemKeys.VIEW_SECURE, false);
-		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(1, jo);
+			JsonObject jo = Json.createObject();
+			
+			jo.put(MenuItemKeys.VIEW_CLASS, viewClass.getName());
+			jo.put(MenuItemKeys.VIEW_CLASS_ID, classId);
+//			jo.put(MenuItemKeys.VIEW_SECURE, false);
+			jo.put(MenuItemKeys.VIEW_SUB_TITLE, subTitle);
+			if ( parentId != null )
+				jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, parentId);
 
-		jo = Json.createObject();
-		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy1View");
-		jo.put(MenuItemKeys.VIEW_CLASS_ID, 3);
-//		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
-		jo.put(MenuItemKeys.VIEW_BADGE, "22");
-		jo.put(MenuItemKeys.VIEW_SECURE, false);
-		ja.set(2, jo);
-/////////////////////////////////
-		
-		jo = Json.createObject();
-		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy2View");
-		jo.put(MenuItemKeys.VIEW_CLASS_ID, 4);
-//		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
-		jo.put(MenuItemKeys.VIEW_SECURE, false);
-		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
-		ja.set(3, jo);
+			ja.set(index++, jo);
+		}
 
-		jo = Json.createObject();
-		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy3View");
-		jo.put(MenuItemKeys.VIEW_CLASS_ID, 5);
-		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 4);
-		jo.put(MenuItemKeys.VIEW_SECURE, false);
-		jo.put(MenuItemKeys.VIEW_BADGE, "2");
-		ja.set(4, jo);
+//		JsonObject jo = Json.createObject();
+//		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy4View");
+//		jo.put(MenuItemKeys.VIEW_CLASS_ID, 1);
+//		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+//		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
+//		ja.set(0, jo);
+//
+//		jo = Json.createObject();
+//		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.AboutView");
+//		jo.put(MenuItemKeys.VIEW_CLASS_ID, 2);
+//		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 3);
+//		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+//		ja.set(1, jo);
+//
+//		jo = Json.createObject();
+//		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy1View");
+//		jo.put(MenuItemKeys.VIEW_CLASS_ID, 3);
+////		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "22");
+//		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		ja.set(2, jo);
+///////////////////////////////////
+//		
+//		jo = Json.createObject();
+//		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy2View");
+//		jo.put(MenuItemKeys.VIEW_CLASS_ID, 4);
+////		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 2);
+//		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+//		jo.put(MenuItemKeys.VIEW_SUB_TITLE, true);
+//		ja.set(3, jo);
+//
+//		jo = Json.createObject();
+//		jo.put(MenuItemKeys.VIEW_CLASS, "com.tooooolazy.vaadin.views.Dummy3View");
+//		jo.put(MenuItemKeys.VIEW_CLASS_ID, 5);
+//		jo.put(MenuItemKeys.VIEW_CLASS_PARENT_ID, 4);
+//		jo.put(MenuItemKeys.VIEW_SECURE, false);
+//		jo.put(MenuItemKeys.VIEW_BADGE, "2");
+//		ja.set(4, jo);
 
 
 		return ja;
@@ -375,6 +478,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 		setNavigator( navigator );
 
 		root.clearStructureMaps();
+		setViewClasses();
 		root.createMenuItems( getViewDefinitions(), getNavigator() );
 
 		getNavigator().addView( "", getMainViewClass() );
@@ -780,7 +884,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 
 		return true;
 	}
-	public boolean doIfHasAccess(String methodName, Class _class) {
+	public boolean checkIfHasAccess(String methodName, Class _class) {
 		UB dub = getCurrentUser();
 		if (dub == null)
 			dub = getDummyUser();

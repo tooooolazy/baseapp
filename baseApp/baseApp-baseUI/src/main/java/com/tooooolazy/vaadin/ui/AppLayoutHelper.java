@@ -56,9 +56,10 @@ public class AppLayoutHelper {
 	 */
 	public Map<Class, Integer> viewClassIds = new HashMap<Class, Integer>();
 	/**
-	 * the oposite of {@link #viewClassIds}
+	 * the opposite of {@link #viewClassIds}
 	 */
 	public Map<Integer, Class> viewIdToClass = new HashMap<Integer, Class>();
+
 	public Map<Integer, Component> viewIdToComponent = new HashMap<Integer, Component>();
 	public Map<Component, Integer> componentToParentId = new HashMap<Component, Integer>();
 	/**
@@ -248,10 +249,11 @@ public class AppLayoutHelper {
 				}
 			}
 		}
-		viewClassIds.put(c, classId);
+//		viewClassIds.put(c, classId);
+//		viewIdToClass.put(classId, c);
+
 		viewSelectors.put(c, menuItem);
 		viewIdToComponent.put(classId, menuItem);
-		viewIdToClass.put(classId, c);
 		componentToParentId.put(menuItem, parentId);
 	}
 
@@ -384,7 +386,6 @@ public class AppLayoutHelper {
 		viewIdToComponent.clear();
 		componentToParentId.clear();
 		parentIdContainer.clear();
-		classIdToParentId.clear();
 	}
 
 	public ClickListener createToggleListener(int parentId, CssLayout cl) {

@@ -10,6 +10,7 @@ public interface WsMethods {
 	public static String ENVIRONMENT = "getEnvironment";
 
 	public static String CLASS_TYPES = "getClassTypes";
+	public static String MENU_STRUCTURE = "getMenuStructure";
 
 	public static String MSECLEVELDEFS = "getMSecLevelDefs"; // security data
 
