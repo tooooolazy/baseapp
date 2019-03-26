@@ -50,7 +50,6 @@ public abstract class UserBean<RE> {
 	public boolean isGod() {
 		for (RE re : getRoles()) {
 			if ( isGodRole( re )) {
-//			if (re != null && re.isGod()) {
 				isGod = true;
 				return true;
 			}
