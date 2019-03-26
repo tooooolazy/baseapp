@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import com.tooooolazy.data.ServiceLocator;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.commands.LoginCommand;
 import com.tooooolazy.vaadin.commands.LogoutCommand;
@@ -255,6 +256,9 @@ public class AppLayoutHelper {
 		viewSelectors.put(c, menuItem);
 		viewIdToComponent.put(classId, menuItem);
 		componentToParentId.put(menuItem, parentId);
+
+		if ( BaseUI.get().getCurrentUser() == null )
+			menuItem.setVisible( !ServiceLocator.getServices().getSecurityController().isSecure(BaseUI.get().getCurrentUser(), "enter", c) );
 	}
 
 	public LoginCommand getLoginCommand() {

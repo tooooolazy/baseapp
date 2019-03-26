@@ -5,6 +5,7 @@ import java.util.Properties;
 import javax.servlet.annotation.WebServlet;
 
 import com.tooooolazy.data.services.DataHandler;
+import com.tooooolazy.data.services.SecurityController;
 import com.tooooolazy.data.services.beans.JobFailureCode;
 import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
@@ -51,6 +52,21 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>, Onli
 				return new OnlineBaseParams();
 			}
 
+		};
+	}
+
+	@Override
+	protected SecurityController<UserBean<RoleEnum>, RoleEnum> createSecurityController() {
+		return new SecurityController<UserBean<RoleEnum>, RoleEnum>() {
+
+			@Override
+			public RoleEnum getRoleByValue(int rv) {
+				return RoleEnum.byValue( rv );
+			}
+			@Override
+			public RoleEnum getNotLoggedInRole() {
+				return RoleEnum.NOT_LOGGED_IN;
+			}
 		};
 	}
 
@@ -103,5 +119,22 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>, Onli
 	@Override
 	protected boolean getAllowsMultipleTabs() {
 		return true;
+	}
+
+	@Override
+	public UserBean<RoleEnum> getDummyUser() {
+		return new UserBean<RoleEnum>(){
+
+			@Override
+			protected boolean isGodRole(RoleEnum re) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+
+			@Override
+			protected boolean isAdminRole(RoleEnum re) {
+				// TODO Auto-generated method stub
+				return false;
+			}};
 	}
 }

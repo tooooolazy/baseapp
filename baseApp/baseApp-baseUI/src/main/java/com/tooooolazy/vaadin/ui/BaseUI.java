@@ -394,7 +394,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	}
 
 	protected JsonArray getViewDefinitions() {
-		// TODO get this structure from WS or DB
+		// get this structure from WS or DB
 		JSONArray msJa = retrieveMenu();
 
 		JsonArray ja = Json.createArray();
