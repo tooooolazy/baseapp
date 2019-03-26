@@ -22,12 +22,12 @@ import org.vaadin.addons.idle.Idle.UserInactiveListener;
 import com.tooooolazy.data.ServiceGenerator;
 import com.tooooolazy.data.ServiceLocator;
 import com.tooooolazy.data.interfaces.DataHandlerService;
+import com.tooooolazy.data.interfaces.SecurityControllerService;
+import com.tooooolazy.data.interfaces.WsMethods;
 import com.tooooolazy.data.services.DataHandler;
-import com.tooooolazy.data.services.OnlineDataType;
+import com.tooooolazy.data.services.SecurityController;
 import com.tooooolazy.data.services.beans.JobFailureCode;
-import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
-import com.tooooolazy.data.services.beans.OnlineResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.Credentials;
 import com.tooooolazy.util.Messages;
@@ -43,7 +43,6 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.CustomizedSystemMessages;
 import com.vaadin.server.DefaultErrorHandler;
-import com.vaadin.server.Page;
 import com.vaadin.server.Page.PopStateEvent;
 import com.vaadin.server.Page.PopStateListener;
 import com.vaadin.server.Resource;
@@ -55,7 +54,9 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinService;
 import com.vaadin.server.VaadinServletService;
 import com.vaadin.server.VaadinSession;
+import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.ComponentContainer;
+import com.vaadin.ui.CustomLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.JavaScript;
 import com.vaadin.ui.JavaScriptFunction;
@@ -271,6 +272,8 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	protected Object generateService(Class srvClass) {
 		if (srvClass.equals(DataHandlerService.class))
 			return createDataHandler();
+		if (srvClass.equals(SecurityControllerService.class))
+			return createSecurityController();
 
 		return null;
 	}
@@ -279,12 +282,16 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	 * @return a subclass of {@link DataHandler} where generics (and helper methods) are defined!
 	 */
 	protected abstract DataHandler createDataHandler();
+	/**
+	 * @return a subclass of {@link SecurityController} where generics (and helper methods) are defined!
+	 */
+	protected abstract SecurityController createSecurityController();
 
 	protected String getCurrentEnvironment() {
 		Map<String, Object> params = new HashMap<String, Object>();
 		try {
 //			OnlineResult<JobFailureCode> tor = ServiceLocator.getServices().getDataHandler().getData( OnlineDataType.ENVIRONMENT, null, false, params);
-			OR tor = (OR) ServiceLocator.getServices().getDataHandler().getData( OnlineDataType.ENVIRONMENT, null, false, params);
+			OR tor = (OR) ServiceLocator.getServices().getDataHandler().getData( WsMethods.ENVIRONMENT, null, false, params);
 
 			if (tor != null) {
 				JSONObject jo = tor.getAsJSON();
@@ -573,7 +580,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	/**
 	 * By default its 37 in order to fit inside the TOP title section of VALO
 	 * responsive layout on small screens.<br>
-	 * If overridden to a grea ter value VALO theme will need to be adjusted in
+	 * If overridden to a greater value VALO theme will need to be adjusted in
 	 * order to wrap around it.
 	 * 
 	 * @param logo
@@ -694,13 +701,14 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 		return userRemoteAddress;
 	}
 
-	public Object getCurrentUser() {
+	public UB getCurrentUser() {
 		try {
-			return getSession().getAttribute( SESSION_USER_KEY );
+			return (UB)getSession().getAttribute( SESSION_USER_KEY );
 		} catch (Exception e) {
 			return null;
 		}
 	}
+	public abstract UB getDummyUser();
 
 	/**
 	 * If true is returned, then 'login' and 'logout' functionality should be added
@@ -714,13 +722,6 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	public void setHasSecureContent() {
 		hasSecureContent = true;
 	}
-	/**
-	 * Retrieves the user object from session
-	 * @return
-	 */
-	public UB getUserObject() {
-		return (UB)getSession().getAttribute( SESSION_USER_KEY );
-	}
 	public boolean hasUserPermission(String methodName, Class _class, Object[] params) {
 		Method method = null;
 		try {
@@ -732,12 +733,69 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 		return hasUserPermission(method, _class, params);
 	}
 	public boolean hasUserPermission(Method method, Class _class, Object[] params) {
-//		if (getSecurityController() == null) {
-//			if (getUserObject() == null)
-//				return false;
-//			return true;
-//		}
-//		return getSecurityController().hasAccess(getUserObject(), method, _class, params);
-		return true; // remove when done
+		if (ServiceLocator.getServices().getSecurityController() == null) {
+			if (getCurrentUser() == null)
+				return false;
+			return true;
+		}
+		return ServiceLocator.getServices().getSecurityController().hasAccess(getCurrentUser(), method, _class, params);
+	}
+
+	/**
+	 * Requires that security definitions have been created (in DB or somewhere else).
+	 * <ul>It uses two helpers from SecurityController:
+	 * <li>isSecure: for elements that only login is required</li>
+	 * <li>hasAccess: for elements that login AND specific user role is required</li>
+	 * </ul>
+	 * If no security present both assume full access.
+	 * @param methodName
+	 * @param _class
+	 * @param component
+	 * @param container
+	 * @return
+	 */
+	public boolean addIfHasAccess(String methodName, Class _class, AbstractComponent component, ComponentContainer container) {
+		return addIfHasAccess(methodName, _class, component, container, null);
+	}
+	public boolean addIfHasAccess(String methodName, Class _class, AbstractComponent component, ComponentContainer container, String location) {
+		UB dub = getCurrentUser();
+		if (dub == null)
+			dub = getDummyUser();
+		SecurityControllerService sc = ServiceLocator.getServices().getSecurityController();
+		if (_class == null)
+			_class = this.getClass();
+
+		if (sc != null) {
+			if (sc.isSecure(dub, methodName, _class) && getCurrentUser() == null)
+				return false;
+	
+			if ( !sc.hasAccess(dub, methodName, _class, null))
+				return false;
+		}
+
+		if (container instanceof CustomLayout)
+			((CustomLayout)container).addComponent(component, location);
+		else
+			container.addComponent(component);
+
+		return true;
+	}
+	public boolean doIfHasAccess(String methodName, Class _class) {
+		UB dub = getCurrentUser();
+		if (dub == null)
+			dub = getDummyUser();
+		SecurityControllerService sc = ServiceLocator.getServices().getSecurityController();
+		if (_class == null)
+			_class = this.getClass();
+
+		if (sc != null) {
+			if (sc.isSecure(dub, methodName, _class) && getCurrentUser() == null)
+				return false;
+	
+			if ( !sc.hasAccess(dub, methodName, _class, null))
+				return false;
+		}
+
+		return true;
 	}
 }

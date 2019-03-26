@@ -296,8 +296,8 @@ public class AppLayoutHelper {
 			logout.setDescription(Messages.getString("InitiateLoginButton.logoutTitle"));
 
 			// decide which item to show!
-			login.setVisible( BaseUI.get().getUserObject() == null );
-			logout.setVisible( BaseUI.get().getUserObject() != null );
+			login.setVisible( BaseUI.get().getCurrentUser() == null );
+			logout.setVisible( BaseUI.get().getCurrentUser() != null );
 
 			lic.setLogoutItem(logout);
 			loc.setLoginItem(login);

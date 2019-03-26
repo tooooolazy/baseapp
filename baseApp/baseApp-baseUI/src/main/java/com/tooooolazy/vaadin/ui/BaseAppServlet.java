@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 
 import com.tooooolazy.data.ServiceLocator;
-import com.tooooolazy.data.services.OnlineDataType;
+import com.tooooolazy.data.interfaces.WsMethods;
 import com.tooooolazy.data.services.beans.OnlineResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.vaadin.server.CustomizedSystemMessages;
@@ -59,7 +59,7 @@ public class BaseAppServlet extends VaadinServlet {
 						Map params = new HashMap();
 						params.put("autoLogout", true);
 						OnlineResult or = (OnlineResult) ServiceLocator.getServices().getDataHandler()
-								.getData(OnlineDataType.LOGOUT_USER, user, false, params, true);
+								.getData(WsMethods.LOGOUT_USER, user, false, params, true);
 						System.out.println( or.getFailCode() );
 					} catch (Exception e) {
 						// TODO Auto-generated catch block

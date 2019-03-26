@@ -15,4 +15,8 @@ public interface WsMethods {
 
 	public static String USERS = "getUsers";
 	public static String USERS_ROLES = "getUsersRoles";
+	/**
+	 * Use this to call a WS to perform DB related cleanup, like evaluation locking!
+	 */
+	public static String LOGOUT_USER = "logoutUser";
 }

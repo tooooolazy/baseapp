@@ -9,7 +9,9 @@ import com.dpapp.ws.beans.DpAppUserBean;
 import com.dpapp.ws.beans.JobFailureCode;
 import com.dpapp.ws.beans.OnlineParams;
 import com.dpapp.ws.beans.OnlineResult;
+import com.dpapp.ws.beans.RoleEnum;
 import com.tooooolazy.data.services.DataHandler;
+import com.tooooolazy.data.services.SecurityController;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.resources.Resources;
 import com.tooooolazy.vaadin.ui.BaseAppServlet;
@@ -59,13 +61,24 @@ public class DpAppUI extends BaseUI<DpAppLayout, DpAppUserBean, OnlineResult, Jo
 
 	@Override
 	protected DataHandler<OnlineResult, OnlineParams> createDataHandler() {
-		return new DataHandler(OnlineResult.class) {
+		return new DataHandler<OnlineResult, OnlineParams>(OnlineResult.class) {
 
 			@Override
 			protected OnlineParams createOnlineParams() {
 				return new OnlineParams();
 			}
 
+		};
+	}
+
+	@Override
+	protected SecurityController<DpAppUserBean, RoleEnum> createSecurityController() {
+		return new SecurityController<DpAppUserBean, RoleEnum>() {
+
+			@Override
+			public RoleEnum getRoleByValue(int rv) {
+				return RoleEnum.byValue( rv );
+			}
 		};
 	}
 
@@ -86,7 +99,7 @@ public class DpAppUI extends BaseUI<DpAppLayout, DpAppUserBean, OnlineResult, Jo
 
 	@Override
 	protected Resource getLogoResource() {
-		return Resources.get( "img/logo/", "Deepair_logo_POS.jpg" );
+		return Resources.getPng( "img/logo/", "Deepair_logo_POS" );
 	}
 
 	@Override
@@ -433,5 +446,10 @@ public class DpAppUI extends BaseUI<DpAppLayout, DpAppUserBean, OnlineResult, Jo
 	@Override
 	protected boolean getAllowsMultipleTabs() {
 		return true;
+	}
+
+	@Override
+	public DpAppUserBean getDummyUser() {
+		return new DpAppUserBean();
 	}
 }
