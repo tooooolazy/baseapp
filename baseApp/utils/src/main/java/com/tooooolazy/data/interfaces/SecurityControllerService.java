@@ -18,6 +18,8 @@ import com.tooooolazy.interfaces.HasPrimaryKey;
 public interface SecurityControllerService<UB extends UserBean<RE>, RE> {
 	public RE getRole(HasPrimaryKey pk);
 	public RE getRoleByValue(int rv);
+	public RE getNotLoggedInRole();
+	
 	public List getRoles();
 	public List getMethodSecurityDefs();
 	public List getObjectSecurityDefs();
@@ -25,7 +27,7 @@ public interface SecurityControllerService<UB extends UserBean<RE>, RE> {
 	public boolean hasAccess(UB user, Method method, Class _class, Object[] params);
 	public boolean hasAccess(UB user, String methodName, Class _class, Object[] params);
 	/**
-	 * Added for Vaadin 7 secure Views
+	 * Added for Vaadin secure Views
 	 * @param methodName
 	 * @param methodClass
 	 * @return
