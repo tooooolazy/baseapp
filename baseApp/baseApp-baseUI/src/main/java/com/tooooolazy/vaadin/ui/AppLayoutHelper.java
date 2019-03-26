@@ -211,6 +211,7 @@ public class AppLayoutHelper {
 
 		Logger.getAnonymousLogger().info( "Adding: " + c.getSimpleName());
 
+		// TODO fix this to use Sec Defs
 		if ( secure )
 			BaseUI.get().setHasSecureContent();
 
