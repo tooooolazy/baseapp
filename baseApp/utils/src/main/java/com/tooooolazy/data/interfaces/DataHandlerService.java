@@ -3,6 +3,8 @@ package com.tooooolazy.data.interfaces;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.SearchCriteria;
@@ -57,4 +59,5 @@ public interface DataHandlerService<OR extends OnlineBaseResult> {
 	 */
 	public OR getData(String dataType, UserBean user, boolean blockIfUpdating, Map params, boolean requiresTransaction) throws Exception;
 
+	public JSONObject getMethodSecurityDefs();
 }

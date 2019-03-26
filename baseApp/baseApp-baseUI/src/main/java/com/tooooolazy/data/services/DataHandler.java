@@ -3,8 +3,11 @@ package com.tooooolazy.data.services;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 import com.tooooolazy.data.interfaces.AbstractDataHandler;
 import com.tooooolazy.data.interfaces.DataHandlerClient;
+import com.tooooolazy.data.interfaces.WsMethods;
 import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.UserBean;
@@ -15,6 +18,7 @@ import com.tooooolazy.services.client.DataHandlerClientImpl;
  * @author gpatoulas
  *.
  * @param <OR>
+ * @param <OP>
  */
 public abstract class DataHandler<OR extends OnlineBaseResult, OP extends OnlineBaseParams> extends AbstractDataHandler<OR, OP> {
 
@@ -54,4 +58,24 @@ public abstract class DataHandler<OR extends OnlineBaseResult, OP extends Online
 	}
 	protected abstract OP createOnlineParams();
 
+	@Override
+	public JSONObject getMethodSecurityDefs() {
+		Map<String, Object> params = new HashMap<String, Object>();
+		
+		try {
+			OR tor = getData(WsMethods.MSECLEVELDEFS, null, false, params);
+			if (tor != null) {
+				Object jfc = tor.getFailCode();
+				if (jfc != null) {
+					// TODO need to do something to avoid everything being visible!!!!
+				} else {
+					return tor.getAsJSON();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 }
