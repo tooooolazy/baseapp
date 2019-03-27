@@ -18,7 +18,10 @@ public abstract class UserController<UB extends UserBean<RE>, RE> implements Use
 	public UB login(Credentials credentials) throws Exception {
 		// TODO Auto-generated method stub
 //		getDataHandler().login( credentials );
-		return null;
+		UB ub = createUserBean(credentials);
+		ub.setCredentials(credentials);
+		// TODO get roles too and set them in UB
+		return ub;
 	}
 
 	@Override

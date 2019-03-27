@@ -22,4 +22,6 @@ public interface UserControllerService<RE, UB> {
 	public Object logout(Object userPK);
 
 	public List getUsers();
+
+	public UB createUserBean(Credentials credentials);
 }
