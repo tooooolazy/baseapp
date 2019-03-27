@@ -50,7 +50,7 @@ public class MainView extends BaseView {
 					
 					BaseUI.get().refreshLayout();
 
-					getUI().getNavigator().navigateTo(fragmentAndParameters);
+					getUI().getNavigator().navigateTo(fragmentAndParameters != null ? fragmentAndParameters : "");
 				}
 				
 				@Override

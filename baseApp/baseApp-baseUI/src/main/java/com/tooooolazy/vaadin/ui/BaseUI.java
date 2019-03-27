@@ -223,6 +223,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	 * Refreshes Layout and recreates menu items. Should be called after login/logout in order to show/hide secure items
 	 */
 	public void refreshLayout() {
+		setLocale( getLocale() );
 		getAppLayout().refresh();
 		getAppLayout().clearStructureMaps();
 		getAppLayout().createMenuItems( BaseUI.get().getViewDefinitions(), getNavigator() );
