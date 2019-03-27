@@ -7,6 +7,13 @@ import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 
 public class MainView extends BaseView {
 
+	public MainView() {
+		super();
+	}
+	public MainView(String fragmentAndParameters) {
+		super();
+		this.fragmentAndParameters = fragmentAndParameters;
+	}
 	@Override
 	protected boolean showTitleInContent() {
 		// TODO Auto-generated method stub
@@ -33,15 +40,17 @@ public class MainView extends BaseView {
     }
 	@Override
 	protected void addContent() {
-		// TODO Auto-generated method stub
 		if ( BaseUI.get().hasSecureContent() && BaseUI.get().getCurrentUser() == null ) {
 			
 			LoginComponent lc = new LoginComponent( new LoginButtonListener() {
 				
 				@Override
 				protected void loginSuccess(Object u) {
-					// TODO Auto-generated method stub
+					getSession().setAttribute(BaseUI.SESSION_USER_KEY, u);
 					
+					BaseUI.get().refreshLayout();
+
+					getUI().getNavigator().navigateTo(fragmentAndParameters);
 				}
 				
 				@Override

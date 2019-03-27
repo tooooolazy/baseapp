@@ -24,9 +24,11 @@ import com.tooooolazy.data.ServiceGenerator;
 import com.tooooolazy.data.ServiceLocator;
 import com.tooooolazy.data.interfaces.DataHandlerService;
 import com.tooooolazy.data.interfaces.SecurityControllerService;
+import com.tooooolazy.data.interfaces.UserControllerService;
 import com.tooooolazy.data.interfaces.WsMethods;
 import com.tooooolazy.data.services.DataHandler;
 import com.tooooolazy.data.services.SecurityController;
+import com.tooooolazy.data.services.UserController;
 import com.tooooolazy.data.services.beans.JobFailureCode;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.UserBean;
@@ -38,6 +40,7 @@ import com.tooooolazy.vaadin.exceptions.InvalidBaseAppParameterException;
 import com.tooooolazy.vaadin.layout.ResponsiveMenuLayout;
 import com.tooooolazy.vaadin.views.BaseView;
 import com.tooooolazy.vaadin.views.ErrorView;
+import com.tooooolazy.vaadin.views.MainView;
 import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.navigator.Navigator;
@@ -65,6 +68,7 @@ import com.vaadin.ui.JavaScriptFunction;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
 import elemental.json.Json;
@@ -83,7 +87,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 
 	protected final Logger logger = LoggerFactory.getLogger(UI.class.getName());
 
-	protected final String SESSION_USER_KEY = "_user";
+	public static final String SESSION_USER_KEY = "_user";
 
 	protected L root;
 	protected boolean hasSecureContent;
@@ -214,6 +218,16 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 			}
 		});
 	}
+
+	/**
+	 * Refreshes Layout and recreates menu items. Should be called after login/logout in order to show/hide secure items
+	 */
+	public void refreshLayout() {
+		getAppLayout().refresh();
+		getAppLayout().clearStructureMaps();
+		getAppLayout().createMenuItems( BaseUI.get().getViewDefinitions(), getNavigator() );
+	}
+
 	public void checkOpenUserTabs() {
 		if ( applicationLevelTracker != null ) {
 			if ( !getAllowsMultipleTabs() && applicationLevelTracker.getUserTabs() > 1 ) {
@@ -276,6 +290,9 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 			return createDataHandler();
 		if (srvClass.equals(SecurityControllerService.class))
 			return createSecurityController();
+		if (srvClass.equals(UserControllerService.class))
+			return createUserController();
+
 		if (srvClass.equals(RestClient.class))
 			return createRestClient();
 
@@ -290,6 +307,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	 * @return a subclass of {@link SecurityController} where generics (and helper methods) are defined!
 	 */
 	protected abstract SecurityController createSecurityController();
+	protected abstract UserController createUserController();
 	protected RestClient createRestClient() {
 		return new RestClient();
 	}
@@ -494,89 +512,100 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 		// We use a view change handler to ensure the user is always redirected
 		// to the login view if the user is not logged in.
 		//
-//		vcl = new ViewChangeListener() {
-//			@Override
-//			public boolean beforeViewChange(ViewChangeEvent event) {
-//				if (event.getOldView() != null) {
-//					if (!((BaseView)event.getOldView()).verifyExit(event))
-//						return false;
-//				}
-//				// remove any open popup windows when changing views for two reasons:
-//				// - language will not change (assuming toggle language button is presses, which triggers a view change event)
-//				// - the new view would most likely shouldn't have these popups! (if we don't mind keeping the popups we should use a custom Window class where we define all the extra functionality we need and can use to decide whether to close it or not )
-//				Window[] ws = getUI().getWindows().toArray(new Window[]{});
-//				for (Window w : ws)
-//					removeWindow(w);
-//
-//				// Check if a user has logged in
-//				boolean isLoggedIn = getUserObject() != null;
-//				boolean isLoginView = event.getNewView() instanceof DefaultLoginView;
-//				boolean isSecureView = isViewSecure(event.getNewView().getClass());
-//				boolean isViewHidden = isViewHidden(event.getNewView().getClass());
-//				String fragmentAndParameters = event.getViewName();
-//
-//				if (isViewHidden)
-//					fragmentAndParameters = "";
-//
+		vcl = new ViewChangeListener() {
+			@Override
+			public boolean beforeViewChange(ViewChangeEvent event) {
+				if (event.getOldView() != null) {
+					if (!((BaseView)event.getOldView()).verifyExit(null))
+						return false;
+				}
+				// remove any open popup windows when changing views for two reasons:
+				// - language will not change (assuming toggle language button is presses, which triggers a view change event)
+				// - the new view would most likely shouldn't have these popups! (if we don't mind keeping the popups we should use a custom Window class where we define all the extra functionality we need and can use to decide whether to close it or not )
+				Window[] ws = getUI().getWindows().toArray(new Window[]{});
+				for (Window w : ws)
+					removeWindow(w);
+
+				// Check if a user has logged in
+				boolean isLoggedIn = getCurrentUser() != null;
+				boolean isLoginView = event.getNewView() instanceof MainView;
+				boolean isSecureView = isViewSecure(event.getNewView().getClass());
+				String fragmentAndParameters = event.getViewName();
+
 //				if (event.getNewView() instanceof ErrorView && (event.getOldView() instanceof ErrorView || getError() == null)) {
 //					getNavigator().navigateTo( getMainView( false ) );
 //					return false;
 //				}
-//				if (!isLoggedIn && !isLoginView) {
-//					logger.info("Not logged in...");
-//					if (isSecureView) {
-//						logger.info("Trying to go to a secure view: " + event.getNewView().getClass().getSimpleName());
-////						Notification.show(Messages.getString(getClass(), "permission.denied"), Type.ERROR_MESSAGE);
-//						// Redirect to login view always if a user has not yet
-//						// logged in AND a secured view is requested
-//	            		if (event.getParameters() != null) {
-//	            			fragmentAndParameters += "/";
-//	            			fragmentAndParameters += event.getParameters();
-//	            		}
-//	            		goToLogin(fragmentAndParameters);
-//	            		return false;
-//					} else {
-//						logger.info("Trying to go to a NON secure view: " + event.getNewView().getClass().getSimpleName());
-//						if (event.getOldView() != null)
-//							((TlzView)event.getOldView()).exit(event);
-//
-//						return true;
-//					}
+				if (!isLoggedIn && !isLoginView) {
+					logger.info("Not logged in...");
+					if (isSecureView) {
+						logger.info("Trying to go to a secure view: " + event.getNewView().getClass().getSimpleName());
+//						Notification.show(Messages.getString(getClass(), "permission.denied"), Type.ERROR_MESSAGE);
+						// Redirect to login view always if a user has not yet
+						// logged in AND a secured view is requested
+	            		if (event.getParameters() != null) {
+	            			fragmentAndParameters += "/";
+	            			fragmentAndParameters += event.getParameters();
+	            		}
+	            		goToLogin(fragmentAndParameters);
+	            		return false;
+					} else {
+						logger.info("Trying to go to a NON secure view: " + event.getNewView().getClass().getSimpleName());
+						if (event.getOldView() != null)
+							UI.getCurrent().setPollInterval(-1);
+//							(event.getOldView()).exit(event);
+
+						return true;
+					}
 //				} else if (isLoggedIn && isLoginView) {
 //					logger.info("Logged in and trying to go to login view. Redirecting to main View");
 //					// If someone tries to access to login view while logged in,
 //					// then cancel
 //					getNavigator().navigateTo( getMainView( false ) );
 //					return false;
-//				}
-//				if (isLoggedIn && !hasUserPermission("enter", event.getNewView().getClass(), null)) {
-//					if (event.getOldView() == null)
-//						getNavigator().navigateTo( "" );
-//					else
-//					if (event.getOldView().getClass().equals( event.getNewView().getClass() ))
-//						getNavigator().navigateTo( "" );
-//					else
-//						getNavigator().navigateTo( ((DefaultBaseView)event.getOldView()).getThisView() );
-//					Notification.show(Messages.getString(((DefaultBaseView)event.getNewView()).getClass(), "title"), "\n" + Messages.getString(getClass(), "page.permission.denied"), Type.ERROR_MESSAGE);
-//					
-//					return false;
-//				}
-//
-//				logger.info("Logged in (or not required). Will go to view " + event.getNewView().getClass().getSimpleName());
-//				if (event.getOldView() != null) {
-//					((DefaultBaseView)event.getNewView()).setFrom(event.getOldView());
-//					((TlzView)event.getOldView()).exit(event);
-//				}
-//
-//				return true;
-//			}
-//
-//			@Override
-//			public void afterViewChange(ViewChangeEvent event) {
-//
-//			}
-//		};
-//		getNavigator().addViewChangeListener( vcl );
+				}
+				if (isLoggedIn && !hasUserPermission("enter", event.getNewView().getClass(), null)) {
+					if (event.getOldView() == null)
+						getNavigator().navigateTo( "" );
+					else
+					if (event.getOldView().getClass().equals( event.getNewView().getClass() ))
+						getNavigator().navigateTo( "" );
+					else
+						getNavigator().navigateTo( ((BaseView)event.getOldView()).getThisView() );
+					Notification.show(Messages.getString(((BaseView)event.getNewView()).getClass(), "title"), "\n" + Messages.getString(getClass(), "page.permission.denied"), Type.ERROR_MESSAGE);
+					
+					return false;
+				}
+
+				logger.info("Logged in (or not required). Will go to view " + event.getNewView().getClass().getSimpleName());
+				if (event.getOldView() != null) {
+//					((BaseView)event.getNewView()).setFrom(event.getOldView());
+//					(event.getOldView()).exit(event);
+					UI.getCurrent().setPollInterval(-1);
+				}
+
+				return true;
+			}
+
+			@Override
+			public void afterViewChange(ViewChangeEvent event) {
+
+			}
+		};
+		getNavigator().addViewChangeListener( vcl );
+	}
+	/**
+	 * Just shows login page. DOES NOT modify URL. Use <code>getUI().getNavigator().navigateTo</code> for URL to change.
+	 * @param fragmentAndParameters
+	 */
+	public void goToLogin(String fragmentAndParameters) {
+		getNavigator().getDisplay().showView( getLoginView(fragmentAndParameters) );
+	}
+	protected BaseView getLoginView(String fragmentAndParameters) {
+		return new MainView(fragmentAndParameters);
+	}
+	protected String getMainView( boolean fatalError ) {
+		return "";
 	}
 
 	protected abstract Class getMainViewClass();
@@ -907,5 +936,11 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 		}
 
 		return true;
+	}
+	protected boolean isViewSecure(Class view) {
+		UB ub = getCurrentUser();//(UB)(getSession().getAttribute("user"));
+		if (ub == null)
+			ub = getDummyUser();
+		return ServiceLocator.getServices().getSecurityController().isSecure(ub, "enter", view);
 	}
 }

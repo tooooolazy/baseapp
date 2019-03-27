@@ -15,6 +15,7 @@ import com.dpapp.ws.beans.OnlineResult;
 import com.dpapp.ws.beans.RoleEnum;
 import com.tooooolazy.data.services.DataHandler;
 import com.tooooolazy.data.services.SecurityController;
+import com.tooooolazy.data.services.UserController;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.resources.Resources;
 import com.tooooolazy.vaadin.ui.BaseAppServlet;
@@ -91,6 +92,13 @@ public class DpAppUI extends BaseUI<DpAppLayout, DpAppUserBean, OnlineResult, Jo
 			public RoleEnum getNotLoggedInRole() {
 				return RoleEnum.NOT_LOGGED_IN;
 			}
+		};
+	}
+
+	@Override
+	protected UserController<DpAppUserBean, RoleEnum> createUserController() {
+		return new UserController<DpAppUserBean, RoleEnum>() {
+			
 		};
 	}
 

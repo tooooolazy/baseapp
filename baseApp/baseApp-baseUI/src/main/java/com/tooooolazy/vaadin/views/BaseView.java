@@ -8,7 +8,6 @@ import com.tooooolazy.vaadin.ui.AppLayout;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewBeforeLeaveEvent;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -18,11 +17,12 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
 public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean> extends CustomComponent implements View {
 	protected final Logger logger = LoggerFactory.getLogger(BaseView.class.getName());
+
+	protected String fragmentAndParameters;
 
 	protected VerticalLayout vl;
 
@@ -135,15 +135,6 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean>
 		if (verifyExit(event)) {
 			event.navigate();
 
-			Navigator navigator = (Navigator) event.getSource();
-			// remove any open popup windows when changing views for two reasons:
-			// - language will not change (assuming toggle language button is presses, which triggers a view change event)
-			// - the new view would most likely shouldn't have these popups! (if we don't mind keeping the popups we should use a custom Window class where we define all the extra functionality we need and can use to decide whether to close it or not )
-
-			// UI seems to be null over here
-			Window[] ws = navigator.getUI().getWindows().toArray(new Window[] {});
-			for (Window w : ws)
-				navigator.getUI().removeWindow(w);
 		} else
 			logger.info("Cannot leave from " + getClass().getSimpleName());
 	}
@@ -155,7 +146,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean>
 	 * @return - false if Navigation should NOT take place!! (ie user needs to save
 	 *         data first)
 	 */
-	protected boolean verifyExit(ViewBeforeLeaveEvent event) {
+	public boolean verifyExit(ViewBeforeLeaveEvent event) {
 		boolean canExit = true;
 		return canExit;
 	}
@@ -203,5 +194,33 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean>
 
 	public void onInactivity() {
 
+	}
+
+	public void performLogout() {
+		if (!verifyExit(null))
+			return;
+
+		onInactivity(); // should also trigger auto save!
+
+		try {
+			Class[] types = new Class[] {Object.class};
+			UB user = (UB) BaseUI.get().getCurrentUser();
+
+			cleanupUser( user );
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// "Logout" the user
+		getSession().setAttribute(BaseUI.SESSION_USER_KEY, null);
+		getUI().setCredentials(null);
+		logger.info("log out clicked...");
+
+		// Refresh this view, should redirect to login view
+		getUI().refreshLayout();
+		getUI().getNavigator().navigateTo("");
+	}
+	protected void cleanupUser(UB user) {
+		
 	}
 }

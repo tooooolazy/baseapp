@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 
 import com.tooooolazy.data.services.DataHandler;
 import com.tooooolazy.data.services.SecurityController;
+import com.tooooolazy.data.services.UserController;
 import com.tooooolazy.data.services.beans.JobFailureCode;
 import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
@@ -67,6 +68,13 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>, Onli
 			public RoleEnum getNotLoggedInRole() {
 				return RoleEnum.NOT_LOGGED_IN;
 			}
+		};
+	}
+
+	@Override
+	protected UserController createUserController() {
+		return new UserController<UserBean<RoleEnum>, RoleEnum>() {
+			
 		};
 	}
 

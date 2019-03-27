@@ -243,8 +243,8 @@ public abstract class TopAndLeftMenuLayout extends GridLayout implements AppLayo
 	protected void removeHeader() {
 		// removals should match additions in 'addHeader'
 		removeComponent( 0,0 );
-		removeComponent( 1,0 );
-//		removeComponent( 1,1 );
+		removeComponent( 0,1 );
+		headerTitle = new HorizontalLayout();
 	}
 
 	@Override

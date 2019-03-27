@@ -1,20 +1,19 @@
 package com.tooooolazy.vaadin.components.listeners;
 
+import com.tooooolazy.data.ServiceLocator;
+import com.tooooolazy.data.interfaces.UserControllerService;
 import com.tooooolazy.vaadin.components.LoginComponent;
-import com.tooooolazy.vaadin.ui.BaseUI;
-import com.vaadin.ui.UI;
 
 public abstract class LoginButtonListener extends InputComponentButtonListener {
-//	protected UserControllerService uc;
+	protected UserControllerService uc;
 
 	@Override
 	protected void init() {
-//		uc = ((BaseUI)UI.getCurrent()).getUsersController();
+		uc = ServiceLocator.getServices().getUserController();
 	}
 	@Override
 	protected Object submit() throws Exception {
-//		return uc.login(((LoginComponent)ic).getBean());
-		return null;
+		return uc.login(((LoginComponent)ic).getBean());
 	}
 	@Override
 	protected void onError(Exception e) {
