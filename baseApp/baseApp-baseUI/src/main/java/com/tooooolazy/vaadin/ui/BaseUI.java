@@ -944,4 +944,17 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 			ub = getDummyUser();
 		return ServiceLocator.getServices().getSecurityController().isSecure(ub, "enter", view);
 	}
+
+	public void cleanupUser(UB user) {
+		Map params = new HashMap();
+		try {
+			params.put("autoLogout", false);
+			OR or = (OR) ServiceLocator.getServices().getDataHandler()
+					.getData(WsMethods.LOGOUT_USER, user, false, params, true);
+			System.out.println( or.getFailCode() );
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

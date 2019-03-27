@@ -1,5 +1,12 @@
 package com.tooooolazy.vaadin.views;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.tooooolazy.data.ServiceLocator;
+import com.tooooolazy.data.interfaces.DataHandlerService;
+import com.tooooolazy.data.interfaces.WsMethods;
+import com.tooooolazy.data.services.beans.OnlineResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.SearchCriteria;
@@ -221,6 +228,6 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean>
 		getUI().getNavigator().navigateTo("");
 	}
 	protected void cleanupUser(UB user) {
-		
+		BaseUI.get().cleanupUser(user);
 	}
 }
