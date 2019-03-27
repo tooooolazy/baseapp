@@ -19,16 +19,11 @@ import com.tooooolazy.util.Messages;
 import com.tooooolazy.vaadin.resources.Resources;
 import com.tooooolazy.vaadin.ui.BaseAppServlet;
 import com.tooooolazy.vaadin.ui.BaseUI;
-import com.tooooolazy.vaadin.ui.MenuItemKeys;
 import com.tooooolazy.vaadin.views.MainView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.Resource;
 import com.vaadin.server.VaadinRequest;
-
-import elemental.json.Json;
-import elemental.json.JsonArray;
-import elemental.json.JsonObject;
 
 /**
  * DpAppUserBean, OnlineResult, JobFailureCode are all defined in DpApp-common module

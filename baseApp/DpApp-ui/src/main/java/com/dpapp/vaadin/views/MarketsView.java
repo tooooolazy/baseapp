@@ -2,15 +2,16 @@ package com.dpapp.vaadin.views;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.dpapp.data.beans.MarketBean;
 import com.dpapp.data.beans.MarketDataBean;
-import com.dpapp.data.beans.MarketSectionBean;
 import com.dpapp.vaadin.components.MarketDataGrid;
-import com.dpapp.vaadin.components.MarketsGrid;
 import com.dpapp.vaadin.ui.DpAppUI;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tooooolazy.data.ServiceLocator;
+import com.tooooolazy.services.client.RestClient;
 import com.tooooolazy.vaadin.views.BaseView;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.HorizontalSplitPanel;
@@ -36,7 +37,9 @@ public class MarketsView extends BaseView {
 		// TODO Auto-generated method stub
 //		MarketsGrid mg = new MarketsGrid();
 //		mg.setSizeFull();
-
+		RestClient rc = (RestClient)ServiceLocator.get().lookupSrv(RestClient.class);
+		String data = rc.getData("http://40.114.226.148:8090/deepair/metrics/getMarketWeekProductInfo?marketCategory=ROUTE&departureWeek=16&departureYear=2019");
+		
 		MarketDataGrid mdg = new MarketDataGrid();
 		mdg.setSizeFull();
 
@@ -60,12 +63,11 @@ public class MarketsView extends BaseView {
 		DpAppUI.get().addIfHasAccess("enter", MarketBean.class, hl, vl);
 
 		List<MarketDataBean> marketsData = new ArrayList<>();
-		String str = "{\"MarketCategory\":\"ROUTE\",\"Market\":\"NAP-LPA\",\"DepartureTimeBucket\":\"MORNING\",\"ProductCategory\":\"ANCILLARIES\",\"Product\":\"BAGS\",\"DepartureWeek\":16,\"DepartureYear\":2019,\"Active\":true,\"MarketMetrics\":{\"CurrentShopNumber\":2,\"IntakeShopNumberOneWeek\":1,\"CurrentRevenue\":0.0,\"IntakeRevenueOneWeek\":0.0,\"CurrentOrderNumber\":0,\"IntakeOrderNumberOneWeek\":0},\"MarketMetricsDeepair\":{\"CurrentShopNumber\":0,\"IntakeShopNumberOneWeek\":0,\"CurrentRevenue\":0.0,\"IntakeRevenueOneWeek\":0.0,\"CurrentOrderNumber\":0,\"IntakeOrderNumberOneWeek\":0}},{\"MarketCategory\":\"ROUTE\",\"Market\":\"PMI-LPA\",\"DepartureTimeBucket\":\"MORNING\",\"ProductCategory\":\"ANCILLARIES\",\"Product\":\"BAGS\",\"DepartureWeek\":16,\"DepartureYear\":2019,\"Active\":true,\"MarketMetrics\":{\"CurrentShopNumber\":5,\"IntakeShopNumberOneWeek\":1,\"CurrentRevenue\":0.0,\"IntakeRevenueOneWeek\":0.0,\"CurrentOrderNumber\":0,\"IntakeOrderNumberOneWeek\":0},\"MarketMetricsDeepair\":{\"CurrentShopNumber\":0,\"IntakeShopNumberOneWeek\":0,\"CurrentRevenue\":0.0,\"IntakeRevenueOneWeek\":0.0,\"CurrentOrderNumber\":0,\"IntakeOrderNumberOneWeek\":0}}";
+		String str = "[{\"MarketCategory\":\"ROUTE\",\"Market\":\"NAP-LPA\",\"DepartureTimeBucket\":\"MORNING\",\"ProductCategory\":\"ANCILLARIES\",\"Product\":\"BAGS\",\"DepartureWeek\":16,\"DepartureYear\":2019,\"Active\":true,\"MarketMetrics\":{\"CurrentShopNumber\":2,\"IntakeShopNumberOneWeek\":1,\"CurrentRevenue\":0.0,\"IntakeRevenueOneWeek\":0.0,\"CurrentOrderNumber\":0,\"IntakeOrderNumberOneWeek\":0},\"MarketMetricsDeepair\":{\"CurrentShopNumber\":0,\"IntakeShopNumberOneWeek\":0,\"CurrentRevenue\":0.0,\"IntakeRevenueOneWeek\":0.0,\"CurrentOrderNumber\":0,\"IntakeOrderNumberOneWeek\":0}},{\"MarketCategory\":\"ROUTE\",\"Market\":\"PMI-LPA\",\"DepartureTimeBucket\":\"MORNING\",\"ProductCategory\":\"ANCILLARIES\",\"Product\":\"BAGS\",\"DepartureWeek\":16,\"DepartureYear\":2019,\"Active\":true,\"MarketMetrics\":{\"CurrentShopNumber\":5,\"IntakeShopNumberOneWeek\":1,\"CurrentRevenue\":0.0,\"IntakeRevenueOneWeek\":0.0,\"CurrentOrderNumber\":0,\"IntakeOrderNumberOneWeek\":0},\"MarketMetricsDeepair\":{\"CurrentShopNumber\":0,\"IntakeShopNumberOneWeek\":0,\"CurrentRevenue\":0.0,\"IntakeRevenueOneWeek\":0.0,\"CurrentOrderNumber\":0,\"IntakeOrderNumberOneWeek\":0}}]";
 		ObjectMapper mapper = new ObjectMapper();
-		MarketDataBean mdb = null;
 		try {
-			mdb = mapper.readValue(str, MarketDataBean.class);
-			marketsData.add(mdb);
+			MarketDataBean[] mdbs = mapper.readValue(data, MarketDataBean[].class);
+			marketsData.addAll( Arrays.asList( mdbs ));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

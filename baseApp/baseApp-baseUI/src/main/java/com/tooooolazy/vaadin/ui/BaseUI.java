@@ -30,6 +30,7 @@ import com.tooooolazy.data.services.SecurityController;
 import com.tooooolazy.data.services.beans.JobFailureCode;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.UserBean;
+import com.tooooolazy.services.client.RestClient;
 import com.tooooolazy.util.Credentials;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.TLZMail;
@@ -275,6 +276,8 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 			return createDataHandler();
 		if (srvClass.equals(SecurityControllerService.class))
 			return createSecurityController();
+		if (srvClass.equals(RestClient.class))
+			return createRestClient();
 
 		return null;
 	}
@@ -287,6 +290,9 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	 * @return a subclass of {@link SecurityController} where generics (and helper methods) are defined!
 	 */
 	protected abstract SecurityController createSecurityController();
+	protected RestClient createRestClient() {
+		return new RestClient();
+	}
 
 	protected String getCurrentEnvironment() {
 		Map<String, Object> params = new HashMap<String, Object>();
