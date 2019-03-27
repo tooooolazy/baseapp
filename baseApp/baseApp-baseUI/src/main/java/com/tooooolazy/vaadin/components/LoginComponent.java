@@ -25,7 +25,7 @@ public class LoginComponent extends ForgotPasswordComponent {
 	}
 	public LoginComponent(Button.ClickListener listener, BaseView baseView) {
 		super(listener, baseView);
-		_class = LoginComponent.class; // override clas to use for messages!!
+		_class = LoginComponent.class; // override class to use for messages!!
 	}
 	@Override
 	protected void createBinder() {
