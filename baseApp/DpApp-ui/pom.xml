@@ -55,6 +55,11 @@
 			<artifactId>baseApp-baseUI</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>service-client</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 
 		<dependency>
