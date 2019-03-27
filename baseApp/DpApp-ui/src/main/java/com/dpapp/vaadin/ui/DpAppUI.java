@@ -74,7 +74,7 @@ public class DpAppUI extends BaseUI<DpAppLayout, DpAppUserBean, OnlineResult, Jo
 				// TODO
 //				sb.append("select mld.rolecode, mld.method_name, tc.class_name, mld.allow, mld.DESCRIPTION from " + getSchema() + ".MSECLEVELDEFS mld inner join " + getSchema() + ".TYPECLASS tc on mld.class_id=tc.id");
 
-				ja.put( new JSONArray("[1, 'enter', 'com.dpapp.vaadin.views.OverviewView', 0, '']") );
+//				ja.put( new JSONArray("[1, 'enter', 'com.dpapp.vaadin.views.OverviewView', 0, '']") );
 				return jo;
 			}
 		};
