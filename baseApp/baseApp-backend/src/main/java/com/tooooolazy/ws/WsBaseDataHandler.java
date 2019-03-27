@@ -75,7 +75,7 @@ public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extend
 			try {
 				m = dataRepository.getClass().getDeclaredMethod(methodName, Map.class);
 			} catch (Exception e) {
-				LogManager.getLogger().error("methodName: " + methodName + " not found. Looking in Base class", e);
+				LogManager.getLogger().error("methodName: " + methodName + " not found. Looking in Base class");
 				m = dataRepository.getClass().getSuperclass().getDeclaredMethod(methodName, Map.class);
 			}
 			tor.setResultObject(
