@@ -20,7 +20,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
 public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean> extends CustomComponent implements View {
-	protected final Logger logger = LoggerFactory.getLogger(BaseView.class.getName());
+	protected final Logger logger = LoggerFactory.getLogger( getClass() );
 
 	protected String fragmentAndParameters;
 
