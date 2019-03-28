@@ -158,6 +158,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 //					_cl.addComponent(vl, getAlternateMainContentLocation() );
 //				}
 
+				// needed because 'BaseUI.get()' will not work as expected inside the thread below and the methods called within it
 				BaseUI ui = BaseUI.get();
 				ui.setPollInterval(200); 
 
@@ -174,7 +175,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 
 									handleGeneratedContent(c, getGeneratedContentContainer(), ui );
 				                }
-				            });								
+				            });
 						} catch (NullPointerException e) { // TEP-1164
 							// seems likes we should ignore this exception as it is thrown when we click fast enough on another page link (before current one is loaded)
 							// this lead to setting PollInterval to -1 causing the view to never be updated...
@@ -185,9 +186,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 							handleGenricException(e, ui);
 							
 							c = createErrorContent( ui, (JFC) ui.getServiceFailureCode() );
-//							handleGeneratedContent(c, getGeneratedContentContainer());
-							
-							ui.setPollInterval(-1);
+							handleGeneratedContent(c, getGeneratedContentContainer(), ui);
 						}
 					}
 				};
