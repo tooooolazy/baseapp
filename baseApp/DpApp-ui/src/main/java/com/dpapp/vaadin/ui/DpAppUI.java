@@ -269,4 +269,19 @@ public class DpAppUI extends BaseUI<DpAppLayout, DpAppUserBean, OnlineResult, Jo
 	public DpAppUserBean getDummyUser() {
 		return new DpAppUserBean();
 	}
+
+	@Override
+	public String getFailureCode(JobFailureCode jfc) {
+		return jfc.name();
+	}
+
+	@Override
+	public int getFailureCodeValue(JobFailureCode jfc) {
+		return jfc.getValue();
+	}
+
+	@Override
+	public JobFailureCode getServiceFailureCode() {
+		return JobFailureCode.SERVICE_PROBLEM;
+	}
 }

@@ -957,4 +957,17 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 			e.printStackTrace();
 		}
 	}
+
+	public void notifyPermissionDenied() {
+		Notification.show(Messages.getString("permission.denied"), Type.WARNING_MESSAGE);
+	}
+
+	public abstract String getFailureCode(JFC jfc);
+	public abstract int getFailureCodeValue(JFC jfc);
+	public abstract JFC getServiceFailureCode();
+
+    public void setPollInterval(int intervalInMillis) {
+    	logger.info("Setting poll interval to: " + intervalInMillis);
+    	super.setPollInterval(intervalInMillis);
+    }
 }

@@ -1,25 +1,7 @@
 package com.dpapp.vaadin.views;
 
-import com.tooooolazy.vaadin.views.BaseView;
 
-public class OverviewView extends BaseView {
+public class OverviewView extends DpAppBaseView {
 
-	@Override
-	protected boolean showTitleInContent() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	protected void addJavascriptFunctions() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected Class getCriteriaClass() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

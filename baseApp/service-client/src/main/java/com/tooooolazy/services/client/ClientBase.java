@@ -47,9 +47,15 @@ public abstract class ClientBase {
 	    };
 
         ClientConfig c = new ClientConfig().applications( app );
-        c.connectTimeout(500000);
-        c.readTimeout(500000);
+        c.connectTimeout(getConnectionTimeout());
+        c.readTimeout(getReadTimeout());
         client = new RestClient(c); 
+	}
+	protected int getConnectionTimeout() {
+		return 500000;
+	}
+	protected int getReadTimeout() {
+		return 500000;
 	}
     /**
      * Content type for requests and responses.

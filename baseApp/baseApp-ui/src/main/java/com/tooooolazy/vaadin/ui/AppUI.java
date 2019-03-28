@@ -12,6 +12,7 @@ import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.RoleEnum;
 import com.tooooolazy.data.services.beans.UserBean;
+import com.tooooolazy.util.Credentials;
 import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.TLZUtils;
 import com.tooooolazy.vaadin.layout.ResponsiveMenuLayout;
@@ -74,6 +75,12 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>, Onli
 	@Override
 	protected UserController createUserController() {
 		return new UserController<UserBean<RoleEnum>, RoleEnum>() {
+
+			@Override
+			public UserBean<RoleEnum> createUserBean(Credentials credentials) {
+				// TODO Auto-generated method stub
+				return null;
+			}
 			
 		};
 	}
@@ -144,5 +151,20 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>, Onli
 				// TODO Auto-generated method stub
 				return false;
 			}};
+	}
+
+	@Override
+	public String getFailureCode(JobFailureCode jfc) {
+		return jfc.name();
+	}
+
+	@Override
+	public int getFailureCodeValue(JobFailureCode jfc) {
+		return jfc.getValue();
+	}
+
+	@Override
+	public JobFailureCode getServiceFailureCode() {
+		return JobFailureCode.SERVICE_PROBLEM;
 	}
 }
