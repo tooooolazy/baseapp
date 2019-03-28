@@ -45,7 +45,7 @@ public class UserAccount implements java.io.Serializable {
 	private User user;
 	@Column(name = "USERNAME", unique = true, nullable = false, length = 30)
 	private String username;
-	@Column(name = "PASSWORD", nullable = false, length = 100)
+	@Column(name = "PASSWORD", nullable = true, length = 100) // in case login takes place with LDAP or something like it
 	private String password;
 	@Column(name = "GUID", length = 60)
 	private String guid;

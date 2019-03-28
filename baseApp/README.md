@@ -15,13 +15,18 @@ The project consists of the following modules:
 - baseApp-addon: addon module, custom server and client side code 
 - baseApp-baseUI: base application module that all main application ui modules should be based uppon (eg. baseApp-ui and DpApp-ui). It supports the following:
   - multilingual content
+  - Logo and Application title in header
   - dynamic menus
   - login/logout
   - multiple user roles and access rights
   - data retrieval from multiple WS
   - static multilingual content using html templates located in theme/layouts folder
 - service-client: a simple Rest client to be used by Application UI modules to retrieve data from WS. It implements an abstract WS interface with only 2 methods: 'execute' and 'executeUpdate'. Their difference is that the latter will use a 'transaction'. 
-- baseApp-backend: base backend module, contains the base classes for handling WS calls. It implements the same WS interface as the service-client above. Each App ui should have its own 'backend' project.
+- baseApp-backend: base backend module, contains the base classes for handling WS calls. It implements the same WS interface as the service-client above. Each App ui should have its own 'backend' project. Also it contains default Entity objects. In order to be used they must be included in 'persistence.xml' of the related 'xxcx-backend' module. The entities are:
+  - Users (User, UserAccount, UserRole, AccountRole)
+  - Application Parameters (ApplicationParameter)
+  - Locking itmes (AppLock)
+  - User Session monitoring (AppSession)
 - utils***: a set of helper modules used by all other modules
 
 - baseApp-ui: a main application module
