@@ -4,6 +4,9 @@ import java.util.Properties;
 
 import javax.servlet.annotation.WebServlet;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.tooooolazy.data.services.DataHandler;
 import com.tooooolazy.data.services.SecurityController;
 import com.tooooolazy.data.services.UserController;
@@ -134,6 +137,28 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>, Onli
 	@Override
 	protected boolean getAllowsMultipleTabs() {
 		return true;
+	}
+
+	@Override
+	protected JSONArray retrieveViewClasses() {
+		JSONArray ja = new JSONArray();
+
+		ja.put( new JSONObject("{'ID':1, 'groupId':1,'VALUE':'com.tooooolazy.vaadin.views.AboutView'}") );
+		
+		return ja;
+	}
+	/**
+	 * overridden to avoid WS call
+	 * @see com.tooooolazy.vaadin.ui.BaseUI#retrieveMenu()
+	 */
+	protected JSONArray retrieveMenu() {
+		JSONArray ja = new JSONArray();
+
+//		_ja = new JSONArray("[pid, 1, cid, subtitle, 1]");
+		int so =1;
+		ja.put( new JSONArray("[1, 1, 1, 0, " + so++ +"]") );
+
+		return ja;
 	}
 
 	@Override

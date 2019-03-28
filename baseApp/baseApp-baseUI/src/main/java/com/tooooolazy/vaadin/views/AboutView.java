@@ -5,7 +5,6 @@ import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.SearchCriteria;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.CustomLayout;
 
 /**
  * Assumes that a custom Layout file exists in Theme folder '/layouts' in the form of 'AboutView_[locale_lang].html' eg. AbountView_en.html
