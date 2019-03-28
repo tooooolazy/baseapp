@@ -13,7 +13,13 @@ The project consists of the following modules:
 
 - parent project: common metadata and configuration
 - baseApp-addon: addon module, custom server and client side code 
-- baseApp-baseUI: base application module that all main application ui modules should be based uppon (eg. baseApp-ui and DpApp-ui).
+- baseApp-baseUI: base application module that all main application ui modules should be based uppon (eg. baseApp-ui and DpApp-ui). It supports the following:
+  - multilingual content
+  - dynamic menus
+  - login/logout
+  - multiple user roles and access rights
+  - data retrieval from multiple WS
+  - static multilingual content using html templates located in theme/layouts folder
 - service-client: a simple Rest client to be used by Application UI modules to retrieve data from WS. It implements an abstract WS interface with only 2 methods: 'execute' and 'executeUpdate'. Their difference is that the latter will use a 'transaction'. 
 - baseApp-backend: base backend module, contains the base classes for handling WS calls. It implements the same WS interface as the service-client above. Each App ui should have its own 'backend' project.
 - utils***: a set of helper modules used by all other modules
@@ -37,9 +43,10 @@ Workflow
   - replace with 'VaadinServlet' with 'BaseAppServlet'
   - create an 'AppLayout' class that implements 'AppLayout' interface and use it in UI class as generic along with a UserBean class. An existing Layout class from baseApp-baseUI can be used as base. 
   - add and implement abstract methods from BaseUI
+  - create a class that extends BaseView that will be the base for all application Views. This will help locate abstract methods that need to be implemented and know what will need to be overridden to make everything work. Remember to set Generics defined in BaseView. 
   - add property bundle files in resources folder that match UI's class name and add related static code from BaseUI to load them.
   - Copy (if needed) styles from baseTheme.scss from one of the demo UI projects.
-  - override 'getViewDefinitions' in UI class and add menu structure. super() provides an example. In time the override will not be needed as data will be retrieved from a WS.
+  - override 'retrieveViewClasses' and 'retrieveMenu' in UI class and add menu structure. See example apps to get an idea. In time the override will not be needed as data will be retrieved from a WS.
   - in 'resources' folder create a 'config' folder where configuration files will be placed that define the WS end points that UI will use. The end points should match the ones defined in service module described later on. The name of the files depend on environment variables and start with 'services-config-':
     - deploy.environment: eg 'LOCAL', 'DEV', 'TEST', 'PROD', etc
     - db.type: eg 'MSSQL2012', 'DB2', etc
