@@ -1,5 +1,9 @@
 package com.tooooolazy.vaadin.views;
 
+import com.tooooolazy.data.services.beans.OnlineBaseResult;
+import com.vaadin.ui.AbstractComponent;
+import com.vaadin.ui.Component;
+
 public class Dummy2View extends BaseView {
 
 	@Override
@@ -16,6 +20,24 @@ public class Dummy2View extends BaseView {
 
 	@Override
 	protected Class getCriteriaClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected void addSearchCriteria(AbstractComponent ac) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected Component createContent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected OnlineBaseResult[] getWSContents() {
 		// TODO Auto-generated method stub
 		return null;
 	}
