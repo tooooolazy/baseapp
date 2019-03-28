@@ -28,6 +28,7 @@ import com.tooooolazy.data.interfaces.UserControllerService;
 import com.tooooolazy.data.interfaces.WsMethods;
 import com.tooooolazy.data.services.DataHandler;
 import com.tooooolazy.data.services.SecurityController;
+import com.tooooolazy.data.services.ServicesContext;
 import com.tooooolazy.data.services.UserController;
 import com.tooooolazy.data.services.beans.JobFailureCode;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
@@ -171,7 +172,8 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 
 		initServiceGenerator();
 
-		getCurrentEnvironment();
+		getWsCurrentEnvironment();
+		getUiCurrentEnvironment();
 
 		setupNavigator();
 
@@ -313,7 +315,10 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 		return new RestClient();
 	}
 
-	protected String getCurrentEnvironment() {
+	protected String getUiCurrentEnvironment() {
+		return ServicesContext.getEnvironment();
+	}
+	protected String getWsCurrentEnvironment() {
 		Map<String, Object> params = new HashMap<String, Object>();
 		try {
 //			OnlineResult<JobFailureCode> tor = ServiceLocator.getServices().getDataHandler().getData( OnlineDataType.ENVIRONMENT, null, false, params);

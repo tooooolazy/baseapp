@@ -57,7 +57,7 @@ public class ServicesContext {
     }
 
     public static synchronized void initialize() throws Exception {
-    	String env = System.getenv("pcb.deploy.environment");
+    	String env = getEnvironment();
     	String dbType = System.getenv("db.type");
     	if ( env == null)
     		env = "LOCAL";
@@ -66,6 +66,10 @@ public class ServicesContext {
     	System.out.println( "--> Environment: " + env );
     	
     	initializeContext( MessageFormat.format( CONFIG_FILE, env, dbType ) );
+    }
+    public static String getEnvironment() {
+    	String env = System.getenv("deploy.environment");
+    	return env;
     }
 	
 	public static void initializeContext( String propFileName ) throws Exception {
