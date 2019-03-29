@@ -13,6 +13,7 @@ import com.dpapp.vaadin.components.MarketDataGrid;
 import com.dpapp.ws.beans.OnlineResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tooooolazy.data.ServiceLocator;
+import com.tooooolazy.data.interfaces.OnlineKeys;
 import com.tooooolazy.services.client.RestClient;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
@@ -23,6 +24,7 @@ import com.vaadin.ui.VerticalLayout;
 
 public class MarketsView extends DpAppBaseView {
 
+	protected MarketDataGrid mdg;
 
 	@Override
 	protected Class getCriteriaClass() {
@@ -45,7 +47,7 @@ public class MarketsView extends DpAppBaseView {
 
 	@Override
 	protected Component createContent() {
-		MarketDataGrid mdg = new MarketDataGrid();
+		mdg = new MarketDataGrid();
 		mdg.setSizeFull();
 
 		HorizontalLayout hl = new HorizontalLayout();
@@ -66,7 +68,7 @@ public class MarketsView extends DpAppBaseView {
 		hl.setExpandRatio(hsp, 1f);
 
 		JSONObject wsData = get_DataElement(0);
-		JSONArray ja = wsData.optJSONArray("DATA");
+		JSONArray ja = wsData.optJSONArray(OnlineKeys.DATA);
 		String data = ja.toString();
 //		DpAppUI.get().addIfHasAccess("enter", MarketBean.class, hl, vl);
 

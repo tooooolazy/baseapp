@@ -49,4 +49,9 @@ public class DpAppBaseView<C extends SearchCriteria, E> extends BaseView<C, E, D
 		return null;
 	}
 
+	@Override
+	protected OnlineResult[] create_OR_array(int i) {
+		return new OnlineResult[i];
+	}
+
 }
