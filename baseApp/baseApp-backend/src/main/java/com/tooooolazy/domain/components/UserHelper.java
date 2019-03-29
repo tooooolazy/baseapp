@@ -12,9 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.tooooolazy.data.interfaces.OnlineKeys;
+import com.tooooolazy.data.services.beans.UserBean;
+import com.tooooolazy.data.services.beans.UserRoleBean;
 import com.tooooolazy.domain.UserRepository;
+import com.tooooolazy.util.Credentials;
 
-//@Component
+@Component
 public class UserHelper {
 
 	@PersistenceContext
@@ -26,7 +29,7 @@ public class UserHelper {
 	public Object getUserRoles(String username) {
 		JSONObject jo = getUserRolesJo(username);
 
-		return jo.toString();
+		return jo.toMap();
 	}
 	public JSONObject getUserRolesJo(String username) {
 		JSONObject jo = new JSONObject();
@@ -36,11 +39,8 @@ public class UserHelper {
 		Query q = userRepository.createUserRolesQuery(username!=null?username.toLowerCase():null);
 		List<Object[]> res = q.getResultList();
 		for (Object[] ur : res) {
-			JSONObject _jo = new JSONObject();
-			_jo.put(OnlineKeys.ID, ur[0].toString());
-			if (username == null)
-				_jo.put("username", ur[1].toString());
-			ja.put(_jo);
+			UserRoleBean urb = new UserRoleBean( (Integer)ur[0], (String)ur[1] );
+			ja.put( urb );
 		}
 
 		return jo;
@@ -50,7 +50,7 @@ public class UserHelper {
 	public Object getUsers() {
 		JSONObject jo = getUsersJo();
 
-		return jo.toString();
+		return jo.toMap();
 	}
 	public JSONObject getUsersJo() {
 		JSONObject jo = new JSONObject();
@@ -60,11 +60,25 @@ public class UserHelper {
 		Query q = userRepository.createUsersQuery();
 		List<Object[]> res = q.getResultList();
 		for (Object[] ur : res) {
-			JSONArray data = new JSONArray();
-			for (Object o : ur) {
-				data.put(o);
-			}
-			ja.put(data);
+			UserBean ub = new UserBean() {
+
+				@Override
+				protected boolean isGodRole(Object re) {
+					return false;
+				}
+
+				@Override
+				protected boolean isAdminRole(Object re) {
+					return false;
+				}
+				
+			};
+			ub.setUserCode( (Integer) ur[0] );
+			ub.setCredentials( new Credentials( (String)ur[1], null) );
+			ub.setLastName((String)ur[2]);
+			ub.setFirstName((String)ur[3]);
+
+			ja.put( ub );
 		}
 
 		return jo;

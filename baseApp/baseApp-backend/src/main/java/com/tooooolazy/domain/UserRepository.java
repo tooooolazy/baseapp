@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tooooolazy.domain.objects.User;
 
-//@Repository("userRepository")
+@Repository("userRepository")
 public class UserRepository extends AbstractRepository<User, Integer> {
 
 	public Query createUserRolesQuery(String username) {

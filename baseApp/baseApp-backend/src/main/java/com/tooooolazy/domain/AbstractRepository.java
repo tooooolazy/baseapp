@@ -24,13 +24,13 @@ public abstract class AbstractRepository<T, PK> {
     protected EntityManager entityManager;
 
 	/**
-	 * Retrieves DB schema from Environment parameters. If there is none default value 'PCB_USER1' is used
+	 * Retrieves DB schema from Environment parameters. If there is none default value '' is used
 	 * @return
 	 */
 	public String getSchema() {
 		String schema = env.getProperty("db.schema");
 		if (schema == null)
-			schema = "PCB_USER1";
+			schema = "";
 		return schema;
 	}
 	public String getConcatChar() {

@@ -34,7 +34,7 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
     @Autowired
 	protected PasswordManager passwordManager;
 
-//	@Autowired
+	@Autowired
 	protected UserHelper userHelper;
 
 	public Object getEnvironment(Map params) {
