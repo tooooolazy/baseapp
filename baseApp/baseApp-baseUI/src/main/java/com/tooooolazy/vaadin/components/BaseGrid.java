@@ -13,7 +13,7 @@ import com.vaadin.ui.components.grid.HeaderRow;
 public class BaseGrid<T> extends Grid<T> {
 
 	/**
-	 * Makes a Grid header fit two lines of text by adjusting css and assuming that only 1 line break (<br>) exist. In order to work the following style must exist in theme:
+	 * Makes a Grid header fit two lines of text by adjusting css and assuming that only 1 line break (br) exist. In order to work the following style must exist in theme:
 	 * <p><pre>#gridId .v-grid-cell.two-lines .v-grid-column-default-header-content {
 	 * 	line-height: 16px;
 	 * }

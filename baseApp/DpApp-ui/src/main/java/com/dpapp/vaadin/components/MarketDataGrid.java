@@ -56,24 +56,10 @@ public class MarketDataGrid extends BaseGrid<MarketDataBean> {
 
 		setFrozenColumnCount( 2 );
 	}
-//	private void adjustMainHeader() {
-//		HeaderRow mainHeader = getDefaultHeaderRow();
+	private void adjustMainHeader() {
+		HeaderRow mainHeader = getDefaultHeaderRow();
 //		makeTwoLineHeader(mainHeader, "conversion.thisWeek", "thisWeek");
-//		makeTwoLineHeader(mainHeader, "conversion.thisMonth", "thisMonth");
-//		makeTwoLineHeader(mainHeader, "conversion.nextMonth", "nextMonth");
-//
-//		makeTwoLineHeader(mainHeader, "scale.thisWeek", "thisWeek");
-//		makeTwoLineHeader(mainHeader, "scale.thisMonth", "thisMonth");
-//		makeTwoLineHeader(mainHeader, "scale.nextMonth", "nextMonth");
-//
-//		makeTwoLineHeader(mainHeader, "revenue.thisWeek", "thisWeek");
-//		makeTwoLineHeader(mainHeader, "revenue.thisMonth", "thisMonth");
-//		makeTwoLineHeader(mainHeader, "revenue.nextMonth", "nextMonth");
-//
-//		makeTwoLineHeader(mainHeader, "revenueToPassenger.thisWeek", "thisWeek");
-//		makeTwoLineHeader(mainHeader, "revenueToPassenger.thisMonth", "thisMonth");
-//		makeTwoLineHeader(mainHeader, "revenueToPassenger.nextMonth", "nextMonth");
-//	}
+	}
 	private void setGroupHeaders() {
 		HeaderRow groupingHeader = prependHeaderRow();
 
