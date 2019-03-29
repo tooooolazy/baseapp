@@ -180,6 +180,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 							// seems likes we should ignore this exception as it is thrown when we click fast enough on another page link (before current one is loaded)
 							// this lead to setting PollInterval to -1 causing the view to never be updated...
 							e.printStackTrace();
+							handleGenricException(e, ui);
 						} catch (Exception e) {
 							vl.removeComponent( pb );
 
@@ -272,6 +273,13 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 	 * @return
 	 */
 	protected abstract OR[] getWSContents();
+
+	/**
+	 * Should be implemented/overridden by every View in order to create the array with result objects. Can return null if no WS calls are needed by the View. 
+	 * @param i
+	 * @return
+	 */
+	protected abstract OR[] create_OR_array(int i);
 
 	protected Component createErrorContent(BaseUI ui, JFC jfc) {
 		int jfcv = ui.getFailureCodeValue(jfc);
