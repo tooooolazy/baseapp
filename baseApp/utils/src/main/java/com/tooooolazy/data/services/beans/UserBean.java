@@ -17,6 +17,8 @@ public abstract class UserBean<RE> {
 	private boolean isGod;
 	protected boolean isDemo;
 
+	protected String firstName, lastName;
+
 	public boolean isDemo() {
 		return isDemo;
 	}
@@ -45,6 +47,19 @@ public abstract class UserBean<RE> {
 	}
 	public void setUserCode(int userCode) {
 		this.userCode = userCode;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public boolean isGod() {
