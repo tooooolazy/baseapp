@@ -103,8 +103,23 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 	}
 
 	protected List<UserRoleBean> getAllRoles(String username) {
-		return new ArrayList<UserRoleBean>();
+		List<UserRoleBean> urbs = new ArrayList<UserRoleBean>();
+		
+		for (Enum e : getRoleEnumValues() ) {
+			int rev = getRoleEnumValue( e );
+			if (rev == 0)
+				continue;
+			UserRoleBean urb = new UserRoleBean( getRoleEnumValue( e ), username );
+			urb.setAssigned( false );
+			urb.setUserRoles(new ArrayList<UserRoleBean>() );
+			urbs.add( urb );
+			
+		}
+		return urbs;
 	}
+
+	protected abstract Enum[] getRoleEnumValues();
+	protected abstract Integer getRoleEnumValue(Enum e);
 
 	protected abstract UB[] convertToUserBean(ObjectMapper mapper, String ja) throws JsonParseException, JsonMappingException, IOException;
 	protected abstract Object getRoleByValue(int roleCode);
