@@ -1,6 +1,7 @@
 package com.tooooolazy.vaadin.views;
 
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
+import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
 
@@ -31,7 +32,7 @@ public class Dummy2View extends BaseView {
 	}
 
 	@Override
-	protected Component createContent() {
+	protected Component createContent(BaseUI ui) {
 		// TODO Auto-generated method stub
 		return null;
 	}
