@@ -79,7 +79,7 @@ public class MainView<C extends SearchCriteria, E, UB extends UserBean, OR exten
 		
 	}
 	@Override
-	protected Component createContent() {
+	protected Component createContent(BaseUI ui) {
 		// TODO Auto-generated method stub
 		return null;
 	}

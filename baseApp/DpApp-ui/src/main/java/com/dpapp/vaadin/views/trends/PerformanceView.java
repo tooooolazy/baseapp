@@ -2,6 +2,7 @@ package com.dpapp.vaadin.views.trends;
 
 import com.dpapp.vaadin.views.DpAppBaseView;
 import com.dpapp.ws.beans.OnlineResult;
+import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
 
@@ -32,7 +33,7 @@ public class PerformanceView extends DpAppBaseView {
 	}
 
 	@Override
-	protected Component createContent() {
+	protected Component createContent(BaseUI ui) {
 		// TODO Auto-generated method stub
 		return null;
 	}

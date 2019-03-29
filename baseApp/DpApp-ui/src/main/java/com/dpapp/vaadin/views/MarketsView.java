@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tooooolazy.data.ServiceLocator;
 import com.tooooolazy.data.interfaces.OnlineKeys;
 import com.tooooolazy.services.client.RestClient;
+import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
@@ -46,7 +47,7 @@ public class MarketsView extends DpAppBaseView {
 	}
 
 	@Override
-	protected Component createContent() {
+	protected Component createContent(BaseUI ui) {
 		mdg = new MarketDataGrid();
 		mdg.setSizeFull();
 

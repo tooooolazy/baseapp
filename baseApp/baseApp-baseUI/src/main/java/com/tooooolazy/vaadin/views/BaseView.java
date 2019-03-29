@@ -167,7 +167,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 					@Override
 				    public void run() {
 						try {
-							c = generateContent();
+							c = generateContent( ui );
 							ui.access(new Runnable() {
 				                @Override
 				                public void run() {
@@ -216,10 +216,11 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 	}
 	/**
 	 * Called by {@link #addDynamicContent} in order to create the content from data retrieved from a WS
+	 * @param ui 
 	 * @return
 	 * @throws Exception
 	 */
-	protected Component generateContent() throws Exception {
+	protected Component generateContent(BaseUI ui) throws Exception {
 		jo = new JSONObject();
 		boolean allOk = true;
 		boolean noneOk = true;
@@ -243,14 +244,15 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 		}
 		this.jo.put("content", ja);
 
-		return createContent();
+		return createContent( ui );
 	}
 	/**
 	 * Called by {@link #generateContent()} once all WS data are retrieved. This is where the UI elements are actually created.
 	 * <p><b>If {@link #getWSContents} returns null this method is NOT called!</b></p>
+	 * @param ui 
 	 * @return
 	 */
-	protected abstract Component createContent();
+	protected abstract Component createContent(BaseUI ui);
 
 	protected boolean handleOR(JSONArray ja, OR tor) throws JSONException {
 		if (tor != null) {

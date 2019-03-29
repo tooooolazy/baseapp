@@ -4,6 +4,7 @@ import com.dpapp.ws.beans.DpAppUserBean;
 import com.dpapp.ws.beans.JobFailureCode;
 import com.dpapp.ws.beans.OnlineResult;
 import com.tooooolazy.util.SearchCriteria;
+import com.tooooolazy.vaadin.ui.BaseUI;
 import com.tooooolazy.vaadin.views.BaseView;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
@@ -37,7 +38,7 @@ public class DpAppBaseView<C extends SearchCriteria, E> extends BaseView<C, E, D
 
 
 	@Override
-	protected Component createContent() {
+	protected Component createContent(BaseUI ui) {
 		// TODO Auto-generated method stub
 		return null;
 	}

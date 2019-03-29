@@ -2,6 +2,7 @@ package com.tooooolazy.vaadin.views;
 
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.util.Messages;
+import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.AbstractComponent;
@@ -48,7 +49,7 @@ public class ErrorView extends BaseView {
 	}
 
 	@Override
-	protected Component createContent() {
+	protected Component createContent(BaseUI ui) {
 		// TODO Auto-generated method stub
 		return null;
 	}

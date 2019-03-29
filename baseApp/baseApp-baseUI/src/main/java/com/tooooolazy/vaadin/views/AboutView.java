@@ -3,6 +3,7 @@ package com.tooooolazy.vaadin.views;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.util.SearchCriteria;
+import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
 
@@ -52,7 +53,7 @@ public class AboutView<C extends SearchCriteria, E, UB extends UserBean, OR exte
 	}
 
 	@Override
-	protected Component createContent() {
+	protected Component createContent(BaseUI ui) {
 		// TODO Auto-generated method stub
 		return null;
 	}
