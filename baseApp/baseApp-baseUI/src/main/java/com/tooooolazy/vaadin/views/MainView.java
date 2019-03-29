@@ -88,4 +88,9 @@ public class MainView<C extends SearchCriteria, E, UB extends UserBean, OR exten
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	protected OR[] create_OR_array(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
