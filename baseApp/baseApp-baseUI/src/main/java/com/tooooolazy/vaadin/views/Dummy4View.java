@@ -42,4 +42,10 @@ public class Dummy4View extends BaseView {
 		return null;
 	}
 
+	@Override
+	protected OnlineBaseResult[] create_OR_array(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

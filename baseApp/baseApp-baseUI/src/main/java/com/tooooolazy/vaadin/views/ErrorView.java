@@ -58,6 +58,11 @@ public class ErrorView extends BaseView {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	protected OnlineBaseResult[] create_OR_array(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	protected void addJavascriptFunctions() {
