@@ -2,7 +2,6 @@ package com.tooooolazy.vaadin.views;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -23,7 +22,6 @@ import com.tooooolazy.vaadin.components.UsersTreeGrid;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.Label;
 
 public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean, OR extends OnlineBaseResult, JFC> extends BaseView<C, E, UB, OR, JFC> {
 
@@ -80,7 +78,6 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 						for ( UserRoleBean iurb : gurb.getUserRoles() ) {
 							if ( iurb.getRoleCode().equals( urb.getRoleCode()) )
 								iurb.setAssigned( true );
-								iurb.setUsername( null ); // lets hide username --> it's the same as the parent!
 						}
 					}
 				}
@@ -97,7 +94,6 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 		utg = new UsersTreeGrid();
 		utg.setWidth("100%");
 		utg.setItems( forGrid, UserRoleBean::getUserRoles );
-//		utg.setItems( forGrid );
 
 		return utg;
 	}
