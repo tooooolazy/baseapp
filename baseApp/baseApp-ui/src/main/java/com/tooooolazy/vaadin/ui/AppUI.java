@@ -144,6 +144,7 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>, Onli
 		JSONArray ja = new JSONArray();
 
 		ja.put( new JSONObject("{'ID':1, 'groupId':1,'VALUE':'com.tooooolazy.vaadin.views.AboutView'}") );
+		ja.put( new JSONObject("{'ID':2, 'groupId':1,'VALUE':'com.tooooolazy.vaadin.app.views.UsersView'}") );
 		
 		return ja;
 	}
@@ -157,6 +158,7 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>, Onli
 //		_ja = new JSONArray("[pid, 1, cid, subtitle, 1]");
 		int so =1;
 		ja.put( new JSONArray("[1, 1, 1, 0, " + so++ +"]") );
+		ja.put( new JSONArray("[2, 1, 2, 0, " + so++ +"]") );
 
 		return ja;
 	}
