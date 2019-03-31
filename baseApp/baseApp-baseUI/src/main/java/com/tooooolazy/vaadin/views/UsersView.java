@@ -55,6 +55,11 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 		JSONArray usersJa = usersJo.optJSONArray(OnlineKeys.DATA);
 		JSONArray userRolesJa = userRolesJo.optJSONArray(OnlineKeys.DATA);
 
+		utg = new UsersTreeGrid();
+		utg.setWidth("100%");
+		if (usersJa == null || userRolesJa == null)
+			return utg;
+		
 		// convert them to related beans
 		List<UserRoleBean> forGrid = new ArrayList<UserRoleBean>();
 		try {
@@ -91,8 +96,6 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 		}
 
 		// now use beans to generate and fill tree grid!
-		utg = new UsersTreeGrid();
-		utg.setWidth("100%");
 		utg.setItems( forGrid, UserRoleBean::getUserRoles );
 
 		return utg;
