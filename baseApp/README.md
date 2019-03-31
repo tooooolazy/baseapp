@@ -28,6 +28,10 @@ The project consists of the following modules:
   - Locking itmes (AppLock)
   - User Session monitoring (AppSession)
 - utils***: a set of helper modules used by all other modules
+  - utils contains: 
+    - interfaces, beans, enums, exceptions used by BaseApp
+    - Resource bundles with general key-value pairs (Handled by Messages class) that can actually be overridden!
+    
 
 - baseApp-ui: a main application module
 
