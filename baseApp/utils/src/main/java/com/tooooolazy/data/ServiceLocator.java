@@ -45,7 +45,7 @@ public class ServiceLocator {
 				this.cache.put(srvClass, srvRef);
 				return srvRef;
 			} catch (Exception e) {
-				throw new RuntimeException(e);
+				throw new RuntimeException("Service with class [" + srvClass + "] cannot be created! ", e);
 			}
 		}
 	}

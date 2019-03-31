@@ -330,7 +330,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 			errMsg = Messages.getString(ClientRuntimeException.class, "msg");
 		if ( !errMsg.startsWith("A connector") ) {// lets hide this... should actually user Exception type instead
 //			Notification.show(null, errMsg, Type.ERROR_MESSAGE);
-			Notification not = new Notification(null, errMsg, Type.ERROR_MESSAGE);
+			Notification not = new Notification(errMsg, e.getMessage(), Type.ERROR_MESSAGE);
 			not.show( ui.getPage() );
 		}
 	}
