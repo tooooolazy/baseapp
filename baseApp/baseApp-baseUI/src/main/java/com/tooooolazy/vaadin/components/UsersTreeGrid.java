@@ -13,6 +13,8 @@ import com.vaadin.data.provider.HierarchicalQuery;
 import com.vaadin.data.provider.Query;
 import com.vaadin.data.provider.TreeDataProvider;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.TreeGrid;
 import com.vaadin.ui.components.grid.FooterCell;
@@ -112,10 +114,23 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 		int roleCode = urb.getRoleCode();
 		boolean newAssignment = !urb.getAssigned();
 
-		// TODO call WS
+		if ( userRoleToggled( urb ) ) {
+			urb.setAssigned( newAssignment );
+			getDataProvider().refreshItem( urb );
+		} else {
+			Messages.setLang( BaseUI.get().getLocale().getLanguage());
+			Notification.show(Messages.getString( getClass(), "save.failed"), Type.ERROR_MESSAGE);
+		}
+	}
 
-		urb.setAssigned( newAssignment );
-		getDataProvider().refreshItem( urb );
+	/**
+	 * Calls related WS to update user role assignment.
+	 * @param urb - the new role assignment
+	 * @return true/false depending on ws call success
+	 */
+	protected boolean userRoleToggled(UserRoleBean urb) {
+		// TODO call WS and return true if all ok
+		return false;
 	}
 
 	protected String getRoleByValue(int rv) {

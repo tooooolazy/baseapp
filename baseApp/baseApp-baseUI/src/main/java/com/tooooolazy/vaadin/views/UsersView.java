@@ -2,7 +2,9 @@ package com.tooooolazy.vaadin.views;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -56,7 +58,13 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 		JSONArray usersJa = usersJo.optJSONArray(OnlineKeys.DATA);
 		JSONArray userRolesJa = userRolesJo.optJSONArray(OnlineKeys.DATA);
 
-		utg = new UsersTreeGrid();
+		utg = new UsersTreeGrid() {
+			@Override
+			protected boolean userRoleToggled(UserRoleBean urb) {
+				return callToggleUserRoleWs( urb );
+			}
+
+		};
 		utg.setWidth("100%");
 		if (usersJa == null || userRolesJa == null)
 			return utg;
@@ -141,5 +149,20 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 			e.printStackTrace();
 		}
 		return ors;
+	}
+
+	protected boolean callToggleUserRoleWs(UserRoleBean urb) {
+		Map params = new HashMap();
+		params.put("user.code", urb.getParent().getUserCode() );
+		params.put("role.code", urb.getRoleCode() );
+		params.put("role.assigned", urb.getAssigned() );
+		try {
+			OR or = (OR) ServiceLocator.getServices().getDataHandler().getData(WsMethods.USER_ROLE_UPDATE, BaseUI.get().getCurrentUser(), params, true);
+			if ( or.getFailCode() == null)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
