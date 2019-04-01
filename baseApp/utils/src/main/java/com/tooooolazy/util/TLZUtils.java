@@ -749,6 +749,9 @@ public class TLZUtils {
 		}
 		return true;
 	}
+	public static boolean caseInsensitiveContains(String where, String what) {
+        return where.toLowerCase().contains(what.toLowerCase());
+    }
 	public static boolean contains(Object[] array, Object obj) {
 		for (int i=0; i<array.length; i++) {
 			if (array[i].equals( obj )) {

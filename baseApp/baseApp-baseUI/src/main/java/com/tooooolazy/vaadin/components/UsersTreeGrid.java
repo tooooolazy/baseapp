@@ -150,7 +150,7 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 		});
 		filterHeader.getCell("username").setComponent( tf );
 	}
-	private Boolean caseInsensitiveContains(String where, String what) {
-        return TLZUtils.isEmpty( where ) || TLZUtils.isEmpty( what ) || where.toLowerCase().contains(what.toLowerCase());
+	private boolean caseInsensitiveContains(String where, String what) {
+        return TLZUtils.isEmpty( where ) || TLZUtils.caseInsensitiveContains(where, what);
     }
 }
