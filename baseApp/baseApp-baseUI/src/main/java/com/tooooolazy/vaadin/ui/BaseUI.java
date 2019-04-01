@@ -964,6 +964,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	}
 
 	public void notifyPermissionDenied() {
+		Messages.setLang( BaseUI.get().getLocale().getLanguage());
 		Notification.show(Messages.getString("permission.denied"), Type.WARNING_MESSAGE);
 	}
 
