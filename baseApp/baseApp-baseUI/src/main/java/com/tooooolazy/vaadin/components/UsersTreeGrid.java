@@ -138,6 +138,7 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 			
 			@Override
 			public void valueChange(ValueChangeEvent<String> event) {
+				// This will work ONLY if there is just ONE filter in Grid. If more are required this needs to be revised!!!
 				if (event.getValue() == null)
 					dp.setFilter( null );
 				else {
