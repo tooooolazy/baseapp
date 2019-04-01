@@ -20,6 +20,7 @@ public class OnlineBaseParams implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	protected Integer userCode;
+	protected String username;
 	protected boolean userRequired;
 
 
@@ -36,6 +37,14 @@ public class OnlineBaseParams implements Serializable {
 
 	public void setUserCode(Integer userCode) {
 		this.userCode = userCode;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getMethod() {
@@ -71,4 +80,5 @@ public class OnlineBaseParams implements Serializable {
 	public void setUserRequired(boolean userRequired) {
 		this.userRequired = userRequired;
 	}
+
 }

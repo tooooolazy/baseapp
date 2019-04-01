@@ -5,10 +5,12 @@ import java.util.Map;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.tooooolazy.data.interfaces.OnlineKeys;
 import com.tooooolazy.domain.components.DataHandlerHelper;
 import com.tooooolazy.domain.components.PasswordManager;
 import com.tooooolazy.domain.components.UserHelper;
 import com.tooooolazy.domain.objects.User;
+import com.tooooolazy.domain.objects.UserAccount;
 import com.tooooolazy.util.Credentials;
 import com.tooooolazy.util.exceptions.InvalidCredentialsException;
 import com.tooooolazy.util.exceptions.MultipleLoginException;
@@ -131,6 +133,28 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	}
 	public Object getUsers(Map params) {
 		return userHelper.getUsers();
+	}
+	public Object updateUserRole(UserAccount ua, Map params) throws IllegalAccessException {
+		if ( params == null || params.isEmpty() )
+			throw new IllegalAccessException("Required parameters not defined!");
+
+		try {
+			int userCode = (Integer)params.get("user.code");
+			int roleCode = (Integer)params.get("role.code");
+			boolean assigned = (Boolean)params.get("role.assigned");
+			int res = userHelper.updateUserRole( userCode, roleCode, assigned, ua );
+			if ( res > 0 )
+				return createAllOkKSON().toMap();
+		} catch (Exception e) {
+			throw new IllegalAccessException( e.getMessage() );
+		}
+		throw new IllegalAccessException("Nothing to update for the given params");
+	}
+
+	private JSONObject createAllOkKSON() {
+		JSONObject jo = new JSONObject();
+		jo.put(OnlineKeys.RESULT, "OK");
+		return jo;
 	}
 
 }

@@ -14,7 +14,11 @@ import org.springframework.stereotype.Component;
 import com.tooooolazy.data.interfaces.OnlineKeys;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.data.services.beans.UserRoleBean;
+import com.tooooolazy.domain.UserAccountRepository;
 import com.tooooolazy.domain.UserRepository;
+import com.tooooolazy.domain.UserRoleRepository;
+import com.tooooolazy.domain.objects.UserAccount;
+import com.tooooolazy.domain.objects.UserRole;
 import com.tooooolazy.util.Credentials;
 
 @Component
@@ -25,6 +29,10 @@ public class UserHelper {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private UserRoleRepository userRoleRepository;
+	@Autowired
+	private UserAccountRepository userAccountRepository;
 
 	public Object getUserRoles(String username) {
 		JSONObject jo = getUserRolesJo(username);
@@ -82,6 +90,14 @@ public class UserHelper {
 		}
 
 		return jo;
+	}
+	public int updateUserRole(int userCode, int roleCode, boolean assigned, UserAccount ua) {
+		// TODO Auto-generated method stub
+		UserRole ur = userRoleRepository.find( roleCode );
+		if ( assigned )
+			return userAccountRepository.addRole(ur, ua, ua.getUsername());
+		else
+			return userAccountRepository.removeRole(ur, userCode);
 	}
 
 }

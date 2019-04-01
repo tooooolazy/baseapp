@@ -16,6 +16,7 @@ public interface WsMethods {
 
 	public static String USERS = "getUsers";
 	public static String USERS_ROLES = "getUsersRoles";
+	public static String USER_ROLE_UPDATE = "updateUserRole";
 	/**
 	 * Use this to call a WS to perform DB related cleanup
 	 */
