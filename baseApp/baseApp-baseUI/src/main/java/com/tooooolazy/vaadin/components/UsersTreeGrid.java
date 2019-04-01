@@ -9,9 +9,13 @@ import com.tooooolazy.vaadin.resources.Resources;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.data.HasValue.ValueChangeEvent;
 import com.vaadin.data.HasValue.ValueChangeListener;
+import com.vaadin.data.provider.HierarchicalQuery;
+import com.vaadin.data.provider.Query;
 import com.vaadin.data.provider.TreeDataProvider;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.TreeGrid;
+import com.vaadin.ui.components.grid.FooterCell;
+import com.vaadin.ui.components.grid.FooterRow;
 import com.vaadin.ui.components.grid.HeaderRow;
 import com.vaadin.ui.renderers.ClickableRenderer.RendererClickEvent;
 import com.vaadin.ui.renderers.ClickableRenderer.RendererClickListener;
@@ -30,6 +34,7 @@ import com.vaadin.ui.renderers.TextRenderer;
  *
  */
 public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
+	protected FooterRow fr;
 
 	/**
 	 * 
@@ -53,6 +58,7 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 		addColumns();
 //		adjustMainHeader();
 		setGroupHeaders();
+		setGroupFooters();
 	}
 
 	protected void addColumns() {
@@ -147,6 +153,10 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 					else
 						dp.setFilter( UserRoleBean::getUsername, s -> caseInsensitiveContains(s, event.getValue()) );
 				}
+				HierarchicalQuery hq = new HierarchicalQuery<>(dp.getFilter(), null);
+				long count = dp.fetch( hq ).count();
+				Messages.setLang( BaseUI.get().getLocale().getLanguage() );
+				fr.getCell("username").setText( count + " " + Messages.getString(getClass(), "users") );
 			}
 		});
 		filterHeader.getCell("username").setComponent( tf );
@@ -154,4 +164,13 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 	private boolean caseInsensitiveContains(String where, String what) {
         return TLZUtils.isEmpty( where ) || TLZUtils.caseInsensitiveContains(where, what);
     }
+
+	private void setGroupFooters() {
+		fr = prependFooterRow();
+		FooterCell fc = fr.getCell("username");
+		
+		TreeDataProvider<UserRoleBean> dp = (TreeDataProvider<UserRoleBean>) getDataProvider();
+
+		fc.setText( dp.getTreeData().getRootItems().size() + " " + Messages.getString(getClass(), "users") );
+	}
 }
