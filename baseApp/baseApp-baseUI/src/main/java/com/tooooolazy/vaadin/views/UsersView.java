@@ -88,6 +88,7 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 				}
 				for ( UserRoleBean iurb : gurb.getUserRoles() ) {
 					iurb.setUsername( null ); // lets hide username --> it's the same as the parent!
+					iurb.setParent( gurb );
 				}
 			}
 		} catch (IOException e) {

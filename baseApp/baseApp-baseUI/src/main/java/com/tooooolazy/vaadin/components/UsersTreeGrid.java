@@ -4,8 +4,17 @@ import com.tooooolazy.data.ServiceLocator;
 import com.tooooolazy.data.services.beans.RoleEnum;
 import com.tooooolazy.data.services.beans.UserRoleBean;
 import com.tooooolazy.util.Messages;
+import com.tooooolazy.util.TLZUtils;
 import com.tooooolazy.vaadin.resources.Resources;
+import com.tooooolazy.vaadin.ui.BaseUI;
+import com.vaadin.data.HasValue.ValueChangeEvent;
+import com.vaadin.data.HasValue.ValueChangeListener;
+import com.vaadin.data.provider.TreeDataProvider;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.TreeGrid;
+import com.vaadin.ui.components.grid.HeaderRow;
+import com.vaadin.ui.renderers.ClickableRenderer.RendererClickEvent;
+import com.vaadin.ui.renderers.ClickableRenderer.RendererClickListener;
 import com.vaadin.ui.renderers.ImageRenderer;
 import com.vaadin.ui.renderers.TextRenderer;
 
@@ -58,10 +67,38 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 
 		addColumn( u -> Resources.getPng(getIconPath(), 
 				u.getRoleCode() == 0 ? getUserIcon() : ((u.getAssigned() != null && u.getAssigned())?getTrueIcon():getFalseIcon())),
-				new ImageRenderer() ).setCaption( Messages.getString( getClass(), "assigned" ) );
+				new ImageRenderer( createAsignmentClickListener() ) ).setCaption( Messages.getString( getClass(), "assigned" ) );
+	}
+
+	protected RendererClickListener createAsignmentClickListener() {
+		return new RendererClickListener() {
+
+			@Override
+			public void click(RendererClickEvent event) {
+				UserRoleBean urb = (UserRoleBean)event.getItem();
+				if ( urb.getParent() == null ) {
+					System.out.println("clicked " + urb.getRoleCode() + " of " + urb.getUsername());
+					onUserClicked( urb );
+				} else {
+					System.out.println("clicked " + urb.getRoleCode() + " of " + urb.getParent().getUsername());
+					onUserRoleClicked( urb );
+				}
+				
+			}
+			
+		};
+	}
+	protected void onUserClicked(UserRoleBean urb) {
+		// TODO Auto-generated method stub
+		
+	}
+	protected void onUserRoleClicked(UserRoleBean urb) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	protected String getRoleByValue(int rv) {
+		Messages.setLang( BaseUI.get().getLocale().getLanguage() );
 		return Messages.getString( RoleEnum.class, ((Enum)ServiceLocator.getServices().getSecurityController().getRoleByValue( rv )).name() );
 	}
 	protected String getIconPath() {
@@ -90,6 +127,30 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 	}
 
 	private void setGroupHeaders() {
-//		HeaderRow groupingHeader = prependHeaderRow();
+		HeaderRow filterHeader = appendHeaderRow();
+		TextField tf = new TextField();
+		tf.setWidth("100%");
+		Messages.setLang( BaseUI.get().getLocale().getLanguage() );
+		tf.setPlaceholder( Messages.getString(getClass(), "filter"));
+		UsersTreeGrid utg = this;
+		TreeDataProvider<UserRoleBean> dp = (TreeDataProvider<UserRoleBean>) getDataProvider();
+		tf.addValueChangeListener( new ValueChangeListener<String>() {
+			
+			@Override
+			public void valueChange(ValueChangeEvent<String> event) {
+				if (event.getValue() == null)
+					dp.setFilter( null );
+				else {
+					if (dp.getFilter() == null)
+						dp.addFilter( UserRoleBean::getUsername, s -> caseInsensitiveContains(s, event.getValue()) );
+					else
+						dp.setFilter( UserRoleBean::getUsername, s -> caseInsensitiveContains(s, event.getValue()) );
+				}
+			}
+		});
+		filterHeader.getCell("username").setComponent( tf );
 	}
+	private Boolean caseInsensitiveContains(String where, String what) {
+        return TLZUtils.isEmpty( where ) || TLZUtils.isEmpty( what ) || where.toLowerCase().contains(what.toLowerCase());
+    }
 }

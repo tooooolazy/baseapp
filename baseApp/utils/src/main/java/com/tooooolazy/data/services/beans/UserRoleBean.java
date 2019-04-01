@@ -8,9 +8,13 @@ public class UserRoleBean {
 	protected Boolean assigned;
 	protected String username, firstName, lastName;
 	protected List<UserRoleBean> userRoles;
+	protected UserRoleBean parent;
 
 
 	public UserRoleBean() {
+	}
+	public UserRoleBean(UserRoleBean parent) {
+		this.parent = parent;
 	}
 	public UserRoleBean(Integer roleCode, String username) {
 		this.roleCode = roleCode;
@@ -53,5 +57,11 @@ public class UserRoleBean {
 	}
 	public void setUserRoles(List<UserRoleBean> userRoles) {
 		this.userRoles = userRoles;
+	}
+	public UserRoleBean getParent() {
+		return parent;
+	}
+	public void setParent(UserRoleBean parent) {
+		this.parent = parent;
 	}
 }
