@@ -46,8 +46,10 @@ public abstract class DataHandler<OR extends OnlineBaseResult, OP extends Online
 
 		op.setMethod( dataType );
 
-		if ( user != null )
+		if ( user != null ) {
 			op.setUserCode( user.getUserCode() );
+			op.setUsername( user.getCredentials().getUsername() );
+		}
 
 		if (!requiresTransaction)
 			res = dataHandlerClient.execute(op);
