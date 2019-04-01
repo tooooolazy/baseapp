@@ -106,7 +106,7 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 		
 		for (Enum e : getRoleEnumValues() ) {
 			int rev = getRoleEnumValue( e );
-			if (rev == 0)
+			if (rev == 0 || rev == 1) // Dummy role or Not logged in role
 				continue;
 			UserRoleBean urb = new UserRoleBean( getRoleEnumValue( e ), username );
 			urb.setAssigned( false );
