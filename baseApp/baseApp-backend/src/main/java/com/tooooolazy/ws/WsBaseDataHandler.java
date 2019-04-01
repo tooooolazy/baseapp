@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,9 @@ import com.tooooolazy.data.interfaces.DataHandlerClient;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.domain.DataBaseRepository;
+import com.tooooolazy.domain.UserAccountRepository;
+import com.tooooolazy.domain.objects.UserAccount;
+import com.tooooolazy.util.TLZUtils;
 import com.tooooolazy.util.exceptions.AccessDeniedException;
 import com.tooooolazy.util.exceptions.ItemLockedException;
 
@@ -28,6 +32,9 @@ public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extend
 	private static org.apache.logging.log4j.Logger logger = LogManager.getLogger();
 
 	protected final DR dataRepository;
+
+	@Autowired
+	private UserAccountRepository userAccountRepository;
 
 	public WsBaseDataHandler( final DR dataRepository ) {
 		this.dataRepository = dataRepository;
@@ -63,26 +70,41 @@ public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extend
 //				return tor;
 //			}
 			// Only a logged in user can use this <-- Don't check that yet
-//			UserAccount ua = null;
+			UserAccount ua = null;
 			if ( params.isUserRequired() && !userVerified( params.getUserCode() ) ) {
 				throw new AccessDeniedException(); 
 			}
-//			if ( params.getUserCode() != null)
-//				ua = userAccountRepository.find( params.getUserCode() );
+			if ( params.getUserCode() != null && params.getUserCode() > 0 )
+				ua = userAccountRepository.find( params.getUserCode() );
+			if ( !TLZUtils.isEmpty( params.getUsername() ) )
+				ua = userAccountRepository.findByUsername( params.getUsername() );
 			methodName = params.getMethod();
 			Method m = null;
 			
 			try {
-				m = dataRepository.getClass().getDeclaredMethod(methodName, Map.class);
+				if ( ua != null )
+					m = dataRepository.getClass().getDeclaredMethod(methodName, UserAccount.class, Map.class);
+				else
+					m = dataRepository.getClass().getDeclaredMethod(methodName, Map.class);
 			} catch (Exception e) {
 				LogManager.getLogger().error("methodName: " + methodName + " not found. Looking in Base class");
-				m = dataRepository.getClass().getSuperclass().getDeclaredMethod(methodName, Map.class);
+				if ( ua != null )
+					m = dataRepository.getClass().getSuperclass().getDeclaredMethod(methodName, UserAccount.class, Map.class);
+				else
+					m = dataRepository.getClass().getSuperclass().getDeclaredMethod(methodName, Map.class);
 			}
-			tor.setResultObject(
-					m.invoke(
-							dataRepository, params.getMethodParams()
-							)
-					);
+			if ( ua != null ) {
+				tor.setResultObject(
+						m.invoke(
+								dataRepository, ua, params.getMethodParams()
+								)
+						);
+			} else 
+				tor.setResultObject(
+						m.invoke(
+								dataRepository, params.getMethodParams()
+								)
+						);
 
 		} catch (AccessDeniedException e) {
 			LogManager.getLogger().error("WS error: ", e);
