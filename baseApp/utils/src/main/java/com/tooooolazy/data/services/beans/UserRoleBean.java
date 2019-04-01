@@ -5,6 +5,7 @@ import java.util.List;
 public class UserRoleBean {
 
 	protected Integer roleCode;
+	protected Integer userCode;
 	protected Boolean assigned;
 	protected String username, firstName, lastName;
 	protected List<UserRoleBean> userRoles;
@@ -19,6 +20,13 @@ public class UserRoleBean {
 	public UserRoleBean(Integer roleCode, String username) {
 		this.roleCode = roleCode;
 		this.username = username;
+	}
+
+	public Integer getUserCode() {
+		return userCode;
+	}
+	public void setUserCode(Integer userCode) {
+		this.userCode = userCode;
 	}
 	public Integer getRoleCode() {
 		return roleCode;

@@ -21,6 +21,7 @@ import com.tooooolazy.util.SearchCriteria;
 import com.tooooolazy.vaadin.components.UsersTreeGrid;
 import com.tooooolazy.vaadin.ui.BaseUI;
 import com.vaadin.ui.AbstractComponent;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 
 public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean, OR extends OnlineBaseResult, JFC> extends BaseView<C, E, UB, OR, JFC> {
@@ -69,6 +70,7 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 			UB[] ubs = convertToUserBean(mapper, usersJa.toString());
 			for ( UB ub : ubs ) {
 				UserRoleBean urb = new UserRoleBean(0, ub.getCredentials().getUsername());
+				urb.setUserCode( ub.getUserCode() );
 				urb.setUserRoles( getAllRoles( ub.getCredentials().getUsername() ) );
 				urb.setFirstName( ub.getFirstName() );
 				urb.setLastName( ub.getLastName() );
@@ -81,8 +83,9 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 				for ( UserRoleBean urb : urbs ) {
 					if ( gurb.getUsername().equals( urb.getUsername() ) ) {
 						for ( UserRoleBean iurb : gurb.getUserRoles() ) {
-							if ( iurb.getRoleCode().equals( urb.getRoleCode()) )
+							if ( iurb.getRoleCode().equals( urb.getRoleCode()) ) {
 								iurb.setAssigned( true );
+							}
 						}
 					}
 				}
@@ -139,5 +142,4 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 		}
 		return ors;
 	}
-
 }

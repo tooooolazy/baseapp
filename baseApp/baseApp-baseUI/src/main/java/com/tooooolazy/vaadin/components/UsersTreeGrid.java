@@ -12,6 +12,7 @@ import com.vaadin.data.HasValue.ValueChangeListener;
 import com.vaadin.data.provider.HierarchicalQuery;
 import com.vaadin.data.provider.Query;
 import com.vaadin.data.provider.TreeDataProvider;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.TreeGrid;
 import com.vaadin.ui.components.grid.FooterCell;
@@ -99,8 +100,22 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 		
 	}
 	protected void onUserRoleClicked(UserRoleBean urb) {
-		// TODO Auto-generated method stub
-		
+		if ( BaseUI.get().checkIfHasAccess("editUserRole", Button.class) ) {
+			toggleUserRole( urb );
+		} else {
+			BaseUI.get().notifyPermissionDenied();
+		}
+	}
+
+	protected void toggleUserRole(UserRoleBean urb) {
+		int userCode = urb.getParent().getUserCode();
+		int roleCode = urb.getRoleCode();
+		boolean newAssignment = !urb.getAssigned();
+
+		// TODO call WS
+
+		urb.setAssigned( newAssignment );
+		getDataProvider().refreshItem( urb );
 	}
 
 	protected String getRoleByValue(int rv) {
