@@ -114,23 +114,23 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 		int roleCode = urb.getRoleCode();
 		boolean newAssignment = !urb.getAssigned();
 
-		if ( userRoleToggled( urb ) ) {
+		String failMsg = userRoleToggled( urb );
+		if ( failMsg == null ) {
 			urb.setAssigned( newAssignment );
 			getDataProvider().refreshItem( urb );
 		} else {
 			Messages.setLang( BaseUI.get().getLocale().getLanguage());
-			Notification.show(Messages.getString( getClass(), "save.failed"), Type.ERROR_MESSAGE);
+			Notification.show(Messages.getString( getClass(), "save.failed"), failMsg, Type.ERROR_MESSAGE);
 		}
 	}
 
 	/**
 	 * Calls related WS to update user role assignment.
 	 * @param urb - the new role assignment
-	 * @return true/false depending on ws call success
+	 * @return WS fail message or null
 	 */
-	protected boolean userRoleToggled(UserRoleBean urb) {
-		// TODO call WS and return true if all ok
-		return false;
+	protected String userRoleToggled(UserRoleBean urb) {
+		return null;
 	}
 
 	protected String getRoleByValue(int rv) {

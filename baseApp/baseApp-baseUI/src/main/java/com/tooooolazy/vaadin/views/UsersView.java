@@ -60,7 +60,7 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 
 		utg = new UsersTreeGrid() {
 			@Override
-			protected boolean userRoleToggled(UserRoleBean urb) {
+			protected String userRoleToggled(UserRoleBean urb) {
 				return callToggleUserRoleWs( urb );
 			}
 
@@ -151,18 +151,20 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 		return ors;
 	}
 
-	protected boolean callToggleUserRoleWs(UserRoleBean urb) {
+	protected String callToggleUserRoleWs(UserRoleBean urb) {
 		Map params = new HashMap();
 		params.put("user.code", urb.getParent().getUserCode() );
 		params.put("role.code", urb.getRoleCode() );
-		params.put("role.assigned", urb.getAssigned() );
+		params.put("role.assigned", !urb.getAssigned() );
 		try {
 			OR or = (OR) ServiceLocator.getServices().getDataHandler().getData(WsMethods.USER_ROLE_UPDATE, BaseUI.get().getCurrentUser(), params, true);
 			if ( or.getFailCode() == null)
-				return true;
+				return null;
+			return or.getAsJSON().optString("failMsg");
+				
 		} catch (Exception e) {
 			e.printStackTrace();
+			return e.getMessage();
 		}
-		return false;
 	}
 }
