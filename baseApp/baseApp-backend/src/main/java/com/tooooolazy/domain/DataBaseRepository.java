@@ -25,7 +25,7 @@ import com.tooooolazy.ws.WsBaseDataHandler;
  * @author gpatoulas
  *
  */
-//@Component
+//@Repository("dataRepository")
 public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	public static String DEFAULT_USER_INSERT = "SYSTEM";
 	public static String DEFAULT_DEPLOY_ENV_KEY = "deploy.environment";
@@ -146,6 +146,7 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 			if ( res > 0 )
 				return createAllOkKSON().toMap();
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new IllegalAccessException( e.getMessage() );
 		}
 		throw new IllegalAccessException("Nothing to update for the given params");

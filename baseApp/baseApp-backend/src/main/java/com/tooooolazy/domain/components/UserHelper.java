@@ -24,8 +24,8 @@ import com.tooooolazy.util.Credentials;
 @Component
 public class UserHelper {
 
-	@PersistenceContext
-    protected EntityManager entityManager;
+//	@PersistenceContext
+//    protected EntityManager entityManager;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -95,7 +95,7 @@ public class UserHelper {
 		// TODO Auto-generated method stub
 		UserRole ur = userRoleRepository.find( roleCode );
 		if ( assigned )
-			return userAccountRepository.addRole(ur, ua, ua.getUsername());
+			return userAccountRepository.addRole(ur, userCode, ua.getUsername());
 		else
 			return userAccountRepository.removeRole(ur, userCode);
 	}

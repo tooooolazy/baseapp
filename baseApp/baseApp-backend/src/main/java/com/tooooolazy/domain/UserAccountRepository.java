@@ -36,11 +36,11 @@ public class UserAccountRepository extends AbstractRepository<UserAccount, Integ
 
 		return ua;
 	}
-	public int addRole(UserRole ur, UserAccount ua, String userName) {
-		Query q = entityManager.createNativeQuery("insert into " + getSchema() + ".ACCOUNTROLE VALUES (:roleCode, :userCode, current_timestamp, :userName)");
+	public int addRole(UserRole ur, int uc, String insertUser) {
+		Query q = entityManager.createNativeQuery("insert into " + getSchema() + ".ACCOUNTROLE(ROLECODE, USERCODE, USERINSERT, TIMEINSERT) VALUES (:roleCode, :userCode, :userName, current_timestamp)");
 		q.setParameter("roleCode", ur.getRoleCode());
-		q.setParameter("userCode", ua.getUserCode());
-		q.setParameter("userName", userName);
+		q.setParameter("userCode", uc);
+		q.setParameter("userName", insertUser);
 
 		return q.executeUpdate();
 	}

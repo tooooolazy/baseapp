@@ -10,9 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tooooolazy.data.interfaces.DataHandlerClient;
-import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.OnlineBaseParams;
+import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.domain.DataBaseRepository;
 import com.tooooolazy.domain.UserAccountRepository;
 import com.tooooolazy.domain.objects.UserAccount;
@@ -28,17 +27,13 @@ import com.tooooolazy.util.exceptions.ItemLockedException;
  * @author gpatoulas
  */
 //@Component
-public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extends OnlineBaseResult, OP extends OnlineBaseParams> implements DataHandlerClient<OR, OP> {
+public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extends OnlineBaseResult, OP extends OnlineBaseParams> /*implements DataHandlerClient<OR, OP>*/ {
 	private static org.apache.logging.log4j.Logger logger = LogManager.getLogger();
-
-	protected final DR dataRepository;
 
 	@Autowired
 	private UserAccountRepository userAccountRepository;
 
-	public WsBaseDataHandler( final DR dataRepository ) {
-		this.dataRepository = dataRepository;
-	}
+	protected abstract DR getDataRepository();
     
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
 	public OR execute(OP params) {
@@ -83,26 +78,26 @@ public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extend
 			
 			try {
 				if ( ua != null )
-					m = dataRepository.getClass().getDeclaredMethod(methodName, UserAccount.class, Map.class);
+					m = getDataRepository().getClass().getDeclaredMethod(methodName, UserAccount.class, Map.class);
 				else
-					m = dataRepository.getClass().getDeclaredMethod(methodName, Map.class);
+					m = getDataRepository().getClass().getDeclaredMethod(methodName, Map.class);
 			} catch (Exception e) {
 				LogManager.getLogger().error("methodName: " + methodName + " not found. Looking in Base class");
 				if ( ua != null )
-					m = dataRepository.getClass().getSuperclass().getDeclaredMethod(methodName, UserAccount.class, Map.class);
+					m = getDataRepository().getClass().getSuperclass().getDeclaredMethod(methodName, UserAccount.class, Map.class);
 				else
-					m = dataRepository.getClass().getSuperclass().getDeclaredMethod(methodName, Map.class);
+					m = getDataRepository().getClass().getSuperclass().getDeclaredMethod(methodName, Map.class);
 			}
 			if ( ua != null ) {
 				tor.setResultObject(
 						m.invoke(
-								dataRepository, ua, params.getMethodParams()
+								getDataRepository(), ua, params.getMethodParams()
 								)
 						);
 			} else 
 				tor.setResultObject(
 						m.invoke(
-								dataRepository, params.getMethodParams()
+								getDataRepository(), params.getMethodParams()
 								)
 						);
 
@@ -143,7 +138,7 @@ public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extend
 						&& e.getTargetException().getMessage() != null) // without this Custom RuntimeExceptions (like PendingEvaluationExistsException) were not handled correctly
 					jo.put("failMsg", e.getClass().getSimpleName() + ": " + e.getTargetException().getMessage() );
 				else
-					jo.put("failMsg", e.getTargetException().getClass().getSimpleName() );
+					jo.put("failMsg", e.getTargetException().getClass().getSimpleName() + ": " + e.getTargetException().getMessage()  );
 			} else {
 				jo.put("failMsg", e.getClass().getSimpleName() + ": " + e.getMessage());
 			}
