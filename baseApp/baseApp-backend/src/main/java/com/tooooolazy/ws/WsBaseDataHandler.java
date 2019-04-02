@@ -22,8 +22,7 @@ import com.tooooolazy.util.exceptions.ItemLockedException;
 /**
  * Helper component to wrap a method within a Transaction, if required. Basically, acts as a delegator using reflection to call the selected method. 
  * <p>Should be overridden. Also '@Component' must be used on derived class.</p>
- * 
- * @see https://stackoverflow.com/questions/9400160/autowire-depending-upon-the-subclass
+ * Finally remember to 'Autowire' the 'DataRepository' subclass of {@link DataBaseRepository} and implement its getter
  * @author gpatoulas
  */
 //@Component
