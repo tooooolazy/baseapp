@@ -1,5 +1,7 @@
 package com.tooooolazy.domain;
 
+import java.util.Date;
+
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
@@ -8,6 +10,23 @@ import com.tooooolazy.domain.objects.User;
 
 @Repository("userRepository")
 public class UserRepository extends AbstractRepository<User, Integer> {
+
+	public static String USER_INSERT = "userInsert";
+	public static String FIRST_NAME = "firstName";
+	public static String LAST_NAME = "lastName";
+	public static String EMAIL = "email";
+	public static String TELEPHONE = "telephone";
+
+	public User createUser(User u, String userInsert) {
+		u.setUserInsert( userInsert );
+		u.setUserUpdate( userInsert );
+		u.setTimeInsert( new Date() );
+		u.setTimeUpdate( new Date() );
+
+		persist( u );
+
+		return u;
+	}
 
 	public Query createUserRolesQuery(String username) {
 		return createUserRolesQuery(username, null);

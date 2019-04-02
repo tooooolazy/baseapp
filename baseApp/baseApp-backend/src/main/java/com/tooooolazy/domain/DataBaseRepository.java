@@ -33,11 +33,11 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
     @Autowired
 	protected DataHandlerHelper dhh;
 
-    @Autowired
-	protected PasswordManager passwordManager;
-
 	@Autowired
 	protected UserHelper userHelper;
+	@Autowired
+	protected PasswordManager passwordManager;
+
 
 	public Object getEnvironment(Map params) {
 		JSONObject jo = new JSONObject();
@@ -121,6 +121,26 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 		return null;
 	}
 
+	/**
+	 * This will be called if username exists in local DB
+	 * @param ua
+	 * @param params
+	 * @return
+	 */
+	public User loginUserExternal(UserAccount ua, Map params) {
+		return ua.getUser();
+	}
+	/**
+	 * This one will be called if username does not exist in local DB and needs to be created!
+	 * @param params
+	 * @return
+	 */
+	public User loginUserExternal(Map params) {
+		String username = (String) params.get("username");
+		params.put("externalLogin", true);
+		userHelper.createNewUser(null, params);
+		return null;// ua.getUser();
+	}
 
 	
 	public Object getUsersRoles(Map params) {
@@ -152,7 +172,11 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 		throw new IllegalAccessException("Nothing to update for the given params");
 	}
 
-	private JSONObject createAllOkKSON() {
+	/**
+	 * Helper for result object
+	 * @return
+	 */
+	protected JSONObject createAllOkKSON() {
 		JSONObject jo = new JSONObject();
 		jo.put(OnlineKeys.RESULT, "OK");
 		return jo;

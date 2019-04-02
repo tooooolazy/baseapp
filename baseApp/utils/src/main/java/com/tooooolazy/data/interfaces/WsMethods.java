@@ -22,4 +22,5 @@ public interface WsMethods {
 	 */
 	public static String LOGOUT_USER = "logoutUser";
 	public static String LOGIN_USER = "loginUser";
+	public static String LOGIN_USER_EXTERNAL = "loginUserExternal";
 }

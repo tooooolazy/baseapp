@@ -1,6 +1,7 @@
 package com.tooooolazy.data.services.beans;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.tooooolazy.util.Credentials;
@@ -16,6 +17,7 @@ public abstract class UserBean<RE> {
 	protected List<RE> roles;
 	private boolean isGod;
 	protected boolean isDemo;
+	protected Date lastLogin;
 
 	protected String firstName, lastName;
 
@@ -81,4 +83,10 @@ public abstract class UserBean<RE> {
 	}
 	protected abstract boolean isGodRole(RE re);
 	protected abstract boolean isAdminRole(RE re);
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+	}
 }

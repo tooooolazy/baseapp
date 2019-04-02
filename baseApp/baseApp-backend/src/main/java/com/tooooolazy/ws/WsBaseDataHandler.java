@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import javax.persistence.NoResultException;
+
 import org.apache.logging.log4j.LogManager;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,8 +72,14 @@ public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extend
 			}
 			if ( params.getUserCode() != null && params.getUserCode() > 0 )
 				ua = userAccountRepository.find( params.getUserCode() );
-			if ( !TLZUtils.isEmpty( params.getUsername() ) )
-				ua = userAccountRepository.findByUsername( params.getUsername() );
+			else if ( !TLZUtils.isEmpty( params.getUsername() ) ) {
+				try {
+					ua = userAccountRepository.findByUsername( params.getUsername() );
+				} catch (NoResultException e) {
+					params.getMethodParams().put("username", params.getUsername());
+					e.printStackTrace();
+				}
+			}
 			methodName = params.getMethod();
 			Method m = null;
 			
