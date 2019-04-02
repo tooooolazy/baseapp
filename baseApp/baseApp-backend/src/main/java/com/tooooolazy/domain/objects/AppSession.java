@@ -10,7 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "IRP_SESSIONS")
+@Table(name = "APP_SESSIONS")
 public class AppSession implements java.io.Serializable {
 
 	@Id

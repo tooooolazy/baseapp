@@ -28,18 +28,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @Entity
 @Table(name = "USERACCOUNT", uniqueConstraints = @UniqueConstraint(columnNames = "USERNAME"))
-@JsonIgnoreProperties({"user"})
+@JsonIgnoreProperties({"user"}) // it breaks auto json generation (got into a loop)
 public class UserAccount implements java.io.Serializable {
 
 	private static final long serialVersionUID = 12585971147944670L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERACCOUNT_generator")
-	@SequenceGenerator(name="USERACCOUNT_generator", sequenceName = "USERACCOUNT_seq1", allocationSize=1)
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name="USERACCOUNT_generator", sequenceName = "USERCODE_SEQ", allocationSize=1)
 	@Column(name = "USERCODE", unique = true, nullable = false)
 	private Integer userCode;
-	// Commented out since it broke auto json generation (got into a loop)
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
 	private User user;

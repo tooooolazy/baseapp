@@ -29,7 +29,7 @@ public class User implements java.io.Serializable {
 	private String lastName;
 	@Column(name = "FIRSTNAME", length = 20)
 	private String firstName;
-	@Column(name = "STATUSCODE", nullable = false)
+	@Column(name = "STATUSCODE")
 	private UserStatus status;
 	@Column(name = "EMAIL", length = 80)
 	private String email;

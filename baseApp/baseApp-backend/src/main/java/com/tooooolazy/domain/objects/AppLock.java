@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "IRP_LOCKS")
+@Table(name = "APP_LOCKS")
 @JsonIgnoreProperties({"lockedBy"})
 public class AppLock implements java.io.Serializable {
 
