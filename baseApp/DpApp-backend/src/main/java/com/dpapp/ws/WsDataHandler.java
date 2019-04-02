@@ -1,8 +1,6 @@
 package com.dpapp.ws;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.dpapp.domain.DataRepository;
@@ -20,8 +18,12 @@ import com.tooooolazy.ws.WsBaseDataHandler;
 public class WsDataHandler extends WsBaseDataHandler<DataRepository, OnlineResult, OnlineParams> {
 
 	@Autowired
-	public WsDataHandler(@Qualifier("dataRepository") DataRepository dataRepository) {
-		super(dataRepository);
+	protected DataRepository dataRepository;
+
+
+	@Override
+	protected DataRepository getDataRepository() {
+		return dataRepository;
 	}
 
 	@Override
