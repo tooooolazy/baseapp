@@ -2,6 +2,7 @@ package com.tooooolazy.domain.components;
 
 import java.net.Inet4Address;
 import java.util.Date;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,7 +19,7 @@ public class DataHandlerHelper {
 	@Autowired
 	protected Environment env;
 
-//	@PersistenceContext
+	@PersistenceContext
 	protected EntityManager entityManager;
 
 	/**
@@ -30,6 +31,9 @@ public class DataHandlerHelper {
 		return schema;
 	}
 
+	public Object logLogin(String username, String result, Map params) {
+		return logLogin(username, result, (String)params.getOrDefault("browser", null), (Integer)params.getOrDefault("major", null), (Integer)params.getOrDefault("minor", null), (String)params.getOrDefault("address", null) );
+	}
 	public Object logLogin(String username, String result, String browser, Integer major, Integer minor, String address) {
 		if (address == null) 
 			address = getIp();

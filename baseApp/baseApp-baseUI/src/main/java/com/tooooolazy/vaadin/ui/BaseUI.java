@@ -60,6 +60,7 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinService;
 import com.vaadin.server.VaadinServletService;
 import com.vaadin.server.VaadinSession;
+import com.vaadin.server.WebBrowser;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CustomLayout;
@@ -976,4 +977,16 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
     	logger.info("Setting poll interval to: " + intervalInMillis);
     	super.setPollInterval(intervalInMillis);
     }
+
+	public JSONObject addMainLogActionParams(JSONObject params) {
+		if (params == null)
+			params = new JSONObject();
+		WebBrowser wb = getUI().getPage().getWebBrowser();
+		params.put("browser", wb.getBrowserApplication() );
+		params.put("major", wb.getBrowserMajorVersion() );
+		params.put("minor", wb.getBrowserMinorVersion() );
+		params.put("address", wb.getAddress());
+
+		return params;
+	}
 }

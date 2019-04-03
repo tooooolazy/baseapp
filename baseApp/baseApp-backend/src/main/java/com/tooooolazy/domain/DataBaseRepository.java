@@ -131,6 +131,7 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	 * @return
 	 */
 	public User loginUserExternal(UserAccount ua, Map params) {
+		dhh.logLogin(ua.getUsername(), "AUTHENTICATION_SUCCEEDED", params);
 		return ua.getUser();
 	}
 	/**
@@ -141,7 +142,11 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	public User loginUserExternal(Map params) {
 		String username = (String) params.get("username");
 		params.put("externalLogin", true);
-		return userHelper.createNewUser(null, params);
+		User u = userHelper.createNewUser(null, params);
+
+		dhh.logLogin(username, "AUTO_USER_CREATE", params);
+		u.getUserAccount().setUser( u );
+		return loginUserExternal(u.getUserAccount(), params);
 	}
 
 	
