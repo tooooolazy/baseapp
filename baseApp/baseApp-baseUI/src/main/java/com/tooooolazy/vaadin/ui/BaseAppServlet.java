@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 
+import org.json.JSONObject;
+
 import com.tooooolazy.data.ServiceLocator;
 import com.tooooolazy.data.interfaces.WsMethods;
 import com.tooooolazy.data.services.beans.OnlineResult;
@@ -28,6 +30,8 @@ public class BaseAppServlet extends VaadinServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	private Thread applicationMonitor;
 
 	@Override
 	protected void servletInitialized() throws ServletException {
@@ -56,10 +60,10 @@ public class BaseAppServlet extends VaadinServlet {
 				UserBean user = (UserBean)event.getSession().getAttribute("user");
 				if ( user != null ) {
 					try {
-						Map params = new HashMap();
-						params.put("autoLogout", true);
+						JSONObject joParams = BaseUI.get().addMainLogActionParams(null);
+						joParams.put("autoLogout", true);
 						OnlineResult or = (OnlineResult) ServiceLocator.getServices().getDataHandler()
-								.getData(WsMethods.LOGOUT_USER, user, false, params, true);
+								.getData(WsMethods.LOGOUT_USER, user, false, joParams.toMap(), true);
 						System.out.println( or.getFailCode() );
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -69,6 +73,13 @@ public class BaseAppServlet extends VaadinServlet {
 			}
 		});
 		System.out.println("Session Destroy Listener set...");
+
+//		applicationMonitor = new Thread() {
+//			@Override
+//		    public void run() {
+//				ApplicationLevelTracker alt;
+//			}
+//		};
 		super.servletInitialized();
 	}
 

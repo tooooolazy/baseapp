@@ -251,8 +251,13 @@ ALTER TABLE BSM.USERACCOUNT
       UNIQUE (USERNAME);
 
 
-select * from bsm.users
-select * from bsm.USERACCOUNT
+select * from bsm.users;
+select * from bsm.USERACCOUNT;
+select * from bsm.USER_LOG;
+select * from bsm.APP_SESSIONS;
 
 delete from bsm.users;
 delete from bsm.USERACCOUNT;
+delete from bsm.USER_LOG;
+delete from bsm.APP_SESSIONS;
+
