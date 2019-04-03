@@ -952,11 +952,11 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	}
 
 	public void cleanupUser(UB user) {
-		Map params = new HashMap();
 		try {
-			params.put("autoLogout", false);
+			JSONObject joParams = addMainLogActionParams(null);
+			joParams.put("autoLogout", false);
 			OR or = (OR) ServiceLocator.getServices().getDataHandler()
-					.getData(WsMethods.LOGOUT_USER, user, false, params, true);
+					.getData(WsMethods.LOGOUT_USER, user, false, joParams.toMap(), true);
 			System.out.println( or.getFailCode() );
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

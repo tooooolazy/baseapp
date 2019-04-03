@@ -50,6 +50,8 @@ public class UserAccount implements java.io.Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "LASTLOGIN", length = 26)
 	private Date lastlogin;
+	@Transient
+	private Date realLastlogin;
 	@Column(name = "USERINSERT", nullable = false, length = 30)
 	private String userInsert;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -137,6 +139,14 @@ public class UserAccount implements java.io.Serializable {
 
 	public void setLastlogin(Date lastlogin) {
 		this.lastlogin = lastlogin;
+	}
+
+	public Date getRealLastlogin() {
+		return this.realLastlogin;
+	}
+
+	public void setRealLastlogin(Date lastlogin) {
+		this.realLastlogin = lastlogin;
 	}
 
 	public String getUserInsert() {

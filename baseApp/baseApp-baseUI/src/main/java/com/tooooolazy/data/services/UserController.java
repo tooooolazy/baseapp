@@ -63,7 +63,7 @@ public abstract class UserController<UB extends UserBean<RE>, RE> implements Use
 		ub.setUserCode( userJo.optInt("userCode") );
 		ub.setFirstName( userJo.optString("firstName"));
 		ub.setLastName( userJo.optString("lastName"));
-		ub.setLastLogin( new Date( ua.optLong("lastlogin") ) );
+		ub.setLastLogin( new Date( ua.optLong("realLastlogin") ) );
 
 		setUserRoles(ub, ua.optJSONArray("accountRoles"));
 

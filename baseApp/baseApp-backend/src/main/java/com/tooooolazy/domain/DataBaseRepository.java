@@ -1,7 +1,9 @@
 package com.tooooolazy.domain;
 
+import java.util.Date;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,6 +11,7 @@ import com.tooooolazy.data.interfaces.OnlineKeys;
 import com.tooooolazy.domain.components.DataHandlerHelper;
 import com.tooooolazy.domain.components.PasswordManager;
 import com.tooooolazy.domain.components.UserHelper;
+import com.tooooolazy.domain.objects.AppSession;
 import com.tooooolazy.domain.objects.User;
 import com.tooooolazy.domain.objects.UserAccount;
 import com.tooooolazy.util.Credentials;
@@ -37,6 +40,13 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	protected UserHelper userHelper;
 	@Autowired
 	protected PasswordManager passwordManager;
+
+	@Autowired
+	protected AppSessionRepository appSessionRepository;
+	@Autowired
+	protected AppLockRepository appLockRepository;
+	@Autowired
+	protected UserAccountRepository userAccountRepository;
 
 
 	public Object getEnvironment(Map params) {
@@ -123,23 +133,54 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 //		}
 		return null;
 	}
+	public Object logoutUser(UserAccount ua, Map params) {
+		LogManager.getLogger().info( "Sessions before logout: " + appSessionRepository.count() );
+		LogManager.getLogger().info( "Locks before logout: " + appLockRepository.count() );
+
+		AppSession as = appSessionRepository.find( ua.getUserCode() );
+		appSessionRepository.remove( as );
+		appLockRepository.removeLocksOf( ua );
+
+		Boolean auto = (Boolean)params.get("autoLogout");
+		dhh.logLogin(ua.getUsername(), auto ? "AUTO_LOGOUT_SUCCEEDED" : "LOGOUT_SUCCEEDED", params);
+
+		return ua;
+	}
 
 	/**
 	 * This will be called if username exists in local DB
 	 * @param ua
 	 * @param params
 	 * @return
+	 * @throws MultipleLoginException 
 	 */
-	public User loginUserExternal(UserAccount ua, Map params) {
+	public User loginUserExternal(UserAccount ua, Map params) throws MultipleLoginException {
+		LogManager.getLogger().info( "Sessions before login: " + appSessionRepository.count() );
+		LogManager.getLogger().info( "Locks before login: " + appLockRepository.count() );
+
+		AppSession is = appSessionRepository.find( ua.getUserCode() );
+		Date currentLastLogin = null;
+		if ( is == null ) {
+			appSessionRepository.create((String)params.getOrDefault("address", null), ua.getUserCode());
+			currentLastLogin = ua.getLastlogin();
+			ua.setLastlogin( new Date() );
+			ua.setRealLastlogin(currentLastLogin); // so UI knows the actual last login
+			userAccountRepository.persist( ua );
+		} else {
+			dhh.logLogin(ua.getUsername(), "ALREADY_LOGGED_IN", params);
+			throw new MultipleLoginException();
+		}
 		dhh.logLogin(ua.getUsername(), "AUTHENTICATION_SUCCEEDED", params);
-		return ua.getUser();
+		User u = ua.getUser();
+		return u;
 	}
 	/**
 	 * This one will be called if username does not exist in local DB and needs to be created!
 	 * @param params
 	 * @return
+	 * @throws MultipleLoginException 
 	 */
-	public User loginUserExternal(Map params) {
+	public User loginUserExternal(Map params) throws MultipleLoginException {
 		String username = (String) params.get("username");
 		params.put("externalLogin", true);
 		User u = userHelper.createNewUser(null, params);
