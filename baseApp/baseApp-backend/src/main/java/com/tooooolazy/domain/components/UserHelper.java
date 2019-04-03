@@ -78,9 +78,9 @@ public class UserHelper {
 				nu.setStatus(UserStatus.ACTIVE);
 
 			if ( !externalLogin ) {
-				nu.setUserInsert( creds.getUsername() );
 				creds.setPassword( passwordManager.hashMC( creds.getPassword() ) );
-			}
+			} else
+				nu.setUserInsert( "AUTO" ); // auto created by system - 1st time login
 
 			String userInsert = nu.getUserInsert() == null ? DEFAULT_USER_INSERT : nu.getUserInsert();
 			
@@ -91,7 +91,7 @@ public class UserHelper {
 			try {
 				nua = (UserAccount) q.getSingleResult();
 			} catch (NoResultException e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 			if (nua == null) {
 				nua = userAccountRepository.createUserAccount( creds, userInsert );

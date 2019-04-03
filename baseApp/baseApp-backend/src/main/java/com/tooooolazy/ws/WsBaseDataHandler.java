@@ -77,7 +77,7 @@ public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extend
 					ua = userAccountRepository.findByUsername( params.getUsername() );
 				} catch (NoResultException e) {
 					params.getMethodParams().put("username", params.getUsername());
-					e.printStackTrace();
+//					e.printStackTrace();
 				}
 			}
 			methodName = params.getMethod();

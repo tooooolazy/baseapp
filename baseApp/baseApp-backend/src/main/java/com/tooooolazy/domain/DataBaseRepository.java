@@ -52,6 +52,9 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	public boolean inUAT() {
 		return env.getProperty( DEFAULT_DEPLOY_ENV_KEY ).equals("UAT");
 	}
+	public boolean inPRE() {
+		return env.getProperty( DEFAULT_DEPLOY_ENV_KEY ).equals("PRE");
+	}
 
 
 
@@ -138,8 +141,7 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	public User loginUserExternal(Map params) {
 		String username = (String) params.get("username");
 		params.put("externalLogin", true);
-		userHelper.createNewUser(null, params);
-		return null;// ua.getUser();
+		return userHelper.createNewUser(null, params);
 	}
 
 	

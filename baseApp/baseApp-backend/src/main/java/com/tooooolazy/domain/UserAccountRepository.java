@@ -14,7 +14,7 @@ import com.tooooolazy.util.Credentials;
 @Repository("userAccountRepository")
 public class UserAccountRepository extends AbstractRepository<UserAccount, Integer> {
 
-	public static String USER_NAME = "userName";
+	public static String USER_NAME = "username";
 	public static String PASSWORD = "password";
 
 	public UserAccount findByUsername(String username) {
