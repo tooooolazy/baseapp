@@ -7,11 +7,13 @@ import org.json.JSONObject;
 
 import com.tooooolazy.data.interfaces.AbstractDataHandler;
 import com.tooooolazy.data.interfaces.DataHandlerClient;
+import com.tooooolazy.data.interfaces.OnlineKeys;
 import com.tooooolazy.data.interfaces.WsMethods;
 import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.tooooolazy.services.client.DataHandlerClientImpl;
+import com.tooooolazy.vaadin.ui.BaseUI;
 
 /**
  * Helper class that creates a {@link DataHandlerClient} used to retrieve data from a WS
@@ -71,7 +73,13 @@ public abstract class DataHandler<OR extends OnlineBaseResult, OP extends Online
 				if (jfc != null) {
 					// TODO need to do something to avoid everything being visible!!!!
 				} else {
-					return tor.getAsJSON();
+					JSONObject jo = tor.getAsJSON();
+
+					if ( BaseUI.get().requiresSecDefs() && jo.optJSONArray(OnlineKeys.DATA) == null ) {
+						throw new SecurityException("No Security Definitions defined in DB");
+					}
+						
+					return jo;
 				}
 			}
 		} catch (Exception e) {

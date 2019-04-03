@@ -284,4 +284,9 @@ public class DpAppUI extends BaseUI<DpAppLayout, DpAppUserBean, OnlineResult, Jo
 	public JobFailureCode getServiceFailureCode() {
 		return JobFailureCode.SERVICE_PROBLEM;
 	}
+
+	@Override
+	public boolean requiresSecDefs() {
+		return true;
+	}
 }

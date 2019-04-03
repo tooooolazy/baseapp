@@ -194,4 +194,8 @@ public class AppUI extends BaseUI<ResponsiveMenuLayout, UserBean<RoleEnum>, Onli
 	public JobFailureCode getServiceFailureCode() {
 		return JobFailureCode.SERVICE_PROBLEM;
 	}
+	@Override
+	public boolean requiresSecDefs() {
+		return true;
+	}
 }

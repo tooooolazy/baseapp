@@ -989,4 +989,10 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 
 		return params;
 	}
+
+	/**
+	 * if returns true and nothing table 'MSECLEVELDEFS' is empty an exception will be thrown from {@link DataHandler}
+	 * @return
+	 */
+	public abstract boolean requiresSecDefs();
 }

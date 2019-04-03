@@ -67,6 +67,22 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	}
 
 
+	public Object getClassTypes(UserAccount ua, Map params) {
+		if (params != null) {
+			return dhh.getClassTypes();
+		}
+		return "{}";
+	}
+	/////////////////////////////////////
+	// security related methods
+	public Object getMSecLevelDefs(UserAccount ua, Map params) {
+		if (params != null) {
+			String username = (String) params.get("username");
+			return dhh.getMSecLevelDefs(username);
+		}
+		return "{}";
+	}
+
 
 	/**
 	 * Default login action that assumes all user related data are stored in Application's database (ie no LDAP or anything like that). Also assumes Lock and Session support
