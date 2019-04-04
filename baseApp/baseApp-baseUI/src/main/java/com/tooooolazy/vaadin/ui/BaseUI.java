@@ -49,6 +49,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.CustomizedSystemMessages;
 import com.vaadin.server.DefaultErrorHandler;
+import com.vaadin.server.Page;
 import com.vaadin.server.Page.PopStateEvent;
 import com.vaadin.server.Page.PopStateListener;
 import com.vaadin.server.Resource;
@@ -989,11 +990,15 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	public JSONObject addMainLogActionParams(JSONObject params) {
 		if (params == null)
 			params = new JSONObject();
-		WebBrowser wb = getUI().getPage().getWebBrowser();
-		params.put("browser", wb.getBrowserApplication() );
-		params.put("major", wb.getBrowserMajorVersion() );
-		params.put("minor", wb.getBrowserMinorVersion() );
-		params.put("address", wb.getAddress());
+		try {
+			WebBrowser wb = Page.getCurrent().getWebBrowser();
+			params.put("browser", wb.getBrowserApplication() );
+			params.put("major", wb.getBrowserMajorVersion() );
+			params.put("minor", wb.getBrowserMinorVersion() );
+			params.put("address", wb.getAddress());
+		} catch (Exception e) {
+			logger.error("Error getting Drowser details... ", e);
+		}
 
 		return params;
 	}
