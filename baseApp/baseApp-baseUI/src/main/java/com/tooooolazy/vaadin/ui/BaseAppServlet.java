@@ -1,15 +1,12 @@
 package com.tooooolazy.vaadin.ui;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.ServletException;
 
 import org.json.JSONObject;
 
 import com.tooooolazy.data.ServiceLocator;
 import com.tooooolazy.data.interfaces.WsMethods;
-import com.tooooolazy.data.services.beans.OnlineResult;
+import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.data.services.beans.UserBean;
 import com.vaadin.server.CustomizedSystemMessages;
 import com.vaadin.server.SessionDestroyEvent;
@@ -62,7 +59,7 @@ public class BaseAppServlet extends VaadinServlet {
 					try {
 						JSONObject joParams = BaseUI.get().addMainLogActionParams(null);
 						joParams.put("autoLogout", true);
-						OnlineResult or = (OnlineResult) ServiceLocator.getServices().getDataHandler()
+						OnlineBaseResult or = (OnlineBaseResult) ServiceLocator.getServices().getDataHandler()
 								.getData(WsMethods.LOGOUT_USER, user, false, joParams.toMap(), true);
 						System.out.println( or.getFailCode() );
 					} catch (Exception e) {

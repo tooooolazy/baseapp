@@ -6,6 +6,9 @@ import java.util.LinkedHashMap;
 import org.json.JSONObject;
 
 /**
+ * Extend this Base class in order to specify {@link JobFailureCode} enum class. Each App UI need to declare their own 'OnlineResult' class and their own 'JobFailureCode' enum.
+ * <p>Make sure services respond with the same object</p>
+ *  
  * @author gpatoulas
  *
  * @param <JFC> - JobFailure Enum class. can use default {@link JobFailureCode} or a custom one.
