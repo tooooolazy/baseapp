@@ -34,7 +34,7 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	public static String DEFAULT_USER_INSERT = "SYSTEM";
 	public static String DEFAULT_DEPLOY_ENV_KEY = "deploy.environment";
 
-    @Autowired
+	@Autowired
 	protected DataHandlerHelper dhh;
 
     @Autowired
@@ -253,7 +253,6 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 			String lastName = (String)params.get("lastName");
 			int res = userHelper.updateUser( userCode, firstName, lastName, ua );
 			if ( res > 0 ) {
-				dhh.logLogin(ua.getUsername(), "updateUser-"+userCode, params);
 				return createAllOkKSON().toMap();
 			}
 		} catch (Exception e) {

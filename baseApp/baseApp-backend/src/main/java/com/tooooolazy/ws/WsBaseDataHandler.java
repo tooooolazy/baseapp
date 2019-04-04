@@ -16,6 +16,7 @@ import com.tooooolazy.data.services.beans.OnlineBaseParams;
 import com.tooooolazy.data.services.beans.OnlineBaseResult;
 import com.tooooolazy.domain.DataBaseRepository;
 import com.tooooolazy.domain.UserAccountRepository;
+import com.tooooolazy.domain.components.DataHandlerHelper;
 import com.tooooolazy.domain.objects.UserAccount;
 import com.tooooolazy.util.TLZUtils;
 import com.tooooolazy.util.exceptions.AccessDeniedException;
@@ -33,15 +34,19 @@ public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extend
 
 	@Autowired
 	private UserAccountRepository userAccountRepository;
+	@Autowired
+	protected DataHandlerHelper dhh;
 
 	protected abstract DR getDataRepository();
     
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
 	public OR execute(OP params) {
+		params.setLogAction( false ); // override since there will be no transaction available!
 		return _execute(params);
 	}
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public OR executeUpdate(OP params) {
+		params.setLogAction( true ); // override since there will be a transaction available!
 		return _execute(params);
 	}
 	/**
@@ -108,6 +113,10 @@ public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extend
 								)
 						);
 
+			if ( ua != null && params.isLogCurrentAction() ) {
+				// TODO
+				dhh.logLogin(ua.getUsername(), methodName + "-" + ua.getUserCode(), params.getMethodParams());
+			}
 		} catch (AccessDeniedException e) {
 			LogManager.getLogger().error("WS error: ", e);
 			jo.put("failMsg", e.getClass().getSimpleName() + ": " + e.getMessage());
