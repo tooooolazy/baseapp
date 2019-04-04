@@ -202,6 +202,10 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	public User loginUserExternal(Map params) throws MultipleLoginException {
 		String username = (String) params.get("username");
 		params.put("externalLogin", true);
+		int userCount = userHelper.getUserCount();
+		if ( userCount == 0 ) {
+			params.put("role", 2); // set as Admin
+		}
 		User u = userHelper.createNewUser(null, params);
 
 		dhh.logLogin(username, "AUTO_USER_CREATE", params);

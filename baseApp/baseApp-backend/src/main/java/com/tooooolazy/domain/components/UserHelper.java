@@ -178,4 +178,8 @@ public class UserHelper {
 			return userAccountRepository.removeRole(ur, userCode);
 	}
 
+	public int getUserCount() {
+		return userAccountRepository.findAll().size();
+	}
+
 }
