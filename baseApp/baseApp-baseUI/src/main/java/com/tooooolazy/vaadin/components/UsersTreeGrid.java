@@ -7,6 +7,7 @@ import com.tooooolazy.util.Messages;
 import com.tooooolazy.util.TLZUtils;
 import com.tooooolazy.vaadin.resources.Resources;
 import com.tooooolazy.vaadin.ui.BaseUI;
+import com.vaadin.data.Binder;
 import com.vaadin.data.HasValue.ValueChangeEvent;
 import com.vaadin.data.HasValue.ValueChangeListener;
 import com.vaadin.data.provider.HierarchicalQuery;
@@ -17,6 +18,10 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.TreeGrid;
+import com.vaadin.ui.components.grid.EditorOpenEvent;
+import com.vaadin.ui.components.grid.EditorOpenListener;
+import com.vaadin.ui.components.grid.EditorSaveEvent;
+import com.vaadin.ui.components.grid.EditorSaveListener;
 import com.vaadin.ui.components.grid.FooterCell;
 import com.vaadin.ui.components.grid.FooterRow;
 import com.vaadin.ui.components.grid.HeaderRow;
@@ -36,8 +41,9 @@ import com.vaadin.ui.renderers.TextRenderer;
  * @author gpatoulas
  *
  */
-public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
+public abstract class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 	protected FooterRow fr;
+	protected Binder<UserRoleBean> binder;
 
 	/**
 	 * 
@@ -53,6 +59,37 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 
 	protected void init(){
 		setBeanType(UserRoleBean.class);
+
+		getEditor().setBuffered( true );
+		getEditor().setEnabled( true );
+
+		getEditor().addOpenListener( new EditorOpenListener<UserRoleBean>() {
+
+			@Override
+			public void onEditorOpen(EditorOpenEvent<UserRoleBean> event) {
+				if ( BaseUI.get().checkIfHasAccess("editUser", Button.class) ) {
+				} else {
+					event.getGrid().getEditor().cancel();
+					BaseUI.get().notifyPermissionDenied();
+				}
+				if (event.getBean().getUsername() == null)
+					event.getGrid().getEditor().cancel();
+			}
+			
+		});
+		
+		getEditor().addSaveListener( new EditorSaveListener<UserRoleBean>() {
+
+			@Override
+			public void onEditorSave(EditorSaveEvent<UserRoleBean> event) {
+				boolean saved = onInnerSaveClicked( event.getBean() );
+				if ( !saved ) {
+					Messages.setLang( BaseUI.get().getLocale().getLanguage() );
+					Notification.show(Messages.getString("save.failed"), Messages.getString("refresh"), Type.ERROR_MESSAGE);
+				}
+			}
+			
+		});
 	}
 
 	public void attach() {
@@ -62,13 +99,16 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 //		adjustMainHeader();
 		setGroupHeaders();
 		setGroupFooters();
+
 	}
 
 	protected void addColumns() {
-		addColumn( "username" ).setCaption( Messages.getString( getClass(), "username" ) );
+		TextField tfDisabled = new TextField();
+		tfDisabled.setEnabled( false );
+		addColumn( "username" ).setCaption( Messages.getString( getClass(), "username" ) ).setEditorComponent( tfDisabled );
 
-		addColumn( "firstName" ).setCaption( Messages.getString( getClass(), "firstName" ) );
-		addColumn( "lastName" ).setCaption( Messages.getString( getClass(), "lastName" ) );
+		addColumn( "firstName" ).setCaption( Messages.getString( getClass(), "firstName" ) ).setEditorComponent(new TextField()).setEditable( true );
+		addColumn( "lastName" ).setCaption( Messages.getString( getClass(), "lastName" ) ).setEditorComponent(new TextField()).setEditable( true );
 
 //		addColumn( "roleCode" ).setCaption( Messages.getString( getClass(), "role" ) );
 		addColumn( u -> u.getRoleCode() > 0 ? getRoleByValue( u.getRoleCode() ) : "",
@@ -125,13 +165,13 @@ public class UsersTreeGrid extends TreeGrid<UserRoleBean> {
 	}
 
 	/**
-	 * Calls related WS to update user role assignment.
+	 * should call related WS to update user role assignment.
 	 * @param urb - the new role assignment
 	 * @return WS fail message or null
 	 */
-	protected String userRoleToggled(UserRoleBean urb) {
-		return null;
-	}
+	protected abstract String userRoleToggled(UserRoleBean urb);
+
+	protected abstract boolean onInnerSaveClicked(UserRoleBean bean);
 
 	protected String getRoleByValue(int rv) {
 		Messages.setLang( BaseUI.get().getLocale().getLanguage() );

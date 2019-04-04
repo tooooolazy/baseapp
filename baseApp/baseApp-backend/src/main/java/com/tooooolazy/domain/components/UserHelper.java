@@ -1,6 +1,7 @@
 package com.tooooolazy.domain.components;
 
 import java.security.InvalidParameterException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -170,12 +171,24 @@ public class UserHelper {
 		return jo;
 	}
 	public int updateUserRole(int userCode, int roleCode, boolean assigned, UserAccount ua) {
-		// TODO Auto-generated method stub
 		UserRole ur = userRoleRepository.find( roleCode );
 		if ( assigned )
 			return userAccountRepository.addRole(ur, userCode, ua.getUsername());
 		else
 			return userAccountRepository.removeRole(ur, userCode);
+	}
+	
+	public int updateUser(int userCode, String firstName, String lastName, UserAccount ua) {
+		User u = userRepository.find( userCode );
+		
+		u.setFirstName(firstName);
+		u.setLastName(lastName);
+		u.setUserUpdate( ua.getUsername() );
+		u.setTimeUpdate( new Date() );
+
+		userRepository.persist( u );
+
+		return 1;
 	}
 
 	public int getUserCount() {

@@ -236,13 +236,31 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 			int roleCode = (Integer)params.get("role.code");
 			boolean assigned = (Boolean)params.get("role.assigned");
 			int res = userHelper.updateUserRole( userCode, roleCode, assigned, ua );
-			if ( res > 0 )
+			if ( res > 0 ) {
+				dhh.logLogin(ua.getUsername(), "updateUserRole-" + userCode + "-" + roleCode + "-" + assigned, params);
 				return createAllOkKSON().toMap();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new IllegalAccessException( e.getMessage() );
 		}
 		throw new IllegalAccessException("Nothing to update for the given params");
+	}
+	public Object updateUser(UserAccount ua, Map params) {
+		try {
+			int userCode = (Integer)params.get("user.code");
+			String firstName = (String)params.get("firstName");
+			String lastName = (String)params.get("lastName");
+			int res = userHelper.updateUser( userCode, firstName, lastName, ua );
+			if ( res > 0 ) {
+				dhh.logLogin(ua.getUsername(), "updateUser-"+userCode, params);
+				return createAllOkKSON().toMap();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException( e.getMessage() );
+		}
+		throw new RuntimeException();
 	}
 
 	/**

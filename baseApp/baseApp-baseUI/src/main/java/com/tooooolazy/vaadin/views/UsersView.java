@@ -2,6 +2,7 @@ package com.tooooolazy.vaadin.views;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,6 +63,11 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 			@Override
 			protected String userRoleToggled(UserRoleBean urb) {
 				return callToggleUserRoleWs( urb );
+			}
+
+			@Override
+			protected boolean onInnerSaveClicked(UserRoleBean urb) {
+				return callSaveUserData( urb );
 			}
 
 		};
@@ -152,12 +158,12 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 	}
 
 	protected String callToggleUserRoleWs(UserRoleBean urb) {
-		Map params = new HashMap();
-		params.put("user.code", urb.getParent().getUserCode() );
-		params.put("role.code", urb.getRoleCode() );
-		params.put("role.assigned", !urb.getAssigned() );
+		JSONObject joParams = BaseUI.get().addMainLogActionParams( null );
+		joParams.put("user.code", urb.getParent().getUserCode() );
+		joParams.put("role.code", urb.getRoleCode() );
+		joParams.put("role.assigned", !urb.getAssigned() );
 		try {
-			OR or = (OR) ServiceLocator.getServices().getDataHandler().getData(WsMethods.USER_ROLE_UPDATE, BaseUI.get().getCurrentUser(), params, true);
+			OR or = (OR) ServiceLocator.getServices().getDataHandler().getData(WsMethods.USER_ROLE_UPDATE, BaseUI.get().getCurrentUser(), joParams.toMap(), true);
 			if ( or.getFailCode() == null)
 				return null;
 			return or.getAsJSON().optString("failMsg");
@@ -166,5 +172,19 @@ public abstract class UsersView<C extends SearchCriteria, E, UB extends UserBean
 			e.printStackTrace();
 			return e.getMessage();
 		}
+	}
+	protected boolean callSaveUserData(UserRoleBean urb) {
+		JSONObject joParams = BaseUI.get().addMainLogActionParams( null );
+		joParams.put("user.code", urb.getUserCode() );
+		joParams.put("firstName", urb.getFirstName() );
+		joParams.put("lastName", urb.getLastName() );
+		try {
+			OR or = (OR) ServiceLocator.getServices().getDataHandler().getData(WsMethods.USER_UPDATE, BaseUI.get().getCurrentUser(), joParams.toMap(), true);
+			if ( or.getFailCode() == null)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
