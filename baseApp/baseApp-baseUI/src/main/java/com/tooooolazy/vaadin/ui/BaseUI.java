@@ -505,6 +505,14 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	 * Sets up the Navigator AND adds the app's Views in the Menu
 	 */
 	protected void setupNavigator() {
+		try {
+			ServiceLocator.getServices().getSecurityController().getMethodSecurityDefs();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+			Notification.show("ERROR", e.getMessage(), Type.ERROR_MESSAGE);
+			return;
+		}
+
 		Navigator navigator = new Navigator(this, getContentContainer());
 		setNavigator( navigator );
 

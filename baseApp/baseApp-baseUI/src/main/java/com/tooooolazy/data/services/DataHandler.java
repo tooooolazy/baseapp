@@ -63,7 +63,7 @@ public abstract class DataHandler<OR extends OnlineBaseResult, OP extends Online
 	protected abstract OP createOnlineParams();
 
 	@Override
-	public JSONObject getMethodSecurityDefs() {
+	public JSONObject getMethodSecurityDefs() throws SecurityException {
 		Map<String, Object> params = new HashMap<String, Object>();
 		
 		try {
@@ -71,11 +71,13 @@ public abstract class DataHandler<OR extends OnlineBaseResult, OP extends Online
 			if (tor != null) {
 				Object jfc = tor.getFailCode();
 				if (jfc != null) {
-					// TODO need to do something to avoid everything being visible!!!!
+					// need to do something to avoid everything being visible!!!!
+					if ( BaseUI.get().requiresSecDefs() )
+						throw new SecurityException("No Security Definitions defined in DB");
 				} else {
 					JSONObject jo = tor.getAsJSON();
 
-					if ( BaseUI.get().requiresSecDefs() && jo.optJSONArray(OnlineKeys.DATA) == null ) {
+					if ( BaseUI.get().requiresSecDefs() && (jo == null || jo.optJSONArray(OnlineKeys.DATA) == null || jo.optJSONArray(OnlineKeys.DATA).length() == 0) ) {
 						throw new SecurityException("No Security Definitions defined in DB");
 					}
 						
@@ -83,6 +85,8 @@ public abstract class DataHandler<OR extends OnlineBaseResult, OP extends Online
 				}
 			}
 		} catch (Exception e) {
+			if ( e instanceof SecurityException )
+				throw (SecurityException) e;
 			e.printStackTrace();
 		}
 

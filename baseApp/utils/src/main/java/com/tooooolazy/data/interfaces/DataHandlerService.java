@@ -59,5 +59,5 @@ public interface DataHandlerService<OR extends OnlineBaseResult> {
 	 */
 	public OR getData(String dataType, UserBean user, boolean blockIfUpdating, Map params, boolean requiresTransaction) throws Exception;
 
-	public JSONObject getMethodSecurityDefs();
+	public JSONObject getMethodSecurityDefs() throws SecurityException;
 }

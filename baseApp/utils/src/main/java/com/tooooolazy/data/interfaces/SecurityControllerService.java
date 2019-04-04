@@ -21,8 +21,8 @@ public interface SecurityControllerService<UB extends UserBean<RE>, RE> {
 	public RE getNotLoggedInRole();
 	
 	public List getRoles();
-	public List getMethodSecurityDefs();
-	public List getObjectSecurityDefs();
+	public List getMethodSecurityDefs() throws SecurityException;
+	public List getObjectSecurityDefs() throws SecurityException;
 
 	public boolean hasAccess(UB user, Method method, Class _class, Object[] params);
 	public boolean hasAccess(UB user, String methodName, Class _class, Object[] params);

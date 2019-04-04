@@ -50,7 +50,7 @@ public abstract class SecurityController<UB extends UserBean<RE>, RE> implements
 	}
 
 	@Override
-	public List getMethodSecurityDefs() {
+	public List getMethodSecurityDefs() throws SecurityException {
 		if (methodSecurityDefs == null) {
 			methodSecurityDefs = new ArrayList<Object[]>();
 
@@ -70,6 +70,10 @@ public abstract class SecurityController<UB extends UserBean<RE>, RE> implements
 					}
 				}
 			} catch (Exception e) {
+				if ( e instanceof SecurityException ) {
+					methodSecurityDefs = null;
+					throw (SecurityException) e;
+				}
 				e.printStackTrace();
 			}
 		}
@@ -77,7 +81,7 @@ public abstract class SecurityController<UB extends UserBean<RE>, RE> implements
 	}
 
 	@Override
-	public List getObjectSecurityDefs() {
+	public List getObjectSecurityDefs() throws SecurityException {
 		// TODO Auto-generated method stub
 		return null;
 	}
