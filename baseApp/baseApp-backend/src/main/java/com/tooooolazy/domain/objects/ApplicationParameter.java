@@ -48,7 +48,7 @@ public class ApplicationParameter implements java.io.Serializable {
 	private int category;
 	@Column(name = "FAILCODE")
 	private int failCode;
-	@Column(name = "P_ORDER")
+	@Column(name = "ORDER")
 	private int order;
 	@Column(name = "FAILMESSAGE", length = 500)
 	private String failMessage;

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tooooolazy.data.interfaces.OnlineKeys;
 import com.tooooolazy.domain.components.DataHandlerHelper;
+import com.tooooolazy.domain.components.MenuEditor;
 import com.tooooolazy.domain.components.PasswordManager;
 import com.tooooolazy.domain.components.UserHelper;
 import com.tooooolazy.domain.objects.AppSession;
@@ -36,6 +37,8 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
     @Autowired
 	protected DataHandlerHelper dhh;
 
+    @Autowired
+	protected MenuEditor menuEditor;
 	@Autowired
 	protected UserHelper userHelper;
 	@Autowired
@@ -67,21 +70,20 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 	}
 
 
-	public Object getClassTypes(UserAccount ua, Map params) {
+	public Object getClassTypes(Map params) {
 		if (params != null) {
 			return dhh.getClassTypes();
 		}
 		return "{}";
 	}
+	/////////////////////////
+	// menu related methods
+	public Object getMenuStructure(Map<String, Object> params) {
+		return menuEditor.getMenuStructure(null, params);
+	}
+
 	/////////////////////////////////////
 	// security related methods
-	public Object getMSecLevelDefs(UserAccount ua, Map params) {
-		if (params != null) {
-			String username = (String) params.get("username");
-			return dhh.getMSecLevelDefs(username);
-		}
-		return "{}";
-	}
 	public Object getMSecLevelDefs(Map params) {
 		return dhh.getMSecLevelDefs(null);
 	}
