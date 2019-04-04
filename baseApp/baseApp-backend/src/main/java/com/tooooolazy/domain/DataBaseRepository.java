@@ -82,6 +82,9 @@ public abstract class DataBaseRepository extends AbstractJDBCRepository {
 		}
 		return "{}";
 	}
+	public Object getMSecLevelDefs(Map params) {
+		return dhh.getMSecLevelDefs(null);
+	}
 
 
 	/**
