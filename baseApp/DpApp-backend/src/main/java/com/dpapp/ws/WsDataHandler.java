@@ -46,4 +46,9 @@ public class WsDataHandler extends WsBaseDataHandler<DataRepository, OnlineResul
 		return false;
 	}
 
+	@Override
+	protected Object getMultipleLoginFailCode() {
+		return JobFailureCode.LOGIN_MULTIPLE;
+	}
+
 }

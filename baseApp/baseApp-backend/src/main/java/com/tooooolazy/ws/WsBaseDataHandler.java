@@ -21,6 +21,7 @@ import com.tooooolazy.domain.objects.UserAccount;
 import com.tooooolazy.util.TLZUtils;
 import com.tooooolazy.util.exceptions.AccessDeniedException;
 import com.tooooolazy.util.exceptions.ItemLockedException;
+import com.tooooolazy.util.exceptions.MultipleLoginException;
 
 /**
  * Helper component to wrap a method within a Transaction, if required. Basically, acts as a delegator using reflection to call the selected method. 
@@ -145,7 +146,11 @@ public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extend
 		} catch (InvocationTargetException e) {
 			LogManager.getLogger().error("WS error: ", e);
 			if (e.getTargetException() != null) {
-				if ( e.getTargetException() instanceof ItemLockedException) {
+				if ( e.getTargetException() instanceof MultipleLoginException) {
+					tor.setFailCode( getMultipleLoginFailCode() );
+					tor.setResultObject( jo.toString() );
+				} 
+				else if ( e.getTargetException() instanceof ItemLockedException) {
 					jo.put("lockedBy", ((ItemLockedException)e.getTargetException()).getLockedBy());
 					tor.setFailCode( getItemLockedFailCode() );
 					tor.setResultObject( jo.toString() );
@@ -176,7 +181,7 @@ public abstract class WsBaseDataHandler<DR extends DataBaseRepository, OR extend
 
 	protected abstract Object getGenericFailCode();
 	protected abstract Object getItemLockedFailCode();
-
+	protected abstract Object getMultipleLoginFailCode();
 	/**
 	 * @param userCode
 	 * @return true if user is verified in backend, thus the request can be processed!
