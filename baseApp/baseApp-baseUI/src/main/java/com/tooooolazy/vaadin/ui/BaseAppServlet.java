@@ -54,10 +54,10 @@ public class BaseAppServlet extends VaadinServlet {
 			@Override
 			public void sessionDestroy(SessionDestroyEvent event) {
 				// attributes should still be there!
-				UserBean user = (UserBean)event.getSession().getAttribute("user");
+				UserBean user = (UserBean)event.getSession().getAttribute( BaseUI.SESSION_USER_KEY );
 				if ( user != null ) {
 					try {
-						JSONObject joParams = BaseUI.get().addMainLogActionParams(null);
+						JSONObject joParams = new JSONObject();//BaseUI.get().addMainLogActionParams(null);
 						joParams.put("autoLogout", true);
 						OnlineBaseResult or = (OnlineBaseResult) ServiceLocator.getServices().getDataHandler()
 								.getData(WsMethods.LOGOUT_USER, user, false, joParams.toMap(), true);

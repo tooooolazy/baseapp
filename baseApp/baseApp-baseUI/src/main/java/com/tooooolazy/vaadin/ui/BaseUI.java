@@ -141,7 +141,7 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	protected void init(VaadinRequest vaadinRequest) {
 		logger.info("Initializing BaseUI");
 
-//    	VaadinSession.getCurrent().getSession().setMaxInactiveInterval(20);
+    	VaadinSession.getCurrent().getSession().setMaxInactiveInterval(60 * 30);
 		setupSystemMessages();
 
 		setupErrorHandling();
