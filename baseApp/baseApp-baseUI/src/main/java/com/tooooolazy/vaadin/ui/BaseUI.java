@@ -643,16 +643,17 @@ public abstract class BaseUI<L extends AppLayout, UB extends UserBean, OR extend
 	 * Override to modify default System messages
 	 */
 	protected void setupSystemMessages() {
-		VaadinService.getCurrent().setSystemMessagesProvider(new SystemMessagesProvider() {
-			@Override
-			public SystemMessages getSystemMessages(SystemMessagesInfo systemMessagesInfo) {
-				CustomizedSystemMessages messages = new CustomizedSystemMessages();
-
-				messages.setSessionExpiredNotificationEnabled(false);
-
-				return messages;
-			}
-		});
+		// handled by BaseAppServlet
+//		VaadinService.getCurrent().setSystemMessagesProvider(new SystemMessagesProvider() {
+//			@Override
+//			public SystemMessages getSystemMessages(SystemMessagesInfo systemMessagesInfo) {
+//				CustomizedSystemMessages messages = new CustomizedSystemMessages();
+//
+//				messages.setSessionExpiredNotificationEnabled(false);
+//
+//				return messages;
+//			}
+//		});
 	}
 
 	/**
