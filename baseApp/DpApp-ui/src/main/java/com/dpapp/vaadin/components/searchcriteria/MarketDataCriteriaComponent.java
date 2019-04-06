@@ -58,6 +58,10 @@ public class MarketDataCriteriaComponent extends InputComponent<MarketDataCriter
 		return false;
 	}
 	@Override
+	protected boolean showClearButton() {
+		return false;
+	}
+	@Override
 	protected void createInputFields() {
 		week = new WeekComboBox( Messages.getString( getClass(), "week" ) );
 		year = new TextField( Messages.getString( getClass(), "year" ) );

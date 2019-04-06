@@ -83,14 +83,16 @@ public abstract class InputComponent<BEAN> extends CustomComponent {
 		submitButton.addStyleName("tiny");
 		submitButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
 
-		clearButton = new Button(Messages.getString(_class, "clearBtn"), new Button.ClickListener() {
-			
-			@Override
-			public void buttonClick(ClickEvent event) {
-				clearAll();
-			}
-		});
-		clearButton.addStyleName("tiny");
+		if (showClearButton()) {
+			clearButton = new Button(Messages.getString(_class, "clearBtn"), new Button.ClickListener() {
+				
+				@Override
+				public void buttonClick(ClickEvent event) {
+					clearAll();
+				}
+			});
+			clearButton.addStyleName("tiny");
+		}
 
 		msg = new Label("");
 	}
@@ -121,7 +123,9 @@ public abstract class InputComponent<BEAN> extends CustomComponent {
 		fields.addComponent(fieldsLayout);
 		addExtraComponents();
 		fields.setWidth(getCriteriaWidth());
-		btns = new HorizontalLayout(submitButton, clearButton);
+		btns = new HorizontalLayout(submitButton);
+		if (clearButton != null)
+			btns.addComponent(clearButton);
 		btns.setSpacing(true);
 		fields.addComponents(btns, msg);
 		if (subInfo != null)
@@ -132,6 +136,9 @@ public abstract class InputComponent<BEAN> extends CustomComponent {
 		setCompositionRoot(fields);
 	}
 	protected boolean showSubInfo() {
+		return true;
+	}
+	protected boolean showClearButton() {
 		return true;
 	}
 	/**
