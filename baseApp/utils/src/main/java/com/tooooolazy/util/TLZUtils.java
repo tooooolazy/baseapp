@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -823,5 +824,15 @@ public class TLZUtils {
 			return true;
 
 		return false;
+	}
+	public static int getCurrentWeek() {
+		Calendar c = Calendar.getInstance();
+	    int week = c.get(Calendar.WEEK_OF_YEAR);
+	    return week;
+	}
+	public static int getCurrentYear() {
+		Calendar c = Calendar.getInstance();
+	    int week = c.get(Calendar.YEAR);
+	    return week;
 	}
 }
