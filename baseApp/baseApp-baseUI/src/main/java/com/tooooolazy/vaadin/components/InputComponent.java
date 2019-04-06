@@ -9,6 +9,7 @@ import com.vaadin.server.ErrorMessage;
 import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.AbstractField;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.Component;
@@ -120,20 +121,33 @@ public abstract class InputComponent<BEAN> extends CustomComponent {
 		fields = new VerticalLayout();
 		if (topInfo != null)
 			fields.addComponent(topInfo);
-		fields.addComponent(fieldsLayout);
+		if (buttonsOnTheRight()) {
+			
+		} else {
+			fields.addComponent(fieldsLayout);
+		}
 		addExtraComponents();
 		fields.setWidth(getCriteriaWidth());
 		btns = new HorizontalLayout(submitButton);
 		if (clearButton != null)
 			btns.addComponent(clearButton);
 		btns.setSpacing(true);
-		fields.addComponents(btns, msg);
+		if (buttonsOnTheRight()) {
+			HorizontalLayout _hl = new HorizontalLayout(fieldsLayout, btns);
+//			_hl.setWidth("100%");
+			_hl.setComponentAlignment(btns, Alignment.MIDDLE_RIGHT);
+			fields.addComponents(_hl, msg);
+		} else
+			fields.addComponents(btns, msg);
 		if (subInfo != null)
 			fields.addComponent(subInfo);
 		fields.setSpacing(true);
 		fields.setMargin(new MarginInfo(false, true, false, true));
 
 		setCompositionRoot(fields);
+	}
+	protected boolean buttonsOnTheRight() {
+		return false;
 	}
 	protected boolean showSubInfo() {
 		return true;
