@@ -107,8 +107,10 @@ public abstract class InputComponent<BEAN> extends CustomComponent {
 	}
 
 	protected void setupLayout() {
-		subInfo = new Label(Messages.getString(_class, "subInfo"));
-		subInfo.setContentMode(ContentMode.HTML);
+		if (showSubInfo()) {
+			subInfo = new Label(Messages.getString(_class, "subInfo"));
+			subInfo.setContentMode(ContentMode.HTML);
+		}
 		fieldsLayout = new GridLayout(getMaxColumns(),2);
 		addFields();
 		fieldsLayout.setSpacing(true);
@@ -121,11 +123,16 @@ public abstract class InputComponent<BEAN> extends CustomComponent {
 		fields.setWidth(getCriteriaWidth());
 		btns = new HorizontalLayout(submitButton, clearButton);
 		btns.setSpacing(true);
-		fields.addComponents(btns, msg, subInfo);
+		fields.addComponents(btns, msg);
+		if (subInfo != null)
+			fields.addComponent(subInfo);
 		fields.setSpacing(true);
 		fields.setMargin(new MarginInfo(false, true, false, true));
 
 		setCompositionRoot(fields);
+	}
+	protected boolean showSubInfo() {
+		return true;
 	}
 	/**
 	 * called before Buttons, message and subInfo is added!
