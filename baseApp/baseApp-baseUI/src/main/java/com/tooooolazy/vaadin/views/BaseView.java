@@ -96,7 +96,16 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 		if ( showTitleInContent() ) {
 			vl.addComponent( createTitleComponent() );
 		}
+		createMainContentLayout();
 		addContent();
+	}
+
+	/**
+	 * Override this one when more complex content layouts are needed (ie a vertical layout is not enough and extra layouts are added into default {@link #vl} component). In this case extra class variables should be needed to keep references to the inner components.
+	 */
+	protected void createMainContentLayout() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -110,7 +119,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 			sb.append("_").append(lang);
 
 			CustomLayout cl = new CustomLayout(sb.toString());
-			vl.addComponent( cl );
+			getGeneratedContentContainer().addComponent( cl );
 		}
 
 		addDynamicContent();
@@ -146,10 +155,13 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 				pb = new ProgressBar();
 				pb.setIndeterminate(true);
 
-//				VerticalLayout vl = new VerticalLayout(pb);
 				vl.setSizeFull();
-				vl.addComponent( pb );
-				vl.setComponentAlignment(pb, Alignment.MIDDLE_CENTER);
+
+				AbstractComponentContainer mcl = getGeneratedContentContainer();
+
+				mcl.addComponent( pb );
+				if (mcl instanceof VerticalLayout)
+					((VerticalLayout)mcl).setComponentAlignment(pb, Alignment.MIDDLE_CENTER);
 
 //				if (MAIN_CONTENT.equals( getAlternateMainContentLocation() ) )
 //					contentLayout.addComponent(vl, getAlternateMainContentLocation() );
@@ -171,7 +183,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 							ui.access(new Runnable() {
 				                @Override
 				                public void run() {
-				            		vl.removeComponent( pb );
+				            		mcl.removeComponent( pb );
 
 									handleGeneratedContent(c, getGeneratedContentContainer(), ui );
 				                }
@@ -182,7 +194,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 							e.printStackTrace();
 							handleGenricException(e, ui);
 						} catch (Exception e) {
-							vl.removeComponent( pb );
+							mcl.removeComponent( pb );
 
 							handleGenricException(e, ui);
 							
@@ -202,7 +214,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 
 	/**
 	 * Implement to add search criteria Component to View.
-	 * <p>Called by {@link #addDynamicContent} if {@link #getCriteriaClass} returns a valid value and {@link createSearchCriteria} actually created a Component!</p>
+	 * <p>Called by {@link #addDynamicContent} BEFORE the background WS process and if {@link #getCriteriaClass} returns a valid value and {@link #createSearchCriteria} actually created a Component!</p>
 	 * @param ac
 	 */
 	protected abstract void addSearchCriteria(AbstractComponent ac);
@@ -294,7 +306,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 		return l;
 	}
 	/**
-	 * Should return the container (eg could be main VerticalLayout {@link #vl} or a child component of it)
+	 * Should return the container (eg could be main VerticalLayout {@link #vl} or a child component of it, one created by overriding {@link #createMainContentLayout())
 	 * @return
 	 */
 	protected AbstractComponentContainer getGeneratedContentContainer() {
@@ -454,7 +466,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 	}
 
 	protected abstract Class<C> getCriteriaClass();
-	protected C getCriteria() {
+	public C getCriteria() {
 		if (getCriteriaClass() == null)
 			return null;
 
@@ -476,10 +488,10 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 		if (getCriteriaClass() != null) {
 			// clear criteria when entering the page from another page (if criteria exist)
 			// could do it depending on a parameter!!
-			if (fromView != null && fromView.getClass().equals(getClass())) {
+			if (fromView == null || fromView.getClass().equals(getClass())) {
 				// retain criteria
 			} else {
-				getSession().setAttribute(getCriteriaClass(), null);
+//				getSession().setAttribute(getCriteriaClass(), null);
 			}
 		}
 	}
