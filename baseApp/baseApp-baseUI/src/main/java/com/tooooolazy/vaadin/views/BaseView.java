@@ -50,6 +50,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 	 * Content as retrieved from WS - so we do not have to call ws again for export!
 	 */
 	protected JSONObject jo;
+	protected Thread inBg;
 
 	public BaseUI getUI() {
 		return (BaseUI) super.getUI();
@@ -63,6 +64,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 	@Override
 	public void attach() {
 		super.attach();
+		getUI().setPollInterval(-1);
 		setBrowserTitle();
 
 		init();
@@ -174,7 +176,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 				BaseUI ui = BaseUI.get();
 				ui.setPollInterval(200); 
 
-				Thread t = new Thread() {
+				inBg = new Thread() {
 					volatile Component c;
 					@Override
 				    public void run() {
@@ -184,26 +186,35 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 				                @Override
 				                public void run() {
 				            		mcl.removeComponent( pb );
-
-									handleGeneratedContent(c, getGeneratedContentContainer(), ui );
+				            		if (inBg.isInterrupted()) {
+				            			System.out.println("interrupted");
+				            		} else
+				            			handleGeneratedContent(c, getGeneratedContentContainer(), ui );
 				                }
 				            });
 						} catch (NullPointerException e) { // TEP-1164
 							// seems likes we should ignore this exception as it is thrown when we click fast enough on another page link (before current one is loaded)
 							// this lead to setting PollInterval to -1 causing the view to never be updated...
 							e.printStackTrace();
+		            		if (inBg.isInterrupted()) {
+		            			System.out.println("interrupted");
+		            		}
 							handleGenricException(e, ui);
 						} catch (Exception e) {
 							mcl.removeComponent( pb );
 
-							handleGenricException(e, ui);
-							
-							c = createErrorContent( ui, (JFC) ui.getServiceFailureCode() );
-							handleGeneratedContent(c, getGeneratedContentContainer(), ui);
+		            		if (inBg.isInterrupted()) {
+		            			System.out.println("interrupted");
+		            		} else {
+								handleGenricException(e, ui);
+								
+								c = createErrorContent( ui, (JFC) ui.getServiceFailureCode() );
+								handleGeneratedContent(c, getGeneratedContentContainer(), ui);
+		            		}
 						}
 					}
 				};
-				t.start();
+				inBg.start();
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -323,7 +334,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 	protected void handleGeneratedContent(Component c, AbstractComponentContainer generatedContentContainer, BaseUI ui) {
 		if (c != null) {
 			generatedContentContainer.addComponent( c );
-		}		
+		}
 		ui.setPollInterval(-1);
 	}
 	protected void handleGenricException(Exception e, BaseUI ui) {
@@ -447,6 +458,9 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 
 	public void beforeLeave(ViewBeforeLeaveEvent event) {
 		if (verifyExit(event)) {
+			if (inBg.isAlive() ) {
+				inBg.interrupt();
+			}
 			event.navigate();
 
 		} else
