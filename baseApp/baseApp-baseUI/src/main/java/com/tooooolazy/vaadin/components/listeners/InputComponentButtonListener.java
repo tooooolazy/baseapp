@@ -16,7 +16,7 @@ import com.vaadin.ui.Component;
  * @author gpatoulas
  *
  */
-public class InputComponentButtonListener implements Button.ClickListener {
+public abstract class InputComponentButtonListener implements Button.ClickListener {
 	protected InputComponent ic;
 	protected BinderValidationStatus bvs;
 
@@ -35,16 +35,14 @@ public class InputComponentButtonListener implements Button.ClickListener {
 
 		return bvs.isOk();
 	}
-	protected Object submit() throws Exception {
-		return null;
-	}
+	protected abstract Object submit() throws Exception;// {
+//		return null;
+//	}
 	protected void onError(Exception e) {
 		ic.setComponentError(createError(ic.getClass(), e));
 		ic.enableSubmit();
 	}
-	protected void onSuccess(Object res) {
-		
-	}
+	protected abstract void onSuccess(Object res);
 	@Override
 	public void buttonClick(ClickEvent event) {
 		init();
