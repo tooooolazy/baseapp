@@ -7,6 +7,7 @@ import com.tooooolazy.vaadin.components.InputComponent;
 import com.tooooolazy.vaadin.components.WeekComboBox;
 import com.tooooolazy.vaadin.views.BaseView;
 import com.vaadin.data.converter.StringToIntegerConverter;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.TextField;
@@ -20,6 +21,12 @@ public class MarketDataCriteriaComponent extends InputComponent<MarketDataCriter
 		super(listener, baseView);
 	}
 
+	@Override
+	public void attach() {
+		super.attach();
+		
+		submitButton.setIcon(VaadinIcons.SEARCH);
+	}
 	@Override
 	protected int getMaxColumns() {
 		return 3;
