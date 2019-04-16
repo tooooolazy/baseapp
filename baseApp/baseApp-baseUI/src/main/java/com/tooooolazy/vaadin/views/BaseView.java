@@ -1,5 +1,7 @@
 package com.tooooolazy.vaadin.views;
 
+import java.util.List;
+
 import org.apache.wink.client.ClientRuntimeException;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +53,11 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 	 */
 	protected JSONObject jo;
 	protected Thread inBg;
+
+	/**
+	 * TODO any extra BG threads should be added in the list. this list should be checked before clearing timeout.
+	 */
+	protected List<Thread> moreInBg;
 
 	public BaseUI getUI() {
 		return (BaseUI) super.getUI();
@@ -458,7 +465,7 @@ public abstract class BaseView<C extends SearchCriteria, E, UB extends UserBean,
 
 	public void beforeLeave(ViewBeforeLeaveEvent event) {
 		if (verifyExit(event)) {
-			if (inBg.isAlive() ) {
+			if (inBg != null && inBg.isAlive() ) {
 				inBg.interrupt();
 			}
 			event.navigate();
