@@ -9,6 +9,7 @@
 	</parent>
 	<groupId>com.tooooolazy.utils</groupId>
 	<artifactId>tlz-utils-pdf</artifactId>
+	<version>1.0</version>
 
 	<dependencies>
 		<dependency>
@@ -33,4 +34,21 @@
 			<artifactId>json</artifactId>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

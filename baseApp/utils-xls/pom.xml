@@ -9,6 +9,8 @@
 	</parent>
 	<groupId>com.tooooolazy.utils</groupId>
 	<artifactId>tlz-utils-xls</artifactId>
+	<version>1.0</version>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.tooooolazy.utils</groupId>
@@ -31,4 +33,21 @@
 			<version>3.17</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
