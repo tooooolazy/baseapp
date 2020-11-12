@@ -8,7 +8,7 @@ import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
 
 /**
- * Assumes that a custom Layout file exists in Theme folder '/layouts' in the form of 'AboutView_[locale_lang].html' eg. AbountView_en.html
+ * Assumes that a custom Layout file exists in Theme folder '/layouts' in the form of 'AboutView_[locale_lang].html' eg. AboutView_en.html
  * @author tooooolazy
  *
  */
