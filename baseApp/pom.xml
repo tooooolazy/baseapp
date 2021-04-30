@@ -22,7 +22,7 @@
 		<!-- If addon submodule is not used, this can also be "fetch" or "cdn" -->
 		<vaadin.widgetset.mode>local</vaadin.widgetset.mode>
 
-		<spring.version>4.3.9.RELEASE</spring.version>
+		<spring.version>4.3.29.RELEASE</spring.version>
 		<spring.data.version>1.11.4.RELEASE</spring.data.version>
 		<hibernate.core.version>5.2.10.Final</hibernate.core.version>
         <hibernate.validator.version>5.4.1.Final</hibernate.validator.version>		
